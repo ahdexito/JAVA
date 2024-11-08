@@ -8,32 +8,34 @@ public class PROG03_Ejer1_01 {
 		Scanner sc = new Scanner(System.in);
 
 		/*
-          1. Desarrollar en Java un programa que permita jugar al juego del "Cinco". Este juego consiste
-	  en lo siguiente: el programa generará aleatoriamente un número de 5 cifras dis?ntas (sin dígitos
-	  duplicados) que el jugador deberá adivinar. El jugador introducirá cada dígito de forma individual
-	  (como número entero) y el programa deberá:
-	  
-	  • Verificar que el número ingresado es válido, u?lizando try-catch para manejar cualquier
-	  error que ocurra si el usuario introduce datos no numéricos o fuera del rango de dígitos.
-	  
-	  • Indicar cuántas cifras ingresadas por el jugador coinciden con el número secreto y están
-	  en la posición correcta.
-	  
-	  • Indicar cuántas cifras están presentes en el número secreto, pero no en la posición
-	  correcta.
-	  
-	  • El juego se repe?rá en un bucle hasta que el jugador acierte todas las cifras en sus
-	  posiciones correctas.
-	  
-	  Al final de la par?da, el programa mostrará el número total de intentos realizados y un resumen
-	  de los dígitos acertados.
-		 */
-		System.out.println("BIENVENIDO AL JUEGO DEL CINCO\n\n"
-			   + "¡Adivina el número secreto de 5 cifras!\n\n"
-			   + "- Debe estar entre el 0 y el 9, ambos incluidos.\n"
-			   + "- Ningún número se puede repetir.\n"
-			   + "- (Si te rindes, introduce 999 en cualquier entrada)\n"
-			   + "===================================================\n");
+        1. Desarrollar en Java un programa que permita jugar al juego del "Cinco". Este juego consiste
+		en lo siguiente: el programa generará aleatoriamente un número de 5 cifras dis?ntas (sin dígitos
+		duplicados) que el jugador deberá adivinar. El jugador introducirá cada dígito de forma individual
+		(como número entero) y el programa deberá:
+
+		• Verificar que el número ingresado es válido, u?lizando try-catch para manejar cualquier
+		error que ocurra si el usuario introduce datos no numéricos o fuera del rango de dígitos.
+
+		• Indicar cuántas cifras ingresadas por el jugador coinciden con el número secreto y están
+		en la posición correcta.
+
+		• Indicar cuántas cifras están presentes en el número secreto, pero no en la posición
+		correcta.
+
+		• El juego se repe?rá en un bucle hasta que el jugador acierte todas las cifras en sus
+		posiciones correctas.
+
+		Al final de la par?da, el programa mostrará el número total de intentos realizados y un resumen
+		de los dígitos acertados.
+		*/
+		
+		System.out.println
+		  ("BIENVENIDO AL JUEGO DEL CINCO\n\n"
+		+ "¡Adivina el número secreto de 5 cifras!\n\n"
+		+ "- Debe estar entre el 0 y el 9, ambos incluidos.\n"
+		+ "- Ningún número se puede repetir.\n"
+		+ "- (Si te rindes, introduce 999 en cualquier entrada)\n"
+		+ "===================================================\n");
 
 		int[] contra = new int[5];
 
@@ -66,12 +68,12 @@ public class PROG03_Ejer1_01 {
 		boolean victoria = false, rendirse = false;
 		int intentos = 0, contadorAciertos = 0;
 
-//	  // IMPRIMIR CONTRASEÑA PARA PROBAR EL PROGRAMA
-//	  for (int i=0; i<5; i++)
-//	  {
-//	       System.out.print(contra[i] + "  ");
-//	  }
-//	  System.out.print("\n");
+//		// IMPRIMIR CONTRASEÑA PARA PROBAR EL PROGRAMA
+//		for (int i=0; i<5; i++)
+//		{
+//			 System.out.print(contra[i] + "  ");
+//		}
+//		System.out.print("\n");
 
 		do {
 			intentos++;
@@ -181,8 +183,8 @@ public class PROG03_Ejer1_01 {
 				System.out.print("\n");
 			} 
 			
+			// Imprimir aciertos NO en la misma posición.
 			else {
-				// Imprimir aciertos NO en la misma posición.
 				System.out.println("\nAciertos NO en su posición: " + posicionCorrecta);
 				System.out.println("\n¡Sigue intentándolo!\n");
 			}
