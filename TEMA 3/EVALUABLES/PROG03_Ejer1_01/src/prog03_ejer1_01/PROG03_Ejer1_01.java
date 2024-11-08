@@ -70,12 +70,12 @@ public class PROG03_Ejer1_01
 	  boolean victoria = false, rendirse = false;
 	  int intentos = 0, contadorAciertos = 0;
 	  
-	  // IMPRIMIR CONTRASEÑA PARA PROBAR EL PROGRAMA
-	  for (int i=0; i<5; i++)
-	  {
-	       System.out.print(contra[i] + "  ");
-	  }
-	  System.out.print("\n");
+//	  // IMPRIMIR CONTRASEÑA PARA PROBAR EL PROGRAMA
+//	  for (int i=0; i<5; i++)
+//	  {
+//	       System.out.print(contra[i] + "  ");
+//	  }
+//	  System.out.print("\n");
 	  
 	  do 
 	  {	       
