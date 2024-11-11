@@ -128,7 +128,7 @@ public class Prog03_auto21 {
 					
 					for (int i=0; i<contador; i++) {
 
-							System.out.print("(" + letras[i] + ")  ");
+							System.out.print(i+1 +"(" + letras[i] + ") ");
 					} 
 					System.out.print("\n");
 					break;
