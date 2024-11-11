@@ -54,43 +54,53 @@ public class Prog03_auto21 {
 
 					System.out.println("OPCIÓN: AÑADIR LETRA AL FINAL");
 					
-					System.out.print("Introduce letra: ");
-					char entrada_A = sc.next().charAt(0);
+					if (contador == 10)
+						System.out.println("No quedan huecos, para continuar elimina uno antes.");
+					
+					else {
+						System.out.print("Introduce letra: ");
+						char entrada_A = sc.next().charAt(0);
 
-					for (int i=0; i<letras.length; i++) {
-
-						if (letras[i] == 0) {
-
-							letras[i] = entrada_A;
-							contador++;
-							break;
+						for (int i=0; i<letras.length; i++) {
+							
+								
+								letras[contador] = entrada_A;
+								contador++;
+								break;
 						}
-					} break;
+					} 
+					break;
 
 				// Añadir letra en una posición determinada.
 				case 'b': case 'B':	
 					
 					System.out.println("OPCIÓN: AÑADIR LETRA EN DETERMINADA POSICIÓN");
 					
-					System.out.print("Introduce letra: ");
-					char entrada_B = sc.next().charAt(0);
+					if (contador == 10)
+						System.out.println("No quedan huecos, para continuar elimina uno antes.");
+						
+					else {
+						System.out.print("Introduce letra: ");
+						char entrada_B = sc.next().charAt(0);
 
-					System.out.print("Elige posición: ");
-					int posicion = sc.nextInt() - 1;
+						System.out.print("Elige posición: ");
+						int posicion = sc.nextInt() - 1;
 
-					for (int i=0; i<letras.length-1; i++) {
+						for (int i=0; i<letras.length-1; i++) {
 
-						if (posicion == i) {
+							if (posicion == i) {
 
-							for (int j=letras.length-1; j>posicion; j--) {
-								
-								letras[j] = letras[j-1];
+								for (int j=letras.length-1; j>posicion; j--) {
+
+									letras[j] = letras[j-1];
+								}
+
+								letras[i] = entrada_B;
+								contador++;
 							}
-
-							letras[i] = entrada_B;
-							contador++;
-						}
-					} break;
+						} 
+					} 
+					break;
 					
 				case 'c': case 'C':
 					
