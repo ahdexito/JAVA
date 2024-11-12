@@ -8,7 +8,7 @@ public class Prog03_auto21 {
 		Scanner sc = new Scanner(System.in);
 
 		/*
-        21. Crea un programa que prepare espacio para un máximo de 10 caracteres. Deberá mostrar
+          21. Crea un programa que prepare espacio para un máximo de 10 caracteres. Deberá mostrar
 		al usuario un menú que le permita realizar las siguientes operaciones:
 		
 		a) Añadir un dato al final de los ya existentes.
@@ -32,13 +32,14 @@ public class Prog03_auto21 {
 		int contador = 0;
 		char opcion;
 		
-		System.out.println("\t\t\tMENÚ\n"
-						+ "====================================================\n"
-						+ "a) Añadir un dato al final de los ya existentes.\n"
-						+ "b) Insertar un dato en una cierta posición.\n"
-						+ "c) Borrar el dato que hay en una cierta posición.\n"
-						+ "d) Mostrar los datos que contiene el array.\n"
-						+ "e) Salir del programa.\n");
+		System.out.println(""
+		+ "                      MENÚ\n"
+		+ "====================================================\n"
+		+ "a) Añadir un dato al final de los ya existentes.\n"
+		+ "b) Insertar un dato en una cierta posición.\n"
+		+ "c) Borrar el dato que hay en una cierta posición.\n"
+		+ "d) Mostrar los datos que contiene el array.\n"
+		+ "e) Salir del programa.\n");
 		
 		do {
 			System.out.print("====================================================\n");
@@ -67,7 +68,7 @@ public class Prog03_auto21 {
 							System.out.println("¡Dato añadido correctamente!");
 							contador++;
 							break;
-				} 
+					} 
 				break;
 
 				// Añadir letra en una posición determinada.
@@ -109,13 +110,13 @@ public class Prog03_auto21 {
 					System.out.print("Elige posición del dato a borrar: ");
 					int entrada_C = sc.nextInt() - 1;
 					
-						// Desplazar los datos hacia la izquierda, a partir de la posición dada.
-						for (int j=entrada_C; j<contador-1; j++) {
+					// Desplazar los datos hacia la izquierda, a partir de la posición dada.
+					for (int j=entrada_C; j<contador-1; j++) {
 
-							letras[j] = letras[j+1];
-						}
-						System.out.println("¡Dato eliminado correctamente!");					
-						contador--;
+						letras[j] = letras[j+1];
+					}
+					System.out.println("¡Dato eliminado correctamente!");					
+					contador--;
 				break;
 						
 				// Imprimir el array.	
