@@ -29,8 +29,21 @@ public class Prog03_auto27 {
 		
 		if (posicion>=0) {
 			
+			int repe = 0;
 			
+			for (int i=posicion; i<array.length; i++) {
+				
+				if (array[i] == entrada)
+					repe++;
+				
+				else
+					break;
+			}
+			
+			System.out.println("Se ha encontrado. Está repetido " + repe + " veces.");
 		}
-
+		
+		else
+			System.out.println("No se ha encontrado.");
 	}
 }
