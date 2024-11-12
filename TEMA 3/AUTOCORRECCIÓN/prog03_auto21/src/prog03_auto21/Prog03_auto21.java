@@ -56,21 +56,19 @@ public class Prog03_auto21 {
 					if (contador == letras.length)
 						System.out.println("No quedan huecos, para continuar elimina uno antes.");
 					
-					// Pedir dato.
+					// Pedir y añadir dato.
 					else {
 						System.out.print("Introduce letra: ");
 						char entrada_A = sc.next().charAt(0);
 
-						for (int i=0; i<letras.length; i++) {
-							
-								// Colocar el dato conociendo el máximo de números.
-								letras[contador] = entrada_A;
-								
-								contador++;
-								break;
-						}
-					} 
-					break;
+							// Colocar el dato conociendo el máximo de números.
+							letras[contador] = entrada_A;
+
+							System.out.println("¡Dato añadido correctamente!");
+							contador++;
+							break;
+				} 
+				break;
 
 				// Añadir letra en una posición determinada.
 				case 'b': case 'B':	
@@ -89,25 +87,19 @@ public class Prog03_auto21 {
 						System.out.print("Elige posición: ");
 						int posicion = sc.nextInt() - 1;
 
-						for (int i=0; i<letras.length-1; i++) {
-							
-							// Encontrar la posición introducida dentro del array.
-							if (posicion == i) {
-								
-								// Desplazar los datos desde el final del array, hasta la posición dada.
-								for (int j=letras.length-1; j>posicion; j--) {
+							// Desplazar los datos desde el final del array, hasta la posición dada.
+							for (int j=letras.length-1; j>posicion; j--) {
 
-									letras[j] = letras[j-1];
-								}
-								
-								// Reemplazar el dato en la posición elegida.
-								letras[i] = entrada_B;
-								
-								contador++;
+								letras[j] = letras[j-1];
 							}
-						} 
+
+							// Reemplazar el dato en la posición elegida.
+							letras[posicion] = entrada_B;
+
+							System.out.println("¡Dato añadido correctamente!");
+							contador++;
 					} 
-					break;
+				break;
 					
 				// Borrar letra dada la posición.
 				case 'c': case 'C':
@@ -117,21 +109,14 @@ public class Prog03_auto21 {
 					System.out.print("Elige posición del dato a borrar: ");
 					int entrada_C = sc.nextInt() - 1;
 					
-					for (int i=0; i<letras.length-1; i++) {
-						
-						// Encontrar la posición introducida dentro del array.
-						if (entrada_C == i) {
-							
-							// Desplazar los datos hacia la izquierda, a partir de la posición dada.
-							for (int j=entrada_C; j<contador-1; j++) {
-								
-								letras[j] = letras[j+1];
-							}
-													
-							contador--;
+						// Desplazar los datos hacia la izquierda, a partir de la posición dada.
+						for (int j=entrada_C; j<contador-1; j++) {
+
+							letras[j] = letras[j+1];
 						}
-					}
-					break;
+						System.out.println("¡Dato eliminado correctamente!");					
+						contador--;
+				break;
 						
 				// Imprimir el array.	
 				case 'd': case 'D':
@@ -140,18 +125,19 @@ public class Prog03_auto21 {
 					
 					for (int i=0; i<contador; i++) {
 
-							System.out.print(i+1 +"(" + letras[i] + ") ");
+						System.out.print(i+1 +"(" + letras[i] + ") ");
 					} 
 					System.out.print("\n");
-					break;
+				break;
 				
 				// Finalizar programa.
 				case 'e': case 'E':
 					System.out.println("OPCIÓN: FINALIZAR PROGRAMA");
-					break;
+				break;
 					
 				default:
 					System.out.println("Opción no válida. Introduce otra.");
+				break;
 			}
 			
 		} while (opcion != 'e' && opcion != 'E');
