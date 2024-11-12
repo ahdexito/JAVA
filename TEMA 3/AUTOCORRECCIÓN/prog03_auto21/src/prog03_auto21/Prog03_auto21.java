@@ -28,19 +28,17 @@ public class Prog03_auto21 {
 		e) Salir del programa.
 		*/
 		
-		char[] letras = new char[10];
+		char[] letras = new char[5];
 		int contador = 0;
 		char opcion;
 		
-		System.out.println("""
-												MENÚ
-						   ====================================================
-						   a) Añadir un dato al final de los ya existentes.
-						   b) Insertar un dato en una cierta posición
-						   c) Borrar el dato que hay en una cierta posición
-						   d) Mostrar los datos que contiene el array.
-						   e) Salir del programa.
-						   """);
+		System.out.println("\t\t\tMENÚ\n"
+						+ "====================================================\n"
+						+ "a) Añadir un dato al final de los ya existentes.\n"
+						+ "b) Insertar un dato en una cierta posición.\n"
+						+ "c) Borrar el dato que hay en una cierta posición.\n"
+						+ "d) Mostrar los datos que contiene el array.\n"
+						+ "e) Salir del programa.\n");
 		
 		do {
 			System.out.print("====================================================\n");
@@ -54,17 +52,20 @@ public class Prog03_auto21 {
 
 					System.out.println("OPCIÓN: AÑADIR LETRA AL FINAL");
 					
-					if (contador == 10)
+					// No pedir más datos si el contador llega al máximo.
+					if (contador == letras.length)
 						System.out.println("No quedan huecos, para continuar elimina uno antes.");
 					
+					// Pedir dato.
 					else {
 						System.out.print("Introduce letra: ");
 						char entrada_A = sc.next().charAt(0);
 
 						for (int i=0; i<letras.length; i++) {
 							
-								
+								// Colocar el dato conociendo el máximo de números.
 								letras[contador] = entrada_A;
+								
 								contador++;
 								break;
 						}
@@ -76,9 +77,11 @@ public class Prog03_auto21 {
 					
 					System.out.println("OPCIÓN: AÑADIR LETRA EN DETERMINADA POSICIÓN");
 					
-					if (contador == 10)
+					// No pedir más datos si el contador llega al máximo.
+					if (contador == letras.length)
 						System.out.println("No quedan huecos, para continuar elimina uno antes.");
-						
+					
+					// Pedir dato y posición.
 					else {
 						System.out.print("Introduce letra: ");
 						char entrada_B = sc.next().charAt(0);
@@ -87,21 +90,26 @@ public class Prog03_auto21 {
 						int posicion = sc.nextInt() - 1;
 
 						for (int i=0; i<letras.length-1; i++) {
-
+							
+							// Encontrar la posición introducida dentro del array.
 							if (posicion == i) {
-
+								
+								// Desplazar los datos desde el final del array, hasta la posición dada.
 								for (int j=letras.length-1; j>posicion; j--) {
 
 									letras[j] = letras[j-1];
 								}
-
+								
+								// Reemplazar el dato en la posición elegida.
 								letras[i] = entrada_B;
+								
 								contador++;
 							}
 						} 
 					} 
 					break;
 					
+				// Borrar letra dada la posición.
 				case 'c': case 'C':
 					
 					System.out.println("OPCIÓN: BORRAR DATO");
@@ -110,16 +118,20 @@ public class Prog03_auto21 {
 					int entrada_C = sc.nextInt() - 1;
 					
 					for (int i=0; i<letras.length-1; i++) {
-
+						
+						// Encontrar la posición introducida dentro del array.
 						if (entrada_C == i) {
-
+							
+							// Desplazar los datos hacia la izquierda, a partir de la posición dada.
 							for (int j=entrada_C; j<contador-1; j++) {
+								
 								letras[j] = letras[j+1];
 							}
-							letras[i] = letras[entrada_C];
+													
 							contador--;
 						}
-					} break;
+					}
+					break;
 						
 				// Imprimir el array.	
 				case 'd': case 'D':
@@ -132,10 +144,14 @@ public class Prog03_auto21 {
 					} 
 					System.out.print("\n");
 					break;
-					
+				
+				// Finalizar programa.
 				case 'e': case 'E':
 					System.out.println("OPCIÓN: FINALIZAR PROGRAMA");
 					break;
+					
+				default:
+					System.out.println("Opción no válida. Introduce otra.");
 			}
 			
 		} while (opcion != 'e' && opcion != 'E');
