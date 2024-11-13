@@ -4,6 +4,13 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Prog03_autoMatriz07 {
+	
+	
+    public static void limpiarConsola() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -27,11 +34,20 @@ public class Prog03_autoMatriz07 {
 		e) Salir.
 		*/
 		
-		int[][] notas = {{5, 6, 5},{3, 7, 8, 2, 1},{5, 6, 3, 7},{3, 6},{6, 7, 8, 3}};
+		//int[][] notas = {{5, 6, 5},{3, 7, 8, 2, 1},{5, 6, 3, 7},{3, 6},{6, 7, 8, 3}};
+		
+		int[][] notas = new int [5][];
+		
+		notas[0] = new int[3];
+		notas[1] = new int[5];
+		notas[2] = new int[4];
+		notas[3] = new int[2];
+		notas[4] = new int[4];
 		
 		char opcion;
-
+		
 		do {
+			
 			System.out.println("" +
 			"==================================================\n\n" +
 			"a) Instar las notas de la asignatura seleccionada.\n\n" +
@@ -53,6 +69,11 @@ public class Prog03_autoMatriz07 {
 			switch (opcion) {
 				
 				case 'a': case 'A':
+										
+					System.out.println("OPCIÓN A: INTRODUCIR NOTAS\n");
+					
+				break;
+					
 					
 				case 'b': case 'B':
 					
@@ -67,6 +88,7 @@ public class Prog03_autoMatriz07 {
 					
 					System.out.printf("La media de notas de la asignatura %d es: %.1f", (entrada_B + 1), (media/notas[entrada_B].length));
 					System.out.println("\n");
+					
 				break;
 					
 				case 'c': case 'C':
@@ -78,10 +100,11 @@ public class Prog03_autoMatriz07 {
 					Arrays.sort(notas[entrada_C]);
 					
 					System.out.println("\nNotas de la asignatura " + (entrada_C + 1) + " ordenadas.\n");
+					
 				break;
 					
 				case 'e': case 'E':
-					
+										
 					System.out.println("OPCIÓN E: MOSTRAR NOTAS\n");
 					for (int i=0; i<5; i++) {
 			
@@ -93,11 +116,13 @@ public class Prog03_autoMatriz07 {
 						}
 						System.out.println("\n");
 					}
+					
 				break;
 				
 				case 'f': case 'F':
 					
 					System.out.println("\nOPCIÓN F: SALIR DEL PROGRAMA");
+					
 				break;
 			}
 			
