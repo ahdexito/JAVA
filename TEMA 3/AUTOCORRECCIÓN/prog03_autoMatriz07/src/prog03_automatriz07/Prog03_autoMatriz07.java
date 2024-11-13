@@ -26,7 +26,38 @@ public class Prog03_autoMatriz07 {
 		e) Salir.
 		*/
 		
+		int[][] notas = new int[5][];
 		
+		notas[0] = new int[3];
+		notas[1] = new int[5];
+		notas[2] = new int[4];
+		notas[3] = new int[2];
+		notas[4] = new int[4];
+		
+		// Imprimir notas.
+		for (int i=0; i<5; i++) {
+			
+			System.out.print("ASIGNATURA " + (i+1) + ": ");
+			
+			for (int j=0; j<notas[i].length; j++) {
+				
+				System.out.print(notas[i][j] + "  ");
+			}
+			System.out.println("\n");
+		}
+		
+		do {
+			System.out.print("Introduce opción: ");
+			char opcion = sc.next().charAt(0);
+			
+			switch (opcion) {
+				
+				
+				
+			}
+			
+			
+		} (while opcion!='e' || opcion!='E')
 		
 	}
 
