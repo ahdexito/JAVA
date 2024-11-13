@@ -13,19 +13,19 @@ public class Prog03_autoMatriz06 {
 		 */
 		int[][] tabla = new int[7][7];
 		
-		for (int i = 0; i < 7; i++) {
+		for (int x=0; x<7; x++) {
 
-			for (int j = 0; j < 7; j++) {
+			for (int y=0; y<7; y++) {
 				
-				tabla[i][i] = 1;
+				tabla[x][x] = 1;
 			}
 		}
 		
-		for (int i=0; i<7; i++) {
+		for (int x=0; x<7; x++) {
 			
-			for (int j=0; j<7; j++) {
+			for (int y=0; y<7; y++) {
 				
-				System.out.print(tabla[i][j] + " ");
+				System.out.print(tabla[x][y] + " ");
 			}
 			System.out.print("\n");
 		}
