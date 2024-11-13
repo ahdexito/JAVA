@@ -8,7 +8,7 @@ public class Prog03_autoMatriz06 {
 		Scanner sc = new Scanner(System.in);
 
 		/*
-          6. Crear una tabla de tamaño 7x7 y rellenarla de forma que los elementos de la diagonal
+        6. Crear una tabla de tamaño 7x7 y rellenarla de forma que los elementos de la diagonal
 		principal sean 1 y el resto 0.
 		 */
 		int[][] tabla = new int[7][7];
