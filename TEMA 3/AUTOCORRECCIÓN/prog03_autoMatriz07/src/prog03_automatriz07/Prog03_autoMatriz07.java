@@ -49,20 +49,20 @@ public class Prog03_autoMatriz07 {
 		do {
 			
 			System.out.println("" +
-			"==================================================\n\n" +
-			"a) Instar las notas de la asignatura seleccionada.\n\n" +
+			"==================================================\n" +
+			"a) Insertar las notas de la asignatura seleccionada.\n" +
 			"b) Calcular la nota media de la asignatura \n" +
-			"   seleccionada.\n\n" +
+			"   seleccionada.\n" +
 			"c) Ordenar las notas de una asignatura de forma\n" +
-			"   ascendente.\n\n" +
+			"   ascendente.\n" +
 			"d) Estadísticas de porcentajes de aprobados \n" +
-			"   y suspensos por cada asignatura.\n\n" +
-			"e) Mostrar todas las notas.\n\n" +
-			"f) Salir.\n");
+			"   y suspensos por cada asignatura.\n" +
+			"e) Mostrar todas las notas.\n" +
+			"f) Salir.");
 			
 			double media = 0;
 			
-			System.out.println("==================================================\n");
+			System.out.println("==================================================");
 			System.out.print("Introduce opción (a, b, c, d, e, f): ");
 			opcion = sc.next().charAt(0);
 			
@@ -71,9 +71,15 @@ public class Prog03_autoMatriz07 {
 				case 'a': case 'A':
 										
 					System.out.println("OPCIÓN A: INTRODUCIR NOTAS\n");
+					System.out.print("Introduce asignatura (1, 2, 3, 4, 5): ");
+					int entrada_A = sc.nextInt() - 1;
 					
+					for (int i=0; i<notas[entrada_A].length; i++) {
+						
+						System.out.print("Alumno " + (i+1) + " : ");
+						notas[entrada_A][i] = sc.nextInt();
+					}
 				break;
-					
 					
 				case 'b': case 'B':
 					
@@ -88,7 +94,6 @@ public class Prog03_autoMatriz07 {
 					
 					System.out.printf("La media de notas de la asignatura %d es: %.1f", (entrada_B + 1), (media/notas[entrada_B].length));
 					System.out.println("\n");
-					
 				break;
 					
 				case 'c': case 'C':
@@ -100,7 +105,6 @@ public class Prog03_autoMatriz07 {
 					Arrays.sort(notas[entrada_C]);
 					
 					System.out.println("\nNotas de la asignatura " + (entrada_C + 1) + " ordenadas.\n");
-					
 				break;
 					
 				case 'e': case 'E':
@@ -116,13 +120,15 @@ public class Prog03_autoMatriz07 {
 						}
 						System.out.println("\n");
 					}
-					
 				break;
 				
 				case 'f': case 'F':
 					
 					System.out.println("\nOPCIÓN F: SALIR DEL PROGRAMA");
-					
+				break;
+				
+				default:
+					System.out.println("OPCIÓN NO VÁLIDA. INTRODUZCA OTRA");
 				break;
 			}
 			
