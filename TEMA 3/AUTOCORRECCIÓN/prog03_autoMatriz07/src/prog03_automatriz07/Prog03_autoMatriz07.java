@@ -27,22 +27,23 @@ public class Prog03_autoMatriz07 {
 		e) Salir.
 		*/
 		
-		System.out.println("" +
-		"a) Instar las notas de la asignatura seleccionada.\n" +
-		"b) Calcular la nota media de la asignatura \n" +
-		"   seleccionada.\n" +
-		"c) Ordenar las notas de una asignatura de forma\n" +
-		"   ascendente.\n" +
-		"d) Estadísticas de porcentajes de aprobados \n" +
-		"   y suspensos por cada asignatura.\n" +
-		"e) Mostrar todas las notas.\n" +
-		"f) Salir.\n");
-		
 		int[][] notas = {{5, 6, 5},{3, 7, 8, 2, 1},{5, 6, 3, 7},{3, 6},{6, 7, 8, 3}};
 		
 		char opcion;
 
 		do {
+			System.out.println("" +
+			"==================================================\n\n" +
+			"a) Instar las notas de la asignatura seleccionada.\n\n" +
+			"b) Calcular la nota media de la asignatura \n" +
+			"   seleccionada.\n\n" +
+			"c) Ordenar las notas de una asignatura de forma\n" +
+			"   ascendente.\n\n" +
+			"d) Estadísticas de porcentajes de aprobados \n" +
+			"   y suspensos por cada asignatura.\n\n" +
+			"e) Mostrar todas las notas.\n\n" +
+			"f) Salir.\n");
+			
 			double media = 0;
 			
 			System.out.println("==================================================\n");
