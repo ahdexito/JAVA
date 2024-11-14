@@ -1,5 +1,6 @@
 package prog03_clase15;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Prog03_clase15 {
@@ -28,58 +29,122 @@ public class Prog03_clase15 {
 		c) Dulces: 5 productos.
         */
         
-        int[][] catego = new int[3][];
+        String[][] productos = new String[3][];
 		
-		catego[0] = new int[4];
-		catego[1] = new int[2];
-		catego[2] = new int[5];
+		productos[0] = new String[4];
+		productos[1] = new String[2];
+		productos[2] = new String[5];
 		
-		char opcion;
-
+		boolean salir = false;
+		
 		do {
-			
+			System.out.println("============================================");
 			System.out.print("" +
-			"a) Ordenar cada categoría.\n" +
-			"b) Contar los productos de una categoría.\n" +
-			"c) Añadir un producto dada la categoría.\n" +
-			"d) Modificar un producto.\n" +
-			"e) Elimina un producto.\n" +
-			"f) Salir.\n");
-			System.out.println("=======================================");
+			"MENÚ:\n" +
+			"   a) Ordenar cada categoría.\n" +
+			"   b) Contar los productos de una categoría.\n" +
+			"   c) Añadir un producto dada la categoría.\n" +
+			"   d) Modificar un producto.\n" +
+			"   e) Elimina un producto.\n" +
+			"   f) Salir.\n");
+			System.out.println("--------------------------------------------");
 			
 			System.out.print("Selecciona opción: ");
-			opcion = sc.next().charAt(0);
+			char opcion = sc.next().charAt(0);
+			
+			int entrada;
 			
 			switch (opcion) {
 				
 				case 'a':
 					System.out.println("OPCIÓN: ORDENAR CATEGORÍA");
-					System.out.print("Elige categoría: ");
-					sc.next();
-					String entrada = sc.nextLine().toLowerCase();
 					
-					int numCatego;
-					boolean correcto = true;
+					System.out.print("" +
+					"   1. Lácteos\n" +
+					"   2. Bebidas\n" +
+					"   3. Dulces\n" +
+					"Elige categoría: ");
+					entrada = sc.nextInt() - 1;
 					
-					do {
+					Arrays.sort(productos[entrada]);
+					
+					System.out.println("--------------------------------------------");
+					System.out.println("                        Artículos ordenados.");
+				break;
+				/////////////////////////////////////////////////////////////////////////////////////////////////
+				case 'b':
+					System.out.println("OPCIÓN: CONTAR PRODUCTOS");
+					
+					System.out.print("" +
+					"   1. Lácteos\n" +
+					"   2. Bebidas\n" +
+					"   3. Dulces\n" +
+					"Elige categoría: ");
+					entrada = sc.nextInt() - 1;
+					
+					// Contar cuantos productos faltan por añadir.
+					int contador = 0;
+					for (String producto : productos[entrada]) {
 						
-						if (entrada.equals("lácteos"))
-							numCatego = 0;
+						if (producto == null)
+							contador++;
+					}
+					
+					System.out.println("--------------------------------------------");
+					System.out.println("       Cantidad de elementos introducidos: " + (productos[entrada].length - contador));
+				break;
+				/////////////////////////////////////////////////////////////////////////////////////////////////
+				case 'c':
+					System.out.println("OPCIÓN: AÑADIR PRODUCTO");
+					
+					System.out.print("" +
+					"   1. Lácteos\n" +
+					"   2. Bebidas\n" +
+					"   3. Dulces\n" +
+					"Elige categoría: ");
+					entrada = sc.nextInt() - 1;
+					
+					int contadorOcupados = 0;
+					
+					// Mostrar los productos de la categoría.
+					System.out.println("--------------------------------------------");
+					for (int i=0; i<productos[entrada].length; i++) {
+						
+						System.out.print((i+1) + ". " + productos[entrada][i] + "  ");
+						if (productos[entrada][i] != null)
+							contadorOcupados++;
+					}
+					
+					System.out.println("Contador ocupados: " + contadorOcupados);
+					
+					// Añadir producto si queda espacio.
+					if (contadorOcupados < productos[entrada].length) {
+						
+						System.out.print("\nProducto a añadir: ");
+						String nuevoProducto = sc.nextLine();
 
-						else if (entrada.equals("bebidas"))
-							numCatego = 1;
-
-						else if (entrada.equals("dulces"))
-							numCatego = 2;
-
-						else
-							System.out.println("Categoría inexistente.");
-							correcto = false;
+						for (int i=0; i<productos[entrada].length; i++) {
 							
-					} while (!correcto);
+							if (productos[entrada][i] != null) {
+								
+								productos[entrada][i] = nuevoProducto;
+								break;
+							}
+								
+						}
+						
+						System.out.println("\n--------------------------------------------");
+						System.out.println("                           Producto añadido.");
+					}
+					
+					else {
+						System.out.println("\n--------------------------------------------");
+						System.out.println("No quedan espacios. Prueba a borrar uno primero.");
+					}
+						
 			}
 			
 			
-		} while (opcion!='f');
+		} while (!salir);
     }
 }
