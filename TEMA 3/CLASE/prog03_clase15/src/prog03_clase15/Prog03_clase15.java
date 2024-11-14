@@ -111,6 +111,8 @@ public class Prog03_clase15 {
 					for (int i=0; i<productos[entrada].length; i++) {
 						
 						System.out.print((i+1) + ". " + productos[entrada][i] + "  ");
+						
+						// Contar productos añadidos.
 						if (productos[entrada][i] != null)
 							contadorOcupados++;
 					}
@@ -120,12 +122,14 @@ public class Prog03_clase15 {
 					// Añadir producto si queda espacio.
 					if (contadorOcupados < productos[entrada].length) {
 						
-						System.out.print("\nProducto a añadir: ");
-						String nuevoProducto = sc.nextLine();
-
+						System.out.println("--------------------------------------------");
+						System.out.print("Producto a añadir: ");
+						String nuevoProducto = sc.next();
+						
+						// Añadir al primer espacio vacío.
 						for (int i=0; i<productos[entrada].length; i++) {
 							
-							if (productos[entrada][i] != null) {
+							if (productos[entrada][i] == null) {
 								
 								productos[entrada][i] = nuevoProducto;
 								break;
@@ -133,8 +137,7 @@ public class Prog03_clase15 {
 								
 						}
 						
-						System.out.println("\n--------------------------------------------");
-						System.out.println("                           Producto añadido.");
+						System.out.println("\n                           Producto añadido.");
 					}
 					
 					else {
