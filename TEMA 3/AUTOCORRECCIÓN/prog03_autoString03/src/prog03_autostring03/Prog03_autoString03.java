@@ -16,14 +16,21 @@ public class Prog03_autoString03 {
 		
 		for (int i=0; i<frases.length; i++) {
 			
-			System.out.print("Introduce frase: ");
+			System.out.print("Introduce frase " + (i+1) + " : ");
 			frases[i] = sc.nextLine();
 		}
 		
-		for (int i=0; i<frases.length - 1; i++) {
+		String menor = frases[0];
+		
+		for (int i=1; i<frases.length; i++) {
 			
-			
+			if (frases[i].length() < menor.length()) {
+				
+				menor = frases[i];
+			}
 		}
+		
+		System.out.println("La frase menor es: " + menor);
 		
     }
 }
