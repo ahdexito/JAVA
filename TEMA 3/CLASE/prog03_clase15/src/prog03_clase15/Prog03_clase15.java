@@ -55,6 +55,7 @@ public class Prog03_clase15 {
 				case 'a':
 					System.out.println("OPCIÓN: ORDENAR CATEGORÍA");
 					System.out.print("Elige categoría: ");
+					sc.next();
 					String entrada = sc.nextLine().toLowerCase();
 					
 					int numCatego;

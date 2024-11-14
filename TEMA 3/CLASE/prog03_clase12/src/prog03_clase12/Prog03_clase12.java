@@ -43,10 +43,11 @@ public class Prog03_clase12 {
 				// Sumar datos de cada fila.
 				fila[i] += tabla[i][j];
 				//Sumar datos de cada columna.
-				columna[j] += tabla[i][j];
+				columna[i] += tabla[j][i];
 			}
 		}
         
+		// Imprimir filas.
 		System.out.println("\n FILAS:");
 		for (int i=0; i<10; i++) {
 			System.out.print(fila[i] + " ");
@@ -54,6 +55,7 @@ public class Prog03_clase12 {
 		
 		System.out.print("\n");
 		
+		// Imprimir columnas.
 		System.out.println("\nCOLUMNAS:");
 		for (int i=0; i<10; i++) {
 			System.out.print(columna[i] + " ");
