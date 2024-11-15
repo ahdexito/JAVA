@@ -85,7 +85,11 @@ public class Prog03_clase15 {
 			/////////////////////////////////////////////////////////////////////////////////////////////////
 			
 			switch (opcion) {
+				
+				// MOSTRAR PRODUCTOS
+				
 				case 'a':
+					
 					System.out.println("OPCIÓN: MOSTRAR PRODUCTOS");
 					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
@@ -95,8 +99,11 @@ public class Prog03_clase15 {
 				break;
 						
 				/////////////////////////////////////////////////////////////////////////////////////////////////
-					
+				
+				// ORDENAR CATEGORÍA
+				
 				case 'b':
+					
 					System.out.println("OPCIÓN: ORDENAR CATEGORÍA");
 					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
@@ -104,11 +111,15 @@ public class Prog03_clase15 {
 					Arrays.sort(productos[entrada], Comparator.nullsLast(String::compareTo));
 					
 					System.out.println("\n                            Artículos ordenados.");
+					
 				break;
 				
 				/////////////////////////////////////////////////////////////////////////////////////////////////
 				
+				// CONTAR PRODUCTOS
+				
 				case 'c':
+					
 					System.out.println("OPCIÓN: CONTAR PRODUCTOS");
 					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
@@ -121,11 +132,15 @@ public class Prog03_clase15 {
 							contador++;
 					}
 					System.out.println("\n           Cantidad de elementos introducidos: " + (productos[entrada].length - contador));
+					
 				break;
 				
 				/////////////////////////////////////////////////////////////////////////////////////////////////
 				
+				// AÑADIR PRODUCTO
+				
 				case 'd':
+					
 					System.out.println("OPCIÓN: AÑADIR PRODUCTO");
 					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
@@ -167,12 +182,16 @@ public class Prog03_clase15 {
 					}
 					else 
 						System.out.println("\n\nNo quedan espacios. Prueba a borrar uno primero.");
+					
 				break;
 
 				
 				/////////////////////////////////////////////////////////////////////////////////////////////////
 				
+				// MODIFICAR PRODUCTO
+				
 				case 'e':
+					
 					System.out.println("OPCIÓN: MODIFICAR PRODUCTO");
 					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
@@ -203,11 +222,15 @@ public class Prog03_clase15 {
 					
 					else
 						System.out.println("\n                 No hay producto para modificar.");
+					
 				break;
 				
 				/////////////////////////////////////////////////////////////////////////////////////////////////
 				
+				// BORRAR PRODUCTO
+				
 				case 'f':
+					
 					System.out.println("OPCIÓN: BORRAR PRODUCTO");
 					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
@@ -229,22 +252,30 @@ public class Prog03_clase15 {
 					
 					else
 						System.out.println("\n                   No hay producto para borrar.");
+					
 				break;
 				
 				/////////////////////////////////////////////////////////////////////////////////////////////////
 				
+				// SALIR
+				
 				case 'g':
+					
 					System.out.println("OPCIÓN: SALIR");
 					System.out.println(separador1);
 					System.out.println("                 ¡Hasta pronto!");
 					System.out.println(separador2);
 					salir = true;
+					
 				break;
 				
 				/////////////////////////////////////////////////////////////////////////////////////////////////
 				
 				default:
+					
 					System.out.println("\n                                OPCIÓN NO VÁLIDA");
+					
+				break;
 			}
 		} while (!salir);
     }
