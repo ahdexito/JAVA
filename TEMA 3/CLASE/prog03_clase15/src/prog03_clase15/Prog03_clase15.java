@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Prog03_clase15 {
 	
-	public static void categorias() {
+	public static void mostrarCategorias() {
 		
 		String separador1 = "--------------------------------------------------";
 		
@@ -17,6 +17,29 @@ public class Prog03_clase15 {
 		"   3. Dulces\n");
 		System.out.println(separador1);
 		System.out.print("Elige categoría: ");
+	}
+	
+	public static void mostrarProductos() {
+		
+		String separador1 = "--------------------------------------------------";
+		Scanner sc = new Scanner(System.in);
+		int entrada = sc.nextInt() - 1;
+		
+		String[][] productos = new String[3][];
+		
+		productos[0] = new String[4];
+		productos[1] = new String[2];
+		productos[2] = new String[5];
+		
+		System.out.println(separador1);
+		for (int i=0; i<productos[entrada].length; i++) {
+						
+			if (productos[entrada][i] != null)
+				System.out.print((i + 1) + ". " + productos[entrada][i] + "  ");
+						
+			else
+				System.out.print((i + 1) + ". VACÍO  ");
+			}
 	}
 
     public static void main(String[] args) {
@@ -70,22 +93,25 @@ public class Prog03_clase15 {
 			
 			int entrada;
 			
+			/////////////////////////////////////////////////////////////////////////////////////////////////
+			
 			switch (opcion) {
 				case 'a':
 					System.out.println("OPCIÓN: MOSTRAR PRODUCTOS");
-					categorias();
-					entrada = sc.nextInt() - 1;
-					
-					// Mostrar productos.
-					System.out.println(separador1);
-					for (int i=0; i<productos[entrada].length; i++) {
-						
-						if (productos[entrada][i] != null)
-							System.out.print((i + 1) + ". " + productos[entrada][i] + "  ");
-						
-						else
-							System.out.print((i + 1) + ". VACÍO  ");
-					}
+					mostrarCategorias();
+					mostrarProductos();
+//					entrada = sc.nextInt() - 1;
+//					
+//					// Mostrar productos.
+//					System.out.println(separador1);
+//					for (int i=0; i<productos[entrada].length; i++) {
+//						
+//						if (productos[entrada][i] != null)
+//							System.out.print((i + 1) + ". " + productos[entrada][i] + "  ");
+//						
+//						else
+//							System.out.print((i + 1) + ". VACÍO  ");
+//					}
 					System.out.print("\n");
 				break;
 						
@@ -93,7 +119,7 @@ public class Prog03_clase15 {
 					
 				case 'b':
 					System.out.println("OPCIÓN: ORDENAR CATEGORÍA");
-					categorias();
+					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
 					
 					Arrays.sort(productos[entrada], Comparator.nullsLast(String::compareTo));
@@ -105,7 +131,7 @@ public class Prog03_clase15 {
 				
 				case 'c':
 					System.out.println("OPCIÓN: CONTAR PRODUCTOS");
-					categorias();
+					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
 					
 					// Contar cuantos productos faltan por añadir.
@@ -122,7 +148,7 @@ public class Prog03_clase15 {
 				
 				case 'd':
 					System.out.println("OPCIÓN: AÑADIR PRODUCTO");
-					categorias();
+					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
 					
 					int contadorOcupados = 0;
@@ -170,7 +196,7 @@ public class Prog03_clase15 {
 				
 				case 'e':
 					System.out.println("OPCIÓN: MODIFICAR PRODUCTO");
-					categorias();
+					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
 					
 					// Mostrar productos.
@@ -211,7 +237,7 @@ public class Prog03_clase15 {
 				
 				case 'f':
 					System.out.println("OPCIÓN: BORRAR PRODUCTO");
-					categorias();
+					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
 					
 					// Mostrar productos.
