@@ -124,6 +124,7 @@ public class Prog03_clase15 {
 					System.out.println("OPCIÓN: AÑADIR PRODUCTO");
 					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
+					sc.nextLine();
 					
 					int contadorOcupados = 0;
 					
@@ -146,7 +147,7 @@ public class Prog03_clase15 {
 					if (contadorOcupados < productos[entrada].length) {
 						
 						System.out.print("\n\nProducto a añadir: ");
-						String nuevoProducto = sc.next();
+						String nuevoProducto = sc.nextLine();
 						
 						// Modificar primera letra a mayúscula
 						String nuevoMayus = nuevoProducto.substring(0, 1).toUpperCase() + nuevoProducto.substring(1);
@@ -187,12 +188,13 @@ public class Prog03_clase15 {
 					// Modificar producto.
 					System.out.print("\n\nElige producto a modificar: ");
 					int modificarProducto = sc.nextInt() - 1;
+					sc.nextLine();
 					
 					if (productos[entrada][modificarProducto] != null) {
 						
 						System.out.println(separador1);
 						System.out.print("Introduce modificación: ");
-						String entradaModificacion = sc.next();
+						String entradaModificacion = sc.nextLine();
 						
 						// Modificar primera letra a mayúscula.
 						String modificacionMayus = entradaModificacion.substring(0, 1).toUpperCase() + entradaModificacion.substring(1);
@@ -226,7 +228,7 @@ public class Prog03_clase15 {
 					}
 					
 					// Borrar producto.
-					System.out.print("\n\nElige producto a modificar: ");
+					System.out.print("\n\nElige producto a borrar: ");
 					int borrarProducto = sc.nextInt() - 1;
 					
 					if (productos[entrada][borrarProducto] != null) {
@@ -244,8 +246,9 @@ public class Prog03_clase15 {
 				case 'g':
 					System.out.println("OPCIÓN: SALIR");
 					System.out.println(separador1);
-					System.out.println("¡Hasta pronto!");
+					System.out.println("                 ¡Hasta pronto!");
 					System.out.println(separador2);
+					salir = true;
 				break;
 				
 				/////////////////////////////////////////////////////////////////////////////////////////////////
