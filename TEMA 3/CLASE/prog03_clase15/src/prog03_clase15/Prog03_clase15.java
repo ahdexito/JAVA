@@ -54,6 +54,7 @@ public class Prog03_clase15 {
 		b) Bebidas: 2 productos.
 		c) Dulces: 5 productos.
         */
+		
 		String separador1 = "--------------------------------------------------";
         String separador2 = "==================================================";
         String[][] productos = new String[3][];
@@ -77,6 +78,7 @@ public class Prog03_clase15 {
 			"   g) Salir.\n");
 			System.out.println(separador1);
 			
+			// Solicitar operación a realizar.
 			System.out.print("Selecciona opción: ");
 			char opcion = sc.next().charAt(0);
 			
@@ -108,6 +110,7 @@ public class Prog03_clase15 {
 					mostrarCategorias();
 					entrada = sc.nextInt() - 1;
 					
+					// Ordenar elementos de la categoría.
 					Arrays.sort(productos[entrada], Comparator.nullsLast(String::compareTo));
 					
 					System.out.println("\n                            Artículos ordenados.");
@@ -151,9 +154,9 @@ public class Prog03_clase15 {
 					// Mostrar productos.
 					mostrarProductos(productos[entrada]);
 					
-					// Contar productos añadidos.
 					System.out.println(separador1);
 					
+					// Contar productos añadidos.
 					for (String producto : productos[entrada]) {
 						if (producto != null) {
 							contadorOcupados++;
@@ -163,7 +166,7 @@ public class Prog03_clase15 {
 					// Añadir producto si queda espacio.
 					if (contadorOcupados < productos[entrada].length) {
 						
-						System.out.print("\n\nProducto a añadir: ");
+						System.out.print("Producto a añadir: ");
 						String nuevoProducto = sc.nextLine();
 						
 						// Modificar primera letra a mayúscula
@@ -199,8 +202,9 @@ public class Prog03_clase15 {
 					// Mostrar productos.
 					mostrarProductos(productos[entrada]);
 					
-					// Modificar producto.
 					System.out.println(separador1);
+					
+					// Modificar producto.
 					System.out.print("Elige producto a modificar: ");
 					int modificarProducto = sc.nextInt() - 1;
 					sc.nextLine();
@@ -208,6 +212,8 @@ public class Prog03_clase15 {
 					if (productos[entrada][modificarProducto] != null) {
 						
 						System.out.println(separador1);
+						
+						// Solicitar nuevo producto.
 						System.out.print("Introduce modificación: ");
 						String entradaModificacion = sc.nextLine();
 						
@@ -238,9 +244,9 @@ public class Prog03_clase15 {
 					// Mostrar productos.
 					mostrarProductos(productos[entrada]);
 					
-					// Borrar producto.
-
 					System.out.println(separador1);
+					
+					// Borrar producto.
 					System.out.print("Elige producto a borrar: ");
 					int borrarProducto = sc.nextInt() - 1;
 					
