@@ -55,7 +55,8 @@ public class PROG03_Ejer1_03 {
         
         int[] notas = new int[0];
 		char opcion;
-		int entrada;
+		int entrada = 0;
+		boolean valida;
 		String separador = "-----------------------------------------";
 		
 		do {
@@ -79,20 +80,35 @@ public class PROG03_Ejer1_03 {
 					System.out.println("OPCIÓN: AÑADIR NOTA");
 					System.out.println(separador);
 					
+					valida = false;
+					
 					// Verificar entrada.
 					do {						
 						System.out.print("Introduce nota: ");
-						entrada = sc.nextInt();
 						
-						if (entrada<0 || entrada>10) {
-							System.out.println("Nota NO válida. Prueba de nuevo.");
-							System.out.println(separador);
+						try {
+							entrada = sc.nextInt();
+							
+							// Verificar si está dentro de rango.
+							if (entrada<0 || entrada>10) {
+								System.out.println("Nota fuera de rango. Prueba de nuevo.");
+								System.out.println(separador);
+							}
+							else 
+								valida = true;
 						}
-					} while (entrada<0 || entrada>10);
+						// Verificar si es valor numérico.
+						catch (Exception e) {
+							System.out.println("Valor no válido. Prueba de nuevo.");
+							System.out.println(separador);
+							sc.nextLine();
+						}
+					} while (!valida);
 					
 					// Aumentar tamaño del array, y añadir la nota.
 					notas = Arrays.copyOf(notas, notas.length + 1);
 					notas[notas.length - 1] = entrada;
+					System.out.println(separador);
 					System.out.println("Nota añadida.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
@@ -100,69 +116,131 @@ public class PROG03_Ejer1_03 {
 					System.out.println("OPCIÓN: BORRAR NOTA");
 					System.out.println(separador);
 					
-					// Verificar entrada.
-					do {						
-						System.out.print("Introduce nota: ");
-						entrada = sc.nextInt();
+					// Verificar que hayan notas.
+					if (notas.length > 0) {
 						
-						if (entrada<0 || entrada>10) {
-							System.out.println("Nota NO válida. Prueba de nuevo.");
-							System.out.println(separador);
-						}
-					} while (entrada<0 || entrada>10);
-					
-					int contador = 0;
-					
-					for (int i=0; i<notas.length; i++) {
+						// Verificar entrada.
+						valida = false;
 						
-						if (notas[i] == entrada) {
+						do {
+							System.out.print("Introduce nota: ");
 							
-							// Contador de veces repetido el número a eliminar.
-							contador++;
-							// Sobreescribir el array a partir del número a borrar.
-							System.arraycopy(notas, i + 1, notas, i, notas.length - i - 1);
-							// Reducir tamaño del array.
-							notas = Arrays.copyOf(notas, notas.length - 1);
-						}
-					}	
-					if (contador > 0)
-						System.out.println("La nota introducida se ha eliminado " + contador + " veces.");
+							try {
+								entrada = sc.nextInt();
 
-					else
-						System.out.println("No se ha encontrado la nota a eliminar.");
+								// Verificar si está dentro de rango.
+								if (entrada<0 || entrada>10) {
+									System.out.println("Nota fuera de rango. Prueba de nuevo.");
+									System.out.println(separador);
+								}
+								else 
+									valida = true;
+							}
+							// Verificar si es valor numérico.
+							catch (Exception e) {
+								System.out.println("Valor no válido. Prueba de nuevo.");
+								System.out.println(separador);
+								sc.nextLine();
+							}
+						} while (!valida);
+
+						int contador = 0;
+						System.out.println(separador);
+
+						for (int i=0; i<notas.length; i++) {
+							
+							// Buscar número introducido en el array.
+							if (notas[i] == entrada) {
+
+								// Contador de veces repetido el número a eliminar.
+								contador++;
+								// Sobreescribir el array a partir del número a borrar.
+								System.arraycopy(notas, i + 1, notas, i, notas.length - i - 1);
+								// Reducir tamaño del array.
+								notas = Arrays.copyOf(notas, notas.length - 1);
+							}
+						}	
+						if (contador > 0)
+							System.out.println("Nota eliminada. Total de repeticiones: " + contador);
+
+						else 
+							System.out.println("No se ha encontrado la nota a eliminar.");
+					}
+					else 
+						System.out.println("No hay notas introducidas. Añade una primero.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
 				case 'c':
 					System.out.println("OPCIÓN: BORRAR POSICIÓN");
 					System.out.println(separador);
 					
-					try {
-						System.out.print("Introduce la posición de la nota: ");
-						entrada = sc.nextInt();
-						
-						System.arraycopy(notas, entrada, notas, entrada - 1, notas.length - entrada);
-						notas = Arrays.copyOf(notas, notas.length - 1);
-						System.out.println("Nota en posición " + entrada + " eliminada.");
-					} 
-					
-					catch (Exception ArrayIndexOutOfBoundsException) {
-						System.out.println("No se ha podido eliminar nada.");
+					// Verificar que hayan notas.
+					if (notas.length > 0) {
+						try {
+							System.out.print("Introduce la posición de la nota: ");
+							entrada = sc.nextInt();
+
+							System.arraycopy(notas, entrada, notas, entrada - 1, notas.length - entrada);
+							notas = Arrays.copyOf(notas, notas.length - 1);
+							System.out.println("Nota en posición " + entrada + " eliminada.");
+						} 
+						// Recoger error debido a entrada no válida o posición introducida no existente.
+						catch (Exception e) {
+							System.out.println("No se ha podido eliminar nada.");
+							sc.nextLine();
+						}
 					}
+					else
+						System.out.println("No hay notas introducidas. Añade una primero.");
+				break;
+			///////////////////////////////////////////////////////////////////////////////////////
+				case 'd':
+					System.out.println("OPCIÓN: ORDENAR NOTAS");
+					System.out.println(separador);
+					
+					if (notas.length > 1) {
+						Arrays.sort(notas);
+						System.out.println("Notas ordenadas.");
+					}
+					else
+						System.out.println("No hay notas suficientes, añade alguna.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
 				case 'e':
 					System.out.println("OPCIÓN: MOSTRAR NOTAS");
 					System.out.println(separador);
 					
+					// Verificar si hay datos en el array.
 					if (notas.length == 0)
-						System.out.print("No hay notas añadidas.");
+						System.out.println("No hay notas añadidas.");
 					
-					for (int i=0; i<notas.length; i++) {
-						
-						System.out.print("(" + notas[i] + ")  ");
+					// Imprimir array.
+					else {
+						for (int i=notas.length - 1; i>=0; i--) {
+
+							System.out.print("(" + notas[i] + ")  ");
+						}
+						System.out.print("\n");
 					}
-					System.out.print("\n");
 				break;
+			///////////////////////////////////////////////////////////////////////////////////////
+				case 'f':
+					System.out.println("OPCIÓN: CALCULAR MEDIA");
+					System.out.println(separador);
+					
+					double media = 0;
+					
+					if (notas.length > 1) {
+						for (int i=0; i<notas.length; i++) {
+
+							media += notas[i];
+						}
+						System.out.printf("La media total es: %.1f\n", (media/notas.length));
+					}
+					else
+						System.out.println("No hay notas suficientes, añade alguna.");
+				break;
+			///////////////////////////////////////////////////////////////////////////////////////
 			}
 		} while (opcion!='i'); 
     }
