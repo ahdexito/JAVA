@@ -53,7 +53,15 @@ public class PROG03_Ejer1_03 {
 		actividad.
         */
         
-        int[] notas = new int[0];
+		// EMPEZAR EL PROGRAMA CON NOTAS GENERADAS
+		int[] notas = new int[20];
+		for (int i=0; i<notas.length; i++) {
+			
+			notas[i] = (int)(Math.random() * 11);
+		}
+		
+//        int[] notas = new int[0];
+		
 		char opcion;
 		int entrada = 0;
 		boolean valida;
@@ -76,7 +84,7 @@ public class PROG03_Ejer1_03 {
 			
 			switch (opcion) {
 			///////////////////////////////////////////////////////////////////////////////////////
-				case 'a':
+				case 'a': case 'A':
 					System.out.println("OPCIÓN: AÑADIR NOTA");
 					System.out.println(separador);
 					
@@ -112,7 +120,7 @@ public class PROG03_Ejer1_03 {
 					System.out.println("Nota añadida.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
-				case 'b':
+				case 'b': case 'B':
 					System.out.println("OPCIÓN: BORRAR NOTA");
 					System.out.println(separador);
 					
@@ -147,7 +155,7 @@ public class PROG03_Ejer1_03 {
 						int contador = 0;
 						System.out.println(separador);
 
-						for (int i=0; i<notas.length; i++) {
+						for (int i=0; i<notas.length; ) {
 							
 							// Buscar número introducido en el array.
 							if (notas[i] == entrada) {
@@ -157,8 +165,10 @@ public class PROG03_Ejer1_03 {
 								// Sobreescribir el array a partir del número a borrar.
 								System.arraycopy(notas, i + 1, notas, i, notas.length - i - 1);
 								// Reducir tamaño del array.
-								notas = Arrays.copyOf(notas, notas.length - 1);
+								notas = Arrays.copyOf(notas, notas.length - 1);								
 							}
+							else
+								i++;
 						}	
 						if (contador > 0)
 							System.out.println("Nota eliminada. Total de repeticiones: " + contador);
@@ -170,7 +180,7 @@ public class PROG03_Ejer1_03 {
 						System.out.println("No hay notas introducidas. Añade una primero.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
-				case 'c':
+				case 'c': case 'C':
 					System.out.println("OPCIÓN: BORRAR POSICIÓN");
 					System.out.println(separador);
 					
@@ -194,10 +204,11 @@ public class PROG03_Ejer1_03 {
 						System.out.println("No hay notas introducidas. Añade una primero.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
-				case 'd':
+				case 'd': case 'D':
 					System.out.println("OPCIÓN: ORDENAR NOTAS");
 					System.out.println(separador);
 					
+					// Verificar que hayan datos suficientes.
 					if (notas.length > 1) {
 						Arrays.sort(notas);
 						System.out.println("Notas ordenadas.");
@@ -206,7 +217,7 @@ public class PROG03_Ejer1_03 {
 						System.out.println("No hay notas suficientes, añade alguna.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
-				case 'e':
+				case 'e': case 'E':
 					System.out.println("OPCIÓN: MOSTRAR NOTAS");
 					System.out.println(separador);
 					
@@ -224,24 +235,82 @@ public class PROG03_Ejer1_03 {
 					}
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
-				case 'f':
+				case 'f': case 'F':
 					System.out.println("OPCIÓN: CALCULAR MEDIA");
 					System.out.println(separador);
 					
 					double media = 0;
 					
+					// Verificar que hayan datos suficientes.
 					if (notas.length > 1) {
+						
+						// Recorrer array para sumar todos los valores en la variable media.
 						for (int i=0; i<notas.length; i++) {
 
 							media += notas[i];
 						}
-						System.out.printf("La media total es: %.1f\n", (media/notas.length));
+						//Calcular media.
+						media /= notas.length;
+						
+						System.out.printf("La media total es: %.1f\n", media);
 					}
 					else
 						System.out.println("No hay notas suficientes, añade alguna.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
+				case 'g': case 'G':
+					System.out.println("OPCIÓN: OBTENER NOTA MÁXIMA");
+					System.out.println(separador);
+					
+					int maxima = 0;
+					
+					// Verificar que hayan datos suficientes.
+					if (notas.length > 1) {
+						
+						// Recorrer array para encontrar el dato mayor.
+						for (int i=0; i<notas.length; i++) {
+
+							if (notas[i] > maxima)
+								maxima = notas[i];
+						}
+						System.out.println("La nota máxima es: " + maxima);
+					}
+					else
+						System.out.println("No hay notas suficientes, añade alguna.");
+				break;
+			///////////////////////////////////////////////////////////////////////////////////////
+				case 'h': case 'H':
+					System.out.println("OPCIÓN: OBTENER NOTA MÍNIMA");
+					System.out.println(separador);
+					
+					int minima = 10;
+					
+					// Verificar que hayan datos suficientes.
+					if (notas.length > 1) {
+						
+						// Recorrer array para encontrar el dato menor.
+						for (int i=0; i<notas.length; i++) {
+
+							if (notas[i] < minima)
+								minima = notas[i];
+						}
+						System.out.println("La nota mínima es: " + minima);
+					}
+					else
+						System.out.println("No hay notas suficientes, añade alguna.");
+				break;
+			///////////////////////////////////////////////////////////////////////////////////////
+				case 'i': case 'I':
+					System.out.println("OPCIÓN: SALIR");
+					System.out.println(separador);
+					System.out.println("¡Hasta pronto!");
+					System.out.println(separador);
+				break;
+			///////////////////////////////////////////////////////////////////////////////////////
+				default:
+					System.out.println("OPCIÓN: NO VÁLIDA");
+				break;
 			}
-		} while (opcion!='i'); 
+		} while (opcion!='i' && opcion!='I'); 
     }
 }
