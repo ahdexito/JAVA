@@ -8,78 +8,39 @@ public class PROG03_Ejer1_03 {
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
         
-        /*
-        3. Queremos desarrollar una aplicación que nos ayude a gestionar las notas de los alumnos de
-		un centro educativo. Cada alumno tiene diversas notas por cada uno de los módulos, siendo el
-		profesor de cada módulo el encargado de introducir, borrar y modificar las notas del módulo de
-		cada alumno. Se necesita crear una aplicación en la que cada profesor pueda gestionar sus notas
-		por cada alumno. Para simplificar la aplicación, ésta (la aplicación), sólo va a poder gestionar las
-		notas de un alumno en un sólo módulo, pero se tiene un problema, el número de notas de los
-		alumnos por módulo se desconoce.
+        // EJERCICIO EVALUABLE 3
 		
-		Se pide realizar una aplicación que muestre un menú semejante al de la siguiente imagen, que
-		permita ‘Añadir nota’, ‘Borrar nota’, ‘Borrar posición’, ‘Ordenar notas’, ‘Mostrar notas’,
-		‘Calcular la Media’, ‘Obtener Nota Máxima’ y ‘Obtener Nota Mínima’ de un alumno en un
-		determinado módulo.
-		
-		Para cada una de las funciones, se tiene que tener en cuanta los siguientes aspectos:
-		
-		a) Añadir nota : El sistema solicitará una nota que será validad entre 0 y 10, y se añadirá una
-		nota al final de todas las notas. Si la nota no es correcta, el sistema volverá a solicitar la nota
-		hasta que la nota introducida sea correcta.
-		
-		b) Borrar nota: la aplicación solicitará que se introduzca el valor de una nota y se eliminará todas
-		las notas que coincidan con el valor introducido. Después de borrar las notas, la aplicación
-		indicará cuantas notas se han borrado, pudiendo no borrar ninguna nota porque la nota a borrar
-		no exista.
-		
-		c) Borrar posición: la aplicación solicitará la posición de la nota que se quiere borrar. La aplicación
-		indicará si el borrado tuvo éxito (la posición existe y se ha borrado), o por el contrario, si la
-		posición no existe, la aplicación indicará que ‘no se ha podido borrar ninguna nota’.
-		
-		d) Ordenar notas: las notas se ordenarán de forma ascendente.
-		
-		e) Mostrar notas: las notas se mostrarán de la más reciente a la más antigua.
-		
-		f) Calcular Media: se mostrará la media de todas las notas existentes.
-		
-		g) Obtener Nota Máxima: se obtendrá la nota máxima de entre todas las notas.
-		
-		h) Obtener Nota Mínima: se obtendrá la nota mínima de entre todas las notas.
-		
-		IMPORTANTE : cada que se añada o borren notas, el tamaño del array deberá ser recalculado al
-		nuevo número de notas.
-		NOTA : emplea los métodos de la clase Arrays que creas oportunos para el desarrollo de la
-		actividad.
-        */
-        
 		// EMPEZAR EL PROGRAMA CON NOTAS GENERADAS
-		int[] notas = new int[20];
-		for (int i=0; i<notas.length; i++) {
-			
-			notas[i] = (int)(Math.random() * 11);
-		}
-		
-//        int[] notas = new int[0];
+//		int[] notas = new int[16];
+//		for (int i=0; i<notas.length; i++) {
+//			
+//			notas[i] = (int)(Math.random() * 11);
+//		}
+
+		// EMPEZAR EL PROGRAMA SIN NOTAS GENERADAS
+        int[] notas = new int[0];
 		
 		char opcion;
 		int entrada = 0;
 		boolean valida;
-		String separador = "-----------------------------------------";
+		String separador = "----------------------------------------------";
 		
 		do {
-			System.out.println("=========================================\n" +
-			"a) Añadir nota.\n" +
-			"b) Borrar nota.\n" +
-			"c) Borrar posición.\n" +
-			"d) Ordenar notas.\n" +
-			"e) Mostrar notas.\n" +
-			"f) Calcular media.\n" +
-			"g) Obtener nota máxima.\n" +
-			"h) Obtener nota mínima.\n" +
-			"i) Salir.");
+			System.out.println("==============================================");
+			System.out.println("GESTIÓN DE NOTAS");
 			System.out.println(separador);
-			System.out.print("Introduce opción: ");
+			System.out.println("" +
+			"   a) Añadir nota.\n" +
+			"   b) Borrar nota.\n" +
+			"   c) Borrar posición.\n" +
+			"   d) Ordenar notas.\n" +
+			"   e) Mostrar notas.\n" +
+			"   f) Calcular media.\n" +
+			"   g) Obtener nota máxima.\n" +
+			"   h) Obtener nota mínima.\n" +
+			"   i) Salir.");
+			System.out.println(separador);
+			System.out.print("   Introduce opción: ");
 			opcion = sc.next().charAt(0);
 			
 			switch (opcion) {
@@ -92,14 +53,14 @@ public class PROG03_Ejer1_03 {
 					
 					// Verificar entrada.
 					do {						
-						System.out.print("Introduce nota: ");
+						System.out.print("   Introduce nota: ");
 						
 						try {
 							entrada = sc.nextInt();
 							
 							// Verificar si está dentro de rango.
 							if (entrada<0 || entrada>10) {
-								System.out.println("Nota fuera de rango. Prueba de nuevo.");
+								System.out.println("   Nota fuera de rango. Prueba de nuevo.");
 								System.out.println(separador);
 							}
 							else 
@@ -107,7 +68,7 @@ public class PROG03_Ejer1_03 {
 						}
 						// Verificar si es valor numérico.
 						catch (Exception e) {
-							System.out.println("Valor no válido. Prueba de nuevo.");
+							System.out.println("   Valor no válido. Prueba de nuevo.");
 							System.out.println(separador);
 							sc.nextLine();
 						}
@@ -117,7 +78,7 @@ public class PROG03_Ejer1_03 {
 					notas = Arrays.copyOf(notas, notas.length + 1);
 					notas[notas.length - 1] = entrada;
 					System.out.println(separador);
-					System.out.println("Nota añadida.");
+					System.out.println("   Nota añadida.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
 				case 'b': case 'B':
@@ -131,14 +92,14 @@ public class PROG03_Ejer1_03 {
 						valida = false;
 						
 						do {
-							System.out.print("Introduce nota: ");
+							System.out.print("   Introduce nota: ");
 							
 							try {
 								entrada = sc.nextInt();
 
 								// Verificar si está dentro de rango.
 								if (entrada<0 || entrada>10) {
-									System.out.println("Nota fuera de rango. Prueba de nuevo.");
+									System.out.println("   Nota fuera de rango. Prueba de nuevo.");
 									System.out.println(separador);
 								}
 								else 
@@ -146,7 +107,7 @@ public class PROG03_Ejer1_03 {
 							}
 							// Verificar si es valor numérico.
 							catch (Exception e) {
-								System.out.println("Valor no válido. Prueba de nuevo.");
+								System.out.println("   Valor no válido. Prueba de nuevo.");
 								System.out.println(separador);
 								sc.nextLine();
 							}
@@ -171,13 +132,13 @@ public class PROG03_Ejer1_03 {
 								i++;
 						}	
 						if (contador > 0)
-							System.out.println("Nota eliminada. Total de repeticiones: " + contador);
+							System.out.println("   Nota eliminada. Total de repeticiones: " + contador);
 
 						else 
-							System.out.println("No se ha encontrado la nota a eliminar.");
+							System.out.println("   No se ha encontrado la nota a eliminar.");
 					}
 					else 
-						System.out.println("No hay notas introducidas. Añade una primero.");
+						System.out.println("   No hay notas introducidas. Añade una primero.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
 				case 'c': case 'C':
@@ -187,21 +148,23 @@ public class PROG03_Ejer1_03 {
 					// Verificar que hayan notas.
 					if (notas.length > 0) {
 						try {
-							System.out.print("Introduce la posición de la nota: ");
+							System.out.print("   Introduce la posición de la nota (1-" + notas.length + "): ");
 							entrada = sc.nextInt();
+							// SI IMPRIMIMOS EL ARRAY EN ORDEN INVERSO, LA POSICIÓN A BORRAR SERÁ INVERTIDA TAMBIÉN
+							int indice = notas.length - entrada;
 
-							System.arraycopy(notas, entrada, notas, entrada - 1, notas.length - entrada);
+							System.arraycopy(notas, indice + 1, notas, indice, notas.length - indice - 1);
 							notas = Arrays.copyOf(notas, notas.length - 1);
-							System.out.println("Nota en posición " + entrada + " eliminada.");
+							System.out.println("   Nota en posición " + entrada + " eliminada.");
 						} 
 						// Recoger error debido a entrada no válida o posición introducida no existente.
 						catch (Exception e) {
-							System.out.println("No se ha podido eliminar nada.");
+							System.out.println("   No se ha podido eliminar nada.");
 							sc.nextLine();
 						}
 					}
 					else
-						System.out.println("No hay notas introducidas. Añade una primero.");
+						System.out.println("   No hay notas introducidas. Añade una primero.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
 				case 'd': case 'D':
@@ -211,10 +174,10 @@ public class PROG03_Ejer1_03 {
 					// Verificar que hayan datos suficientes.
 					if (notas.length > 1) {
 						Arrays.sort(notas);
-						System.out.println("Notas ordenadas.");
+						System.out.println("   Notas ordenadas.");
 					}
 					else
-						System.out.println("No hay notas suficientes, añade alguna.");
+						System.out.println("   No hay notas suficientes, añade alguna.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
 				case 'e': case 'E':
@@ -223,15 +186,17 @@ public class PROG03_Ejer1_03 {
 					
 					// Verificar si hay datos en el array.
 					if (notas.length == 0)
-						System.out.println("No hay notas añadidas.");
+						System.out.println("   No hay notas añadidas.");
 					
 					// Imprimir array.
 					else {
 						for (int i=notas.length - 1; i>=0; i--) {
 
 							System.out.print("(" + notas[i] + ")  ");
+							if (notas[i] != 10) System.out.print(" ");
+							if ((notas.length - i) % 8 == 0) System.out.print("\n");
 						}
-						System.out.print("\n");
+						if (notas.length % 8 != 0) System.out.print("\n");
 					}
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
@@ -252,10 +217,10 @@ public class PROG03_Ejer1_03 {
 						//Calcular media.
 						media /= notas.length;
 						
-						System.out.printf("La media total es: %.1f\n", media);
+						System.out.printf("   La media total es: %.1f\n", media);
 					}
 					else
-						System.out.println("No hay notas suficientes, añade alguna.");
+						System.out.println("   No hay notas suficientes, añade alguna.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
 				case 'g': case 'G':
@@ -273,10 +238,10 @@ public class PROG03_Ejer1_03 {
 							if (notas[i] > maxima)
 								maxima = notas[i];
 						}
-						System.out.println("La nota máxima es: " + maxima);
+						System.out.println("   La nota máxima es: " + maxima);
 					}
 					else
-						System.out.println("No hay notas suficientes, añade alguna.");
+						System.out.println("   No hay notas suficientes, añade alguna.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
 				case 'h': case 'H':
@@ -294,16 +259,16 @@ public class PROG03_Ejer1_03 {
 							if (notas[i] < minima)
 								minima = notas[i];
 						}
-						System.out.println("La nota mínima es: " + minima);
+						System.out.println("   La nota mínima es: " + minima);
 					}
 					else
-						System.out.println("No hay notas suficientes, añade alguna.");
+						System.out.println("   No hay notas suficientes, añade alguna.");
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
 				case 'i': case 'I':
 					System.out.println("OPCIÓN: SALIR");
 					System.out.println(separador);
-					System.out.println("¡Hasta pronto!");
+					System.out.println("   ¡Hasta pronto!");
 					System.out.println(separador);
 				break;
 			///////////////////////////////////////////////////////////////////////////////////////
