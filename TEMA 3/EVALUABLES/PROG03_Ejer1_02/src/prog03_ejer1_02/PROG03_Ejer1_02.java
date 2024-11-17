@@ -7,11 +7,9 @@ public class PROG03_Ejer1_02 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		/*
-          2. Crear un programa que lea por teclado un vector de 10 números enteros y la desplace una
-		posición hacia la derecha: el primero pasa a ser el segundo, el segundo pasa a ser el tercero y así
-		sucesivamente. El úl?mo pasa a ser el primero
-		 */
+		// EJERCICIO EVALUABLE 2
+		
+		
 		int[] entrada = new int[10];
 
 		// Solicitar número.
@@ -35,5 +33,7 @@ public class PROG03_Ejer1_02 {
 		for (int i = 0; i < 10; i++) {
 			System.out.print(entrada[i] + " ");
 		}
+		
+		sc.close();
 	}
 }

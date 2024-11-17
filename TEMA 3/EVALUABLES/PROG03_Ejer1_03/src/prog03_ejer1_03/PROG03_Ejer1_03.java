@@ -10,6 +10,7 @@ public class PROG03_Ejer1_03 {
         
         // EJERCICIO EVALUABLE 3
 		
+		
 		// EMPEZAR EL PROGRAMA CON NOTAS GENERADAS
 //		int[] notas = new int[16];
 //		for (int i=0; i<notas.length; i++) {
@@ -277,5 +278,7 @@ public class PROG03_Ejer1_03 {
 				break;
 			}
 		} while (opcion!='i' && opcion!='I'); 
+		
+		sc.close();
     }
 }
