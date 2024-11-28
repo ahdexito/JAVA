@@ -4,13 +4,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Prog03_autoMatriz07 {
-	
-	
-    public static void limpiarConsola() {
-        for (int i = 0; i < 50; i++) {
-            System.out.println();
-        }
-    }
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

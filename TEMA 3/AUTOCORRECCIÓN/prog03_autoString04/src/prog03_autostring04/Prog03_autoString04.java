@@ -13,12 +13,12 @@ public class Prog03_autoString04 {
         */
         
         System.out.print("Introduce frase 1: " );
-		String frase1 = sc.nextLine().toLowerCase();
+		String frase1 = sc.nextLine();
 		
 		System.out.print("Introduce frase 2: ");
-		String frase2 =  sc.nextLine().toLowerCase();
+		String frase2 =  sc.nextLine();
 		
-		boolean iguales = frase1.equals(frase2);
+		boolean iguales = frase1.equalsIgnoreCase(frase2);
 		
 		if (iguales)
 			System.out.println("Las frases son iguales.");

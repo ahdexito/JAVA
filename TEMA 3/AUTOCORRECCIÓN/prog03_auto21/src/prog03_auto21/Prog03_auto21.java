@@ -27,7 +27,7 @@ public class Prog03_auto21 {
 		
 		e) Salir del programa.
 		 */
-		char[] letras = new char[5];
+		char[] letras = new char[10];
 		int contador = 0;
 		char opcion;
 
@@ -86,7 +86,10 @@ public class Prog03_auto21 {
 
 						System.out.print("Elige posición: ");
 						int posicion = sc.nextInt() - 1;
-
+						
+						if (posicion + 1 > contador)
+							posicion = contador;
+						
 						// Desplazar los datos desde el final del array, hasta la posición dada.
 						for (int j = letras.length - 1; j > posicion; j--) {
 
@@ -111,12 +114,18 @@ public class Prog03_auto21 {
 					int entrada_C = sc.nextInt() - 1;
 
 					// Desplazar los datos hacia la izquierda, a partir de la posición dada.
-					for (int j = entrada_C; j < contador - 1; j++) {
+					if (entrada_C > 0 && entrada_C < contador) {
+						for (int j = entrada_C; j < contador - 1; j++) {
 
-						letras[j] = letras[j + 1];
+							letras[j] = letras[j + 1];
+						}
+						System.out.println("¡Dato eliminado correctamente!");
+						contador--;
+						
 					}
-					System.out.println("¡Dato eliminado correctamente!");
-					contador--;
+					else
+						System.out.println("Posición no válida.");
+					
 					break;
 
 				// Imprimir el array.	

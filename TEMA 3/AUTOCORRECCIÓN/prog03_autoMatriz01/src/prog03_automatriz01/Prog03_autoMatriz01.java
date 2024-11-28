@@ -13,16 +13,24 @@ public class Prog03_autoMatriz01 {
         */
         
         int[][] matriz = new int[5][5];
-		int numero = 1;
+		int numero = 0;
 		
+//		for (int i=0; i<5; i++) {
+//			
+//			for (int j=0; j<5; j++) {
+//				
+//				matriz[i][j] = numero + j;
+//			}
+//			numero+=5;
+//		}
+
 		for (int i=0; i<5; i++) {
 			
 			for (int j=0; j<5; j++) {
-				
-				matriz[i][j] = numero + j;
+				numero++;
+				matriz[i][j] = numero;
 			}
-			numero+=5;
-		}
+		} 
 		
 		for (int i=0; i<5; i++) {
 			

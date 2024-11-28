@@ -15,10 +15,11 @@ public class Prog03_autoMatriz06 {
 		
 		for (int x=0; x<7; x++) {
 
-			for (int y=0; y<7; y++) {
+			
 				
 				tabla[x][x] = 1;
-			}
+				tabla[x][(6-x)] = 8;
+			
 		}
 		
 		for (int x=0; x<7; x++) {
