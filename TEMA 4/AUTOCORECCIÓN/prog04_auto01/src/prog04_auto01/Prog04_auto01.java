@@ -523,17 +523,35 @@ public class Prog04_auto01 {
 //		
 //		if (BuscarNumeroEnArray(array, entrada)) System.out.println("El número se ha encontrado.");
 //		else System.out.println("El número NO se ha encntrado.");
+//
+//		/*
+//		19. Diseñar una función CalculadoraArrays, a la que se le pasa dos arrays y que operación se
+//		desea realizar: sumar, restar, multiplicar o dividir (mediante un carácter: 's', 'r', 'm', 'd'). La
+//		función debe devolver un array con los resultados.
+//
+//		A su vez, cada operación deberá ser una función.
+//		*/
+//		
+//		int[] array1 = {3, 5, 7, 9}, array2 = {1, 2, 3, 4};
+//		
+//		int[] resultado = CalculadoraArrays(array1, array2);
+//		
+//		System.out.println(Arrays.toString(resultado));
 
 		/*
-		19. Diseñar una función CalculadoraArrays, a la que se le pasa dos arrays y que operación se
-		desea realizar: sumar, restar, multiplicar o dividir (mediante un carácter: 's', 'r', 'm', 'd'). La
-		función debe devolver un array con los resultados.
+		20. Diseñar una función llamada AciertosApuesta que toma como parámetros dos tablas. La
+		primera con los 6 números de una apuesta de la primitiva, y la segunda con los 6
+		números ganadores. La función debe devolver el número de aciertos.
 		*/
 		
-		int[] array1 = {3, 5, 7, 9}, array2 = {1, 2, 3, 4};
+		int[] tablaGanadora = {5, 2, 8, 4, 7, 2}, tablaAdivinar = new int[6];
 		
-		int[] resultado = CalculadoraArrays(array1, array2);
+		System.out.print("Introduce tu apuesta (6 dígitos): ");
 		
-		System.out.println(Arrays.toString(resultado));
+		for (int i=0; i<6; i++) {
+			
+			System.out.println("Número " + (i+1) + ": ");
+			tablaAdivinar[i] = sc.nextInt();
+		}
 	}
 }
