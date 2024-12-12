@@ -3,14 +3,12 @@ package prog04_autorecursividad;
 import java.util.Scanner;
 
 public class prog04_autoRecurs04 {
-	
-	public static int digitos = 0;
-	
+		
 	public static int CantidadDigitos (int n) {
 		
-		if (n > 0) return CantidadDigitos(n / 10);
+		if (n <= 0) return 0;
 		
-		else return digitos + 1;
+		else return 1 + CantidadDigitos(n / 10);
 	}
 
     public static void main(String[] args) {
