@@ -259,6 +259,44 @@ public class Prog04_auto01 {
 		return resultado;
 	}
 	
+	public static int AciertosApuesta(int[] array1,  int[] array2) {
+		
+		int contador = 0;
+		
+		for (int i=0; i<array1.length; i++) {
+			
+			for (int j=0; j<array1.length; j++) {
+				
+				if (array1[i] == array2[j]) contador++;
+			}
+		}
+		
+		return contador;
+	}
+	
+	public static void ArrayCuadrado(int[] array) {
+		
+		for (int i=0; i<array.length; i++) {
+			
+			array[i] = (int)Math.pow(array[i], 2);
+		}
+		
+	}
+	
+	public static void DiagonalPrincipal(int[][] matriz) {
+		
+		for (int i=0; i<matriz.length; i++) {
+			
+			for (int j=0; j<matriz[i].length; j++) {
+			
+				if (i == j) matriz[i][j] = 1;
+				else matriz[i][j] = 0;
+			}
+		}
+	}
+	
+	
+	
 	
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
@@ -412,9 +450,9 @@ public class Prog04_auto01 {
 //		*/
 //		
 //		System.out.print("Introduce tamaño del array: ");
-//		entrada1 = sc.nextInt();
+//		entrada = sc.nextInt();
 //		
-//		int[] array = new int[entrada1];
+//		int[] array = new int[entrada];
 //		
 //		int[] arrayLleno = ArrayAleatorio(array);
 //		
@@ -537,21 +575,52 @@ public class Prog04_auto01 {
 //		int[] resultado = CalculadoraArrays(array1, array2);
 //		
 //		System.out.println(Arrays.toString(resultado));
-
+//
+//		/*
+//		20. Diseñar una función llamada AciertosApuesta que toma como parámetros dos tablas. La
+//		primera con los 6 números de una apuesta de la primitiva, y la segunda con los 6
+//		números ganadores. La función debe devolver el número de aciertos.
+//		*/
+//		
+//		int[] tablaGanadora = {5, 2, 8, 4, 7, 2}, tablaAdivinar = new int[6];
+//		
+//		System.out.println("Introduce tu apuesta (6 dígitos): ");
+//		
+//		for (int i=0; i<tablaGanadora.length; i++) {
+//			
+//			System.out.print("Número " + (i+1) + ": ");
+//			tablaAdivinar[i] = sc.nextInt();
+//		}
+//		
+//		System.out.println("Has acertado: " + AciertosApuesta(tablaAdivinar, tablaGanadora));
+//		
+//		/*
+//		25. Crear una función llamada ArrayCuadrado, que reciba un array de enteros de 10 elementos,
+//		devuelva el mismo array pero elevando al cuadrado los valores del array. Emplea el paso de
+//		parámetros por referencia
+//		*/
+//		
+//		int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//		
+//		ArrayCuadrado(array);
+//		
+//		System.out.println(Arrays.toString(array));
+//		
+		
 		/*
-		20. Diseñar una función llamada AciertosApuesta que toma como parámetros dos tablas. La
-		primera con los 6 números de una apuesta de la primitiva, y la segunda con los 6
-		números ganadores. La función debe devolver el número de aciertos.
+		27. Crear una función llamada DiagonalPrincipal, que reciba una matriz de 7x7 la rellene de
+		forma que los elementos de la diagonal principal sean 1 y el resto 0, y la devuelva por el
+		paso de parámetros por referencia.
 		*/
 		
-		int[] tablaGanadora = {5, 2, 8, 4, 7, 2}, tablaAdivinar = new int[6];
+		int[][] matriz = new int[7][7];
 		
-		System.out.print("Introduce tu apuesta (6 dígitos): ");
+		DiagonalPrincipal(matriz);
 		
-		for (int i=0; i<6; i++) {
+		for (int i=0; i<matriz.length; i++) {
 			
-			System.out.println("Número " + (i+1) + ": ");
-			tablaAdivinar[i] = sc.nextInt();
+			System.out.println(Arrays.toString(matriz[i]));
 		}
+
 	}
 }
