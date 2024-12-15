@@ -4,8 +4,8 @@ public class prog04_autoRecurs05 {
 	
 	public static int ProductoAB (int a, int b) {
 		
-		int x;
-		if 
+		if (b == 0) return 0;
+		return a + ProductoAB(a, b - 1);
 	}
 
     public static void main(String[] args) {
@@ -18,8 +18,8 @@ public class prog04_autoRecurs05 {
 		+ 5+ 5 + 0 = 15
         */
         
-        int a = 3;
-		int b = 7;
+        int a = 8;
+		int b = 4;
 		
 		System.out.println("El producto entre ambos número es: " + ProductoAB(a, b));
         
