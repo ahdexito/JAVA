@@ -5,9 +5,7 @@ import java.util.Scanner;
 public class prog04_autoRecursividad08 {
 	
 	public static int SumaCifras(int numero) {
-		
-		double largo = String.valueOf(numero).length();
-		
+				
 		if (numero <= 0) return 0;
 		
 		return (numero % 10) + SumaCifras(numero / 10);

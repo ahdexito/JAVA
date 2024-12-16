@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class prog04_autoRecursividad09 {
 	
-	public static int SumaVector(int [] vector, int desde, int hasta) {
+	public static int SumaVector(int[] vector, int desde, int hasta) {
 		
 		if (desde > hasta) return 0;
 		
@@ -27,6 +27,7 @@ public class prog04_autoRecursividad09 {
         int[] vector = {1, 2, 3, 4, 5, 6, 7, 8};
         int desde = 3;
 		int hasta = 5;
+		
 		System.out.println("La suma es: " + SumaVector(vector, desde, hasta));
     }
 }
