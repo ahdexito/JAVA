@@ -98,9 +98,8 @@ public class PRACTICA_HundirFlota {
 				// Imprimir posiciones alfabéticas verticales
 				if (j == 0) System.out.print(letras.charAt(i) + "  ");
 				
-				// Imprimir "X" si tocado, sino imprimir agua
-				if (tableroUsuario[i][j] != vacio) System.out.print("X ");
-				else System.out.print(tableroUsuario[i][j] + "  ");
+				// Imprimir mapa
+				System.out.print(tableroUsuario[i][j] + "  ");
 			}
 			System.out.print("\n");
 		}
@@ -112,7 +111,7 @@ public class PRACTICA_HundirFlota {
 		char[][] tableroFacil = new char[10][10];
 		RellenarAgua(tableroFacil);
 		
-		for (int i=0; i<10; i++) {
+		for (int i=0; i<5; i++) {
 			
 			GenerarLancha(tableroFacil);
 		}
@@ -128,6 +127,8 @@ public class PRACTICA_HundirFlota {
 			}
 			System.out.print("\n");
 		}
+
+		SolicitarDisparo();	
 	}
 	
 	// FUNCION QUE SOLICITA DISPARO
@@ -135,10 +136,20 @@ public class PRACTICA_HundirFlota {
 		
 		ImprimirTablero();
 		
-		System.out.print("\nElige coordenada para disparar: ");
-		String disparo = sc.nextLine();
+		boolean repetir = true;
 		
+		do {	
+			System.out.print("\nElige coordenada para disparar: ");
+			String disparo = sc.nextLine();
+			
+			if (disparo.length() == 3) repetir = true;
+			
+		} while (repetir);
 		
+			String[] coorDisparo = sc.nextLine().split(" ");
+
+			int coordX = letras.indexOf(coorDisparo[0].toUpperCase());
+			System.out.println(coordX);
 	}
 	
 	// FUNCION QUE VERIFICA EL DISPARO
