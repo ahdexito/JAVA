@@ -140,31 +140,31 @@ public class PRACTICA_HundirFlota {
 		String disparo;
 		int[] entrada = new int [2];
 		
-		do {			
-			
+		do {
+			repetir = true;
 			try {
-			
-			do {	
-				System.out.print("\nElige coordenada para disparar: ");
-				disparo = sc.nextLine();
+				do {	
+					System.out.print("\nElige coordenada para disparar: ");
+					disparo = sc.nextLine();
 
-				if (disparo.length() == 3) repetir = false;
-				else {
-					repetir = true;
-					System.out.println("\nError de entrada.");
-				}
-			} while (repetir);
-			
-		// Devolver la entrada del disparo como array de 2 enteros
-		String[] coorDisparo = disparo.split(" ");
-		int coordX = letras.indexOf(coorDisparo[0].toUpperCase());
-		int coordY = Integer.parseInt(coorDisparo[1]);
-		entrada[0] = coordX; entrada[1] = coordY;
-		} 
-		
-		catch (Exception e) {
-			System.out.println("Error de entrada.");
-		}
+					if (disparo.length() == 3) repetir = false;
+					else {
+						repetir = true;
+						System.out.println("\nError de entrada.");
+					}
+				} while (repetir);
+
+			// Devolver la entrada del disparo como array de 2 enteros
+			String[] coorDisparo = disparo.split(" ");
+			int coordX = letras.indexOf(coorDisparo[0].toUpperCase());
+			int coordY = Integer.parseInt(coorDisparo[1]);
+			entrada[0] = coordX; entrada[1] = coordY;
+			} 
+
+			catch (Exception e) {
+				System.out.println("\nError de entrada.");
+				repetir = true;
+			}
 			
 		} while (repetir);
 		
