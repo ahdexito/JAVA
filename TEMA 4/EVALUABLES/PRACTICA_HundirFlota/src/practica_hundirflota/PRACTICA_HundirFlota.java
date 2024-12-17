@@ -5,16 +5,16 @@ import java.util.Scanner;
 
 public class PRACTICA_HundirFlota {
 	
-	static Scanner sc = new Scanner (System.in);
+	public static Scanner sc = new Scanner (System.in);
 
     public static void main(String[] args) {
-        
+		
+        RellenarAgua(tableroUsuario);
+		
         Menu();
 		
-        //ImprimirTablero();
 		
-        //GenerarTableroFacil();
-		
+						
 		
     }
 	
@@ -24,6 +24,8 @@ public class PRACTICA_HundirFlota {
 	
 	public static char vacio = '-', tocado = 'X', agua = 'A',
 		lancha = 'L', buque = 'B', acorazado = 'Z', portaaviones = 'P';
+	
+	public static char[][] tableroUsuario = new char[10][10];
 	
 	// FUNCIÓN QUE IMPRIME MENÚ
 	public static void Menu () {
@@ -84,10 +86,7 @@ public class PRACTICA_HundirFlota {
 	
 	// FUNCIÓN QUE IMPRIME EL TABLERO QUE JUEGA EL USUARIO
 	public static void ImprimirTablero() {
-		
-		char[][] tableroUsuario = new char[10][10];
-		RellenarAgua(tableroUsuario);
-		
+				
 		// Imprimir posiciones numéricas horizontales
 		System.out.println(numeros);
 						
@@ -112,7 +111,6 @@ public class PRACTICA_HundirFlota {
 		RellenarAgua(tableroFacil);
 		
 		for (int i=0; i<5; i++) {
-			
 			GenerarLancha(tableroFacil);
 		}
 		
@@ -128,37 +126,52 @@ public class PRACTICA_HundirFlota {
 			System.out.print("\n");
 		}
 
-		SolicitarDisparo();	
+		int[] coordenadas = SolicitarDisparo();	
+		
+		ComprobarDisparo(coordenadas, tableroFacil);
 	}
 	
 	// FUNCION QUE SOLICITA DISPARO
-	public static void SolicitarDisparo () {
+	public static int[] SolicitarDisparo () {
 		
 		ImprimirTablero();
 		
-		boolean repetir = true;
+		boolean repetir;
+		String disparo;
+		int[] entrada = new int [2];
 		
-		do {	
-			System.out.print("\nElige coordenada para disparar: ");
-			String disparo = sc.nextLine();
+		do {			
 			
-			if (disparo.length() == 3) repetir = true;
+			try {
+			
+			do {	
+				System.out.print("\nElige coordenada para disparar: ");
+				disparo = sc.nextLine();
+
+				if (disparo.length() == 3) repetir = false;
+				else {
+					repetir = true;
+					System.out.println("\nError de entrada.");
+				}
+			} while (repetir);
+			
+		// Devolver la entrada del disparo como array de 2 enteros
+		String[] coorDisparo = disparo.split(" ");
+		int coordX = letras.indexOf(coorDisparo[0].toUpperCase());
+		int coordY = Integer.parseInt(coorDisparo[1]);
+		entrada[0] = coordX; entrada[1] = coordY;
+		} 
+		
+		catch (Exception e) {
+			System.out.println("Error de entrada.");
+		}
 			
 		} while (repetir);
 		
-			String[] coorDisparo = sc.nextLine().split(" ");
-
-			int coordX = letras.indexOf(coorDisparo[0].toUpperCase());
-			System.out.println(coordX);
+		return entrada;
 	}
 	
-	// FUNCION QUE VERIFICA EL DISPARO
-	public static void VerificarDisparo (String disparo, char[][] tableroUsuario, char[][] tableroMaquina) {
-		
-		
-	}
-	
-	// FUNCION QUE GENERA Y COLOCA LANCHA
+	// FUNCIÓN QUE GENERA Y COLOCA LANCHA
 	public static char[][] GenerarLancha (char[][] tablero) {
 		
 		boolean repetir = true;
@@ -178,5 +191,14 @@ public class PRACTICA_HundirFlota {
 		} while (repetir);
 		
 		return tablero;
+	}
+	
+	// FUNCIÓN QUE COMPRUEBA SI SE HA ACERTADO EL DISPARO
+	public static void ComprobarDisparo (int[] coord, char[][] tablero) {
+		
+		if (tablero[coord[0]][coord[1]] != vacio) {
+			
+			System.out.println("¡Tocado!");
+		}
 	}
 }
