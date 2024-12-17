@@ -22,6 +22,8 @@ public class PRACTICA_HundirFlota {
 	
 	public static String numeros = "   0  1  2  3  4  5  6  7  8  9";
 	
+	public static int intentos;
+	
 	public static char vacio = '-', tocado = 'X', agua = 'A',
 		lancha = 'L', buque = 'B', acorazado = 'Z', portaaviones = 'P';
 	
@@ -109,6 +111,8 @@ public class PRACTICA_HundirFlota {
 				
 		char[][] tableroFacil = new char[10][10];
 		RellenarAgua(tableroFacil);
+		
+		intentos = 50;
 		
 		for (int i=0; i<5; i++) {
 			GenerarLancha(tableroFacil);
@@ -198,7 +202,13 @@ public class PRACTICA_HundirFlota {
 		
 		if (tablero[coord[0]][coord[1]] != vacio) {
 			
+			tableroUsuario[coord[0]][coord[1]] = tocado;
 			System.out.println("¡Tocado!");
+		}
+		
+		else {
+			tableroUsuario[coord[0]][coord[1]] = agua;
+			System.out.println("¡Agua!");
 		}
 	}
 }
