@@ -75,41 +75,64 @@ public class PRACTICA_HundirFlota {
 		char[][] tableroUsuario = CrearTablero(filas, columnas);
 		char[][] tableroMaquina = CrearTablero(filas, columnas);
 		
-		InsertarBarcos(tableroMaquina, lanchas, buques, acorazados, portaaviones);
+		InsertarBarcos(tableroMaquina, lanchas, buques, acorazados, portaaviones, filas, columnas);
 		
 		int[] coordenadas;
-		int cantidadBarcos = lanchas + buques + acorazados + portaaviones;
+		int flota = lanchas + buques + acorazados + portaaviones;
+		
 		do {
 			ImprimirTablero(tableroUsuario, filas, columnas);
 			System.out.print("\n");
 			ImprimirTablero(tableroMaquina, filas, columnas);
 			
-			coordenadas = SolicitarDisparo();
+			coordenadas = SolicitarDisparo(filas);
 			
-			switch (VerificarDisparo(coordenadas, tableroUsuario, tableroMaquina)) {
-				case 1:
-					cantidadBarcos--;
-					intentos--;
-					break;
-				case 2:
-					intentos--;
-					break;
-				default:
-					System.out.println("\nYa has disparado en esa posición.");
-					break;
+			int[] intentos_flota = RestarIntentos_Flota
+				(VerificarDisparo(coordenadas, tableroUsuario, tableroMaquina),
+					intentos, flota);
+			
+			intentos = intentos_flota[0]; flota = intentos_flota[1];
+			
+		} while (intentos > 0);	
+	}
+	
+	// FUNCIÓN QUE RESTA INTENTOS Y/O CANTIDAD DE BARCOS
+	public static int[] RestarIntentos_Flota (int tirada, int intentos, int flota) {
+				
+		switch (tirada) {
+			case 1 -> {
+				flota--;
+				intentos--;
 			}
+			case 2 -> intentos--;
+			default -> System.out.println("\nYa has disparado en esa posición.");
+		}
 			
-			System.out.println("Intentos restantes: " + intentos + "\n");
-			
-		} while (intentos > 0);
-			
+		System.out.println("\nIntentos restantes: " + intentos);
+		System.out.println("Flota restante: " + flota + "\n");
+		
+		int[] intentos_flota = {intentos, flota};
+
+		return intentos_flota;
 	}
 	
 	// FUNCIÓN QUE INSERTA TODOS LOS BARCOS
-	public static void InsertarBarcos (char[][] tablero, int lanchas, int buques, int acorazados, int portaaviones) {
+	public static void InsertarBarcos (char[][] tablero, int lanchas, int buques, int acorazados, int portaaviones, int filas, int columnas) {
 		
 		for (int i=0; i<lanchas; i++) {
 			GenerarLancha(tablero);
+		}
+		
+		for (int i=0; i<buques; i++) {
+			GenerarBuque(tablero, filas, columnas);
+		}
+		
+		for (int i=0; i<acorazados; i++) {
+			GenerarAcorazado(tablero, filas, columnas);
+		}
+		
+		for (int i=0; i<portaaviones; i++) {
+			GenerarPortaaviones(tablero, filas, columnas);
 		}
 	}
 	
@@ -119,8 +142,8 @@ public class PRACTICA_HundirFlota {
 		boolean repetir = true;
 		
 		do {	
-			int aleatorioX = (int)(Math.random() * tablero.length);
-			int aleatorioY = (int)(Math.random() * tablero[0].length);
+			int aleatorioX = (int)(Math.random() * tablero[0].length);
+			int aleatorioY = (int)(Math.random() * tablero.length);
 			
 			if (tablero[aleatorioX][aleatorioY] == vacio) {
 				
@@ -135,14 +158,72 @@ public class PRACTICA_HundirFlota {
 	// FUNCIÓN QUE GENERA Y COLOCA BUQUE
 	public static char[][] GenerarBuque (char[][] tablero, int filas, int columnas) {
 		
-		boolean repetir = true;
+		boolean coincide;
+		int aleatorioX;
+		int aleatorioY;
 		
-		do {			
+		do {
+			coincide = false;
+			aleatorioX = (int)(Math.random() * filas);
+			aleatorioY = (int)(Math.random() * (columnas - 2));
 			
-			
-			
-		} while (repetir);
+			for (int i=0; i<3; i++) {
+				if (tablero[aleatorioX][aleatorioY + i] != vacio)
+					coincide = true;
+			}
+		} while (coincide);
 		
+		for (int i=0; i<3; i++) {
+			tablero[aleatorioX][aleatorioY + i] = buque;
+		}
+		return tablero;
+	}
+	
+	// FUNCIÓN QUE GENERA Y COLOCA ACORAZADO
+	public static char[][] GenerarAcorazado (char[][] tablero, int filas, int columnas) {
+		
+		boolean coincide;
+		int aleatorioX;
+		int aleatorioY;
+		
+		do {
+			coincide = false;
+			aleatorioX = (int)(Math.random() * filas);
+			aleatorioY = (int)(Math.random() * (columnas - 3));
+			
+			for (int i=0; i<4; i++) {
+				if (tablero[aleatorioX][aleatorioY + i] != vacio)
+					coincide = true;
+			}
+		} while (coincide);
+		
+		for (int i=0; i<4; i++) {
+			tablero[aleatorioX][aleatorioY + i] = acorazado;
+		}
+		return tablero;
+	}
+	
+	// FUNCIÓN QUE GENERA Y COLOCA PORTAAVIONES
+	public static char[][] GenerarPortaaviones (char[][] tablero, int filas, int columnas) {
+		
+		boolean coincide;
+		int aleatorioX;
+		int aleatorioY;
+		
+		do {
+			coincide = false;
+			aleatorioX = (int)(Math.random() * (filas - 4));
+			aleatorioY = (int)(Math.random() * columnas);
+			
+			for (int i=0; i<5; i++) {
+				if (tablero[aleatorioX + i][aleatorioY] != vacio)
+					coincide = true;
+			}
+		} while (coincide);
+		
+		for (int i=0; i<5; i++) {
+			tablero[aleatorioX + i][aleatorioY] = portaavion;
+		}
 		return tablero;
 	}
 	
@@ -171,7 +252,7 @@ public class PRACTICA_HundirFlota {
 	}
 	
 	// FUNCION QUE SOLICITA DISPARO
-	public static int[] SolicitarDisparo () {
+	public static int[] SolicitarDisparo (int filas) {
 		
 		boolean repetir;
 		String disparo;
@@ -184,7 +265,14 @@ public class PRACTICA_HundirFlota {
 					System.out.print("\nElige coordenada para disparar: ");
 					disparo = sc.nextLine();
 
-					if (disparo.length() == 3) repetir = false;
+					if (disparo.length() == 3) {
+						repetir = false;
+						
+						if ((int)disparo.charAt(0) - (int)letras > filas) {
+							System.out.println("\nERROR DE ENTRADA.");
+							repetir = true;
+						}
+					}
 					else {
 						repetir = true;
 						System.out.println("\nERROR DE ENTRADA.");
