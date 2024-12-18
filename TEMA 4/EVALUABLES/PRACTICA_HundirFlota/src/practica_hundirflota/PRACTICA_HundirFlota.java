@@ -7,9 +7,11 @@ public class PRACTICA_HundirFlota {
 	
 	public static Scanner sc = new Scanner (System.in);
 	
+	// VARIABLES GLOBALES
 	public static char letras = 'A', vacio = '-', tocado = 'X', agua = 'A',
 		lancha = 'L', buque = 'B', acorazado = 'Z', portaavion = 'P';
-
+	
+	// FUNCIÓN MAIN
     public static void main(String[] args) {
 		
 		int opcion = MenuModoJuego();
@@ -32,9 +34,7 @@ public class PRACTICA_HundirFlota {
 //			
 //			case 4: GenerarTableroCustom();
 //			break;
-//			
-//			case 5: salir = true;
-//			break;
+			
 			default:
 				System.out.println("Opción no válida. Introduce de nuevo");
 				break;
@@ -58,7 +58,7 @@ public class PRACTICA_HundirFlota {
 		return 1;
 	}
 	
-	// FUNCIÓN QUE CREA Y RELLENA EL TABLERO DE "AGUA" -> " - "
+	// CREAR Y RELLENAR EL TABLERO DE "AGUA" -> " - "
 	public static char[][] CrearTablero (int filas, int columnas) {
 		
 		char[][] tablero = new char[filas][columnas];
@@ -69,7 +69,7 @@ public class PRACTICA_HundirFlota {
 		return tablero;
 	}
 	
-	// FUNCIÓN PARA JUGAR PARTIDA
+	// JUGAR PARTIDA
 	public static void JugarPartida (int intentos, int filas, int columnas, int lanchas, int buques, int acorazados, int portaaviones) {
 		
 		char[][] tableroUsuario = CrearTablero(filas, columnas);
@@ -78,7 +78,7 @@ public class PRACTICA_HundirFlota {
 		InsertarBarcos(tableroMaquina, lanchas, buques, acorazados, portaaviones, filas, columnas);
 		
 		int[] coordenadas;
-		int flota = lanchas + buques + acorazados + portaaviones;
+		int flota = lanchas + (buques * 3) + (acorazados * 4) + (portaaviones * 5);
 		
 		do {
 			ImprimirTablero(tableroUsuario, filas, columnas);
@@ -91,12 +91,20 @@ public class PRACTICA_HundirFlota {
 				(VerificarDisparo(coordenadas, tableroUsuario, tableroMaquina),
 					intentos, flota);
 			
+			
+			
 			intentos = intentos_flota[0]; flota = intentos_flota[1];
 			
 		} while (intentos > 0);	
 	}
 	
-	// FUNCIÓN QUE RESTA INTENTOS Y/O CANTIDAD DE BARCOS
+	// IMPRIMIR FLOTA HUNDIDA
+	public static void ImprimirHundidos (char[][] tableroUsuario, char[][] tableroMaquina) {
+		
+		
+	}
+	
+	// RESTAR INTENTOS Y/O CANTIDAD DE BARCOS
 	public static int[] RestarIntentos_Flota (int tirada, int intentos, int flota) {
 				
 		switch (tirada) {
@@ -116,7 +124,7 @@ public class PRACTICA_HundirFlota {
 		return intentos_flota;
 	}
 	
-	// FUNCIÓN QUE INSERTA TODOS LOS BARCOS
+	// INSERTAR TODOS LOS BARCOS
 	public static void InsertarBarcos (char[][] tablero, int lanchas, int buques, int acorazados, int portaaviones, int filas, int columnas) {
 		
 		for (int i=0; i<lanchas; i++) {
@@ -136,7 +144,7 @@ public class PRACTICA_HundirFlota {
 		}
 	}
 	
-	// FUNCIÓN QUE GENERA Y COLOCA LANCHA
+	// GENERAR Y COLOCAR LANCHA
 	public static char[][] GenerarLancha (char[][] tablero) {
 		
 		boolean repetir = true;
@@ -155,7 +163,7 @@ public class PRACTICA_HundirFlota {
 		return tablero;
 	}
 	
-	// FUNCIÓN QUE GENERA Y COLOCA BUQUE
+	// GENERAR Y COLOCAR BUQUE
 	public static char[][] GenerarBuque (char[][] tablero, int filas, int columnas) {
 		
 		boolean coincide;
@@ -179,7 +187,7 @@ public class PRACTICA_HundirFlota {
 		return tablero;
 	}
 	
-	// FUNCIÓN QUE GENERA Y COLOCA ACORAZADO
+	// GENERAR Y COLOCAR ACORAZADO
 	public static char[][] GenerarAcorazado (char[][] tablero, int filas, int columnas) {
 		
 		boolean coincide;
@@ -203,7 +211,7 @@ public class PRACTICA_HundirFlota {
 		return tablero;
 	}
 	
-	// FUNCIÓN QUE GENERA Y COLOCA PORTAAVIONES
+	// GENERAR Y COLOCAR PORTAAVIONES
 	public static char[][] GenerarPortaaviones (char[][] tablero, int filas, int columnas) {
 		
 		boolean coincide;
@@ -227,7 +235,7 @@ public class PRACTICA_HundirFlota {
 		return tablero;
 	}
 	
-	// FUNCIÓN QUE IMPRIME TABLERO
+	// IMPRIMIR TABLERO
 	public static void ImprimirTablero(char[][] tablero, int filas, int columnas) {
 				
 		// Imprimir posiciones numéricas
@@ -251,7 +259,7 @@ public class PRACTICA_HundirFlota {
 		}
 	}
 	
-	// FUNCION QUE SOLICITA DISPARO
+	// SOLICITAR DISPARO
 	public static int[] SolicitarDisparo (int filas) {
 		
 		boolean repetir;
@@ -268,7 +276,7 @@ public class PRACTICA_HundirFlota {
 					if (disparo.length() == 3) {
 						repetir = false;
 						
-						if ((int)disparo.charAt(0) - (int)letras > filas) {
+						if (filas < (int)disparo.charAt(0) - (int)letras) {
 							System.out.println("\nERROR DE ENTRADA.");
 							repetir = true;
 						}
@@ -293,7 +301,7 @@ public class PRACTICA_HundirFlota {
 		return entrada;
 	}
 	
-	// FUNCIÓN TRANSFORMAR STRING A INT
+	// TRANSFORMAR STRING A INT
 	public static int[] FilaStringToInt (String cadena) {
 		
 		int[] salida = new int[2];
@@ -313,7 +321,7 @@ public class PRACTICA_HundirFlota {
 		return salida;
 	}
 	
-	// FUNCIÓN QUE COMPRUEBA SI SE HA ACERTADO EL DISPARO
+	// COMPROBAR SI SE HA ACERTADO EL DISPARO
 	public static int VerificarDisparo (int[] coord, char[][] tableroUsuario, char[][] tableroMaquina) {
 		
 		int x = coord[0], y = coord[1];
