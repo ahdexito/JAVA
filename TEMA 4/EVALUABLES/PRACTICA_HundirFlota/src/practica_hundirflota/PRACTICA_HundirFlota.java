@@ -58,8 +58,10 @@ public class PRACTICA_HundirFlota {
 		return 1;
 	}
 	
-	// FUNCIÓN QUE RELLENA EL TABLERO DE "AGUA" -> " - "
-	public static char[][] RellenarAgua (char[][] tablero) {
+	// FUNCIÓN QUE CREA Y RELLENA EL TABLERO DE "AGUA" -> " - "
+	public static char[][] CrearTablero (int filas, int columnas) {
+		
+		char[][] tablero = new char[filas][columnas];
 		
 		for (int i=0; i<tablero.length; i++) {
 			Arrays.fill(tablero[i], vacio);
@@ -70,15 +72,10 @@ public class PRACTICA_HundirFlota {
 	// FUNCIÓN PARA JUGAR PARTIDA
 	public static void JugarPartida (int intentos, int filas, int columnas, int lanchas, int buques, int acorazados, int portaaviones) {
 		
-		char[][] tableroUsuario = new char [filas][columnas];
-		RellenarAgua(tableroUsuario);
+		char[][] tableroUsuario = CrearTablero(filas, columnas);
+		char[][] tableroMaquina = CrearTablero(filas, columnas);
 		
-		char[][] tableroMaquina = new char [filas][columnas];
-		RellenarAgua(tableroMaquina);
-				
-		for (int i=0; i<lanchas; i++) {
-			GenerarLancha(tableroMaquina);
-		}
+		InsertarBarcos(tableroMaquina, lanchas, buques, acorazados, portaaviones);
 		
 		int[] coordenadas;
 		int cantidadBarcos = lanchas + buques + acorazados + portaaviones;
@@ -108,6 +105,14 @@ public class PRACTICA_HundirFlota {
 			
 	}
 	
+	// FUNCIÓN QUE INSERTA TODOS LOS BARCOS
+	public static void InsertarBarcos (char[][] tablero, int lanchas, int buques, int acorazados, int portaaviones) {
+		
+		for (int i=0; i<lanchas; i++) {
+			GenerarLancha(tablero);
+		}
+	}
+	
 	// FUNCIÓN QUE GENERA Y COLOCA LANCHA
 	public static char[][] GenerarLancha (char[][] tablero) {
 		
@@ -122,6 +127,20 @@ public class PRACTICA_HundirFlota {
 				tablero[aleatorioX][aleatorioY] = lancha;
 				repetir = false;
 			}
+		} while (repetir);
+		
+		return tablero;
+	}
+	
+	// FUNCIÓN QUE GENERA Y COLOCA BUQUE
+	public static char[][] GenerarBuque (char[][] tablero, int filas, int columnas) {
+		
+		boolean repetir = true;
+		
+		do {			
+			
+			
+			
 		} while (repetir);
 		
 		return tablero;
@@ -168,27 +187,16 @@ public class PRACTICA_HundirFlota {
 					if (disparo.length() == 3) repetir = false;
 					else {
 						repetir = true;
-						System.out.println("\nError de entrada.");
+						System.out.println("\nERROR DE ENTRADA.");
 					}
 				} while (repetir);
-
-				// DEVOLVER ENTRADA COMO ARRAY DE ENTEROS
 				
-				// Separar el String
-				String[] coorDisparo = disparo.split(" ");
-				
-				// Convertir la letra en mayúscula para evitar error
-				coorDisparo[0] = coorDisparo[0].toUpperCase();
-				
-				// Convertir la entrada a tipo int
-				int coordX = (int)(coorDisparo[0].charAt(0) - letras);
-				int coordY = Integer.parseInt(coorDisparo[1]);
-				
-				entrada[0] = coordX; entrada[1] = coordY;
+				// Devolver entrada como array de enteros
+				entrada = FilaStringToInt(disparo);
 			} 
 
 			catch (Exception e) {
-				System.out.println("\nError de entrada.");
+				System.out.println("\nERROR DE ENTRADA.");
 				repetir = true;
 			}
 			
@@ -197,24 +205,46 @@ public class PRACTICA_HundirFlota {
 		return entrada;
 	}
 	
+	// FUNCIÓN TRANSFORMAR STRING A INT
+	public static int[] FilaStringToInt (String cadena) {
+		
+		int[] salida = new int[2];
+		
+		// Separar el String
+		String[] coorDisparo = cadena.split(" ");
+
+		// Convertir la letra en mayúscula para evitar error
+		coorDisparo[0] = coorDisparo[0].toUpperCase();
+
+		// Convertir la entrada a tipo int
+		int coordX = (int)(coorDisparo[0].charAt(0) - letras);
+		int coordY = Integer.parseInt(coorDisparo[1]);
+
+		salida[0] = coordX; salida[1] = coordY;
+		
+		return salida;
+	}
+	
 	// FUNCIÓN QUE COMPRUEBA SI SE HA ACERTADO EL DISPARO
 	public static int VerificarDisparo (int[] coord, char[][] tableroUsuario, char[][] tableroMaquina) {
-				
-		if (tableroUsuario[coord[0]][coord[1]] != vacio)
+		
+		int x = coord[0], y = coord[1];
+		
+		if (tableroUsuario[x][y] != vacio)
 			return 0;
 		
 		else {
 			
-			if (tableroMaquina[coord[0]][coord[1]] != vacio) {
+			if (tableroMaquina[x][y] != vacio) {
 				
 				System.out.println("\n¡Tocado!");
-				tableroUsuario[coord[0]][coord[1]] = tocado;
+				tableroUsuario[x][y] = tocado;
 				return 1;
 			}
 			
 			else {
 				System.out.println("\n¡Agua!");
-				tableroUsuario[coord[0]][coord[1]] = agua;
+				tableroUsuario[x][y] = agua;
 				return 2;
 			}
 		}
