@@ -88,10 +88,10 @@ public class PRACTICA_HundirFlota {
 			System.out.print(""
 				+ "            HUNDIR LA FLOTA\n"
 				+ "========================================\n"
-				+ "1. Fácil\n"
-				+ "2. Medio\n"
-				+ "3. Difícil\n"
-				+ "4. Personalizado\n\n"
+				+ "   1. Fácil\n"
+				+ "   2. Medio\n"
+				+ "   3. Difícil\n"
+				+ "   4. Personalizado\n\n"
 				+ "Elegir dificultad: ");
 			
 			try {
@@ -127,19 +127,20 @@ public class PRACTICA_HundirFlota {
 		int[] coordenadas;
 		int flota = lanchas + (buques * 3) + (acorazados * 4) + (portaaviones * 5);
 		
+		System.out.println("Tienes " + intentos + " intentos para acertar:");
+		System.out.println("   - " + lanchas + " lanchas.\n   - " + buques + " buques.\n   - " + acorazados + " acorazados.\n   - " + portaaviones + " portaaviones.\n");
+		System.out.println("En total debes acertar " + flota + " veces.\n");
 		do {
 			ImprimirTablero(tableroUsuario, filas, columnas);
 			System.out.print("\n");
 			// IMPRIMIR TABLERO CON TODOS LOS BARCOS PARA PRUEBAS
 			// ImprimirTablero(tableroMaquina, filas, columnas);
 			
-			coordenadas = SolicitarDisparo(filas);
+			coordenadas = SolicitarDisparo(filas, columnas);
 			
 			int[] intentos_flota = RestarIntentos_Flota
 				(VerificarDisparo(coordenadas, tableroUsuario, tableroMaquina),
 					intentos, flota);
-			
-			
 			
 			intentos = intentos_flota[0]; flota = intentos_flota[1];
 			
@@ -161,7 +162,7 @@ public class PRACTICA_HundirFlota {
 			System.out.println("Has agotado el número de intentos.\n");
 			System.out.println("Flota restante: " + flota);
 			
-			ImprimirTablero(tablero, letras, letras);
+			ImprimirTablero(tablero, filas, columnas);
 		}
 	}
 	
@@ -404,17 +405,22 @@ public class PRACTICA_HundirFlota {
 	public static void ImprimirTablero(char[][] tablero, int filas, int columnas) {
 				
 		// Imprimir posiciones numéricas
-		System.out.print("   ");
+		System.out.print("     ");
 		for (int i=0; i<columnas; i++) {
 			if (i > 9) System.out.print(i + " ");
 			else System.out.print(i + "  ");
+		}
+		System.out.print("\n    ");
+		
+		for (int i=0; i<columnas; i++) {
+			System.out.print("---");
 		}
 		System.out.print("\n");
 		
 		for (int i=0; i<filas; i++) {
 			
 			// Imprimir posiciones alfabéticas
-			System.out.print((char)(letras + i) + "  ");
+			System.out.print((char)(letras + i) + " |  ");
 			
 			// Imprimir mapa
 			for (int j=0; j<columnas; j++) {
@@ -425,7 +431,7 @@ public class PRACTICA_HundirFlota {
 	}
 	
 	// SOLICITAR DISPARO
-	public static int[] SolicitarDisparo (int filas) {
+	public static int[] SolicitarDisparo (int filas, int columnas) {
 		
 		boolean repetir;
 		String disparo;
@@ -441,7 +447,11 @@ public class PRACTICA_HundirFlota {
 					if (disparo.length() == 3) {
 						repetir = false;
 						
-						if (filas < (int)disparo.toUpperCase().charAt(0) - (int)letras) {
+						int filaCoord = (int)disparo.toUpperCase().charAt(0) - (int)letras;
+						int columnaCoord = Integer.parseInt(disparo.substring(2));
+
+						// Verificar si las coordenadas están dentro del tablero
+						if (filaCoord < 0 || filaCoord >= filas || columnaCoord < 0 || columnaCoord >= columnas) {
 							System.out.println("\nERROR DE ENTRADA.");
 							repetir = true;
 						}
@@ -481,7 +491,8 @@ public class PRACTICA_HundirFlota {
 		int coordX = (int)(coorDisparo[0].charAt(0) - letras);
 		int coordY = Integer.parseInt(coorDisparo[1]);
 
-		salida[0] = coordX; salida[1] = coordY;
+		salida[0] = coordX; 
+		salida[1] = coordY;
 		
 		return salida;
 	}
