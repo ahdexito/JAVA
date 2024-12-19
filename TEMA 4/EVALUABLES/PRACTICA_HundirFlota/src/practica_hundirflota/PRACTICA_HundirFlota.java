@@ -130,7 +130,8 @@ public class PRACTICA_HundirFlota {
 		do {
 			ImprimirTablero(tableroUsuario, filas, columnas);
 			System.out.print("\n");
-			ImprimirTablero(tableroMaquina, filas, columnas);
+			// IMPRIMIR TABLERO CON TODOS LOS BARCOS PARA PRUEBAS
+			// ImprimirTablero(tableroMaquina, filas, columnas);
 			
 			coordenadas = SolicitarDisparo(filas);
 			
@@ -142,7 +143,26 @@ public class PRACTICA_HundirFlota {
 			
 			intentos = intentos_flota[0]; flota = intentos_flota[1];
 			
-		} while (intentos > 0);	
+		} while (intentos > 0 && flota > 0);
+		
+		ResultadoPartida(tableroMaquina, intentos, flota, filas, columnas);
+	}
+	
+	// RESULTADO DE GANAR O PERDER PARTIDA
+	public static void ResultadoPartida (char[][] tablero, int intentos, int flota, int filas, int columnas) {
+		
+		if (flota == 0) {
+			System.out.println("¡VICTORIA!");
+			System.out.println("Has hundido la flota en " + intentos + " intentos.");
+		}
+		
+		else {
+			System.out.println("DERROTA...");
+			System.out.println("Has agotado el número de intentos.\n");
+			System.out.println("Flota restante: " + flota);
+			
+			ImprimirTablero(tablero, letras, letras);
+		}
 	}
 	
 	// CREAR Y RELLENAR EL TABLERO DE "AGUA" -> " - "
@@ -154,12 +174,6 @@ public class PRACTICA_HundirFlota {
 			Arrays.fill(tablero[i], vacio);
 		}
 		return tablero;
-	}
-	
-	// IMPRIMIR FLOTA HUNDIDA
-	public static void ImprimirHundidos (char[][] tableroUsuario, char[][] tableroMaquina) {
-		
-		
 	}
 	
 	// RESTAR INTENTOS Y/O CANTIDAD DE BARCOS
@@ -344,7 +358,7 @@ public class PRACTICA_HundirFlota {
 		return tablero;
 	}
 	
-	// COMPROBAR QUE SE PUEDA INSERTAR EL BARCO
+	// COMPROBAR QUE SE PUEDA INSERTAR BARCO EN EL TABLERO
 	public static boolean ComprobarEspacioLibre (char[][] tablero, int filas, int columnas, int barco, boolean esPortaaviones) {
 		
 		if (esPortaaviones) {
@@ -371,6 +385,7 @@ public class PRACTICA_HundirFlota {
 		return false;
 	}
 	
+	// COMPROBAR QUE HAYA ESPACIO LIBRE PARA EL BARCO
 	private static boolean EspacioDisponible(char[][] tablero, int fila, int columna, int barco, boolean vertical) {
 		
 		for (int k=0; k<barco; k++) {
