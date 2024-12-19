@@ -134,7 +134,7 @@ public class PRACTICA_HundirFlota {
 			ImprimirTablero(tableroUsuario, filas, columnas);
 			System.out.print("\n");
 			// IMPRIMIR TABLERO CON TODOS LOS BARCOS PARA PRUEBAS
-			// ImprimirTablero(tableroMaquina, filas, columnas);
+			ImprimirTablero(tableroMaquina, filas, columnas);
 			
 			coordenadas = SolicitarDisparo(filas, columnas);
 			
@@ -146,11 +146,11 @@ public class PRACTICA_HundirFlota {
 			
 		} while (intentos > 0 && flota > 0);
 		
-		ResultadoPartida(tableroMaquina, intentos, flota, filas, columnas);
+		ResultadoPartida(tableroUsuario, tableroMaquina, intentos, flota, filas, columnas);
 	}
 	
 	// RESULTADO DE GANAR O PERDER PARTIDA
-	public static void ResultadoPartida (char[][] tablero, int intentos, int flota, int filas, int columnas) {
+	public static void ResultadoPartida (char[][] tableroUsuario, char[][] tableroMaquina, int intentos, int flota, int filas, int columnas) {
 		
 		if (flota == 0) {
 			System.out.println("¡VICTORIA!");
@@ -158,11 +158,11 @@ public class PRACTICA_HundirFlota {
 		}
 		
 		else {
-			System.out.println("DERROTA...");
+			ImprimirTablero(tableroUsuario, filas, columnas);
+			System.out.println("\nDERROTA...");
 			System.out.println("Has agotado el número de intentos.\n");
-			System.out.println("Flota restante: " + flota);
 			
-			ImprimirTablero(tablero, filas, columnas);
+			ImprimirTablero(tableroMaquina, filas, columnas);
 		}
 	}
 	
@@ -509,13 +509,13 @@ public class PRACTICA_HundirFlota {
 			
 			if (tableroMaquina[x][y] != vacio) {
 				
-				System.out.println("\n¡Tocado!");
+				System.out.println("\n¡TOCADO!");
 				tableroUsuario[x][y] = tocado;
 				return 1;
 			}
 			
 			else {
-				System.out.println("\n¡Agua!");
+				System.out.println("\n¡AGUA!");
 				tableroUsuario[x][y] = agua;
 				return 2;
 			}
