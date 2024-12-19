@@ -185,27 +185,55 @@ public class PRACTICA_HundirFlota {
 	// INSERTAR TODOS LOS BARCOS
 	public static void InsertarBarcos (char[][] tablero, int lanchas, int buques, int acorazados, int portaaviones, int filas, int columnas) {
 		
+		int contLanchas = lanchas, contBuques = buques, contAcorazados = acorazados, contPortaaviones = portaaviones;
+		
 		for (int i=0; i<lanchas; i++) {
-			GenerarLancha(tablero, filas, columnas);
+			if (ComprobarEspacioLibre(tablero, filas, columnas, 1, false)) {
+				GenerarLancha(tablero, filas, columnas);
+				contLanchas--;
+			}
+			else break;
 		}
 		
 		for (int i=0; i<buques; i++) {
-			GenerarBuque(tablero, filas, columnas);
+			if (ComprobarEspacioLibre(tablero, filas, columnas, 3, false)) {
+				GenerarBuque(tablero, filas, columnas);
+				contBuques--;
+			}
+			else break;
 		}
 		
 		for (int i=0; i<acorazados; i++) {
-			GenerarAcorazado(tablero, filas, columnas);
+			if (ComprobarEspacioLibre(tablero, filas, columnas, 4, false)) {
+				GenerarAcorazado(tablero, filas, columnas);
+				contAcorazados--;
+			}
+			else break;
 		}
 		
 		for (int i=0; i<portaaviones; i++) {
-			GenerarPortaaviones(tablero, filas, columnas);
+			if (ComprobarEspacioLibre(tablero, filas, columnas, 5, true)) {
+				GenerarPortaaviones(tablero, filas, columnas);
+				contPortaaviones--;
+			}
+			else break;
+		}
+		
+		if (contLanchas > 0 || contBuques > 0 || contAcorazados > 0 || contPortaaviones > 0) {
+			System.out.println("No se han podido generar: ");
+			if (contLanchas > 0) System.out.println(contLanchas + " lanchas.");
+			if (contBuques > 0) System.out.println(contBuques + " buques.");
+			if (contAcorazados > 0) System.out.println(contAcorazados + " acorazados.");
+			if (contPortaaviones > 0) System.out.println(contPortaaviones + " portaaviones.");
+			System.out.print("\n");
 		}
 	}
 	
 	// GENERAR Y COLOCAR LANCHA
 	public static char[][] GenerarLancha (char[][] tablero, int filas, int columnas) {
 		
-		boolean repetir = true;
+		boolean colocada = false;
+		int intentos = 100;
 		
 		do {	
 			int randomFilas = (int)(Math.random() * filas);
@@ -214,9 +242,11 @@ public class PRACTICA_HundirFlota {
 			if (tablero[randomFilas][randomColumnas] == vacio) {
 				
 				tablero[randomFilas][randomColumnas] = lancha;
-				repetir = false;
+				colocada = true;
 			}
-		} while (repetir);
+			intentos--;
+			
+		} while (!colocada && intentos > 0);
 		
 		return tablero;
 	}
@@ -225,23 +255,30 @@ public class PRACTICA_HundirFlota {
 	public static char[][] GenerarBuque (char[][] tablero, int filas, int columnas) {
 		
 		boolean coincide;
-		int randomFilas;
-		int randomColumnas;
+		int intentos = 100;
 		
 		do {
 			coincide = false;
-			randomFilas = (int)(Math.random() * filas);
-			randomColumnas = (int)(Math.random() * (columnas - 2));
+			int randomFilas = (int)(Math.random() * filas);
+			int randomColumnas = (int)(Math.random() * (columnas - 2));
 			
 			for (int i=0; i<3; i++) {
-				if (tablero[randomFilas][randomColumnas + i] != vacio)
+				if (tablero[randomFilas][randomColumnas + i] != vacio) {
 					coincide = true;
+					break;
+				}	
 			}
-		} while (coincide);
+			
+			if (!coincide) {
+				for (int i=0; i<3; i++) {
+				tablero[randomFilas][randomColumnas + i] = buque;
+				}
+				return tablero;
+			}
+			intentos--;
+			
+		} while (coincide && intentos > 0);
 		
-		for (int i=0; i<3; i++) {
-			tablero[randomFilas][randomColumnas + i] = buque;
-		}
 		return tablero;
 	}
 	
@@ -249,23 +286,30 @@ public class PRACTICA_HundirFlota {
 	public static char[][] GenerarAcorazado (char[][] tablero, int filas, int columnas) {
 		
 		boolean coincide;
-		int randomFilas;
-		int filasColumnas;
+		int intentos = 100;
 		
 		do {
 			coincide = false;
-			randomFilas = (int)(Math.random() * filas);
-			filasColumnas = (int)(Math.random() * (columnas - 3));
+			int randomFilas = (int)(Math.random() * filas);
+			int filasColumnas = (int)(Math.random() * (columnas - 3));
 			
 			for (int i=0; i<4; i++) {
-				if (tablero[randomFilas][filasColumnas + i] != vacio)
+				if (tablero[randomFilas][filasColumnas + i] != vacio) {
 					coincide = true;
+					break;
+				}	
 			}
-		} while (coincide);
+			
+			if (!coincide) {
+				for (int i=0; i<4; i++) {
+					tablero[randomFilas][filasColumnas + i] = acorazado;
+				}
+				return tablero;
+			}
+			intentos--;
+			
+		} while (coincide && intentos > 0);
 		
-		for (int i=0; i<4; i++) {
-			tablero[randomFilas][filasColumnas + i] = acorazado;
-		}
 		return tablero;
 	}
 	
@@ -273,24 +317,72 @@ public class PRACTICA_HundirFlota {
 	public static char[][] GenerarPortaaviones (char[][] tablero, int filas, int columnas) {
 		
 		boolean coincide;
-		int randomFilas;
-		int randomColumnas;
+		int intentos = 100;
 		
 		do {
 			coincide = false;
-			randomFilas = (int)(Math.random() * (filas - 4));
-			randomColumnas = (int)(Math.random() * columnas);
+			int randomFilas = (int)(Math.random() * (filas - 4));
+			int randomColumnas = (int)(Math.random() * columnas);
 			
 			for (int i=0; i<5; i++) {
-				if (tablero[randomFilas + i][randomColumnas] != vacio)
+				if (tablero[randomFilas + i][randomColumnas] != vacio) {
 					coincide = true;
+					break;
+				}
 			}
-		} while (coincide);
+			
+			if (!coincide) {
+				for (int i=0; i<5; i++) {
+					tablero[randomFilas + i][randomColumnas] = portaavion;
+				}
+				return tablero;
+			}
+			intentos--;
+			
+		} while (coincide & intentos > 0);
 		
-		for (int i=0; i<5; i++) {
-			tablero[randomFilas + i][randomColumnas] = portaavion;
-		}
 		return tablero;
+	}
+	
+	// COMPROBAR QUE SE PUEDA INSERTAR EL BARCO
+	public static boolean ComprobarEspacioLibre (char[][] tablero, int filas, int columnas, int barco, boolean esPortaaviones) {
+		
+		if (esPortaaviones) {
+			for (int i=0; i<filas; i++) {			
+				for (int j=0; j<columnas; j++) {				
+					for (int k=0; k<barco; k++) {
+						if (i + barco <= filas && EspacioDisponible(tablero, i, j, barco, true)) {
+							return true;
+						}	
+					}
+				}
+			}
+		}
+		
+		else {
+			for (int i=0; i<filas; i++) {
+				for (int j=0; j<columnas; j++) {
+					if (j + barco <= columnas && EspacioDisponible(tablero, i, j, barco, false)) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	private static boolean EspacioDisponible(char[][] tablero, int fila, int columna, int barco, boolean vertical) {
+		
+		for (int k=0; k<barco; k++) {
+			if (!vertical && (columna + k >= tablero[0].length || tablero[fila][columna + k] != vacio)) {
+				return false;
+			}
+			
+			if (vertical && (fila + k >= tablero.length || tablero[fila + k][columna] != vacio)) {
+			return false;
+			}
+		}
+		return true;
 	}
 	
 	// IMPRIMIR TABLERO
