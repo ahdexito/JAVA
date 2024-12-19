@@ -8,7 +8,7 @@ public class PRACTICA_HundirFlota {
 	public static Scanner sc = new Scanner (System.in);
 	
 	// VARIABLES GLOBALES
-	public static char letras = 'A', vacio = '-', tocado = 'X', agua = 'A',
+	public static char letras = 'A', vacio = '~', tocado = 'X', agua = 'O',
 		lancha = 'L', buque = 'B', acorazado = 'Z', portaavion = 'P';
 	
 	// FUNCIÓN MAIN
