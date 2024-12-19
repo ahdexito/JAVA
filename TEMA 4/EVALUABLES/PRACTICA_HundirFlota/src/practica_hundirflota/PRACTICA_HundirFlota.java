@@ -17,24 +17,28 @@ public class PRACTICA_HundirFlota {
 		int intentos, filas, columnas, lanchas, buques, acorazados, portaaviones;
 				
 		switch (MenuModoJuego()) {
+		// Generar partida fácil
 		case 1 -> {
 			intentos = 50; filas = 10; columnas = 10;
 			lanchas = 5; buques = 3; acorazados = 1; portaaviones = 1;
 			
 			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
 			}
+		// General partida medio
 		case 2 -> {
 			intentos = 30; filas = 10; columnas = 10;
 			lanchas = 2; buques = 1; acorazados = 1; portaaviones = 1;
 			
 			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
 			}
+		// Generar partida difícil
 		case 3 -> {
 			intentos = 10; filas = 10; columnas = 10;
 			lanchas = 1; buques = 1; acorazados = 0; portaaviones = 0;
 			
 			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
 			}
+		// Generar partida personalizada
 		case 4 -> {
 			int[] valores = Personalizada();
 
@@ -42,11 +46,7 @@ public class PRACTICA_HundirFlota {
 					valores[3], valores[4], valores[5], valores[6]);
 			}
 		}
-		// Generar partida fácil
-		// General partida medio
-		// Generar partida difícil
-		// Generar partida personalizada
-		    }
+	}
 	
 	// SOLICITAR VALORES DE PARTIDA PERSONALIZADA
 	public static int[] Personalizada () {
@@ -164,9 +164,9 @@ public class PRACTICA_HundirFlota {
 		
 		System.out.println("Tienes " + intentos + " intentos para acertar:");
 		if (lanchas > 0) System.out.println("   - " + lanchas + " lanchas (1x1).");
-		if (buques > 0) System.out.println("   - " + buques + " buques (1x3).");
-		if (acorazados > 0) System.out.println("   - " + acorazados + " acorazados (1x4).");
-		if (portaaviones > 0) System.out.println("   - " + portaaviones + " portaaviones (5x1).");
+		if (buques > 0) System.out.println("   - " + buques + " buques (3x1).");
+		if (acorazados > 0) System.out.println("   - " + acorazados + " acorazados (4x1).");
+		if (portaaviones > 0) System.out.println("   - " + portaaviones + " portaaviones (1x5).");
 		System.out.println("\nEn total debes acertar " + flota + " veces.\n");
 	}
 	
@@ -202,10 +202,7 @@ public class PRACTICA_HundirFlota {
 	public static int[] RestarIntentos_Flota (int tirada, int intentos, int flota) {
 				
 		switch (tirada) {
-			case 1 -> {
-				flota--;
-				intentos--;
-			}
+			case 1 -> flota--;
 			case 2 -> intentos--;
 			default -> System.out.println("\nYa has disparado en esa posición.");
 		}
