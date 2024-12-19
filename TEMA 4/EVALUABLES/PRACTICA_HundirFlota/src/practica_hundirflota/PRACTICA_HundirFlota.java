@@ -105,12 +105,12 @@ public class PRACTICA_HundirFlota {
 					
 				
 				else {
-					System.out.println("\nOPCIÓN NO VÁLIDA.\n");
+					System.out.println("\nERROR DE ENTRADA. LA OPCIÓN DEBE SER -> 1, 2, 3 o 4\n");
 				}
 			} 
 			
 			catch (Exception e) {
-				System.out.println("\nERROR DE ENTRADA.\n");
+				System.out.println("\nERROR DE ENTRADA. LA OPCIÓN DEBE SER -> 1, 2, 3 o 4\n");
 				sc.nextLine();
 			}
 		} while (true);
@@ -122,10 +122,10 @@ public class PRACTICA_HundirFlota {
 		char[][] tableroUsuario = CrearTablero(filas, columnas);
 		char[][] tableroMaquina = CrearTablero(filas, columnas);
 		
-		InsertarBarcos(tableroMaquina, lanchas, buques, acorazados, portaaviones, filas, columnas);
+		int[] noGenerados = InsertarBarcos(tableroMaquina, lanchas, buques, acorazados, portaaviones, filas, columnas);
 		
 		int[] coordenadas;
-		int flota = lanchas + (buques * 3) + (acorazados * 4) + (portaaviones * 5);
+		int flota = (lanchas - noGenerados[0]) + ((buques - noGenerados[1]) * 3) + ((acorazados - noGenerados[2]) * 4) + ((portaaviones - noGenerados[3]) * 5);
 		
 		System.out.println("Tienes " + intentos + " intentos para acertar:");
 		System.out.println("   - " + lanchas + " lanchas.\n   - " + buques + " buques.\n   - " + acorazados + " acorazados.\n   - " + portaaviones + " portaaviones.\n");
@@ -198,7 +198,7 @@ public class PRACTICA_HundirFlota {
 	}
 	
 	// INSERTAR TODOS LOS BARCOS
-	public static void InsertarBarcos (char[][] tablero, int lanchas, int buques, int acorazados, int portaaviones, int filas, int columnas) {
+	public static int[] InsertarBarcos (char[][] tablero, int lanchas, int buques, int acorazados, int portaaviones, int filas, int columnas) {
 		
 		int contLanchas = lanchas, contBuques = buques, contAcorazados = acorazados, contPortaaviones = portaaviones;
 		
@@ -236,12 +236,14 @@ public class PRACTICA_HundirFlota {
 		
 		if (contLanchas > 0 || contBuques > 0 || contAcorazados > 0 || contPortaaviones > 0) {
 			System.out.println("No se han podido generar: ");
-			if (contLanchas > 0) System.out.println(contLanchas + " lanchas.");
-			if (contBuques > 0) System.out.println(contBuques + " buques.");
-			if (contAcorazados > 0) System.out.println(contAcorazados + " acorazados.");
-			if (contPortaaviones > 0) System.out.println(contPortaaviones + " portaaviones.");
+			if (contLanchas > 0) System.out.println("   - " + contLanchas + " lanchas.");
+			if (contBuques > 0) System.out.println("   - " + contBuques + " buques.");
+			if (contAcorazados > 0) System.out.println("   - " + contAcorazados + " acorazados.");
+			if (contPortaaviones > 0) System.out.println("   - " + contPortaaviones + " portaaviones.");
 			System.out.print("\n");
 		}
+		int[] noGenerados = {contLanchas, contBuques, contAcorazados, contPortaaviones};
+		return noGenerados;
 	}
 	
 	// GENERAR Y COLOCAR LANCHA
@@ -452,13 +454,13 @@ public class PRACTICA_HundirFlota {
 
 						// Verificar si las coordenadas están dentro del tablero
 						if (filaCoord < 0 || filaCoord >= filas || columnaCoord < 0 || columnaCoord >= columnas) {
-							System.out.println("\nERROR DE ENTRADA.");
+							System.out.println("\nERROR DE ENTRADA. EL FORMATO DEBE SER -> A 9");
 							repetir = true;
 						}
 					}
 					else {
 						repetir = true;
-						System.out.println("\nERROR DE ENTRADA.");
+						System.out.println("\nERROR DE ENTRADA. EL FORMATO DEBER SER -> A 9");
 					}
 				} while (repetir);
 				
@@ -467,7 +469,7 @@ public class PRACTICA_HundirFlota {
 			} 
 
 			catch (Exception e) {
-				System.out.println("\nERROR DE ENTRADA.");
+				System.out.println("\nERROR DE ENTRADA. EL FORMATO DEBE SER -> A 9");
 				repetir = true;
 			}
 			
