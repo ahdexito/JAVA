@@ -17,40 +17,36 @@ public class PRACTICA_HundirFlota {
 		int intentos, filas, columnas, lanchas, buques, acorazados, portaaviones;
 				
 		switch (MenuModoJuego()) {
-		
-		// Generar partida fácil
-		case 1:
-			intentos = 50; filas = 10; columnas = 10; 
-				lanchas = 5; buques = 3; acorazados = 1; portaaviones = 1;
-
-			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
-			break;
+		case 1 -> {
+			intentos = 50; filas = 10; columnas = 10;
+			lanchas = 5; buques = 3; acorazados = 1; portaaviones = 1;
 			
-		// General partida medio
-		case 2:
+			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
+			}
+		case 2 -> {
 			intentos = 30; filas = 10; columnas = 10;
-				lanchas = 2; buques = 1; acorazados = 1; portaaviones = 1;
-
-			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
-			break;
-		
-		// Generar partida difícil
-		case 3:
-			intentos = 10; filas = 10; columnas = 10;
-				lanchas = 1; buques = 1; acorazados = 0; portaaviones = 0;
-
-			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
-			break;
+			lanchas = 2; buques = 1; acorazados = 1; portaaviones = 1;
 			
-		// Generar partida personalizada
-		case 4:
+			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
+			}
+		case 3 -> {
+			intentos = 10; filas = 10; columnas = 10;
+			lanchas = 1; buques = 1; acorazados = 0; portaaviones = 0;
+			
+			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
+			}
+		case 4 -> {
 			int[] valores = Personalizada();
 
 			JugarPartida(valores[0], valores[1], valores[2],
-				valores[3], valores[4], valores[5], valores[6]);
-			break;
+					valores[3], valores[4], valores[5], valores[6]);
+			}
 		}
-    }
+		// Generar partida fácil
+		// General partida medio
+		// Generar partida difícil
+		// Generar partida personalizada
+		    }
 	
 	// SOLICITAR VALORES DE PARTIDA PERSONALIZADA
 	public static int[] Personalizada () {
@@ -110,13 +106,13 @@ public class PRACTICA_HundirFlota {
 				}
 				
 				else {
-					System.out.println("\nERROR DE ENTRADA. LA OPCIÓN DEBE SER -> 1, 2, 3 o 4\n");
+					System.out.println("\nERROR DE ENTRADA.\nLA OPCIÓN DEBE SER -> (1, 2, 3 o 4).\n");
 				}
 			} 
 			
 			// Error por entrada no numérica
 			catch (Exception e) {
-				System.out.println("\nERROR DE ENTRADA. LA OPCIÓN DEBE SER -> 1, 2, 3 o 4\n");
+				System.out.println("\nERROR DE ENTRADA.\nLA OPCIÓN DEBE SER -> (1, 2, 3 o 4).\n");
 				sc.nextLine();
 			}
 		} while (true);
@@ -167,10 +163,10 @@ public class PRACTICA_HundirFlota {
 	public static void MensajeBarcosRestantes (int intentos, int flota, int lanchas, int buques, int acorazados, int portaaviones) {
 		
 		System.out.println("Tienes " + intentos + " intentos para acertar:");
-		if (lanchas > 0) System.out.println("   - " + lanchas + " lanchas.");
-		if (buques > 0) System.out.println("   - " + buques + " buques.");
-		if (acorazados > 0) System.out.println("   - " + acorazados + " acorazados.");
-		if (portaaviones > 0) System.out.println("   - " + portaaviones + " portaaviones.");
+		if (lanchas > 0) System.out.println("   - " + lanchas + " lanchas (1x1).");
+		if (buques > 0) System.out.println("   - " + buques + " buques (1x3).");
+		if (acorazados > 0) System.out.println("   - " + acorazados + " acorazados (1x4).");
+		if (portaaviones > 0) System.out.println("   - " + portaaviones + " portaaviones (5x1).");
 		System.out.println("\nEn total debes acertar " + flota + " veces.\n");
 	}
 	
@@ -196,8 +192,8 @@ public class PRACTICA_HundirFlota {
 		
 		char[][] tablero = new char[filas][columnas];
 		
-		for (int i=0; i<tablero.length; i++) {
-			Arrays.fill(tablero[i], vacio);
+		for (char[] tablero1 : tablero) {
+			Arrays.fill(tablero1, vacio);
 		}
 		return tablero;
 	}
@@ -477,7 +473,7 @@ public class PRACTICA_HundirFlota {
 			repetir = true;
 			try {
 				do {	
-					System.out.print("\nElige coordenada para disparar: ");
+					System.out.print("\nEscribe la coordenada para disparar: ");
 					disparo = sc.nextLine();
 					
 					// Verificar que la entrada esté compuesta de solo 3 carácteres
@@ -489,14 +485,14 @@ public class PRACTICA_HundirFlota {
 
 						// Verificar si las coordenadas están dentro del tablero
 						if (filaCoord < 0 || filaCoord >= filas || columnaCoord < 0 || columnaCoord >= columnas) {
-							System.out.println("\nERROR DE ENTRADA. EL FORMATO DEBE SER -> A 9");
+							System.out.println("\nERROR DE ENTRADA.\nEL FORMATO DEBE SER -> (LETRA, ESPACIO, NÚMERO)");
 							repetir = true;
 						}
 					}
 					// Repetir en caso de no ser 3 carácteres
 					else {
 						repetir = true;
-						System.out.println("\nERROR DE ENTRADA. EL FORMATO DEBER SER -> A 9");
+						System.out.println("\nERROR DE ENTRADA.\nEL FORMATO DEBER SER -> (LETRA, ESPACIO, NÚMERO)");
 					}
 				} while (repetir);
 				
@@ -504,8 +500,8 @@ public class PRACTICA_HundirFlota {
 				entrada = FilaStringToInt(disparo);
 			} 
 			// Repetir en caso de introducir una carácter en lugar de un número
-			catch (Exception e) {
-				System.out.println("\nERROR DE ENTRADA. EL FORMATO DEBE SER -> A 9");
+			catch (NumberFormatException e) {
+				System.out.println("\nERROR DE ENTRADA.\nEL FORMATO DEBE SER -> (LETRA, ESPACIO, NÚMERO)");
 				repetir = true;
 			}
 			
