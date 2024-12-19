@@ -293,27 +293,6 @@ public class PRACTICA_HundirFlota {
 		return tablero;
 	}
 	
-	// COMPROBAR QUE SE PUEDA INSERTAR EL BARCO
-	public static boolean ComprobarEspacioLibre (char[][] tablero, int filas, int columnas, int barco, int barcos) {
-		
-		boolean libre;
-		
-		for (int i=0; i<filas; i++) {
-			for (int j=0; j<columnas; j++) {
-				for (int k=0; k<barco; k++) {
-					
-					if (tablero[i][j] == vacio) {
-						libre = true;
-					}
-					
-					else libre = false;
-				}
-			}
-		}
-		
-		return libre;
-	}
-	
 	// IMPRIMIR TABLERO
 	public static void ImprimirTablero(char[][] tablero, int filas, int columnas) {
 				
