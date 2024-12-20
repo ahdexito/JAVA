@@ -474,7 +474,7 @@ public class PRACTICA_HundirFlota {
 					disparo = sc.nextLine();
 					
 					// Verificar que la entrada esté compuesta de solo 3 carácteres
-					if (disparo.length() == 3) {
+					if ((disparo.length() == 3)  || ((disparo.length() == 4) && (columnas > 10))) {
 						repetir = false;
 						
 						int filaCoord = (int)disparo.toUpperCase().charAt(0) - (int)letras;
