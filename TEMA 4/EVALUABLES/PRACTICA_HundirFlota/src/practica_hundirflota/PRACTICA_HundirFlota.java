@@ -8,8 +8,8 @@ public class PRACTICA_HundirFlota {
 	public static Scanner sc = new Scanner (System.in);
 	
 	// VARIABLES GLOBALES
-	public static char letras = 'A', vacio = '~', tocado = 'X', agua = 'O',
-		lancha = 'L', buque = 'B', acorazado = 'Z', portaavion = 'P';
+	public static final char LETRAS = 'A', VACIO = '~', TOCADO = 'X', AGUA = 'O',
+		LANCHA = 'L', BUQUE = 'B', ACORAZADO = 'Z', PORTAAVION = 'P';
 	
 	public static final String RESET = "\u001B[0m";
     public static final String MORADO = "\u001B[35m";
@@ -202,7 +202,7 @@ public class PRACTICA_HundirFlota {
 		char[][] tablero = new char[filas][columnas];
 		
 		for (char[] tablero1 : tablero) {
-			Arrays.fill(tablero1, vacio);
+			Arrays.fill(tablero1, VACIO);
 		}
 		return tablero;
 	}
@@ -285,9 +285,9 @@ public class PRACTICA_HundirFlota {
 			int randomFilas = (int)(Math.random() * filas);
 			int randomColumnas = (int)(Math.random() * columnas);
 			
-			if (tablero[randomFilas][randomColumnas] == vacio) {
+			if (tablero[randomFilas][randomColumnas] == VACIO) {
 				
-				tablero[randomFilas][randomColumnas] = lancha;
+				tablero[randomFilas][randomColumnas] = LANCHA;
 				colocada = true;
 			}
 			intentos--;
@@ -310,7 +310,7 @@ public class PRACTICA_HundirFlota {
 			
 			// Verificar que no se superponga el barco a colocar con otro
 			for (int i=0; i<3; i++) {
-				if (tablero[randomFilas][randomColumnas + i] != vacio) {
+				if (tablero[randomFilas][randomColumnas + i] != VACIO) {
 					coincide = true;
 					break;
 				}	
@@ -319,7 +319,7 @@ public class PRACTICA_HundirFlota {
 			// Colocar el barco
 			if (!coincide) {
 				for (int i=0; i<3; i++) {
-				tablero[randomFilas][randomColumnas + i] = buque;
+				tablero[randomFilas][randomColumnas + i] = BUQUE;
 				}
 				return tablero;
 			}
@@ -343,7 +343,7 @@ public class PRACTICA_HundirFlota {
 			
 			// Verificar que no se superponga el barco a colocar con otro
 			for (int i=0; i<4; i++) {
-				if (tablero[randomFilas][filasColumnas + i] != vacio) {
+				if (tablero[randomFilas][filasColumnas + i] != VACIO) {
 					coincide = true;
 					break;
 				}	
@@ -352,7 +352,7 @@ public class PRACTICA_HundirFlota {
 			// Colocar el barco
 			if (!coincide) {
 				for (int i=0; i<4; i++) {
-					tablero[randomFilas][filasColumnas + i] = acorazado;
+					tablero[randomFilas][filasColumnas + i] = ACORAZADO;
 				}
 				return tablero;
 			}
@@ -376,7 +376,7 @@ public class PRACTICA_HundirFlota {
 			
 			// Verificar que no se superponga el barco a colocar con otro
 			for (int i=0; i<5; i++) {
-				if (tablero[randomFilas + i][randomColumnas] != vacio) {
+				if (tablero[randomFilas + i][randomColumnas] != VACIO) {
 					coincide = true;
 					break;
 				}
@@ -385,7 +385,7 @@ public class PRACTICA_HundirFlota {
 			// Colocar el barco
 			if (!coincide) {
 				for (int i=0; i<5; i++) {
-					tablero[randomFilas + i][randomColumnas] = portaavion;
+					tablero[randomFilas + i][randomColumnas] = PORTAAVION;
 				}
 				return tablero;
 			}
@@ -427,11 +427,11 @@ public class PRACTICA_HundirFlota {
 	public static boolean EspacioDisponible(char[][] tablero, int fila, int columna, int barco, boolean vertical) {
 		
 		for (int i=0; i<barco; i++) {
-			if (!vertical && (columna + i >= tablero[0].length || tablero[fila][columna + i] != vacio)) {
+			if (!vertical && (columna + i >= tablero[0].length || tablero[fila][columna + i] != VACIO)) {
 				return false;
 			}
 			
-			if (vertical && (fila + i >= tablero.length || tablero[fila + i][columna] != vacio)) {
+			if (vertical && (fila + i >= tablero.length || tablero[fila + i][columna] != VACIO)) {
 			return false;
 			}
 		}
@@ -458,15 +458,15 @@ public class PRACTICA_HundirFlota {
 		for (int i=0; i<filas; i++) {
 			
 			// Imprimir posiciones alfabéticas y barras laterales
-			System.out.print(MORADO + (char)(letras + i) + AMARILLO + " |  " + RESET);
+			System.out.print(MORADO + (char)(LETRAS + i) + AMARILLO + " |  " + RESET);
 			
 			// Imprimir mapa
 			for (int j=0; j<columnas; j++) {
 				char celda = tablero[i][j];
 				
-				if (celda == vacio) System.out.print(celda + "  ");
-				else if (celda == agua) System.out.print(CIAN + celda + "  " + RESET);
-				else if (celda == tocado) System.out.print(VERDE + celda + "  " + RESET);
+				if (celda == VACIO) System.out.print(celda + "  ");
+				else if (celda == AGUA) System.out.print(CIAN + celda + "  " + RESET);
+				else if (celda == TOCADO) System.out.print(VERDE + celda + "  " + RESET);
 				else System.out.print(celda + "  ");
 			}
 			System.out.print("\n");
@@ -493,16 +493,16 @@ public class PRACTICA_HundirFlota {
 		for (int i=0; i<filas; i++) {
 			
 			// Imprimir posiciones alfabéticas y barras laterales
-			System.out.print(MORADO + (char)(letras + i) + AMARILLO + " |  " + RESET);
+			System.out.print(MORADO + (char)(LETRAS + i) + AMARILLO + " |  " + RESET);
 			
 			// Imprimir mapa
 			for (int j=0; j<columnas; j++) {
 				char celdaUsuario = tableroUsuario[i][j];
 				char celdaMaquina = tableroMaquina[i][j];
 				
-				if (celdaUsuario == tocado) System.out.print(VERDE + celdaMaquina + "  " + RESET);
-				else if (celdaUsuario == agua) System.out.print(CIAN + celdaUsuario + "  " + RESET);
-				else if (celdaMaquina != vacio && celdaUsuario == vacio) System.out.print(ROJO + celdaMaquina + "  " + RESET);
+				if (celdaUsuario == TOCADO) System.out.print(VERDE + celdaMaquina + "  " + RESET);
+				else if (celdaUsuario == AGUA) System.out.print(CIAN + celdaUsuario + "  " + RESET);
+				else if (celdaMaquina != VACIO && celdaUsuario == VACIO) System.out.print(ROJO + celdaMaquina + "  " + RESET);
 				else System.out.print(celdaMaquina + "  ");
 			}
 			System.out.print("\n");
@@ -527,7 +527,7 @@ public class PRACTICA_HundirFlota {
 					if ((disparo.length() == 3) || ((disparo.length() == 4) && (columnas > 10))) {
 						repetir = false;
 						
-						int filaCoord = (int)disparo.toUpperCase().charAt(0) - (int)letras;
+						int filaCoord = (int)disparo.toUpperCase().charAt(0) - (int)LETRAS;
 						int columnaCoord = Integer.parseInt(disparo.substring(2));
 
 						// Verificar si las coordenadas están dentro del tablero
@@ -569,7 +569,7 @@ public class PRACTICA_HundirFlota {
 		coorDisparo[0] = coorDisparo[0].toUpperCase();
 
 		// Convertir la entrada a tipo int
-		int coordX = (int)(coorDisparo[0].charAt(0) - letras);
+		int coordX = (int)(coorDisparo[0].charAt(0) - LETRAS);
 		int coordY = Integer.parseInt(coorDisparo[1]);
 
 		salida[0] = coordX; 
@@ -584,21 +584,21 @@ public class PRACTICA_HundirFlota {
 		int x = coord[0], y = coord[1];
 		
 		// Si ya se había disparado en la misma posición
-		if (tableroUsuario[x][y] != vacio)
+		if (tableroUsuario[x][y] != VACIO)
 			return 0;
 		
 		else {
 			// Si no se había disparado y hay barco
-			if (tableroMaquina[x][y] != vacio) {
+			if (tableroMaquina[x][y] != VACIO) {
 				
 				System.out.println(VERDE + "\n¡TOCADO!" + RESET);
-				tableroUsuario[x][y] = tocado;
+				tableroUsuario[x][y] = TOCADO;
 				return 1;
 			}
 			// Si no se había disparado y hay agua
 			else {
 				System.out.println(CIAN + "\n¡AGUA!" + RESET);
-				tableroUsuario[x][y] = agua;
+				tableroUsuario[x][y] = AGUA;
 				return 2;
 			}
 		}
