@@ -192,7 +192,7 @@ public class PRACTICA_HundirFlota {
 			System.out.println("\n" + ROJO + "DERROTA..." + RESET);
 			System.out.println("Has agotado el número de intentos.\n");
 			
-			ImprimirTablero(tableroMaquina, filas, columnas);
+			ImprimirTableroDerrota(tableroUsuario, tableroMaquina, filas, columnas);
 		}
 	}
 	
@@ -213,7 +213,7 @@ public class PRACTICA_HundirFlota {
 		switch (tirada) {
 			case 1 -> flota--;
 			case 2 -> intentos--;
-			default -> System.out.println("\n" + ROJO + "Ya has disparado en esa posición.");
+			default -> System.out.println("\n" + ROJO + "Ya has disparado en esa posición." + RESET);
 		}
 			
 		System.out.println("\nIntentos restantes: " + MORADO + intentos + RESET);
@@ -444,30 +444,66 @@ public class PRACTICA_HundirFlota {
 		// Imprimir posiciones numéricas
 		System.out.print("     ");
 		for (int i=0; i<columnas; i++) {
-			if (i > 9) System.out.print(MORADO + i + " ");
-			else System.out.print(MORADO + i + "  ");
+			if (i > 9) System.out.print(MORADO + i + " " + RESET);
+			else System.out.print(MORADO + i + "  " + RESET);
 		}
 		System.out.print("\n    ");
 		
 		// Imprimir guiones
 		for (int i=0; i<columnas; i++) {
-			System.out.print(AMARILLO + "---");
+			System.out.print(AMARILLO + "---" + RESET);
 		}
 		System.out.print("\n");
 		
 		for (int i=0; i<filas; i++) {
 			
 			// Imprimir posiciones alfabéticas y barras laterales
-			System.out.print(MORADO + (char)(letras + i) + AMARILLO + " |  ");
+			System.out.print(MORADO + (char)(letras + i) + AMARILLO + " |  " + RESET);
 			
 			// Imprimir mapa
 			for (int j=0; j<columnas; j++) {
 				char celda = tablero[i][j];
 				
-				if (celda == vacio) System.out.print(CIAN + celda + "  " + RESET);
-				else if (celda == agua) System.out.print(AZUL + celda + "  ");
-				else if (celda == tocado) System.out.print(VERDE + celda + "  ");
+				if (celda == vacio) System.out.print(celda + "  ");
+				else if (celda == agua) System.out.print(CIAN + celda + "  " + RESET);
+				else if (celda == tocado) System.out.print(VERDE + celda + "  " + RESET);
 				else System.out.print(celda + "  ");
+			}
+			System.out.print("\n");
+		}
+	}
+	
+	// IMPRIMIR TABLERO MÁQUINA CUANDO PIERDE
+	public static void ImprimirTableroDerrota (char[][] tableroUsuario, char[][] tableroMaquina, int filas, int columnas) {
+		
+		// Imprimir posiciones numéricas
+		System.out.print("     ");
+		for (int i=0; i<columnas; i++) {
+			if (i > 9) System.out.print(MORADO + i + " " + RESET);
+			else System.out.print(MORADO + i + "  " + RESET);
+		}
+		System.out.print("\n    ");
+		
+		// Imprimir guiones
+		for (int i=0; i<columnas; i++) {
+			System.out.print(AMARILLO + "---" + RESET);
+		}
+		System.out.print("\n");
+		
+		for (int i=0; i<filas; i++) {
+			
+			// Imprimir posiciones alfabéticas y barras laterales
+			System.out.print(MORADO + (char)(letras + i) + AMARILLO + " |  " + RESET);
+			
+			// Imprimir mapa
+			for (int j=0; j<columnas; j++) {
+				char celdaUsuario = tableroUsuario[i][j];
+				char celdaMaquina = tableroMaquina[i][j];
+				
+				if (celdaUsuario == tocado) System.out.print(VERDE + celdaMaquina + "  " + RESET);
+				else if (celdaUsuario == agua) System.out.print(CIAN + celdaUsuario + "  " + RESET);
+				else if (celdaMaquina != vacio && celdaUsuario == vacio) System.out.print(ROJO + celdaMaquina + "  " + RESET);
+				else System.out.print(celdaMaquina + "  ");
 			}
 			System.out.print("\n");
 		}
@@ -487,8 +523,8 @@ public class PRACTICA_HundirFlota {
 					System.out.print("\n" + AMARILLO + "Escribe la coordenada para disparar: " + RESET);
 					disparo = sc.nextLine();
 					
-					// Verificar que la entrada esté compuesta de solo 3 carácteres
-					if (disparo.length() == 3) {
+					// Verificar que la entrada esté compuesta de solo 3 carácteres (4 en caso de tablero personalizado ampliado)
+					if ((disparo.length() == 3) || ((disparo.length() == 4) && (columnas > 10))) {
 						repetir = false;
 						
 						int filaCoord = (int)disparo.toUpperCase().charAt(0) - (int)letras;
