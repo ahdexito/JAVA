@@ -8,8 +8,15 @@ public class PRACTICA_HundirFlota {
 	public static Scanner sc = new Scanner (System.in);
 	
 	// VARIABLES GLOBALES
-	public static char letras = 'A', vacio = '~', tocado = 'X', agua = 'O',
-		lancha = 'L', buque = 'B', acorazado = 'Z', portaavion = 'P';
+	public static final char LETRAS = 'A', VACIO = '~', TOCADO = 'X', AGUA = 'O',
+		LANCHA = 'L', BUQUE = 'B', ACORAZADO = 'Z', PORTAAVION = 'P';
+	
+	public static final String RESET = "\u001B[0m";
+    public static final String MORADO = "\u001B[35m";
+    public static final String ROJO = "\u001B[31m";
+	public static final String CIAN = "\u001B[36m";
+	public static final String VERDE = "\u001B[32m";
+	public static final String AMARILLO = "\u001B[33m";
 	
 	// FUNCIÓN MAIN
     public static void main(String[] args) {
@@ -51,25 +58,25 @@ public class PRACTICA_HundirFlota {
 	// SOLICITAR VALORES DE PARTIDA PERSONALIZADA
 	public static int[] Personalizada () {
 		
-		System.out.print("Introduce cantidad de intentos: ");
+		System.out.print(AMARILLO + "Introduce cantidad de intentos: " + RESET);
 		int intentos = sc.nextInt();
-				
-		System.out.print("Introduce cantidad de filas: ");
+		System.out.print("\n");
+		System.out.print(AMARILLO + "Introduce cantidad de filas: " + RESET);
 		int filas = sc.nextInt();
-
-		System.out.print("Introduce cantidad de columnas: ");
+		
+		System.out.print(AMARILLO + "Introduce cantidad de columnas: " + RESET);
 		int columnas = sc.nextInt();
-
-		System.out.print("Introduce cantidad de lanchas: ");
+		System.out.print("\n");
+		System.out.print(AMARILLO + "Introduce cantidad de lanchas: " + RESET);
 		int lanchas = sc.nextInt();
 		
-		System.out.print("Introduce cantidad de buques: ");
+		System.out.print(AMARILLO + "Introduce cantidad de buques: " + RESET);
 		int buques = sc.nextInt();
 		
-		System.out.print("Introduce cantidad de acorazados: ");
+		System.out.print(AMARILLO + "Introduce cantidad de acorazados: " + RESET);
 		int acorazados = sc.nextInt();
 		
-		System.out.print("Introduce cantidad de portaaviones: ");
+		System.out.print(AMARILLO + "Introduce cantidad de portaaviones: " + RESET);
 		int portaaviones = sc.nextInt();
 		
 		sc.nextLine();
@@ -86,13 +93,13 @@ public class PRACTICA_HundirFlota {
 		
 		do {
 			System.out.print(""
-				+ "            HUNDIR LA FLOTA\n"
-				+ "========================================\n"
-				+ "   1. Fácil\n"
-				+ "   2. Medio\n"
-				+ "   3. Difícil\n"
-				+ "   4. Personalizado\n\n"
-				+ "Elegir dificultad: ");
+			+ AMARILLO +	"            HUNDIR LA FLOTA\n"
+			+ AMARILLO +	"========================================\n"
+			+ MORADO +		"   1" + RESET + ". Fácil\n"
+			+ MORADO +		"   2" + RESET + ". Medio\n"
+			+ MORADO +		"   3" + RESET + ". Difícil\n"
+			+ MORADO +		"   4" + RESET + ". Personalizado\n\n"
+			+ AMARILLO +	"Elegir dificultad: ");
 			
 			// Recoger errores de entrada para la entrada de opción
 			try {
@@ -106,13 +113,13 @@ public class PRACTICA_HundirFlota {
 				}
 				
 				else {
-					System.out.println("\nERROR DE ENTRADA.\nLA OPCIÓN DEBE SER -> (1, 2, 3 o 4).\n");
+					System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "LA OPCIÓN DEBE SER -> (1, 2, 3 o 4).\n");
 				}
 			} 
 			
 			// Error por entrada no numérica
 			catch (Exception e) {
-				System.out.println("\nERROR DE ENTRADA.\nLA OPCIÓN DEBE SER -> (1, 2, 3 o 4).\n");
+				System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "LA OPCIÓN DEBE SER -> (1, 2, 3 o 4).\n");
 				sc.nextLine();
 			}
 		} while (true);
@@ -162,28 +169,28 @@ public class PRACTICA_HundirFlota {
 	// IMPRIMIR MENSAJE DE BARCOS A ACERTAR
 	public static void MensajeBarcosRestantes (int intentos, int flota, int lanchas, int buques, int acorazados, int portaaviones) {
 		
-		System.out.println("Tienes " + intentos + " intentos para acertar:");
-		if (lanchas > 0) System.out.println("   - " + lanchas + " lanchas (1x1).");
-		if (buques > 0) System.out.println("   - " + buques + " buques (3x1).");
-		if (acorazados > 0) System.out.println("   - " + acorazados + " acorazados (4x1).");
-		if (portaaviones > 0) System.out.println("   - " + portaaviones + " portaaviones (1x5).");
-		System.out.println("\nEn total debes acertar " + flota + " veces.\n");
+		System.out.println(AMARILLO + "Tienes " + MORADO + intentos + AMARILLO + " intentos para acertar:" + RESET);
+		if (lanchas > 0) System.out.println("   - " + MORADO + lanchas + RESET + " lanchas (" + CIAN + "1x1" + RESET + ")");
+		if (buques > 0) System.out.println("   - " + MORADO + buques + RESET + " buques (" + CIAN + "3x1" + RESET + ")");
+		if (acorazados > 0) System.out.println("   - " + MORADO + acorazados + RESET + " acorazados (" + CIAN + "4x1" + RESET + ")");
+		if (portaaviones > 0) System.out.println("   - " + MORADO + portaaviones + RESET + " portaaviones (" + CIAN + "1x5" + RESET + ")");
+		System.out.println("\n" + AMARILLO + "En total debes acertar " + MORADO + flota + AMARILLO + " veces.\n");
 	}
 	
 	// RESULTADO DE GANAR O PERDER PARTIDA
 	public static void ResultadoPartida (char[][] tableroUsuario, char[][] tableroMaquina, int intentos, int totalIntentos, int flota, int filas, int columnas) {
 		
 		if (flota == 0) {
-			System.out.println("¡VICTORIA!");
-			System.out.println("Has hundido la flota en " + (totalIntentos - intentos) + " intentos.");
+			System.out.println(VERDE + "¡VICTORIA!" + RESET);
+			System.out.println("Has hundido la flota en " + MORADO + (totalIntentos - intentos) + RESET + " intentos.");
 		}
 		
 		else {
 			ImprimirTablero(tableroUsuario, filas, columnas);
-			System.out.println("\nDERROTA...");
+			System.out.println("\n" + ROJO + "DERROTA..." + RESET);
 			System.out.println("Has agotado el número de intentos.\n");
 			
-			ImprimirTablero(tableroMaquina, filas, columnas);
+			ImprimirTableroDerrota(tableroUsuario, tableroMaquina, filas, columnas);
 		}
 	}
 	
@@ -193,7 +200,7 @@ public class PRACTICA_HundirFlota {
 		char[][] tablero = new char[filas][columnas];
 		
 		for (char[] tablero1 : tablero) {
-			Arrays.fill(tablero1, vacio);
+			Arrays.fill(tablero1, VACIO);
 		}
 		return tablero;
 	}
@@ -204,11 +211,11 @@ public class PRACTICA_HundirFlota {
 		switch (tirada) {
 			case 1 -> flota--;
 			case 2 -> intentos--;
-			default -> System.out.println("\nYa has disparado en esa posición.");
+			default -> System.out.println("\n" + ROJO + "Ya has disparado en esa posición." + RESET);
 		}
 			
-		System.out.println("\nIntentos restantes: " + intentos);
-		System.out.println("Flota restante: " + flota + "\n");
+		System.out.println("\nIntentos restantes: " + MORADO + intentos + RESET);
+		System.out.println("Flota restante: " + MORADO + flota + "\n");
 		
 		int[] intentos_flota = {intentos, flota};
 
@@ -255,11 +262,11 @@ public class PRACTICA_HundirFlota {
 		
 		// Imprimir por pantalla los que no se han generado
 		if (contLanchas > 0 || contBuques > 0 || contAcorazados > 0 || contPortaaviones > 0) {
-			System.out.println("No se han podido generar: ");
-			if (contLanchas > 0) System.out.println("   - " + contLanchas + " lanchas.");
-			if (contBuques > 0) System.out.println("   - " + contBuques + " buques.");
-			if (contAcorazados > 0) System.out.println("   - " + contAcorazados + " acorazados.");
-			if (contPortaaviones > 0) System.out.println("   - " + contPortaaviones + " portaaviones.");
+			System.out.println(ROJO + "No se han podido generar: " + RESET);
+			if (contLanchas > 0) System.out.println("   - " + MORADO + contLanchas + RESET + " lanchas.");
+			if (contBuques > 0) System.out.println("   - " + MORADO + contBuques + RESET + " buques.");
+			if (contAcorazados > 0) System.out.println("   - " + MORADO + contAcorazados + RESET + " acorazados.");
+			if (contPortaaviones > 0) System.out.println("   - " + MORADO + contPortaaviones + RESET + " portaaviones.");
 			System.out.print("\n");
 		}
 		int[] noGenerados = {contLanchas, contBuques, contAcorazados, contPortaaviones};
@@ -276,9 +283,9 @@ public class PRACTICA_HundirFlota {
 			int randomFilas = (int)(Math.random() * filas);
 			int randomColumnas = (int)(Math.random() * columnas);
 			
-			if (tablero[randomFilas][randomColumnas] == vacio) {
+			if (tablero[randomFilas][randomColumnas] == VACIO) {
 				
-				tablero[randomFilas][randomColumnas] = lancha;
+				tablero[randomFilas][randomColumnas] = LANCHA;
 				colocada = true;
 			}
 			intentos--;
@@ -301,7 +308,7 @@ public class PRACTICA_HundirFlota {
 			
 			// Verificar que no se superponga el barco a colocar con otro
 			for (int i=0; i<3; i++) {
-				if (tablero[randomFilas][randomColumnas + i] != vacio) {
+				if (tablero[randomFilas][randomColumnas + i] != VACIO) {
 					coincide = true;
 					break;
 				}	
@@ -310,7 +317,7 @@ public class PRACTICA_HundirFlota {
 			// Colocar el barco
 			if (!coincide) {
 				for (int i=0; i<3; i++) {
-				tablero[randomFilas][randomColumnas + i] = buque;
+				tablero[randomFilas][randomColumnas + i] = BUQUE;
 				}
 				return tablero;
 			}
@@ -334,7 +341,7 @@ public class PRACTICA_HundirFlota {
 			
 			// Verificar que no se superponga el barco a colocar con otro
 			for (int i=0; i<4; i++) {
-				if (tablero[randomFilas][filasColumnas + i] != vacio) {
+				if (tablero[randomFilas][filasColumnas + i] != VACIO) {
 					coincide = true;
 					break;
 				}	
@@ -343,7 +350,7 @@ public class PRACTICA_HundirFlota {
 			// Colocar el barco
 			if (!coincide) {
 				for (int i=0; i<4; i++) {
-					tablero[randomFilas][filasColumnas + i] = acorazado;
+					tablero[randomFilas][filasColumnas + i] = ACORAZADO;
 				}
 				return tablero;
 			}
@@ -367,7 +374,7 @@ public class PRACTICA_HundirFlota {
 			
 			// Verificar que no se superponga el barco a colocar con otro
 			for (int i=0; i<5; i++) {
-				if (tablero[randomFilas + i][randomColumnas] != vacio) {
+				if (tablero[randomFilas + i][randomColumnas] != VACIO) {
 					coincide = true;
 					break;
 				}
@@ -376,7 +383,7 @@ public class PRACTICA_HundirFlota {
 			// Colocar el barco
 			if (!coincide) {
 				for (int i=0; i<5; i++) {
-					tablero[randomFilas + i][randomColumnas] = portaavion;
+					tablero[randomFilas + i][randomColumnas] = PORTAAVION;
 				}
 				return tablero;
 			}
@@ -418,11 +425,11 @@ public class PRACTICA_HundirFlota {
 	public static boolean EspacioDisponible(char[][] tablero, int fila, int columna, int barco, boolean vertical) {
 		
 		for (int i=0; i<barco; i++) {
-			if (!vertical && (columna + i >= tablero[0].length || tablero[fila][columna + i] != vacio)) {
+			if (!vertical && (columna + i >= tablero[0].length || tablero[fila][columna + i] != VACIO)) {
 				return false;
 			}
 			
-			if (vertical && (fila + i >= tablero.length || tablero[fila + i][columna] != vacio)) {
+			if (vertical && (fila + i >= tablero.length || tablero[fila + i][columna] != VACIO)) {
 			return false;
 			}
 		}
@@ -435,25 +442,68 @@ public class PRACTICA_HundirFlota {
 		// Imprimir posiciones numéricas
 		System.out.print("     ");
 		for (int i=0; i<columnas; i++) {
-			if (i > 9) System.out.print(i + " ");
-			else System.out.print(i + "  ");
+			if (i > 9) System.out.print(MORADO + i + " " + RESET);
+			else System.out.print(MORADO + i + "  " + RESET);
 		}
 		System.out.print("\n    ");
 		
 		// Imprimir guiones
 		for (int i=0; i<columnas; i++) {
-			System.out.print("---");
+			System.out.print(AMARILLO + "---" + RESET);
 		}
 		System.out.print("\n");
 		
 		for (int i=0; i<filas; i++) {
 			
 			// Imprimir posiciones alfabéticas y barras laterales
-			System.out.print((char)(letras + i) + " |  ");
+			System.out.print(MORADO + (char)(LETRAS + i) + AMARILLO + " |  " + RESET);
 			
 			// Imprimir mapa
 			for (int j=0; j<columnas; j++) {
-				System.out.print(tablero[i][j] + "  ");
+				char celda = tablero[i][j];
+				
+				switch (celda) {
+					case VACIO -> System.out.print(celda + "  ");
+					case AGUA -> System.out.print(CIAN + celda + "  " + RESET);
+					case TOCADO -> System.out.print(VERDE + celda + "  " + RESET);
+					default -> System.out.print(celda + "  ");
+				}
+			}
+			System.out.print("\n");
+		}
+	}
+	
+	// IMPRIMIR TABLERO MÁQUINA CUANDO PIERDE
+	public static void ImprimirTableroDerrota (char[][] tableroUsuario, char[][] tableroMaquina, int filas, int columnas) {
+		
+		// Imprimir posiciones numéricas
+		System.out.print("     ");
+		for (int i=0; i<columnas; i++) {
+			if (i > 9) System.out.print(MORADO + i + " " + RESET);
+			else System.out.print(MORADO + i + "  " + RESET);
+		}
+		System.out.print("\n    ");
+		
+		// Imprimir guiones
+		for (int i=0; i<columnas; i++) {
+			System.out.print(AMARILLO + "---" + RESET);
+		}
+		System.out.print("\n");
+		
+		for (int i=0; i<filas; i++) {
+			
+			// Imprimir posiciones alfabéticas y barras laterales
+			System.out.print(MORADO + (char)(LETRAS + i) + AMARILLO + " |  " + RESET);
+			
+			// Imprimir mapa
+			for (int j=0; j<columnas; j++) {
+				char celdaUsuario = tableroUsuario[i][j];
+				char celdaMaquina = tableroMaquina[i][j];
+				
+				if (celdaUsuario == TOCADO) System.out.print(VERDE + celdaMaquina + "  " + RESET);
+				else if (celdaUsuario == AGUA) System.out.print(CIAN + celdaUsuario + "  " + RESET);
+				else if (celdaMaquina != VACIO && celdaUsuario == VACIO) System.out.print(ROJO + celdaMaquina + "  " + RESET);
+				else System.out.print(celdaMaquina + "  ");
 			}
 			System.out.print("\n");
 		}
@@ -470,26 +520,26 @@ public class PRACTICA_HundirFlota {
 			repetir = true;
 			try {
 				do {	
-					System.out.print("\nEscribe la coordenada para disparar: ");
+					System.out.print("\n" + AMARILLO + "Escribe la coordenada para disparar: " + RESET);
 					disparo = sc.nextLine();
 					
-					// Verificar que la entrada esté compuesta de solo 3 carácteres
-					if ((disparo.length() == 3)  || ((disparo.length() == 4) && (columnas > 10))) {
+					// Verificar que la entrada esté compuesta de solo 3 carácteres (4 en caso de tablero personalizado ampliado)
+					if ((disparo.length() == 3) || ((disparo.length() == 4) && (columnas > 10))) {
 						repetir = false;
 						
-						int filaCoord = (int)disparo.toUpperCase().charAt(0) - (int)letras;
+						int filaCoord = (int)disparo.toUpperCase().charAt(0) - (int)LETRAS;
 						int columnaCoord = Integer.parseInt(disparo.substring(2));
 
 						// Verificar si las coordenadas están dentro del tablero
 						if (filaCoord < 0 || filaCoord >= filas || columnaCoord < 0 || columnaCoord >= columnas) {
-							System.out.println("\nERROR DE ENTRADA.\nEL FORMATO DEBE SER -> (LETRA, ESPACIO, NÚMERO)");
+							System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "EL FORMATO DEBE SER -> (LETRA, ESPACIO, NÚMERO)" + RESET);
 							repetir = true;
 						}
 					}
 					// Repetir en caso de no ser 3 carácteres
 					else {
 						repetir = true;
-						System.out.println("\nERROR DE ENTRADA.\nEL FORMATO DEBER SER -> (LETRA, ESPACIO, NÚMERO)");
+						System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "EL FORMATO DEBER SER -> (LETRA, ESPACIO, NÚMERO)" + RESET);
 					}
 				} while (repetir);
 				
@@ -498,7 +548,7 @@ public class PRACTICA_HundirFlota {
 			} 
 			// Repetir en caso de introducir una carácter en lugar de un número
 			catch (NumberFormatException e) {
-				System.out.println("\nERROR DE ENTRADA.\nEL FORMATO DEBE SER -> (LETRA, ESPACIO, NÚMERO)");
+				System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "EL FORMATO DEBE SER -> (LETRA, ESPACIO, NÚMERO)" + ROJO);
 				repetir = true;
 			}
 			
@@ -519,7 +569,7 @@ public class PRACTICA_HundirFlota {
 		coorDisparo[0] = coorDisparo[0].toUpperCase();
 
 		// Convertir la entrada a tipo int
-		int coordX = (int)(coorDisparo[0].charAt(0) - letras);
+		int coordX = (int)(coorDisparo[0].charAt(0) - LETRAS);
 		int coordY = Integer.parseInt(coorDisparo[1]);
 
 		salida[0] = coordX; 
@@ -534,21 +584,21 @@ public class PRACTICA_HundirFlota {
 		int x = coord[0], y = coord[1];
 		
 		// Si ya se había disparado en la misma posición
-		if (tableroUsuario[x][y] != vacio)
+		if (tableroUsuario[x][y] != VACIO)
 			return 0;
 		
 		else {
 			// Si no se había disparado y hay barco
-			if (tableroMaquina[x][y] != vacio) {
+			if (tableroMaquina[x][y] != VACIO) {
 				
-				System.out.println("\n¡TOCADO!");
-				tableroUsuario[x][y] = tocado;
+				System.out.println(VERDE + "\n¡TOCADO!" + RESET);
+				tableroUsuario[x][y] = TOCADO;
 				return 1;
 			}
 			// Si no se había disparado y hay agua
 			else {
-				System.out.println("\n¡AGUA!");
-				tableroUsuario[x][y] = agua;
+				System.out.println(CIAN + "\n¡AGUA!" + RESET);
+				tableroUsuario[x][y] = AGUA;
 				return 2;
 			}
 		}
