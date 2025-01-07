@@ -7,18 +7,14 @@ public class PRACTICA_HundirFlota {
 	
 	public static Scanner sc = new Scanner (System.in);
 	
-	// VARIABLES GLOBALES
+	// VARIABLES GLOBALES DEL JUEGO
 	public static final char LETRAS = 'A', VACIO = '~', TOCADO = 'X', AGUA = 'O',
 		LANCHA = 'L', BUQUE = 'B', ACORAZADO = 'Z', PORTAAVION = 'P';
 	
-	public static final String RESET = "\u001B[0m";
-    public static final String MORADO = "\u001B[35m";
-    public static final String ROJO = "\u001B[31m";
-	public static final String CIAN = "\u001B[36m";
-	public static final String VERDE = "\u001B[32m";
-	public static final String AMARILLO = "\u001B[33m";
+	// VARIABLES GLOBALES PARA DAR COLOR AL TEXTO DE SALIDA POR CONSOLA
+	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 	
-	// FUNCIÓN MAIN
+	// ***FUNCIÓN MAIN***
     public static void main(String[] args) {
 		
 		int intentos, filas, columnas, lanchas, buques, acorazados, portaaviones;
@@ -182,7 +178,9 @@ public class PRACTICA_HundirFlota {
 		
 		if (flota == 0) {
 			System.out.println(VERDE + "¡VICTORIA!" + RESET);
-			System.out.println("Has hundido la flota en " + MORADO + (totalIntentos - intentos) + RESET + " intentos.");
+			System.out.println("Has hundido la flota en " + MORADO + (totalIntentos - intentos) + RESET + " intentos.\n");
+			
+			ImprimirTableroDerrota(tableroUsuario, tableroMaquina, filas, columnas);
 		}
 		
 		else {
@@ -209,7 +207,7 @@ public class PRACTICA_HundirFlota {
 	public static int[] RestarIntentos_Flota (int tirada, int intentos, int flota) {
 				
 		switch (tirada) {
-			case 1: flota--; break;
+			case 1: flota--; intentos--; break;
 			case 2: intentos--; break;
 			default: System.out.println("\n" + ROJO + "Ya has disparado en esa posición." + RESET); break;
 		}
