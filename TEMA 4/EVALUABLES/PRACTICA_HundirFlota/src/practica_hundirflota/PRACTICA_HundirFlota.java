@@ -76,7 +76,9 @@ public class PRACTICA_HundirFlota {
 		int portaaviones = sc.nextInt();
 		
 		sc.nextLine();
-		System.out.print("\n");
+		for (int i=0; i<50; i++) {
+			System.out.println("");
+		}
 		
 		int[] valores = {intentos, filas, columnas, lanchas, buques, acorazados, portaaviones};
 		
@@ -86,6 +88,11 @@ public class PRACTICA_HundirFlota {
 	public static int MenuModoJuego () {
 		
 		int opcion;
+		
+		// Saltos de linea para simular nueva página por consola 
+		for (int i=0; i<50; i++) {
+			System.out.println("");
+		}
 		
 		do {
 			System.out.print(""
@@ -151,6 +158,11 @@ public class PRACTICA_HundirFlota {
 			
 			int[] coordenadas = SolicitarDisparo(filas, columnas);
 			
+			// Saltos de linea para simular nueva página por consola 
+			for (int i=0; i<50; i++) {
+				System.out.println("");
+			}
+			
 			int[] intentos_flota = RestarIntentos_Flota
 				(VerificarDisparo(coordenadas, tableroUsuario, tableroMaquina),
 					intentos, flota);
@@ -173,14 +185,14 @@ public class PRACTICA_HundirFlota {
 		System.out.println("\n" + AMARILLO + "En total debes acertar " + MORADO + flota + AMARILLO + " veces.\n");
 	}
 	
-	// RESULTADO DE GANAR O PERDER PARTIDA
+	// IMPRIMIR RESULTADO DE GANAR O PERDER PARTIDA
 	public static void ResultadoPartida (char[][] tableroUsuario, char[][] tableroMaquina, int intentos, int totalIntentos, int flota, int filas, int columnas) {
 		
 		if (flota == 0) {
 			System.out.println(VERDE + "¡VICTORIA!" + RESET);
 			System.out.println("Has hundido la flota en " + MORADO + (totalIntentos - intentos) + RESET + " intentos.\n");
 			
-			ImprimirTableroDerrota(tableroUsuario, tableroMaquina, filas, columnas);
+			ImprimirTableroFinal(tableroUsuario, tableroMaquina, filas, columnas);
 		}
 		
 		else {
@@ -188,8 +200,9 @@ public class PRACTICA_HundirFlota {
 			System.out.println("\n" + ROJO + "DERROTA..." + RESET);
 			System.out.println("Has agotado el número de intentos.\n");
 			
-			ImprimirTableroDerrota(tableroUsuario, tableroMaquina, filas, columnas);
+			ImprimirTableroFinal(tableroUsuario, tableroMaquina, filas, columnas);
 		}
+		System.out.print("\n");
 	}
 	
 	// CREAR Y RELLENAR EL TABLERO DE "AGUA"
@@ -472,7 +485,7 @@ public class PRACTICA_HundirFlota {
 	}
 	
 	// IMPRIMIR TABLERO MÁQUINA CUANDO PIERDE
-	public static void ImprimirTableroDerrota (char[][] tableroUsuario, char[][] tableroMaquina, int filas, int columnas) {
+	public static void ImprimirTableroFinal (char[][] tableroUsuario, char[][] tableroMaquina, int filas, int columnas) {
 		
 		// Imprimir posiciones numéricas
 		System.out.print("     ");
