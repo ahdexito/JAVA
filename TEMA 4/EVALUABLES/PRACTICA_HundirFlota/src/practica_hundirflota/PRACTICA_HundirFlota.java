@@ -25,33 +25,33 @@ public class PRACTICA_HundirFlota {
 				
 		switch (MenuModoJuego()) {
 		// Generar partida fácil
-		case 1 -> {
+		case 1: 
 			intentos = 50; filas = 10; columnas = 10;
 			lanchas = 5; buques = 3; acorazados = 1; portaaviones = 1;
 			
 			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
-			}
+			break;
 		// General partida medio
-		case 2 -> {
+		case 2:
 			intentos = 30; filas = 10; columnas = 10;
 			lanchas = 2; buques = 1; acorazados = 1; portaaviones = 1;
 			
 			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
-			}
+			break;
 		// Generar partida difícil
-		case 3 -> {
+		case 3:
 			intentos = 10; filas = 10; columnas = 10;
 			lanchas = 1; buques = 1; acorazados = 0; portaaviones = 0;
 			
 			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
-			}
+			break;
 		// Generar partida personalizada
-		case 4 -> {
+		case 4:
 			int[] valores = Personalizada();
 
 			JugarPartida(valores[0], valores[1], valores[2],
 					valores[3], valores[4], valores[5], valores[6]);
-			}
+			break;
 		}
 	}
 	
@@ -209,9 +209,9 @@ public class PRACTICA_HundirFlota {
 	public static int[] RestarIntentos_Flota (int tirada, int intentos, int flota) {
 				
 		switch (tirada) {
-			case 1 -> flota--;
-			case 2 -> intentos--;
-			default -> System.out.println("\n" + ROJO + "Ya has disparado en esa posición." + RESET);
+			case 1: flota--; break;
+			case 2: intentos--; break;
+			default: System.out.println("\n" + ROJO + "Ya has disparado en esa posición." + RESET); break;
 		}
 			
 		System.out.println("\nIntentos restantes: " + MORADO + intentos + RESET);
@@ -463,10 +463,10 @@ public class PRACTICA_HundirFlota {
 				char celda = tablero[i][j];
 				
 				switch (celda) {
-					case VACIO -> System.out.print(celda + "  ");
-					case AGUA -> System.out.print(CIAN + celda + "  " + RESET);
-					case TOCADO -> System.out.print(VERDE + celda + "  " + RESET);
-					default -> System.out.print(celda + "  ");
+					case VACIO: System.out.print(celda + "  "); break;
+					case AGUA: System.out.print(CIAN + celda + "  " + RESET); break;
+					case TOCADO: System.out.print(VERDE + celda + "  " + RESET); break;
+					default: System.out.print(celda + "  "); break;
 				}
 			}
 			System.out.print("\n");
