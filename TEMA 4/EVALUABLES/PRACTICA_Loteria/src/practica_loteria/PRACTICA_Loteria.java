@@ -18,9 +18,9 @@ public class PRACTICA_Loteria {
 			
 			System.out.print(""
 				   + AMARILLO + "$$$ LOTERÍAS Y APUESTAS DEL ESTADO $$$\n\n" + RESET
-				   + VERDE +	 "    a) La Primitiva (1€)\n" + RESET
-				   + ROJO +	 "    b) La Quiniela\n" + RESET
-				   + CIAN +	 "    c) Lotería Nacional\n\n" + RESET
+				   + VERDE + "    1) La Primitiva (1€)\n" + RESET
+				   + ROJO + "    2) La Quiniela\n" + RESET
+				   + CIAN + "    3) Lotería Nacional\n\n" + RESET
 				   +			 "Selecciona una opcion: ");
 			
 			opcion = sc.nextInt();
