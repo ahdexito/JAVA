@@ -43,31 +43,35 @@ public class PRACTICA_Loteria {
 		LocalDate hoy = LocalDate.now();
 		LocalDate nextSorteo;
 		double gasto = 0;
+		String titulo;
 		
 		switch (opcion) {
 				case 1:
 					LimpiarConsola();
-					System.out.println(VERDE + "    ### LA PRIMITIVA ###" + RESET + "\n");
+					titulo = VERDE + "    ### LA PRIMITIVA ###" + RESET;
 					nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY));
-					InfoNextSorteo(hoy, nextSorteo);
+					InfoNextSorteo(hoy, nextSorteo, titulo);
 					ApostarPrimitiva();
 					gasto = 1;
 					break;
+					
 				case 2:
 					LimpiarConsola();
-					System.out.println(ROJO + "    ### LA QUINIELA ###" + RESET + "\n");
+					titulo = ROJO + "    ### LA QUINIELA ###" + RESET;
 					nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
-					InfoNextSorteo(hoy, nextSorteo);
+					InfoNextSorteo(hoy, nextSorteo, titulo);
 					gasto = 0.5 * ApostarQuiniela();
 					break;
+					
 				case 3:
 					LimpiarConsola();
-					System.out.println(CIAN + "    ### LOTERÍA NACIONAL ###" + RESET + "\n");
+					titulo = CIAN + "    ### LOTERÍA NACIONAL ###" + RESET;
 					nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY));
-					InfoNextSorteo(hoy, nextSorteo);
+					InfoNextSorteo(hoy, nextSorteo, titulo);
 					ApostarLoteria();
 					gasto = 12;
 					break;
+					
 				case 0:
 					System.out.print(MORADO + "\nOPERACIONES GUARDADAS." + RESET + "\n\n    > SALIR " + MORADO + "[ENTER]" + RESET + " <");
 					sc.nextLine();
@@ -78,7 +82,7 @@ public class PRACTICA_Loteria {
 	}
 	
 	// MOSTRAR INFORMACIÓN DEL PRÓXIMO JUEGO
-	public static void InfoNextSorteo (LocalDate hoy, LocalDate nextSorteo) {
+	public static void InfoNextSorteo (LocalDate hoy, LocalDate nextSorteo, String juego) {
 					
 		// Crear patrón de formato y en español
 		DateTimeFormatter nextSorteoFormat =
@@ -89,13 +93,15 @@ public class PRACTICA_Loteria {
 		// Contar cuánto falta hasta la fecha, y guardar días restantes en un entero
 		Period hastaNextSorteo = hoy.until(nextSorteo);
 		int diasFaltan = hastaNextSorteo.getDays();
+		
+		System.out.println(juego + "\n");
 
 		// Imprimir el siguiente día del sorteo
 		if (hoy == nextSorteo) System.out.println("El sorteo es " + MORADO + "HOY" + RESET);
 		else System.out.println("El próximo sorteo será el día: " + MORADO + nextSorteo.format(nextSorteoFormat) + RESET);
 
 		// Imprimir días restantes para el siguiente sorteo, si no es hoy
-		if (hoy != nextSorteo) System.out.println("Quedan " + CIAN + diasFaltan + RESET + " días hasta el siguiente sorteo.\n");
+		if (hoy != nextSorteo) System.out.println("Quedan " + MORADO + diasFaltan + RESET + " días hasta el siguiente sorteo.\n");
 	}
 	
 	// REALIZAR APUESTA DE LA PRIMITIVA
@@ -172,14 +178,16 @@ public class PRACTICA_Loteria {
 		
 		int[][] apuestas = new int[entrada][15];
 		
-		for (int i=0; i<apuestas.length; i++) {
-			for (int j=0; j<apuestas[0].length; j++) {
-				apuestas[i][j] = (int) (Math.random() * 3);
+		// Rellenar cada fila de la matriz con números aleatorios entre el 0 y el 2 incluidos
+		for (int[] apuesta : apuestas) {
+			for (int j = 0; j<apuestas[0].length; j++) {
+				apuesta[j] = (int) (Math.random() * 3);
 			}
 		}
 		
 		System.out.print("\n\n");
 		
+		// Imprimir apuestas. En caso de ser 0, imprime X
 		for (int i=0; i<apuestas.length; i++) {
 			System.out.print("Apuesta " + CIAN + (i + 1) + RESET + ": ");
 			
@@ -202,7 +210,7 @@ public class PRACTICA_Loteria {
 		// Generar número aleatorio y convertirlo en String
 		int random = (int)(Math.random() * 10000);		
 		String entrada, randomStr = String.valueOf(random);
-		
+				
 		// Añadir ceros a la izquierda a la cadena de texto hasta que tenga 5 cifras
 		if (randomStr.length() < 5) {
 			do {				
@@ -221,23 +229,32 @@ public class PRACTICA_Loteria {
 			System.out.print("\nIntroduce número: ");
 			entrada = sc.nextLine();
 			
-			try {
-				if (!entrada.equals(String.valueOf('\10'))) Integer.parseInt(entrada);
+			// Recoger error de entrada que no sea número entero o salto de linea
+			if (!"".equals(entrada)) {
+				try {				
+					Integer.parseInt(entrada);
+					repetir = false;
+				} 
+				catch (NumberFormatException e) {
+					LimpiarConsola();
+					System.out.println(ROJO + "[ERROR DE ENTRADA]: Solo se permiten caracteres numéricos.\n" + RESET);
+				}
+			}
+			else {
 				repetir = false;
-			} 
-			
-			catch (Exception e) {
-				System.out.println(ROJO + "    ERROR DE ENTRADA\n" + RESET);
+				System.out.println("    ");
 			}
 			
-			
-			if (entrada.length() > 3) System.out.println(ROJO + "    ERROR DE ENTRADA\n" + RESET);
+			if (entrada.length() > 3) {
+				LimpiarConsola();
+				System.out.println(ROJO + "[ERROR DE ENTRADA]: No se permiten más de 3 cifras.\n" + RESET);
+			}
 		} while (entrada.length() > 3 || repetir);	
 		
 		// Concatenar el número aleatorio con la terminación elegida, seleccionando la parte del aleatorio que no se ha elegido
 		entrada = randomStr.substring(0, (5 - entrada.length())) + entrada;
 		
-		System.out.println("\n\nNUMERO ELEGIDO: " + MORADO + entrada + RESET);
+		System.out.println("\n\nNÚMERO ELEGIDO: " + MORADO + entrada + RESET);
 		System.out.print("\n\n  > CONTINUAR " + MORADO + "[ENTER]" + RESET + " <");
 		sc.nextLine();
 	}
