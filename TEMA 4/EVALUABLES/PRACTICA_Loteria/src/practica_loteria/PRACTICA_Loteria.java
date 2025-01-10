@@ -65,6 +65,7 @@ public class PRACTICA_Loteria {
 					System.out.println(CIAN + "    ### LOTERÍA NACIONAL ###" + RESET + "\n");
 					nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY));
 					InfoNextSorteo(hoy, nextSorteo);
+					ApostarLoteria();
 					gasto = 12;
 					break;
 				case 0:
@@ -93,8 +94,8 @@ public class PRACTICA_Loteria {
 		if (hoy == nextSorteo) System.out.println("El sorteo es " + MORADO + "HOY" + RESET);
 		else System.out.println("El próximo sorteo será el día: " + MORADO + nextSorteo.format(nextSorteoFormat) + RESET);
 
-		// Imprimir días restantes para el siguiente sorteo
-		System.out.println("Quedan " + MORADO + diasFaltan + RESET + " días hasta el siguiente sorteo.\n");
+		// Imprimir días restantes para el siguiente sorteo, si no es hoy
+		if (hoy != nextSorteo) System.out.println("Quedan " + CIAN + diasFaltan + RESET + " días hasta el siguiente sorteo.\n");
 	}
 	
 	// REALIZAR APUESTA DE LA PRIMITIVA
@@ -197,11 +198,48 @@ public class PRACTICA_Loteria {
 	
 	// REALIZAR APUESTA DE LOTERÍA NACIONAL
 	public static void ApostarLoteria () {
-		int[] numeros = new int[5];
 		
-		System.out.println("Elige la terminación (hasta 3 cifras)");
-		System.out.print("(" + MORADO + "ENTER" + RESET + ") si lo quieres aleatorio: ");
+		// Generar número aleatorio y convertirlo en String
+		int random = (int)(Math.random() * 10000);		
+		String entrada, randomStr = String.valueOf(random);
 		
+		// Añadir ceros a la izquierda a la cadena de texto hasta que tenga 5 cifras
+		if (randomStr.length() < 5) {
+			do {				
+				randomStr = '0' + randomStr;
+			} while (randomStr.length() < 5);
+		}
+				
+		boolean repetir;
+		
+		// Solicitar la terminación 
+		do {
+			repetir = true;
+			
+			System.out.println("\nSi quieres elegir la " + MORADO + "terminación" + RESET + ", escribe debajo (" + MORADO + "hasta 3 cifras" + RESET + ").");
+			System.out.println("    > En caso contrario, pulsa " + MORADO + "[ENTER]" + RESET + " <");
+			System.out.print("\nIntroduce número: ");
+			entrada = sc.nextLine();
+			
+			try {
+				if (!entrada.equals(String.valueOf('\10'))) Integer.parseInt(entrada);
+				repetir = false;
+			} 
+			
+			catch (Exception e) {
+				System.out.println(ROJO + "    ERROR DE ENTRADA\n" + RESET);
+			}
+			
+			
+			if (entrada.length() > 3) System.out.println(ROJO + "    ERROR DE ENTRADA\n" + RESET);
+		} while (entrada.length() > 3 || repetir);	
+		
+		// Concatenar el número aleatorio con la terminación elegida, seleccionando la parte del aleatorio que no se ha elegido
+		entrada = randomStr.substring(0, (5 - entrada.length())) + entrada;
+		
+		System.out.println("\n\nNUMERO ELEGIDO: " + MORADO + entrada + RESET);
+		System.out.print("\n\n  > CONTINUAR " + MORADO + "[ENTER]" + RESET + " <");
+		sc.nextLine();
 	}
 	
 	// LIMPIAR CONSOLA CON SALTOS DE LINEA
