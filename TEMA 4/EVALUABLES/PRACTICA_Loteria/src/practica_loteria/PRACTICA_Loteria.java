@@ -40,24 +40,35 @@ public class PRACTICA_Loteria {
 	// EJECUTAR LA OPCIÓN SELECCIONADA DEL MENÚ
 	public static double EjecutarOpcionMenu(int opcion) {
 		
-		var hoy = LocalDate.now();
+		LocalDate hoy = LocalDate.now();
+		LocalDate nextSorteo;
 		double gasto = 0;
 		
 		switch (opcion) {
 				case 1:
 					LimpiarConsola();
-					InfoPrimitiva(hoy);
+					System.out.println(VERDE + "    ### LA PRIMITIVA ###" + RESET + "\n");
+					nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY));
+					InfoNextSorteo(hoy, nextSorteo);
 					ApostarPrimitiva();
 					gasto = 1;
 					break;
 				case 2:
-					gasto = 0.5;
+					LimpiarConsola();
+					System.out.println(ROJO + "    ### LA QUINIELA ###" + RESET + "\n");
+					nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
+					InfoNextSorteo(hoy, nextSorteo);
+					gasto = 0.5 * ApostarQuiniela();
 					break;
 				case 3:
+					LimpiarConsola();
+					System.out.println(CIAN + "    ### LOTERÍA NACIONAL ###" + RESET + "\n");
+					nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY));
+					InfoNextSorteo(hoy, nextSorteo);
 					gasto = 12;
 					break;
 				case 0:
-					System.out.print(MORADO + "\nOPERACIONES GUARDADAS." + RESET + "\n\nSALIR " + MORADO + "[ENTER]" + RESET);
+					System.out.print(MORADO + "\nOPERACIONES GUARDADAS." + RESET + "\n\n    > SALIR " + MORADO + "[ENTER]" + RESET + " <");
 					sc.nextLine();
 					System.out.print("\n");
 					break;
@@ -65,13 +76,9 @@ public class PRACTICA_Loteria {
 		return gasto;
 	}
 	
-	// MOSTRAR INFORMACIÓN DEL PRÓXIMO SORTEO DE LA PRIMITIVA
-	public static void InfoPrimitiva (LocalDate hoy) {
-		System.out.println(VERDE + "    ### LA PRIMITIVA ###" + RESET + "\n");
+	// MOSTRAR INFORMACIÓN DEL PRÓXIMO JUEGO
+	public static void InfoNextSorteo (LocalDate hoy, LocalDate nextSorteo) {
 					
-		// Variable fecha que almacena próximo jueves. Tiene en cuenta si jueves es hoy
-		LocalDate nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY));
-
 		// Crear patrón de formato y en español
 		DateTimeFormatter nextSorteoFormat =
 			   DateTimeFormatter
@@ -106,7 +113,7 @@ public class PRACTICA_Loteria {
 		
 		System.out.println("\nComplementario: " + MORADO + numeros[6] + RESET + "    Reintegro: " + MORADO + numeros[7] + RESET + "\n\n");
 		
-		System.out.print("CONTINUAR " + MORADO + "[ENTER]" + RESET);
+		System.out.print("  > CONTINUAR " + MORADO + "[ENTER]" + RESET + " <");
 		sc.nextLine();
 	}
 	
@@ -146,6 +153,55 @@ public class PRACTICA_Loteria {
 			// Repetir bucle hasta que no se genere un número repetido	
 			} while (repetido);
 		return numeros;
+	}
+	
+	// REALIZAR APUESTA DE LA QUINIELA
+	public static int ApostarQuiniela () {
+		
+		int entrada;
+		
+		do {
+			System.out.print("\n¿Cuántas apuestas quieres? " + MORADO + "(2 - 8)" + RESET + ": ");
+			entrada = sc.nextInt();
+			sc.nextLine();
+			
+			if (entrada < 2 || entrada > 8) System.out.println(ROJO + "Número de apuestas incorrecto.\n" + RESET);
+			
+		} while (entrada < 2 || entrada > 8);
+		
+		int[][] apuestas = new int[entrada][15];
+		
+		for (int i=0; i<apuestas.length; i++) {
+			for (int j=0; j<apuestas[0].length; j++) {
+				apuestas[i][j] = (int) (Math.random() * 3);
+			}
+		}
+		
+		System.out.print("\n\n");
+		
+		for (int i=0; i<apuestas.length; i++) {
+			System.out.print("Apuesta " + CIAN + (i + 1) + RESET + ": ");
+			
+			for (int j=0; j<apuestas[0].length; j++) {
+				if (apuestas[i][j] == 0) System.out.print(MORADO + "X " + RESET);
+				else System.out.print(MORADO + apuestas[i][j] + " " + RESET);
+			}
+			System.out.print("\n");
+		}
+		
+		System.out.print("\n\n  > CONTINUAR " + MORADO + "[ENTER]" + RESET + " <");
+		sc.nextLine();
+		
+		return entrada;
+	}
+	
+	// REALIZAR APUESTA DE LOTERÍA NACIONAL
+	public static void ApostarLoteria () {
+		int[] numeros = new int[5];
+		
+		System.out.println("Elige la terminación (hasta 3 cifras)");
+		System.out.print("(" + MORADO + "ENTER" + RESET + ") si lo quieres aleatorio: ");
+		
 	}
 	
 	// LIMPIAR CONSOLA CON SALTOS DE LINEA
