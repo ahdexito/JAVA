@@ -9,33 +9,45 @@ import java.util.Locale;
 public class PRACTICA_Loteria {
 	public static Scanner sc = new Scanner (System.in);
 	
+	// ***FUNCIÓN MAIN***
      public static void main(String[] args) {
-		
-		int opcion;
+		int opcion = -1;
 		double gastoTotal = 0;
-		
-          do {
-			LimpiarConsola();
-						
+
+		do {
 			System.out.print(""
-				   + AMARILLO + "$$$ LOTERÍAS Y APUESTAS DEL ESTADO $$$\n\n" + RESET
-				   + VERDE + "    1) La Primitiva \n" + RESET
-				   + ROJO + "    2) La Quiniela\n" + RESET
-				   + CIAN + "    3) Lotería Nacional\n" + RESET
-				   + MORADO + "    0) Terminar\n\n" + RESET
-				   +			 "Selecciona una opcion: ");
-			
-			opcion = sc.nextInt();
-			sc.nextLine();
-			
-			System.out.print("\n");
-				   
+				+ AMARILLO + "$$$ LOTERÍAS Y APUESTAS DEL ESTADO $$$\n\n" + RESET
+				+ VERDE + "    1) La Primitiva \n" + RESET
+				+ ROJO + "    2) La Quiniela\n" + RESET
+				+ CIAN + "    3) Lotería Nacional\n" + RESET
+				+ MORADO + "    0) Terminar\n\n" + RESET);
+
+			while (true) {
+				System.out.print("Selecciona una opción: ");
+
+				try {
+					opcion = sc.nextInt();
+					sc.nextLine();
+					System.out.print("\n");
+
+					if (opcion < 0 || opcion > 3)
+						System.out.println(ROJO + "[ERROR]: Número fuera de rango.\n" + RESET);
+
+					else break;
+				}
+
+				catch (Exception e) {
+					System.out.println("\n" + ROJO + "[ERROR]: Solo se permiten carácteres numéricos.\n" + RESET);
+					sc.nextLine();
+				}
+			}
+
 			gastoTotal += EjecutarOpcionMenu(opcion);
-			
+
 		} while (opcion != 0);
-		
-		System.out.println("El total a pagar es de: " + MORADO + gastoTotal + "€" + RESET);
-     }
+
+			System.out.println("El total a pagar es de: " + MORADO + gastoTotal + "€" + RESET);
+	}
 	
 	// EJECUTAR LA OPCIÓN SELECCIONADA DEL MENÚ
 	public static double EjecutarOpcionMenu(int opcion) {
@@ -47,7 +59,6 @@ public class PRACTICA_Loteria {
 		
 		switch (opcion) {
 				case 1:
-					LimpiarConsola();
 					titulo = VERDE + "    ### LA PRIMITIVA ###" + RESET;
 					nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY));
 					InfoNextSorteo(hoy, nextSorteo, titulo);
@@ -56,7 +67,6 @@ public class PRACTICA_Loteria {
 					break;
 					
 				case 2:
-					LimpiarConsola();
 					titulo = ROJO + "    ### LA QUINIELA ###" + RESET;
 					nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
 					InfoNextSorteo(hoy, nextSorteo, titulo);
@@ -64,7 +74,6 @@ public class PRACTICA_Loteria {
 					break;
 					
 				case 3:
-					LimpiarConsola();
 					titulo = CIAN + "    ### LOTERÍA NACIONAL ###" + RESET;
 					nextSorteo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY));
 					InfoNextSorteo(hoy, nextSorteo, titulo);
@@ -73,9 +82,9 @@ public class PRACTICA_Loteria {
 					break;
 					
 				case 0:
-					System.out.print(MORADO + "\nOPERACIONES GUARDADAS." + RESET + "\n\n    > SALIR " + MORADO + "[ENTER]" + RESET + " <");
+					System.out.print(MORADO + "\nOPERACIONES GUARDADAS." + RESET + "\n\n\n    > SALIR " + MORADO + "[ENTER]" + RESET + " <");
 					sc.nextLine();
-					System.out.print("\n");
+					System.out.print("\n\n");
 					break;
 			}
 		return gasto;
@@ -120,7 +129,7 @@ public class PRACTICA_Loteria {
 		
 		System.out.println("\nComplementario: " + MORADO + numeros[6] + RESET + "    Reintegro: " + MORADO + numeros[7] + RESET + "\n\n");
 		
-		System.out.print("  > CONTINUAR " + MORADO + "[ENTER]" + RESET + " <");
+		System.out.println("  > CONTINUAR " + MORADO + "[ENTER]" + RESET + " <\n");
 		sc.nextLine();
 	}
 	
@@ -168,12 +177,21 @@ public class PRACTICA_Loteria {
 		int entrada;
 		
 		do {
-			System.out.print("\n¿Cuántas apuestas quieres? " + MORADO + "(2 - 8)" + RESET + ": ");
-			entrada = sc.nextInt();
-			sc.nextLine();
+			try {
+				System.out.print("\n¿Cuántas apuestas quieres? " + MORADO + "(2 - 8)" + RESET + ": ");
+				entrada = sc.nextInt();
+				sc.nextLine();
+
+				if (entrada < 2 || entrada > 8) {
+				   System.out.println("\n" + ROJO + "[ERROR]: Número fuera de rango." + RESET);
+				}
+			} 
 			
-			if (entrada < 2 || entrada > 8) System.out.println(ROJO + "Número de apuestas incorrecto.\n" + RESET);
-			
+			catch (Exception e) {
+			    System.out.println("\n" + ROJO + "[ERROR]: Solo se permiten carácteres numéricos." + RESET);
+			    sc.nextLine();
+			    entrada = 0;
+			}
 		} while (entrada < 2 || entrada > 8);
 		
 		int[][] apuestas = new int[entrada][15];
@@ -198,7 +216,7 @@ public class PRACTICA_Loteria {
 			System.out.print("\n");
 		}
 		
-		System.out.print("\n\n  > CONTINUAR " + MORADO + "[ENTER]" + RESET + " <");
+		System.out.print("\n\n  > CONTINUAR " + MORADO + "[ENTER]" + RESET + " <\n\n");
 		sc.nextLine();
 		
 		return entrada;
@@ -236,8 +254,7 @@ public class PRACTICA_Loteria {
 					repetir = false;
 				} 
 				catch (NumberFormatException e) {
-					LimpiarConsola();
-					System.out.println(ROJO + "[ERROR DE ENTRADA]: Solo se permiten caracteres numéricos.\n" + RESET);
+					System.out.println("\n" + ROJO + "[ERROR]: Solo se permiten caracteres numéricos." + RESET);
 				}
 			}
 			else {
@@ -246,8 +263,7 @@ public class PRACTICA_Loteria {
 			}
 			
 			if (entrada.length() > 3) {
-				LimpiarConsola();
-				System.out.println(ROJO + "[ERROR DE ENTRADA]: No se permiten más de 3 cifras.\n" + RESET);
+				System.out.println("\n" + ROJO + "[ERROR]: No se permiten más de 3 cifras." + RESET);
 			}
 		} while (entrada.length() > 3 || repetir);	
 		
@@ -255,20 +271,10 @@ public class PRACTICA_Loteria {
 		entrada = randomStr.substring(0, (5 - entrada.length())) + entrada;
 		
 		System.out.println("\n\nNÚMERO ELEGIDO: " + MORADO + entrada + RESET);
-		System.out.print("\n\n  > CONTINUAR " + MORADO + "[ENTER]" + RESET + " <");
+		System.out.print("\n\n  > CONTINUAR " + MORADO + "[ENTER]" + RESET + " <\n\n");
 		sc.nextLine();
 	}
 	
-	// LIMPIAR CONSOLA CON SALTOS DE LINEA
-	public static void LimpiarConsola() {
-		for (int i=0; i<50; i++){
-			System.out.println("");
-		}
-	}
-	
 	// VARIABLES GLOBALES PARA DAR COLOR AL TEXTO DE SALIDA POR CONSOLA
-	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m", AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
-	
+	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m", AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";	
 }
-
-

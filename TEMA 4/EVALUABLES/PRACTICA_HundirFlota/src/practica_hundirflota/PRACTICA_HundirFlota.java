@@ -4,122 +4,126 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class PRACTICA_HundirFlota {
-	
-	public static Scanner sc = new Scanner (System.in);
-	
+
+	public static Scanner sc = new Scanner(System.in);
+
 	// VARIABLES GLOBALES DEL JUEGO
 	public static final char LETRAS = 'A', VACIO = '~', TOCADO = 'X', AGUA = 'O',
-		LANCHA = 'L', BUQUE = 'B', ACORAZADO = 'Z', PORTAAVION = 'P';
-	
+		   LANCHA = 'L', BUQUE = 'B', ACORAZADO = 'Z', PORTAAVION = 'P';
+
 	// VARIABLES GLOBALES PARA DAR COLOR AL TEXTO DE SALIDA POR CONSOLA
 	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
-	
-	// ***FUNCIÓN MAIN***
-    public static void main(String[] args) {
-		
-		int intentos, filas, columnas, lanchas, buques, acorazados, portaaviones;
-				
-		switch (MenuModoJuego()) {
-		// Generar partida fácil
-		case 1: 
-			intentos = 50; filas = 10; columnas = 10;
-			lanchas = 5; buques = 3; acorazados = 1; portaaviones = 1;
-			
-			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
-			break;
-		// General partida medio
-		case 2:
-			intentos = 30; filas = 10; columnas = 10;
-			lanchas = 2; buques = 1; acorazados = 1; portaaviones = 1;
-			
-			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
-			break;
-		// Generar partida difícil
-		case 3:
-			intentos = 10; filas = 10; columnas = 10;
-			lanchas = 1; buques = 1; acorazados = 0; portaaviones = 0;
-			
-			JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
-			break;
-		// Generar partida personalizada
-		case 4:
-			int[] valores = Personalizada();
 
-			JugarPartida(valores[0], valores[1], valores[2],
-					valores[3], valores[4], valores[5], valores[6]);
-			break;
+	// ***FUNCIÓN MAIN***
+	public static void main(String[] args) {
+
+		int intentos, filas, columnas, lanchas, buques, acorazados, portaaviones;
+
+		switch (MenuModoJuego()) {
+			// Generar partida fácil
+			case 1:
+				System.out.print(""
+					   + AMARILLO + "========================================\n"
+					   + MORADO + "######       " + CIAN + "PARTIDA FÁCIL" + MORADO + "       ######\n"
+					   + AMARILLO + "========================================\n");
+				
+				intentos = 50; filas = 10; columnas = 10; lanchas = 5; buques = 3; acorazados = 1; portaaviones = 1;
+
+				JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
+				break;
+				
+			// General partida medio
+			case 2:
+				System.out.print(""
+					   + AMARILLO + "========================================\n"
+					   + MORADO + "######       " + CIAN + "PARTIDA MEDIO" + MORADO + "       ######\n"
+					   + AMARILLO + "========================================\n");
+				
+				intentos = 30; filas = 10; columnas = 10; lanchas = 2; buques = 1; acorazados = 1; portaaviones = 1;
+
+				JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
+				break;
+				
+			// Generar partida difícil
+			case 3:
+				System.out.print(""
+					   + AMARILLO + "========================================\n"
+					   + MORADO + "######      " + CIAN + "PARTIDA DIFÍCIL" + MORADO + "      ######\n"
+					   + AMARILLO + "========================================\n");
+				
+				intentos = 10; filas = 10; columnas = 10; lanchas = 1; buques = 1; acorazados = 0; portaaviones = 0;
+
+				JugarPartida(intentos, filas, columnas, lanchas, buques, acorazados, portaaviones);
+				break;
+				
+			// Generar partida personalizada
+			case 4:
+				System.out.print(""
+					   + AMARILLO + "========================================\n"
+					   + MORADO + "######   " + CIAN + "PARTIDA PERSONALIZADA" + MORADO + "   ######\n"
+					   + AMARILLO + "========================================\n");
+				
+				int[] valores = Personalizada();
+
+				JugarPartida(valores[0], valores[1], valores[2], valores[3], valores[4], valores[5], valores[6]);
+				break;
 		}
 	}
-	
+
 	// SOLICITAR VALORES DE PARTIDA PERSONALIZADA
-	public static int[] Personalizada () {
+	public static int[] Personalizada() {
 		
-		System.out.print(AMARILLO + "Introduce cantidad de intentos: " + RESET);
-		int intentos = sc.nextInt();
 		System.out.print("\n");
-		System.out.print(AMARILLO + "Introduce cantidad de filas: " + RESET);
-		int filas = sc.nextInt();
+		int intentos = VerificarEntrada(AMARILLO + "Introduce cantidad de intentos: " + RESET);
 		
-		System.out.print(AMARILLO + "Introduce cantidad de columnas: " + RESET);
-		int columnas = sc.nextInt();
 		System.out.print("\n");
-		System.out.print(AMARILLO + "Introduce cantidad de lanchas: " + RESET);
-		int lanchas = sc.nextInt();
+		int filas = VerificarEntrada(AMARILLO + "Introduce cantidad de filas: " + RESET);
+
+		int columnas = VerificarEntrada(AMARILLO + "Introduce cantidad de columnas: " + RESET);
 		
-		System.out.print(AMARILLO + "Introduce cantidad de buques: " + RESET);
-		int buques = sc.nextInt();
-		
-		System.out.print(AMARILLO + "Introduce cantidad de acorazados: " + RESET);
-		int acorazados = sc.nextInt();
-		
-		System.out.print(AMARILLO + "Introduce cantidad de portaaviones: " + RESET);
-		int portaaviones = sc.nextInt();
-		
-		sc.nextLine();
-		for (int i=0; i<50; i++) {
-			System.out.println("");
-		}
-		
+		System.out.print("\n");
+		int lanchas = VerificarEntrada(AMARILLO + "Introduce cantidad de lanchas: " + RESET);
+
+		int buques = VerificarEntrada(AMARILLO + "Introduce cantidad de buques: " + RESET);
+
+		int acorazados = VerificarEntrada(AMARILLO + "Introduce cantidad de acorazados: " + RESET);
+
+		int portaaviones = VerificarEntrada(AMARILLO + "Introduce cantidad de portaaviones: " + RESET);
+
 		int[] valores = {intentos, filas, columnas, lanchas, buques, acorazados, portaaviones};
-		
+
 		return valores;
 	}
-	
-	public static int MenuModoJuego () {
-		
+
+	public static int MenuModoJuego() {
+
 		int opcion;
-		
-		// Saltos de linea para simular nueva página por consola 
-		for (int i=0; i<50; i++) {
-			System.out.println("");
-		}
-		
+
 		do {
 			System.out.print(""
-			+ AMARILLO +	"            HUNDIR LA FLOTA\n"
-			+ AMARILLO +	"========================================\n"
-			+ MORADO +		"   1" + RESET + ". Fácil\n"
-			+ MORADO +		"   2" + RESET + ". Medio\n"
-			+ MORADO +		"   3" + RESET + ". Difícil\n"
-			+ MORADO +		"   4" + RESET + ". Personalizado\n\n"
-			+ AMARILLO +	"Elegir dificultad: ");
-			
+				   + AMARILLO + "========================================\n"
+				   + MORADO + "######      " + CIAN + "HUNDIR LA FLOTA" + MORADO + "      ######\n"
+				   + AMARILLO + "========================================\n\n"
+				   + MORADO + "   1" + RESET + ". Fácil\n"
+				   + MORADO + "   2" + RESET + ". Medio\n"
+				   + MORADO + "   3" + RESET + ". Difícil\n"
+				   + MORADO + "   4" + RESET + ". Personalizado\n\n"
+				   + AMARILLO + "Elegir dificultad: ");
+
 			// Recoger errores de entrada para la entrada de opción
 			try {
 				opcion = sc.nextInt();
 				sc.nextLine();
-				
+
 				// Error por número fuera de rango
 				if (opcion > 0 && opcion < 5) {
 					System.out.print("\n");
 					return opcion;
-				}
+				} 
 				
-				else {
-					System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "LA OPCIÓN DEBE SER -> (1, 2, 3 o 4).\n");
-				}
+				else System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "LA OPCIÓN DEBE SER -> (1, 2, 3 o 4).\n");
 			} 
-			
+
 			// Error por entrada no numérica
 			catch (Exception e) {
 				System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "LA OPCIÓN DEBE SER -> (1, 2, 3 o 4).\n");
@@ -127,418 +131,465 @@ public class PRACTICA_HundirFlota {
 			}
 		} while (true);
 	}
-	
+
 	// JUGAR PARTIDA
-	public static void JugarPartida (int intentos, int filas, int columnas, int lanchas, int buques, int acorazados, int portaaviones) {
-		
+	public static void JugarPartida(int intentos, int filas, int columnas, int lanchas, int buques, int acorazados, int portaaviones) {
+
 		char[][] tableroUsuario = CrearTablero(filas, columnas);
 		char[][] tableroMaquina = CrearTablero(filas, columnas);
 		int totalIntentos = intentos;
-		
+
 		// Insertar barcos en el tablero, y recoger array de int con la cantidad de no generados
 		int[] noGenerados = InsertarBarcos(tableroMaquina, lanchas, buques, acorazados, portaaviones, filas, columnas);
-		
+
 		// Restar cantidad de barcos iniciales con los no generados
-		lanchas -= noGenerados[0]; buques -= noGenerados[1]; acorazados -= noGenerados[2]; portaaviones -= noGenerados[3];
-		
+		lanchas -= noGenerados[0];
+		buques -= noGenerados[1];
+		acorazados -= noGenerados[2];
+		portaaviones -= noGenerados[3];
+
 		// Sumar cantidad de disparos por acertar
 		int flota = (lanchas + (buques * 3) + (acorazados * 4) + (portaaviones * 5));
-		
+
 		MensajeBarcosRestantes(intentos, flota, lanchas, buques, acorazados, portaaviones);
-		
+
 		do {
 			ImprimirTablero(tableroUsuario, filas, columnas);
 			System.out.print("\n");
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////// ¡IMPORTANTE! ///////////////////////////////////////////////////////
+//////////////// DESCOMENTAR LA FUNCIÓN IMPRIMIR_TABLERO DE ABAJO PARA PRUEBAS ////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 			
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////// ¡IMPORTANTE! //////////////////////////////////////////////////////////////
-//////////////// DEBAJO IMPRIMIR TABLERO_MÁQUINA PARA PRUEBAS /////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//ImprimirTablero(tableroMaquina, filas, columnas);
 			
 			int[] coordenadas = SolicitarDisparo(filas, columnas);
-			
-			// Saltos de linea para simular nueva página por consola 
-			for (int i=0; i<50; i++) {
-				System.out.println("");
-			}
-			
-			int[] intentos_flota = RestarIntentos_Flota
-				(VerificarDisparo(coordenadas, tableroUsuario, tableroMaquina),
-					intentos, flota);
-			
-			intentos = intentos_flota[0]; flota = intentos_flota[1];
-			
+
+			int[] intentos_flota = RestarIntentos_Flota(VerificarDisparo(coordenadas, tableroUsuario, tableroMaquina),
+				   intentos, flota);
+
+			intentos = intentos_flota[0];
+			flota = intentos_flota[1];
+
 		} while (intentos > 0 && flota > 0);
-		
+
 		ResultadoPartida(tableroUsuario, tableroMaquina, intentos, totalIntentos, flota, filas, columnas);
 	}
-	
+
 	// IMPRIMIR MENSAJE DE BARCOS A ACERTAR
-	public static void MensajeBarcosRestantes (int intentos, int flota, int lanchas, int buques, int acorazados, int portaaviones) {
+	public static void MensajeBarcosRestantes(int intentos, int flota, int lanchas, int buques, int acorazados, int portaaviones) {
+
+		System.out.println(AMARILLO + "\nTienes " + MORADO + intentos + AMARILLO + " intentos para acertar:" + RESET);
 		
-		System.out.println(AMARILLO + "Tienes " + MORADO + intentos + AMARILLO + " intentos para acertar:" + RESET);
-		if (lanchas > 0) System.out.println("   - " + MORADO + lanchas + RESET + " lanchas (" + CIAN + "1x1" + RESET + ")");
-		if (buques > 0) System.out.println("   - " + MORADO + buques + RESET + " buques (" + CIAN + "3x1" + RESET + ")");
-		if (acorazados > 0) System.out.println("   - " + MORADO + acorazados + RESET + " acorazados (" + CIAN + "4x1" + RESET + ")");
-		if (portaaviones > 0) System.out.println("   - " + MORADO + portaaviones + RESET + " portaaviones (" + CIAN + "1x5" + RESET + ")");
-		System.out.println("\n" + AMARILLO + "En total debes acertar " + MORADO + flota + AMARILLO + " veces.\n");
+		if (lanchas > 0) System.out.println
+			("   - " + MORADO + lanchas + RESET + " lanchas (" + CIAN + "1x1" + RESET + ")");
+		
+		if (buques > 0) System.out.println
+			("   - " + MORADO + buques + RESET + " buques (" + CIAN + "3x1" + RESET + ")");
+		
+		if (acorazados > 0) System.out.println
+			("   - " + MORADO + acorazados + RESET + " acorazados (" + CIAN + "4x1" + RESET + ")");
+		
+		if (portaaviones > 0) System.out.println
+			("   - " + MORADO + portaaviones + RESET + " portaaviones (" + CIAN + "1x5" + RESET + ")");
+		
+		System.out.println("\n\n" + AMARILLO + "En total debes acertar " + MORADO + flota + AMARILLO + " veces.\n\n");
 	}
-	
+
 	// IMPRIMIR RESULTADO DE GANAR O PERDER PARTIDA
-	public static void ResultadoPartida (char[][] tableroUsuario, char[][] tableroMaquina, int intentos, int totalIntentos, int flota, int filas, int columnas) {
-		
+	public static void ResultadoPartida(char[][] tableroUsuario, char[][] tableroMaquina, int intentos, int totalIntentos, int flota, int filas, int columnas) {
+
 		if (flota == 0) {
 			System.out.println(VERDE + "¡VICTORIA!" + RESET);
 			System.out.println("Has hundido la flota en " + MORADO + (totalIntentos - intentos) + RESET + " intentos.\n");
-			
+
 			ImprimirTableroFinal(tableroUsuario, tableroMaquina, filas, columnas);
-		}
+		} 
 		
 		else {
 			ImprimirTablero(tableroUsuario, filas, columnas);
 			System.out.println("\n" + ROJO + "DERROTA..." + RESET);
 			System.out.println("Has agotado el número de intentos.\n");
-			
+
 			ImprimirTableroFinal(tableroUsuario, tableroMaquina, filas, columnas);
 		}
 		System.out.print("\n");
 	}
-	
-	// CREAR Y RELLENAR EL TABLERO DE "AGUA"
-	public static char[][] CrearTablero (int filas, int columnas) {
-		
+
+	// CREAR Y RELLENAR EL TABLERO DE AGUA
+	public static char[][] CrearTablero(int filas, int columnas) {
+
 		char[][] tablero = new char[filas][columnas];
-		
+
 		for (char[] tablero1 : tablero) {
 			Arrays.fill(tablero1, VACIO);
 		}
 		return tablero;
 	}
-	
+
 	// RESTAR INTENTOS Y/O CANTIDAD DE BARCOS
-	public static int[] RestarIntentos_Flota (int tirada, int intentos, int flota) {
-				
+	public static int[] RestarIntentos_Flota(int tirada, int intentos, int flota) {
+
 		switch (tirada) {
-			case 1: flota--; intentos--; break;
-			case 2: intentos--; break;
-			default: System.out.println("\n" + ROJO + "Ya has disparado en esa posición." + RESET); break;
+			case 1:
+				flota--;
+				intentos--;
+				break;
+			case 2:
+				intentos--;
+				break;
+			default:
+				System.out.println("\n" + ROJO + "Ya has disparado en esa posición." + RESET);
+				break;
 		}
-			
+
 		System.out.println("\nIntentos restantes: " + MORADO + intentos + RESET);
 		System.out.println("Flota restante: " + MORADO + flota + "\n");
-		
+
 		int[] intentos_flota = {intentos, flota};
 
 		return intentos_flota;
 	}
-	
+
 	// INSERTAR TODOS LOS BARCOS
-	public static int[] InsertarBarcos (char[][] tablero, int lanchas, int buques, int acorazados, int portaaviones, int filas, int columnas) {
-		
+	public static int[] InsertarBarcos(char[][] tablero, int lanchas, int buques, int acorazados, int portaaviones, int filas, int columnas) {
+
 		// Contadores de cada tipo para saber los que no se generan por falta de espacio
 		int contLanchas = lanchas, contBuques = buques, contAcorazados = acorazados, contPortaaviones = portaaviones;
-		
-		for (int i=0; i<lanchas; i++) {
+
+		for (int i = 0; i < lanchas; i++) {
 			if (ComprobarEspacioLibre(tablero, filas, columnas, 1, false)) {
 				GenerarLancha(tablero, filas, columnas);
 				contLanchas--;
-			}
+			} 
+			
 			else break;
 		}
-		
-		for (int i=0; i<buques; i++) {
+
+		for (int i = 0; i < buques; i++) {
 			if (ComprobarEspacioLibre(tablero, filas, columnas, 3, false)) {
 				GenerarBuque(tablero, filas, columnas);
 				contBuques--;
-			}
+			} 
+			
 			else break;
 		}
-		
-		for (int i=0; i<acorazados; i++) {
+
+		for (int i = 0; i < acorazados; i++) {
 			if (ComprobarEspacioLibre(tablero, filas, columnas, 4, false)) {
 				GenerarAcorazado(tablero, filas, columnas);
 				contAcorazados--;
-			}
+			} 
+			
 			else break;
 		}
-		
-		for (int i=0; i<portaaviones; i++) {
+
+		for (int i = 0; i < portaaviones; i++) {
 			if (ComprobarEspacioLibre(tablero, filas, columnas, 5, true)) {
 				GenerarPortaaviones(tablero, filas, columnas);
 				contPortaaviones--;
-			}
+			} 
+			
 			else break;
 		}
-		
+
 		// Imprimir por pantalla los que no se han generado
 		if (contLanchas > 0 || contBuques > 0 || contAcorazados > 0 || contPortaaviones > 0) {
-			System.out.println(ROJO + "No se han podido generar: " + RESET);
-			if (contLanchas > 0) System.out.println("   - " + MORADO + contLanchas + RESET + " lanchas.");
-			if (contBuques > 0) System.out.println("   - " + MORADO + contBuques + RESET + " buques.");
-			if (contAcorazados > 0) System.out.println("   - " + MORADO + contAcorazados + RESET + " acorazados.");
-			if (contPortaaviones > 0) System.out.println("   - " + MORADO + contPortaaviones + RESET + " portaaviones.");
+			System.out.println(ROJO + "\n\nNo se han podido generar: " + RESET);
+			
+			if (contLanchas > 0)
+				System.out.println("   - " + MORADO + contLanchas + RESET + " lanchas.");
+			
+			if (contBuques > 0)
+				System.out.println("   - " + MORADO + contBuques + RESET + " buques.");
+			
+			if (contAcorazados > 0)
+				System.out.println("   - " + MORADO + contAcorazados + RESET + " acorazados.");
+			
+			if (contPortaaviones > 0) 
+				System.out.println("   - " + MORADO + contPortaaviones + RESET + " portaaviones.");
+			
 			System.out.print("\n");
 		}
+		
 		int[] noGenerados = {contLanchas, contBuques, contAcorazados, contPortaaviones};
 		return noGenerados;
 	}
-	
+
 	// GENERAR Y COLOCAR LANCHA
-	public static char[][] GenerarLancha (char[][] tablero, int filas, int columnas) {
-		
+	public static char[][] GenerarLancha(char[][] tablero, int filas, int columnas) {
+
 		boolean colocada = false;
 		int intentos = 100;
-		
-		do {	
-			int randomFilas = (int)(Math.random() * filas);
-			int randomColumnas = (int)(Math.random() * columnas);
-			
+
+		do {
+			int randomFilas = (int) (Math.random() * filas);
+			int randomColumnas = (int) (Math.random() * columnas);
+
 			if (tablero[randomFilas][randomColumnas] == VACIO) {
-				
+
 				tablero[randomFilas][randomColumnas] = LANCHA;
 				colocada = true;
 			}
 			intentos--;
-			
+
 		} while (!colocada && intentos > 0);
-		
+
 		return tablero;
 	}
-	
+
 	// GENERAR Y COLOCAR BUQUE
-	public static char[][] GenerarBuque (char[][] tablero, int filas, int columnas) {
-		
+	public static char[][] GenerarBuque(char[][] tablero, int filas, int columnas) {
+
 		boolean coincide;
 		int intentos = 100;
-		
+
 		do {
 			coincide = false;
-			int randomFilas = (int)(Math.random() * filas);
-			int randomColumnas = (int)(Math.random() * (columnas - 2));
-			
+			int randomFilas = (int) (Math.random() * filas);
+			int randomColumnas = (int) (Math.random() * (columnas - 2));
+
 			// Verificar que no se superponga el barco a colocar con otro
-			for (int i=0; i<3; i++) {
+			for (int i = 0; i < 3; i++) {
 				if (tablero[randomFilas][randomColumnas + i] != VACIO) {
 					coincide = true;
 					break;
-				}	
+				}
 			}
-			
+
 			// Colocar el barco
 			if (!coincide) {
-				for (int i=0; i<3; i++) {
-				tablero[randomFilas][randomColumnas + i] = BUQUE;
+				for (int i = 0; i < 3; i++) {
+					tablero[randomFilas][randomColumnas + i] = BUQUE;
 				}
 				return tablero;
 			}
 			intentos--;
-			
+
 		} while (coincide && intentos > 0);
-		
+
 		return tablero;
 	}
-	
+
 	// GENERAR Y COLOCAR ACORAZADO
-	public static char[][] GenerarAcorazado (char[][] tablero, int filas, int columnas) {
-		
+	public static char[][] GenerarAcorazado(char[][] tablero, int filas, int columnas) {
+
 		boolean coincide;
 		int intentos = 100;
-		
+
 		do {
 			coincide = false;
-			int randomFilas = (int)(Math.random() * filas);
-			int filasColumnas = (int)(Math.random() * (columnas - 3));
-			
+			int randomFilas = (int) (Math.random() * filas);
+			int filasColumnas = (int) (Math.random() * (columnas - 3));
+
 			// Verificar que no se superponga el barco a colocar con otro
-			for (int i=0; i<4; i++) {
+			for (int i = 0; i < 4; i++) {
 				if (tablero[randomFilas][filasColumnas + i] != VACIO) {
 					coincide = true;
 					break;
-				}	
+				}
 			}
-			
+
 			// Colocar el barco
 			if (!coincide) {
-				for (int i=0; i<4; i++) {
+				for (int i = 0; i < 4; i++) {
 					tablero[randomFilas][filasColumnas + i] = ACORAZADO;
 				}
 				return tablero;
 			}
 			intentos--;
-			
+
 		} while (coincide && intentos > 0);
-		
+
 		return tablero;
 	}
-	
+
 	// GENERAR Y COLOCAR PORTAAVIONES
-	public static char[][] GenerarPortaaviones (char[][] tablero, int filas, int columnas) {
-		
+	public static char[][] GenerarPortaaviones(char[][] tablero, int filas, int columnas) {
+
 		boolean coincide;
 		int intentos = 100;
-		
+
 		do {
 			coincide = false;
-			int randomFilas = (int)(Math.random() * (filas - 4));
-			int randomColumnas = (int)(Math.random() * columnas);
-			
+			int randomFilas = (int) (Math.random() * (filas - 4));
+			int randomColumnas = (int) (Math.random() * columnas);
+
 			// Verificar que no se superponga el barco a colocar con otro
-			for (int i=0; i<5; i++) {
+			for (int i = 0; i < 5; i++) {
 				if (tablero[randomFilas + i][randomColumnas] != VACIO) {
 					coincide = true;
 					break;
 				}
 			}
-			
+
 			// Colocar el barco
 			if (!coincide) {
-				for (int i=0; i<5; i++) {
+				for (int i = 0; i < 5; i++) {
 					tablero[randomFilas + i][randomColumnas] = PORTAAVION;
 				}
 				return tablero;
 			}
 			intentos--;
-			
+
 		} while (coincide & intentos > 0);
-		
+
 		return tablero;
 	}
-	
+
 	// COMPROBAR QUE SE PUEDA INSERTAR BARCO EN EL TABLERO
-	public static boolean ComprobarEspacioLibre (char[][] tablero, int filas, int columnas, int barco, boolean esPortaaviones) {
-		
+	public static boolean ComprobarEspacioLibre(char[][] tablero, int filas, int columnas, int barco, boolean esPortaaviones) {
+
 		if (esPortaaviones) {
-			for (int i=0; i<filas; i++) {			
-				for (int j=0; j<columnas; j++) {				
-					for (int k=0; k<barco; k++) {
-						if (i + barco <= filas && EspacioDisponible(tablero, i, j, barco, true)) {
+			for (int i = 0; i < filas; i++) {
+				for (int j = 0; j < columnas; j++) {
+					for (int k = 0; k < barco; k++) {
+						if (i + barco <= filas && EspacioDisponible(tablero, i, j, barco, true)) 
 							return true;
-						}	
 					}
 				}
 			}
-		}
+		} 
 		
 		else {
-			for (int i=0; i<filas; i++) {
-				for (int j=0; j<columnas; j++) {
-					if (j + barco <= columnas && EspacioDisponible(tablero, i, j, barco, false)) {
+			for (int i = 0; i < filas; i++) {
+				for (int j = 0; j < columnas; j++) {
+					if (j + barco <= columnas && EspacioDisponible(tablero, i, j, barco, false)) 
 						return true;
-					}
 				}
 			}
 		}
 		return false;
 	}
-	
+
 	// COMPROBAR QUE HAYA ESPACIO LIBRE PARA EL BARCO
 	public static boolean EspacioDisponible(char[][] tablero, int fila, int columna, int barco, boolean vertical) {
-		
-		for (int i=0; i<barco; i++) {
-			if (!vertical && (columna + i >= tablero[0].length || tablero[fila][columna + i] != VACIO)) {
+
+		for (int i = 0; i < barco; i++) {
+			if (!vertical && (columna + i >= tablero[0].length || tablero[fila][columna + i] != VACIO))
 				return false;
-			}
-			
-			if (vertical && (fila + i >= tablero.length || tablero[fila + i][columna] != VACIO)) {
-			return false;
-			}
+
+			if (vertical && (fila + i >= tablero.length || tablero[fila + i][columna] != VACIO))
+				return false;
 		}
 		return true;
 	}
-	
+
 	// IMPRIMIR TABLERO
 	public static void ImprimirTablero(char[][] tablero, int filas, int columnas) {
-				
+
 		// Imprimir posiciones numéricas
 		System.out.print("     ");
-		for (int i=0; i<columnas; i++) {
-			if (i > 9) System.out.print(MORADO + i + " " + RESET);
-			else System.out.print(MORADO + i + "  " + RESET);
+		for (int i = 0; i < columnas; i++) {
+			if (i > 9)
+				System.out.print(MORADO + i + " " + RESET);
+			
+			else
+				System.out.print(MORADO + i + "  " + RESET);
 		}
 		System.out.print("\n    ");
-		
+
 		// Imprimir guiones
-		for (int i=0; i<columnas; i++) {
+		for (int i = 0; i < columnas; i++) {
 			System.out.print(AMARILLO + "---" + RESET);
 		}
 		System.out.print("\n");
-		
-		for (int i=0; i<filas; i++) {
-			
+
+		for (int i = 0; i < filas; i++) {
 			// Imprimir posiciones alfabéticas y barras laterales
-			System.out.print(MORADO + (char)(LETRAS + i) + AMARILLO + " |  " + RESET);
-			
+			System.out.print(MORADO + (char) (LETRAS + i) + AMARILLO + " |  " + RESET);
+
 			// Imprimir mapa
-			for (int j=0; j<columnas; j++) {
+			for (int j = 0; j < columnas; j++) {
 				char celda = tablero[i][j];
-				
+
 				switch (celda) {
-					case VACIO: System.out.print(celda + "  "); break;
-					case AGUA: System.out.print(CIAN + celda + "  " + RESET); break;
-					case TOCADO: System.out.print(VERDE + celda + "  " + RESET); break;
-					default: System.out.print(celda + "  "); break;
+					case VACIO:
+						System.out.print(celda + "  ");
+						break;
+						
+					case AGUA:
+						System.out.print(CIAN + celda + "  " + RESET);
+						break;
+						
+					case TOCADO:
+						System.out.print(VERDE + celda + "  " + RESET);
+						break;
+						
+					default:
+						System.out.print(celda + "  ");
+						break;
 				}
 			}
 			System.out.print("\n");
 		}
 	}
-	
+
 	// IMPRIMIR TABLERO MÁQUINA CUANDO PIERDE
-	public static void ImprimirTableroFinal (char[][] tableroUsuario, char[][] tableroMaquina, int filas, int columnas) {
+	public static void ImprimirTableroFinal(char[][] tableroUsuario, char[][] tableroMaquina, int filas, int columnas) {
 		
 		// Imprimir posiciones numéricas
 		System.out.print("     ");
-		for (int i=0; i<columnas; i++) {
-			if (i > 9) System.out.print(MORADO + i + " " + RESET);
-			else System.out.print(MORADO + i + "  " + RESET);
+		for (int i = 0; i < columnas; i++) {
+			if (i > 9)
+				System.out.print(MORADO + i + " " + RESET);
+			
+			else
+				System.out.print(MORADO + i + "  " + RESET);
 		}
 		System.out.print("\n    ");
-		
+
 		// Imprimir guiones
-		for (int i=0; i<columnas; i++) {
+		for (int i = 0; i < columnas; i++) {
 			System.out.print(AMARILLO + "---" + RESET);
 		}
 		System.out.print("\n");
-		
-		for (int i=0; i<filas; i++) {
-			
+
+		for (int i = 0; i < filas; i++) {
 			// Imprimir posiciones alfabéticas y barras laterales
-			System.out.print(MORADO + (char)(LETRAS + i) + AMARILLO + " |  " + RESET);
-			
+			System.out.print(MORADO + (char) (LETRAS + i) + AMARILLO + " |  " + RESET);
+
 			// Imprimir mapa
-			for (int j=0; j<columnas; j++) {
+			for (int j = 0; j < columnas; j++) {
 				char celdaUsuario = tableroUsuario[i][j];
 				char celdaMaquina = tableroMaquina[i][j];
+
+				if (celdaUsuario == TOCADO)
+					System.out.print(VERDE + celdaMaquina + "  " + RESET);
 				
-				if (celdaUsuario == TOCADO) System.out.print(VERDE + celdaMaquina + "  " + RESET);
-				else if (celdaUsuario == AGUA) System.out.print(CIAN + celdaUsuario + "  " + RESET);
-				else if (celdaMaquina != VACIO && celdaUsuario == VACIO) System.out.print(ROJO + celdaMaquina + "  " + RESET);
-				else System.out.print(celdaMaquina + "  ");
+				else if (celdaUsuario == AGUA)
+					System.out.print(CIAN + celdaUsuario + "  " + RESET);
+				
+				else if (celdaMaquina != VACIO && celdaUsuario == VACIO)
+					System.out.print(ROJO + celdaMaquina + "  " + RESET);
+				
+				else
+					System.out.print(celdaMaquina + "  ");
 			}
 			System.out.print("\n");
 		}
 	}
-	
+
 	// SOLICITAR DISPARO
-	public static int[] SolicitarDisparo (int filas, int columnas) {
-		
+	public static int[] SolicitarDisparo(int filas, int columnas) {
+
 		boolean repetir;
 		String disparo;
-		int[] entrada = new int [2];
-		
+		int[] entrada = new int[2];
+
 		do {
 			repetir = true;
 			try {
-				do {	
+				do {
 					System.out.print("\n" + AMARILLO + "Escribe la coordenada para disparar: " + RESET);
 					disparo = sc.nextLine();
-					
+
 					// Verificar que la entrada esté compuesta de solo 3 carácteres (4 en caso de tablero personalizado ampliado)
 					if ((disparo.length() == 3) || ((disparo.length() == 4) && (columnas > 10))) {
 						repetir = false;
-						
-						int filaCoord = (int)disparo.toUpperCase().charAt(0) - (int)LETRAS;
+
+						int filaCoord = (int) disparo.toUpperCase().charAt(0) - (int) LETRAS;
 						int columnaCoord = Integer.parseInt(disparo.substring(2));
 
 						// Verificar si las coordenadas están dentro del tablero
@@ -546,33 +597,35 @@ public class PRACTICA_HundirFlota {
 							System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "EL FORMATO DEBE SER -> (LETRA, ESPACIO, NÚMERO)" + RESET);
 							repetir = true;
 						}
-					}
+					} 
+					
 					// Repetir en caso de no ser 3 carácteres
 					else {
 						repetir = true;
 						System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "EL FORMATO DEBER SER -> (LETRA, ESPACIO, NÚMERO)" + RESET);
 					}
 				} while (repetir);
-				
+
 				// Devolver entrada como array de enteros
 				entrada = FilaStringToInt(disparo);
 			} 
+
 			// Repetir en caso de introducir una carácter en lugar de un número
 			catch (NumberFormatException e) {
 				System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "EL FORMATO DEBE SER -> (LETRA, ESPACIO, NÚMERO)" + ROJO);
 				repetir = true;
 			}
-			
+
 		} while (repetir);
-		
+
 		return entrada;
 	}
-	
+
 	// TRANSFORMAR STRING A INT
-	public static int[] FilaStringToInt (String cadena) {
-		
+	public static int[] FilaStringToInt(String cadena) {
+
 		int[] salida = new int[2];
-		
+
 		// Separar el String
 		String[] coorDisparo = cadena.split(" ");
 
@@ -580,37 +633,63 @@ public class PRACTICA_HundirFlota {
 		coorDisparo[0] = coorDisparo[0].toUpperCase();
 
 		// Convertir la entrada a tipo int
-		int coordX = (int)(coorDisparo[0].charAt(0) - LETRAS);
+		int coordX = (int) (coorDisparo[0].charAt(0) - LETRAS);
 		int coordY = Integer.parseInt(coorDisparo[1]);
 
-		salida[0] = coordX; 
+		salida[0] = coordX;
 		salida[1] = coordY;
-		
+
 		return salida;
 	}
-	
+
 	// COMPROBAR SI SE HA ACERTADO EL DISPARO
-	public static int VerificarDisparo (int[] coord, char[][] tableroUsuario, char[][] tableroMaquina) {
-		
+	public static int VerificarDisparo(int[] coord, char[][] tableroUsuario, char[][] tableroMaquina) {
+
 		int x = coord[0], y = coord[1];
-		
+
 		// Si ya se había disparado en la misma posición
 		if (tableroUsuario[x][y] != VACIO)
 			return 0;
-		
+			
 		else {
 			// Si no se había disparado y hay barco
 			if (tableroMaquina[x][y] != VACIO) {
-				
 				System.out.println(VERDE + "\n¡TOCADO!" + RESET);
 				tableroUsuario[x][y] = TOCADO;
 				return 1;
-			}
+			} 
+			
 			// Si no se había disparado y hay agua
 			else {
 				System.out.println(CIAN + "\n¡AGUA!" + RESET);
 				tableroUsuario[x][y] = AGUA;
 				return 2;
+			}
+		}
+	}
+	
+	// VERIFICAR ERRORES DE LOS PARÁMETROS DE LA PARTIDA PERSONALIZADA
+	public static int VerificarEntrada (String mensaje) {
+		while (true) {
+			System.out.print(mensaje);
+			
+			try {
+				int entrada = sc.nextInt();
+				sc.nextLine();
+
+				// Error por número negativo
+				if (entrada >= 0)
+					return entrada;
+				
+				else {
+					System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "DEBE SER UN NÚMERO POSITIVO.\n");
+				}
+			} 
+
+			// Error por entrada no numérica
+			catch (Exception e) {
+				System.out.println("\n" + ROJO + "ERROR DE ENTRADA.\n" + ROJO + "DEBE SER UN NÚMERO POSITIVO.\n");
+				sc.nextLine();
 			}
 		}
 	}
