@@ -48,9 +48,9 @@ public class EjercicioClase {
 			} while (!correcto);
 		
 			turno++;
-		} while (!EsJugadaGanadora(tablero, coordX, coordY, jugador));
+		} while (!EsJugadaGanadora(tablero, jugador));
 		
-		if (EsJugadaGanadora(tablero, coordX, coordY, jugador)) System.out.println("Gana el jugador '" + jugador + "'.");
+		if (EsJugadaGanadora(tablero,  jugador)) System.out.println("Gana el jugador '" + jugador + "'.");
 	}     
 	
 	public static boolean CoordenadaValida (int coordX, int coordY) {
@@ -106,14 +106,14 @@ public class EjercicioClase {
 		System.out.println("");
 	}
 	
-	public static boolean EsJugadaGanadora (char [][] tablero, int coordX, int coordY, char jugador) {
+	public static boolean EsJugadaGanadora (char [][] tablero, char jugador) {
 		
-		return ComprobarColumna(tablero, coordY, jugador) 
-				|| ComprobarFila(tablero, coordX, jugador)
-				|| ComprobarDiagonales(tablero, coordX, coordY, jugador);
+		return ComprobarColumna(tablero, jugador) 
+				|| ComprobarFila(tablero, jugador)
+				|| ComprobarDiagonales(tablero, jugador);
 	}
 	
-	public static boolean ComprobarColumna (char [][] tablero, int coordY, char jugador) {
+	public static boolean ComprobarColumna (char [][] tablero, char jugador) {
 		
 		int contadorLinea = 0;
 		
@@ -129,7 +129,7 @@ public class EjercicioClase {
 		return contadorLinea == 3;
 	}
 	
-	public static boolean ComprobarFila (char [][] tablero, int coordX, char jugador) {
+	public static boolean ComprobarFila (char [][] tablero, char jugador) {
 		
 		int contadorLinea = 0;
 		
@@ -145,7 +145,7 @@ public class EjercicioClase {
 		return contadorLinea == 3;
 	}
 	
-	public static boolean ComprobarDiagonales (char [][] tablero, int coordX, int coordY, char jugador) {
+	public static boolean ComprobarDiagonales (char [][] tablero, char jugador) {
 
 		int contadorLinea1 = 0;
 				
