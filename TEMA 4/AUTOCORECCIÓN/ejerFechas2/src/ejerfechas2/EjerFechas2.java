@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAdjusters;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class EjerFechas2 {
@@ -37,9 +35,7 @@ public class EjerFechas2 {
 	    }
 	    
 	    System.out.println("PROX CUMPLE: " + proxCumple);
-	    
-	    Period periodo = Period.between(hoy, proxCumple);
-	    
+	    	    
 	    long diasRestantes = ChronoUnit.DAYS.between(hoy, proxCumple);
 	    
 	    System.out.println("Próximo cumpleaños: " + diasRestantes);
