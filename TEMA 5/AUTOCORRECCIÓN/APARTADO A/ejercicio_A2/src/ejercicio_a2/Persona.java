@@ -10,5 +10,5 @@ public class Persona {
 	
 	String apellidos;
 	
-	LocalDateTime fechaNacimiento;
+	LocalDate fechaNacimiento;
 }
