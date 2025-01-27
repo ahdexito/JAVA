@@ -3,10 +3,6 @@ package ejercicio_a2;
 import java.util.Scanner;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAdjusters;
-import java.util.Locale;
 
 public class Ejercicio_A2 {
     
