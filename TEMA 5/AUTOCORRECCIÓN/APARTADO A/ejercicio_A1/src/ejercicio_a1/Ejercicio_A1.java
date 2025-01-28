@@ -39,7 +39,7 @@ public class Ejercicio_A1 {
 		
 		System.out.println("Punto 2.  X: " + p2.x + ".  Y: " + p2.y);
 		
-		Punto.Imprimir(p2.x, p2.y);
+		p2.Imprimir(p2.x, p2.y);
 		
 		p2.Desplaza(2, 2);
     }
