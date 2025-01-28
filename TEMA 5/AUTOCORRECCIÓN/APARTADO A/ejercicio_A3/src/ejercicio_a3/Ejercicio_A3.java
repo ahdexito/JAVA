@@ -22,5 +22,7 @@ public class Ejercicio_A3 {
 		
 		System.out.println("\nArtículo: " + art1.nombre + ". Precio: " + art1.precio
 		+ ". IVA: " + art1.iva + "%. PVP: " + (art1.precio + (art1.precio * art1.iva)));
+		
+		//asdfhgoiuhpouhwg
      }
 }
