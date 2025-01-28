@@ -11,4 +11,15 @@ public class Persona {
 	String apellidos;
 	
 	LocalDate fechaNacimiento;
+	
+	int edad;
+	
+	int DiferenciaEdad(int edad) {
+		
+		int a;
+		
+		if (edad > this.edad) {a = edad; edad = this.edad; this.edad = a;}
+		
+		return this.edad - edad;
+	}
 }

@@ -6,7 +6,7 @@ public class Punto {
 	
 	int y;
 	
-	void Imprimir(int x, int y) {
+	void Imprimir() {
 		
 		System.out.printf("\n(%d, %d)\n", x, y);
 	}
@@ -16,6 +16,13 @@ public class Punto {
 		x += dx;
 		y += dy;
 		
-		Imprimir(x, y);
+		Imprimir();
+	}
+	
+	void Distancia(int x, int y) {
+		
+		System.out.println("Distancia entre puntos X: " + (this.x - x));
+		
+		System.out.println("Distancia entre puntos Y: " + (this.y - y));
 	}
 }
