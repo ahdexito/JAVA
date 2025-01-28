@@ -1,11 +1,7 @@
 package ejercicio_a2;
 
 import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAdjusters;
-import java.util.Locale;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
@@ -62,23 +58,14 @@ public class Ejercicio_A2 {
 		System.out.println("");
 
 		System.out.println(AMARILLO + "MOSTRAR DATOS PERSONA 1" + RESET);
-		System.out.println(pers1.nombre + " " + pers1.apellidos + " con DNI " + pers1.dni + MayorEdad(pers1.fechaNacimiento));
+		System.out.println(pers1.nombre + " " + pers1.apellidos + " con DNI " + pers1.dni + pers1.EsMayorEdad());
 
 		System.out.println("");
 
 		System.out.println(AMARILLO + "MOSTRAR DATOS PERSONA 2" + RESET);
-		System.out.println(pers2.nombre + " " + pers2.apellidos + " con DNI " + pers2.dni + MayorEdad(pers2.fechaNacimiento));
+		System.out.println(pers2.nombre + " " + pers2.apellidos + " con DNI " + pers2.dni + pers2.EsMayorEdad());
 		
 		
 		System.out.println("Diferencia de edad: " + pers1.DiferenciaEdad(pers2.edad));
-	}
-
-	public static String MayorEdad (LocalDate nacimiento) {
-
-		var fechaMayorEdad = LocalDate.now().minusYears(18);
-
-		if (nacimiento.isBefore(fechaMayorEdad)) return " es mayor de edad";
-
-		else return " no es mayor de edad";
 	}
 }
