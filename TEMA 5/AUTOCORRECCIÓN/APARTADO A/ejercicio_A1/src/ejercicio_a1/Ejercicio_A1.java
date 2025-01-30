@@ -28,14 +28,14 @@ public class Ejercicio_A1 {
 			System.out.println("Punto 3.  X: " + p3.x + ".  Y: " + p3.y);
 			
 		System.out.println("\n\n");
-//		
-//		p1.x = 3;
-//		p1.y = 7;
-//		
-//		System.out.println("Punto 1.  X: " + p1.x + ".  Y: " + p1.y);
-//		
-//		p2.x = 1;
-//		p2.y = 9;
+		
+		p1.x = 3;
+		p1.y = 7;
+		
+		System.out.println("Punto 1.  X: " + p1.x + ".  Y: " + p1.y);
+		
+		p2.x = 1;
+		p2.y = 9;
 		
 		System.out.println("Punto 2.  X: " + p2.x + ".  Y: " + p2.y);
 		
@@ -44,5 +44,9 @@ public class Ejercicio_A1 {
 		p2.Desplaza(2, 2);
 		
 		p3.Distancia(p1.x, p1.y);
+		
+		Punto p4 = new Punto(2, 3);
+		
+		System.out.println("Persona 4: " + p4.x + " " + p4.y);
     }
 }

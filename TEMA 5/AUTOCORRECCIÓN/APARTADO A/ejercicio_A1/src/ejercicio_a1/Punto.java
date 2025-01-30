@@ -6,6 +6,14 @@ public class Punto {
 	
 	int y;
 	
+	public Punto() {}
+	
+	public Punto(int x, int y) {
+		
+		this.x = x;
+		this.y = y;
+	}
+	
 	void Imprimir() {
 		
 		System.out.printf("\n(%d, %d)\n", x, y);
