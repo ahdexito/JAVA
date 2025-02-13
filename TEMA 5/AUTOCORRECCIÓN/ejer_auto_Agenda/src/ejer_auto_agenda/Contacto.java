@@ -1,10 +1,4 @@
 package ejer_auto_agenda;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAdjusters;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Contacto {
@@ -24,7 +18,7 @@ public class Contacto {
 	// FUNCIÓN MOSTRAR INFORMACIÓN
 	public void MostrarInformacion() {
 		
-		System.out.println("Nombre y apellidos: " + this.nombre + " " + this.apellido1 + " " + this.apellido2);
+		System.out.println("\nNombre y apellidos: " + this.nombre + " " + this.apellido1 + " " + this.apellido2);
 		System.out.println("DNI: " + this.dni);
 		System.out.println("Número de teléfono: " + this.movil);
 		System.out.println("Dirección: " + this.direccion);
@@ -34,11 +28,13 @@ public class Contacto {
 	// FUNCIÓN MODIFICAR MÓVIL Y DIRECCIÓN
 	public void ModificarContacto(String movil, String direccion) {
 		
-		System.out.print("Introduce el nuevo número de teléfono: ");
+		System.out.print("\nIntroduce el nuevo número de teléfono: ");
 		this.movil = sc.nextLine();
 		
 		System.out.print("Introduce nueva dirección: ");
 		this.direccion = sc.nextLine();
+		
+		System.out.println("\nCONTACTO MODIFICADO");
 	}
 	
 	//////////////////////////////////////////////////////
@@ -115,6 +111,5 @@ public class Contacto {
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
-	
 	
 }

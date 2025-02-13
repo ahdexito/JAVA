@@ -1,10 +1,9 @@
 package ejer_auto_agenda;
 
-import java.util.Arrays;
-
 public class Agenda {
 	
 	private Contacto[] array = new Contacto[3];
+	private int contador = 0;
 	
 	public boolean AnyiadirContacto(Contacto contacto) {
 				
@@ -13,26 +12,32 @@ public class Agenda {
 			if (this.array[i] == null) {
 
 				this.array[i] = contacto;
-				System.out.println("CONTACTO AÑADIDO A LA AGENDA");
+				System.out.println(CIAN + "\nCONTACTO " + contacto.getNombre() + " AÑADIDO A LA AGENDA" + RESET);
+				
+				contador++;
+				
 				return true;
 			}
 		}
-		System.out.println("NO SE HA AÑADIDO EL CONTACTO A LA AGENDA");
+		System.out.println(ROJO + "\nNO SE HA AÑADIDO EL CONTACTO " + contacto.getNombre() + " A LA AGENDA" + RESET);
 		return false;
 	}
 	
 	public boolean BorrarContacto(String dni) {
 		
-		for (int i = 0; i < this.array.length; i++) {
+		for (int i = 0; i < contador; i++) {
 			
-			if (this.array[i].getDni().equals(dni) && this.array[i] != null) {
+			if (this.array[i].getDni().equalsIgnoreCase(dni) || this.array[i] != null) {
 				
 				this.array[i] = null;
-				System.out.println("CONTACTO CON DNI " + dni + " BORRADO");
+				System.out.println(CIAN + "\nCONTACTO CON DNI " + dni + " BORRADO" + RESET);
+				
+				contador--;
+				
 				return true;
 			}
 		}
-		System.out.println("NO SE HA BORRADO EL CONTACTO CON DNI " + dni);
+		System.out.println(ROJO + "\nNO SE HA BORRADO EL CONTACTO CON DNI " + dni + RESET);
 		return false;
 	}
 		
@@ -51,5 +56,5 @@ public class Agenda {
 		this.array = array;
 	}
 	
-	
+	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m", AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 }
