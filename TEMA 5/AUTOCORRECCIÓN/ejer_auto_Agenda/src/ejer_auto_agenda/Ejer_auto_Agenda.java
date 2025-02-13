@@ -21,13 +21,13 @@ public class Ejer_auto_Agenda {
 		ag1.AnyiadirContacto(c3);
 		ag1.AnyiadirContacto(c4);
 		
-		ag1.getArray()[0].MostrarInformacion();
+		ag1.getAgenda()[0].MostrarInformacion();
 		
 		ag1.BorrarContacto("12345678T");
 				
 		ag1.AnyiadirContacto(c1);
 		
-		ag1.getArray()[0].MostrarInformacion();
+		ag1.getAgenda()[0].MostrarInformacion();
 		
 		//c1.ModificarContacto(c1.getMovil(), c1.getDireccion());
 		

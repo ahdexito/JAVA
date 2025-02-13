@@ -2,16 +2,16 @@ package ejer_auto_agenda;
 
 public class Agenda {
 	
-	private Contacto[] array = new Contacto[3];
+	private Contacto[] agenda = new Contacto[3];
 	private int contador = 0;
 	
 	public boolean AnyiadirContacto(Contacto contacto) {
 				
-		for (int i = 0; i < this.array.length; i++) {
+		for (int i = 0; i < this.agenda.length; i++) {
 
-			if (this.array[i] == null) {
+			if (this.agenda[i] == null) {
 
-				this.array[i] = contacto;
+				this.agenda[i] = contacto;
 				System.out.println(CIAN + "\nCONTACTO " + contacto.getNombre() + " AÑADIDO A LA AGENDA" + RESET);
 				
 				contador++;
@@ -27,9 +27,9 @@ public class Agenda {
 		
 		for (int i = 0; i < contador; i++) {
 			
-			if (this.array[i].getDni().equalsIgnoreCase(dni) || this.array[i] != null) {
+			if (this.agenda[i].getDni().equalsIgnoreCase(dni) || this.agenda[i] != null) {
 				
-				this.array[i] = null;
+				this.agenda[i] = null;
 				System.out.println(CIAN + "\nCONTACTO CON DNI " + dni + " BORRADO" + RESET);
 				
 				contador--;
@@ -46,14 +46,14 @@ public class Agenda {
 	public Agenda() {
 	}
 	
-	// constructor de copia
+	// COPIAR AGENDA
 
-	public Contacto[] getArray() {
-		return array;
+	public Contacto[] getAgenda() {
+		return agenda;
 	}
 
-	public void setArray(Contacto[] array) {
-		this.array = array;
+	public void setAgenda(Contacto[] agenda) {
+		this.agenda = agenda;
 	}
 	
 	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m", AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
