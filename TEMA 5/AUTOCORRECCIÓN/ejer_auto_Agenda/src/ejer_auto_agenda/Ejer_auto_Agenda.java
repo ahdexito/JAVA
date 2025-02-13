@@ -16,6 +16,10 @@ public class Ejer_auto_Agenda {
 		// OBJETO ARRAY DE CONTACTOS
 		Agenda ag1 = new Agenda();
 		
+		ag1.BorrarContacto("12345678T");
+		
+		MostrarContactos(ag1);
+		
 		// AÑADIR CONTACTOS
 		ag1.AnyiadirContacto(c1);
 		ag1.AnyiadirContacto(c2);
@@ -44,6 +48,10 @@ public class Ejer_auto_Agenda {
 		
 		MostrarContactos(ag1);
 		
+		// BUSCAR CONTACTO
+		ag1.getBuscarContacto("12345678T");
+		
+		ag1.getBuscarContacto("12345678E").MostrarInformacion();
 	}
 	
 	// MOSTRAR CONTACTOS

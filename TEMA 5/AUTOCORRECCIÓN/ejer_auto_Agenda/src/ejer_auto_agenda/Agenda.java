@@ -5,7 +5,7 @@ public class Agenda {
 	private Contacto[] agenda = new Contacto[3];
 	private int contador = 0;
 	
-	// AÑADIR CONTACTO
+	// AÑADIR CONTACTO A LA ÚLTIMA POSICIÓN DISPONIBLE
 	public boolean AnyiadirContacto(Contacto contacto) {
 				
 		for (int i = 0; i < this.agenda.length; i++) {
@@ -24,11 +24,10 @@ public class Agenda {
 		return false;
 	}
 	
-	// BORRAR CONTACTO
+	// BORRAR CONTACTO POR DNI
 	public boolean BorrarContacto(String dni) {
-		
 
-		// SI QUEDA ESPACIO, BUSCA EL DNI
+		// BUSCAR DNI SI HAY CONTACTOS
 		for (int i = 0; i < this.contador; i++) {
 
 			// SI ENCUENTRA EL DNI
@@ -47,11 +46,31 @@ public class Agenda {
 				return true;
 			}
 		}
-
 		// SI NO SE ENCUENTRA EL DNI RECIBIDO EN LA AGENDA
 		System.out.println(ROJO + "\nNO SE HA BORRADO EL CONTACTO CON DNI " + dni + RESET);
 		return false;
+	}
+	
+	// BUSCAR CONTACTO POR DNI
+	private Contacto BuscarContacto(String dni) {
 		
+		Contacto contacto = null;
+		
+		for (int i = 0; i < this.contador; i++) {
+
+			// SI ENCUENTRA EL DNI
+			if (this.agenda[i].getDni().equals(dni)) {
+
+				contacto = this.agenda[i];
+
+				System.out.println(CIAN + "\nCONTACTO CON DNI " + dni + " ENCONTRADO" + RESET);
+
+				return contacto;
+			}
+		}
+		// SI NO SE ENCUENTRA EL DNI RECIBIDO EN LA AGENDA
+		System.out.println(ROJO + "\nNO SE HA ENCONTRADO EL CONTACTO CON DNI " + dni + RESET);
+		return contacto;
 	}
 		
 	//////////////////////////////////////////////////////
@@ -80,6 +99,10 @@ public class Agenda {
 
 	public void setAgenda(Contacto[] agenda) {
 		this.agenda = agenda;
+	}
+	
+	public Contacto getBuscarContacto(String dni) {
+		return BuscarContacto(dni);
 	}
 	
 	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m", AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";

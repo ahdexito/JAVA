@@ -111,5 +111,4 @@ public class Contacto {
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
-	
 }
