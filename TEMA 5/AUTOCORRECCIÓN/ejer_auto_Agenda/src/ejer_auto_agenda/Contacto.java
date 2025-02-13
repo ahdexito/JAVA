@@ -15,7 +15,7 @@ public class Contacto {
 	
 	//////////////////////////////////////////////////////
 	
-	// FUNCIÓN MOSTRAR INFORMACIÓN
+	// MOSTRAR INFORMACIÓN
 	public void MostrarInformacion() {
 		
 		System.out.println("\nNombre y apellidos: " + this.nombre + " " + this.apellido1 + " " + this.apellido2);
@@ -25,7 +25,7 @@ public class Contacto {
 		System.out.println("Sexo: " + this.sexo);
 	}
 	
-	// FUNCIÓN MODIFICAR MÓVIL Y DIRECCIÓN
+	// MODIFICAR MÓVIL Y DIRECCIÓN
 	public void ModificarContacto(String movil, String direccion) {
 		
 		System.out.print("\nIntroduce el nuevo número de teléfono: ");

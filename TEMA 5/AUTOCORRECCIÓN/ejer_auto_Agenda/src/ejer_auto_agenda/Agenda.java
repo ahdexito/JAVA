@@ -5,6 +5,7 @@ public class Agenda {
 	private Contacto[] agenda = new Contacto[3];
 	private int contador = 0;
 	
+	// AÑADIR CONTACTO
 	public boolean AnyiadirContacto(Contacto contacto) {
 				
 		for (int i = 0; i < this.agenda.length; i++) {
@@ -23,31 +24,56 @@ public class Agenda {
 		return false;
 	}
 	
+	// BORRAR CONTACTO
 	public boolean BorrarContacto(String dni) {
 		
-		for (int i = 0; i < contador; i++) {
-			
-			if (this.agenda[i].getDni().equalsIgnoreCase(dni) || this.agenda[i] != null) {
-				
-				this.agenda[i] = null;
+
+		// SI QUEDA ESPACIO, BUSCA EL DNI
+		for (int i = 0; i < this.contador; i++) {
+
+			// SI ENCUENTRA EL DNI
+			if (this.agenda[i].getDni().equals(dni)) {
+
+				// EL DNI ENCONTRADO ES MACHACADO POR EL ÚLTIMO CONTACTO EXISTENTE
+				this.agenda[i] = this.agenda[this.contador - 1];
+
+				// EL CONTACTO DUPLICADO QUE SE HA MACHACADO LO BORRAMOS
+				this.agenda[this.contador - 1] = null;
+
 				System.out.println(CIAN + "\nCONTACTO CON DNI " + dni + " BORRADO" + RESET);
-				
+
 				contador--;
-				
+
 				return true;
 			}
 		}
+
+		// SI NO SE ENCUENTRA EL DNI RECIBIDO EN LA AGENDA
 		System.out.println(ROJO + "\nNO SE HA BORRADO EL CONTACTO CON DNI " + dni + RESET);
 		return false;
+		
 	}
 		
 	//////////////////////////////////////////////////////
 	
+	// COPIAR AGENDA
+	
+	
+	// CONSTRUCTOR POR DEFECTO
 	public Agenda() {
 	}
 	
-	// COPIAR AGENDA
-
+	//////////////////////////////////////////////////////
+	
+	// SETTERS Y GETTERS
+	public int getContador() {	
+		return contador;
+	}
+	
+	public void setContador(int contador) {	
+		this.contador = contador;
+	}
+	
 	public Contacto[] getAgenda() {
 		return agenda;
 	}
