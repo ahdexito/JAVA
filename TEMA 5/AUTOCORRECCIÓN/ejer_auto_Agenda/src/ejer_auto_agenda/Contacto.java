@@ -18,11 +18,12 @@ public class Contacto {
 	// MOSTRAR INFORMACIÓN
 	public void MostrarInformacion() {
 		
-		System.out.println("\nNombre y apellidos: " + this.nombre + " " + this.apellido1 + " " + this.apellido2);
-		System.out.println("DNI: " + this.dni);
-		System.out.println("Número de teléfono: " + this.movil);
-		System.out.println("Dirección: " + this.direccion);
-		System.out.println("Sexo: " + this.sexo);
+		System.out.println("\n" + CIAN + "Nombre: " + RESET + this.nombre);
+		System.out.println(CIAN + "Apellidos: " + RESET + this.apellido1 + " " + this.apellido2);
+		System.out.println(CIAN + "DNI: " + RESET + this.dni);
+		System.out.println(CIAN + "Número de teléfono: " + RESET + this.movil);
+		System.out.println(CIAN + "Dirección: " + RESET + this.direccion);
+		System.out.println(CIAN + "Sexo: " + RESET + this.sexo);
 	}
 	
 	// MODIFICAR MÓVIL Y DIRECCIÓN
@@ -111,4 +112,6 @@ public class Contacto {
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
+	
+	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m", AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 }

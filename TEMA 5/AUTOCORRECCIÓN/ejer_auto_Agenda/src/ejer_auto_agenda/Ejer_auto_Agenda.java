@@ -4,69 +4,113 @@ import java.util.Scanner;
 
 public class Ejer_auto_Agenda {
 
+	public static Scanner sc = new Scanner(System.in);
+	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		
-		// OBJETOS CONTACTO
-		Contacto c1 = new Contacto("Luis", "Hernandez", "Lopez", "12345678A", "654789321", "C/Granada Nº10", 'V');
-		Contacto c2 = new Contacto("Marta", "Gomez", "Lopez", "23456789B", "654789322", "C/Sevilla Nº3", 'M'); // Teléfono repetido
-		Contacto c3 = new Contacto("Ana", "Lopez", "Martinez", "34567890C", "678945321", "C/Malaga Nº5", 'M');
-		Contacto c4 = new Contacto("Carlos", "Hernandez", "López", "45678901D", "666123777", "C/Portugal Nº8", 'V');
-		Contacto c5 = new Contacto("Luis", "Fernandez", "Gomez", "56789012E", "654789321", "C/Granada Nº10", 'V'); // Nombre y dirección repetidos
-		Contacto c6 = new Contacto("Elena", "Sanchez", "Ruiz", "67890123F", "600700800", "C/Toledo Nº7", 'M');
-		Contacto c7 = new Contacto("Pedro", "Garcia", "Fernandez", "78901234G", "678945322", "C/Malaga Nº5", 'V'); // Teléfono y dirección repetidos
-		Contacto c8 = new Contacto("David", "Perez", "Hernandez", "89012345H", "620987654", "C/Alicante Nº12", 'V');
-		Contacto c9 = new Contacto("Marta", "Perez", "Martinez", "90123456I", "654789323", "C/Sevilla Nº3", 'M'); // Nombre, apellidos, teléfono y dirección repetidos
-		Contacto c10 = new Contacto("Javier", "Lopez", "Martinez", "01234567J", "699888777", "C/Madrid Nº6", 'V');
 		
 		// OBJETO ARRAY DE CONTACTOS
 		Agenda ag1 = new Agenda();
 		
-		// AÑADIR CONTACTOS
-		/*
-		ag1.AnyiadirContacto(c1);
-		ag1.AnyiadirContacto(c2);
-		ag1.AnyiadirContacto(c3);
-		ag1.AnyiadirContacto(c4);
-		ag1.AnyiadirContacto(c5);		
-		ag1.AnyiadirContacto(c6);
-		ag1.AnyiadirContacto(c7);
-		ag1.AnyiadirContacto(c8);
-		ag1.AnyiadirContacto(c9);
-		ag1.AnyiadirContacto(c10);
-		*/
+		// CREAR OBJETO AGENDA
+		Agenda agenda = new Agenda();
+		
+		// AÑADIR CONTACTOS DE EJEMPLO
+		Contacto c1 = new Contacto("Carlos", "Hernandez", "López", "12345678B", "666123777", "C/Portugal Nº8", 'V');
+		Contacto c2 = new Contacto("Laura", "Martínez", "Sánchez", "98765432A", "677890123", "Av. España Nº12", 'M');
+		Contacto c3 = new Contacto("Carlos", "Gómez", "Fernández", "11223344C", "655321789", "C/Colón Nº3", 'V');
+		Contacto c4 = new Contacto("Sofía", "López", "Martínez", "55667788D", "699876543", "Paseo del Prado Nº20", 'M');
+		Contacto c5 = new Contacto("Javier", "Fernández", "Ruiz", "44332211E", "622334455", "C/San Juan Nº5", 'V');
+		Contacto c6 = new Contacto("Ana", "García", "Rodríguez", "66778899F", "611223344", "Av. Libertad Nº15", 'M');
+		Contacto c7 = new Contacto("Daniel", "Pérez", "Hernández", "99887766G", "644556677", "C/Mayor Nº9", 'V');
+		Contacto c8 = new Contacto("Laura", "Sánchez", "Gómez", "11224455H", "688990011", "C/Gran Vía Nº1", 'M');
+		Contacto c9 = new Contacto("Mario", "Ruiz", "López", "33445566I", "677889900", "Plaza Mayor Nº7", 'V');
+		Contacto c10 = new Contacto("Lucía", "Núñez", "Alonso", "77889900J", "655443322", "C/Sevilla Nº22", 'M');
+		agenda.AnyiadirContacto(c1); agenda.AnyiadirContacto(c2);
+		agenda.AnyiadirContacto(c3); agenda.AnyiadirContacto(c4);
+		agenda.AnyiadirContacto(c5); agenda.AnyiadirContacto(c6);
+		agenda.AnyiadirContacto(c7); agenda.AnyiadirContacto(c8);
+		agenda.AnyiadirContacto(c9); agenda.AnyiadirContacto(c10);
 		
 		int opcion = 0;
 		
-		do {			
-			
+		do {	
+			// IMPRIMIR MENÚ
 			ImprimirMenu();
-			opcion = sc.nextInt();
 			
+			// SOLICITAR OPCIÓN DEL MENÚ
+			opcion = sc.nextInt();
+			sc.nextLine();
+			
+			Contacto contacto = new Contacto();
+			
+			// SWITCH MENÚ
 			switch (opcion) {
 				
+				// AÑADIR CONTACTO
 				case 1:
+					System.out.println("\n" + MORADO + "OPCIÓN 1: " + CIAN + "INSERTAR CONTACTO" + RESET);
 					
+					if (agenda.AnyiadirContacto(contacto)) agenda.AnyiadirContacto(SolicitarDatos());
+					break;
+					
+				case 2:
+					System.out.println("\n" + MORADO + "OPCIÓN 2: " + CIAN + "MODIFICAR CONTACTO" + RESET);
+					
+					
+				
+				// MOSTRAR CONTACTOS
+				case 6:
+					MostrarContactos(agenda);
+					break;
 			}
 			
 		} while (opcion != 7);
 	}
 	
+	// SOLICITAR DATOS DE CONTACTO
+	public static Contacto SolicitarDatos() {
+		
+		Contacto contacto = new Contacto();
+		
+		System.out.print("\n" + MORADO + "Nombre: " + RESET);
+		contacto.setNombre(sc.nextLine());
+		
+		System.out.print(MORADO + "Primer apellido: " + RESET);
+		contacto.setApellido1(sc.nextLine());
+		
+		System.out.print(MORADO + "Segundo apellido: " + RESET);
+		contacto.setApellido2(sc.nextLine());
+		
+		System.out.print(MORADO + "DNI: " + RESET);
+		contacto.setDni(sc.nextLine());
+		
+		System.out.print(MORADO + "Número de teléfono: " + RESET);
+		contacto.setMovil(sc.nextLine());
+		
+		System.out.print(MORADO + "Dirección: " + RESET);
+		contacto.setDireccion(sc.nextLine());
+		
+		System.out.print(MORADO + "Sexo: " + RESET);
+		contacto.setSexo(sc.next().charAt(0));
+		
+		return contacto;
+	}
+	
 	// IMPRIMIR MENÚ
 	public static void ImprimirMenu() {
 		
-		System.out.println(""
-				+ "\n" + MORADO + "###   APLICACIÓN AGENDA DE CONTACTOS   ###" + RESET
-				+ "\n" + AMARILLO + "==========================================="
-				+ "\n" + "Menú:"
-				+ "\n" + AMARILLO + "1. " + RESET + "Insertar Contacto"
-				+ "\n" + AMARILLO + "2. " + RESET + "Modificar Contacto"
-				+ "\n" + AMARILLO + "3. " + RESET + "Eliminar Contacto"
-				+ "\n" + AMARILLO + "4. " + RESET + "Visalizar Contactos por sexo"
-				+ "\n" + AMARILLO + "5. " + RESET + "Visualizar Contactos por nombre"
-				+ "\n" + AMARILLO + "6. " + RESET + "Mostrar "
-				+ "\n" + AMARILLO + "7. " + RESET + "Insertar Contacto"
-				+ "\nIntroduce opción: ");
+		System.out.print(""
+				+ "\n" + MORADO + "###   " + CIAN + "AGENDA DE CONTACTOS" + MORADO + "   ###" + RESET
+				+ "\n" + MORADO + "==============================="
+				+ "\n" + CIAN + "Menú:" + RESET
+				+ "\n\n" + MORADO + "1. " + AMARILLO + "Insertar Contacto" + RESET
+				+ "\n" + MORADO + "2. " + AMARILLO + "Modificar Contacto" + RESET
+				+ "\n" + MORADO + "3. " + AMARILLO + "Eliminar Contacto" + RESET
+				+ "\n" + MORADO + "4. " + AMARILLO + "Visalizar Contactos por sexo" + RESET
+				+ "\n" + MORADO + "5. " + AMARILLO + "Visualizar Contactos por nombre" + RESET
+				+ "\n" + MORADO + "6. " + AMARILLO + "Mostrar Agenda Completa" + RESET
+				+ "\n" + MORADO + "7. " + AMARILLO + "Insertar Contacto" + RESET
+				+ "\n\n" + MORADO + "Introduce opción: " + RESET);
 	}
 	
 	// MOSTRAR CONTACTOS
@@ -74,8 +118,8 @@ public class Ejer_auto_Agenda {
 		
 		for (int i = 0; i < agenda.getContador(); i++) {
 			
-			System.out.print("\n" + AMARILLO + "CONTACTO " + (i + 1) + ": " + RESET); 
-			
+			System.out.println("\n" + CIAN + "CONTACTO " + (i + 1) + ": " + RESET); 
+			System.out.print(MORADO + "===============================" + RESET);
 			agenda.getAgenda()[i].MostrarInformacion();
 		}
 	}

@@ -20,7 +20,7 @@ public class Agenda {
 				return true;
 			}
 		}
-		System.out.println(ROJO + "\nNO SE HA AÑADIDO EL CONTACTO " + contacto.getNombre() + " A LA AGENDA" + RESET);
+		System.out.println(ROJO + "\nNO SE PUEDE AÑADIR MÁS CONTACTOS A LA AGENDA" + RESET);
 		return false;
 	}
 	
