@@ -18,62 +18,55 @@ public class Ejer_auto_Agenda {
 		Contacto c8 = new Contacto("David", "Perez", "Hernandez", "89012345H", "620987654", "C/Alicante Nº12", 'V');
 		Contacto c9 = new Contacto("Marta", "Perez", "Martinez", "90123456I", "654789323", "C/Sevilla Nº3", 'M'); // Nombre, apellidos, teléfono y dirección repetidos
 		Contacto c10 = new Contacto("Javier", "Lopez", "Martinez", "01234567J", "699888777", "C/Madrid Nº6", 'V');
-
 		
 		// OBJETO ARRAY DE CONTACTOS
 		Agenda ag1 = new Agenda();
 		
-		MostrarContactos(ag1);
-		
 		// AÑADIR CONTACTOS
+		/*
 		ag1.AnyiadirContacto(c1);
 		ag1.AnyiadirContacto(c2);
 		ag1.AnyiadirContacto(c3);
 		ag1.AnyiadirContacto(c4);
-		ag1.AnyiadirContacto(c5);
+		ag1.AnyiadirContacto(c5);		
 		ag1.AnyiadirContacto(c6);
 		ag1.AnyiadirContacto(c7);
 		ag1.AnyiadirContacto(c8);
 		ag1.AnyiadirContacto(c9);
 		ag1.AnyiadirContacto(c10);
+		*/
 		
-		MostrarContactos(ag1);
+		int opcion = 0;
 		
-		// BORRAR CONTACTO
-		ag1.BorrarContacto("45678901D");
+		do {			
+			
+			ImprimirMenu();
+			opcion = sc.nextInt();
+			
+			switch (opcion) {
+				
+				case 1:
+					
+			}
+			
+		} while (opcion != 7);
+	}
+	
+	// IMPRIMIR MENÚ
+	public static void ImprimirMenu() {
 		
-		MostrarContactos(ag1);
-		
-		// AÑADIR CONTACTO
-		ag1.AnyiadirContacto(c4);
-		
-		MostrarContactos(ag1);
-		
-		// BORRAR CONTACTO
-		ag1.BorrarContacto("12345678B");
-		
-		MostrarContactos(ag1);
-		
-		// BUSCAR CONTACTO
-		ag1.getBuscarContacto("12345678B");
-		
-		ag1.getBuscarContacto("45678901D").MostrarInformacion();
-		
-		// MODIFICAR CONTACTO POR DNI
-		ag1.ModificarContacto("01234567J", "699888777", "C/Malaga Nº5");
-		ag1.ModificarContacto("12345678T", "999888777", "C/Europa Nº1");
-		
-		MostrarContactos(ag1);
-		
-		// MOSTRAR CONTACTO POR ATRIBUTO SEXO
-		ag1.MostrarContactos('V');
-		ag1.MostrarContactos('M');
-		ag1.MostrarContactos('H');
-		
-		// MOSTRAR CONTACTO POR ATRIBUTO NOMBRE
-		ag1.MostrarConctactos("Luis");
-		ag1.MostrarConctactos("Alberto");
-		ag1.MostrarConctactos("Marta");
+		System.out.println(""
+				+ "\n" + MORADO + "###   APLICACIÓN AGENDA DE CONTACTOS   ###" + RESET
+				+ "\n" + AMARILLO + "==========================================="
+				+ "\n" + "Menú:"
+				+ "\n" + AMARILLO + "1. " + RESET + "Insertar Contacto"
+				+ "\n" + AMARILLO + "2. " + RESET + "Modificar Contacto"
+				+ "\n" + AMARILLO + "3. " + RESET + "Eliminar Contacto"
+				+ "\n" + AMARILLO + "4. " + RESET + "Visalizar Contactos por sexo"
+				+ "\n" + AMARILLO + "5. " + RESET + "Visualizar Contactos por nombre"
+				+ "\n" + AMARILLO + "6. " + RESET + "Mostrar "
+				+ "\n" + AMARILLO + "7. " + RESET + "Insertar Contacto"
+				+ "\nIntroduce opción: ");
 	}
 	
 	// MOSTRAR CONTACTOS
