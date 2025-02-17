@@ -57,6 +57,9 @@ public class Ejer_auto_Agenda {
 					System.out.println("\n" + MORADO + "OPCIÓN 2: " + CIAN + "MODIFICAR CONTACTO" + RESET);
 					
 					
+					break;
+					
+					
 				
 				// MOSTRAR CONTACTOS
 				case 6:
@@ -100,16 +103,16 @@ public class Ejer_auto_Agenda {
 	public static void ImprimirMenu() {
 		
 		System.out.print(""
-				+ "\n" + MORADO + "###   " + CIAN + "AGENDA DE CONTACTOS" + MORADO + "   ###" + RESET
+				+ "\n" + MORADO + "###   " + AMARILLO + "AGENDA DE CONTACTOS" + MORADO + "   ###" + RESET
 				+ "\n" + MORADO + "==============================="
-				+ "\n" + CIAN + "Menú:" + RESET
-				+ "\n\n" + MORADO + "1. " + AMARILLO + "Insertar Contacto" + RESET
-				+ "\n" + MORADO + "2. " + AMARILLO + "Modificar Contacto" + RESET
-				+ "\n" + MORADO + "3. " + AMARILLO + "Eliminar Contacto" + RESET
-				+ "\n" + MORADO + "4. " + AMARILLO + "Visalizar Contactos por sexo" + RESET
-				+ "\n" + MORADO + "5. " + AMARILLO + "Visualizar Contactos por nombre" + RESET
-				+ "\n" + MORADO + "6. " + AMARILLO + "Mostrar Agenda Completa" + RESET
-				+ "\n" + MORADO + "7. " + AMARILLO + "Insertar Contacto" + RESET
+				+ "\n" + AMARILLO + "Menú:" + RESET
+				+ "\n\n" + MORADO + "1. " + CIAN + "Insertar Contacto" + RESET
+				+ "\n" + MORADO + "2. " + CIAN + "Modificar Contacto" + RESET
+				+ "\n" + MORADO + "3. " + CIAN + "Eliminar Contacto" + RESET
+				+ "\n" + MORADO + "4. " + CIAN + "Visalizar Contactos por sexo" + RESET
+				+ "\n" + MORADO + "5. " + CIAN + "Visualizar Contactos por nombre" + RESET
+				+ "\n" + MORADO + "6. " + CIAN + "Mostrar Agenda Completa" + RESET
+				+ "\n" + MORADO + "7. " + CIAN + "Insertar Contacto" + RESET
 				+ "\n\n" + MORADO + "Introduce opción: " + RESET);
 	}
 	
@@ -118,7 +121,7 @@ public class Ejer_auto_Agenda {
 		
 		for (int i = 0; i < agenda.getContador(); i++) {
 			
-			System.out.println("\n" + CIAN + "CONTACTO " + (i + 1) + ": " + RESET); 
+			System.out.println("\n" + AMARILLO + "CONTACTO " + (i + 1) + ": " + RESET); 
 			System.out.print(MORADO + "===============================" + RESET);
 			agenda.getAgenda()[i].MostrarInformacion();
 		}
