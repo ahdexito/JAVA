@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Ejer_auto_asociacion_1 {
 	
+	// ATRIBUTOS //
+	/////////////////////////////////////////////////////////////
+	
 	static Scanner sc = new Scanner(System.in);
 	
 	static Biblioteca[] bibliotecas = new Biblioteca[10];
@@ -11,6 +14,9 @@ public class Ejer_auto_asociacion_1 {
 		
 	static Libro[] libros = new Libro[100];
 	static int contLibros = 0;
+	
+	// MAIN //
+	/////////////////////////////////////////////////////////////
 	
 	public static void main(String[] args) {
 		
@@ -115,7 +121,13 @@ public class Ejer_auto_asociacion_1 {
 	
 	public static void BorrarBiblioteca() {
 		
+		System.out.println("BORRAR BIBLIOTECA");
 		
+		System.out.print(" - CIP (biblioteca a borrar): ");
+		String cipBorrar = sc.nextLine();
+		
+		System.out.print(" - CIP (biblioteca nueva): ");
+		String cipNueva = sc.nextLine();
 	}
 	
 	public static void MenuLibro() {

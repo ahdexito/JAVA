@@ -2,12 +2,16 @@ package ejer_auto_asociacion_1;
 
 public class Biblioteca {
 	
+	// ATRIBUTOS //
+	/////////////////////////////////////////////////////////////
+	
 	private String nombre;
 	private String cip;
 	private String ciudad;
 	private Libro[] libros = new Libro[20];
 	private int contador = 0;
 	
+	// FUNCIONES //
 	/////////////////////////////////////////////////////////////
 	
 	public boolean AnyadirLibro(Libro libro) {
@@ -53,25 +57,16 @@ public class Biblioteca {
 		return encontrado;
 	}
 	
-	public boolean RecogidaTemporal(Libro[] libros, int contador) throws Exception {
+	public boolean RecogidaTemporal(Libro[] libros) throws Exception {
 		
-		// TRUE SI LA CANTIDAD TOTAL DE LIBROS NO SUPERA LA CANTIDAD LIBRE DE THIS.LIBROS
-		if ((this.libros.length - this.contador) >= contador) {
+		for (int i = 0; i < this.libros.length; i++) {
 			
-			// A PARTIR DE LA PRIMERA POSICIÓN LIBRE DE THIS.LIBROS HASTA LA ÚLTIMA
-			for (int i = this.contador; i < this.libros.length; i++) {
-				
-				for (int j = 0; j < contador; j++) {
-					
-					this.libros[i] = libros[j];
-				}
-			}
-			System.out.println(CIAN + "LIBROS AGREGADOS CORRECTAMENTE" + RESET);
-			return true;
+			this.libros[contador + i] = libros[i];
 		}
 		throw new Exception(ROJO + "ERROR, NO SE HAN PODIDO MOVER TODOS LOS LIBROS" + RESET);
 	}
 	
+	// CONS, SET, GET //
 	/////////////////////////////////////////////////////////////
 	
 	public Biblioteca() {
