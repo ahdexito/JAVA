@@ -15,12 +15,10 @@ public class Ejer_auto_asociacion_1 {
 	static Libro[] libros = new Libro[100];
 	static int contLibros = 0;
 	
-	// MAIN //
+	// MAIN (MENÚ PRINCIPAL) //
 	/////////////////////////////////////////////////////////////
 	
-	public static void main(String[] args) {
-		
-		
+	public static void main(String[] args) throws Exception {
 		
 		int opcion;
 		
@@ -50,7 +48,10 @@ public class Ejer_auto_asociacion_1 {
 		} while (opcion != 0);	
 	}
 	
-	public static void MenuBiblioteca() {
+	// MENÚ BIBLIOTECA //
+	/////////////////////////////////////////////////////////////
+	
+	public static void MenuBiblioteca() throws Exception {
 		
 		int opcion;
 		
@@ -75,51 +76,57 @@ public class Ejer_auto_asociacion_1 {
 					System.out.println("CREAR BIBLIOTECA");
 					CrearBiblioteca();
 					break;
+				case 2:
+					System.out.println("BORRAR BIBLIOTECA");
+					BorrarBiblioteca();
+					break;
+				case 3:
+					System.out.println("MOSTRAR BIBLIOTECAS");
+					MostrarBibliotecas();
+					break;
+				case 4:
+					System.out.println("AÑADIR LIBRO A BIBLIOTECA");
+					AnyadirLibroABiblioteca();
+					break;
 			}
 		} while (opcion != 0);
 	}
 	
+	// FUNCIONES MENÚ BIBLIOTECA //
+	/////////////////////////////////////////////////////////////
+	
 	public static void CrearBiblioteca() {
 		
-		Biblioteca biblioteca = new Biblioteca();
-		
 		System.out.print(" - Nombre: ");
-		biblioteca.setNombre(sc.nextLine());
-		
-		System.out.print(" - CIP: ");
-		biblioteca.setCip(ValidarCip());
+		String nombre = sc.nextLine();
 		
 		System.out.print(" - Ciudad: ");
-		biblioteca.setCiudad(sc.nextLine());
+		String ciudad = sc.nextLine();
 		
-		bibliotecas[contBiblio] = biblioteca;
-		contBiblio++;
-	}
-	
-	public static String ValidarCip() {
-		
+		System.out.print(" - CIP: ");
 		String cip = sc.nextLine();
-		boolean repetido;
 		
-		do {
-			repetido = false;
-			
-			for (int i = 0; i < contBiblio; i++) {
-
-				if (cip.equals(bibliotecas[i].getCip())) {
-
-					System.out.println(ROJO + "ERROR, EL CIP (" + cip + ") YA EXISTE" + RESET);
-					System.out.print("Introduce otro diferente: ");
-					cip = sc.nextLine();
-					repetido = true;
-				}
-			}
-		} while (!repetido);
-			
-		return cip;
+		if (CipEncontrado(cip)) System.out.println(ROJO + "ERROR, EL CIP (" + cip + ") YA EXISTE" + RESET);
+		
+		else { 
+			bibliotecas[contBiblio] = new Biblioteca(nombre, cip, ciudad, contLibros);
+			contBiblio++;
+		}
 	}
 	
-	public static void BorrarBiblioteca() {
+	public static boolean CipEncontrado(String cip) {
+			
+		for (int i = 0; i < bibliotecas.length; i++) {
+
+			if (bibliotecas[i].getCip().equals(cip)) return true;
+		}
+			
+		return false;
+	}
+	
+	/////////////////////////////////////////////////////////////
+	
+	public static void BorrarBiblioteca() throws Exception {
 		
 		System.out.println("BORRAR BIBLIOTECA");
 		
@@ -128,7 +135,105 @@ public class Ejer_auto_asociacion_1 {
 		
 		System.out.print(" - CIP (biblioteca nueva): ");
 		String cipNueva = sc.nextLine();
+		
+		// SI SE ENCUENTRA EL CIP DE LA BIBLIO A BORRAR
+		if (CipEncontrado(cipBorrar)) {
+			
+			// SI SE ENCUENTRA EL CIP DE LA BIBLIO NUEVA
+			if (CipEncontrado(cipNueva)) {
+				
+				// EJECUTAR FUNCIÓN DE RECOGIDA TEMPORAL DE LIBROS DE UNA BIBLIO A OTRA
+				BibliotecaPorCip(cipNueva).RecogidaTemporal(BibliotecaPorCip(cipBorrar).getLibros());
+				
+				// BORRAR LA BIBLIOTECA A BORRAR, Y CON ELLA LOS LIBROS QUE HAN SOBRADO
+				for (int i = 0; i < bibliotecas.length; i++) {
+					
+					if (bibliotecas[i].getCip().equals(cipBorrar)) {
+						
+						bibliotecas[contBiblio] = bibliotecas[i];
+						bibliotecas[contBiblio] = null;
+						contBiblio--;
+					}
+				}
+			}
+			else System.out.println(ROJO + "ERROR, NO EXISTE NINGUNA BIBLIOTECA CON EL CIP (" + cipBorrar + ")" + RESET);
+		}
+		else System.out.println(ROJO + "ERROR, NO EXISTE NINGUNA BIBLIOTECA CON EL CIP (" + cipBorrar + ")" + RESET);
 	}
+	
+	public static Biblioteca BibliotecaPorCip(String cip) throws Exception {
+		
+		for (int i = 0; i < bibliotecas.length; i++) {
+			
+			if (bibliotecas[i].getCip().equals(cip)) 
+				return bibliotecas[i];
+		}
+		throw new Exception("ERROR, CIP (" + cip + ") NO ENCONTRADO");
+	}
+	
+	/////////////////////////////////////////////////////////////
+	
+	public static void MostrarBibliotecas() {
+		
+		for (int i = 0; i < bibliotecas.length; i++) {
+			
+			System.out.println("================================");
+			System.out.println(" # Biblioteca " + (i + 1));
+			System.out.println("   - Nombre: " + bibliotecas[i].getNombre());
+			System.out.println("   - CIP: " + bibliotecas[i].getCip());
+			System.out.println("   - Ciudad: " + bibliotecas[i].getCiudad());
+		}
+	}
+	
+	/////////////////////////////////////////////////////////////
+	
+	public static void AnyadirLibroABiblioteca() throws Exception {
+		
+		System.out.print(" - CIP de la biblioteca: ");
+		String cip = sc.nextLine();
+		
+		if (CipEncontrado(cip)) {
+			
+			Biblioteca biblioteca = BibliotecaPorCip(cip);
+			
+			System.out.print(" - Código del libro: ");
+			String codigo = sc.nextLine();
+			
+			if (!LibroEncontrado(codigo)) {
+				
+				biblioteca.AnyadirLibro(LibroPorCodigo(codigo, biblioteca));
+			}
+			
+			else System.out.println(ROJO + "ERROR, EL LIBRO YA SE ENCUENTRA EN OTRA BIBLIOTECA" + RESET);
+		}
+		else System.out.println(ROJO + "ERROR, CIP (" + cip + ") NO ENCONTRADO");
+	}
+	
+	public static Libro LibroPorCodigo(String codigo, Biblioteca biblioteca) {
+		
+		for (int i = 0; i < biblioteca.getLibros().length; i++) {
+			
+			if (biblioteca.getLibros()[i].getCodigo().equals(codigo))
+				return biblioteca.getLibros()[i];
+		}
+		return new Libro();
+	}
+	
+	public static boolean LibroEncontrado(String codigo) {
+		
+		for (int i = 0; i < bibliotecas.length; i++) {
+			
+			for (int j = 0; j < bibliotecas[i].getLibros().length; i++) {
+				
+				if (bibliotecas[i].getLibros()[j].getCodigo().equals(codigo)) 
+					return true;
+			}
+		}
+		return false;
+	}
+	
+	// MENÚ LIBRO //
+	/////////////////////////////////////////////////////////////
 	
 	public static void MenuLibro() {
 		
@@ -150,6 +255,12 @@ public class Ejer_auto_asociacion_1 {
 			}
 		} while (opcion != 0);
 	}
+	
+	// FUNCIONES MENÚ LIBRO //
+	/////////////////////////////////////////////////////////////
+	
+	
+	/////////////////////////////////////////////////////////////
 	
 	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m", AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 }
