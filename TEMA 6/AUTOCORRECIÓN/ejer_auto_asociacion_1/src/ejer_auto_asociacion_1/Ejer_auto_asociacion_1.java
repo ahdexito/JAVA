@@ -88,6 +88,13 @@ public class Ejer_auto_asociacion_1 {
 					System.out.println("AÑADIR LIBRO A BIBLIOTECA");
 					AnyadirLibroABiblioteca();
 					break;
+				case 5:
+					System.out.println("MOSTRAR LIBROS DE UNA BIBLIOTECA");
+					MostrarLibrosBiblioteca();
+					break;
+				case 0:
+					System.out.println("VOLVIENDO...");
+					break;
 			}
 		} while (opcion != 0);
 	}
@@ -201,22 +208,33 @@ public class Ejer_auto_asociacion_1 {
 			
 			if (!LibroEncontrado(codigo)) {
 				
-				biblioteca.AnyadirLibro(LibroPorCodigo(codigo, biblioteca));
+				if (LibroExiste(codigo)) {
+					
+					biblioteca.AnyadirLibro(LibroPorCodigo(codigo));
+				}
+				else System.out.println(ROJO + "ERROR, EL LIBRO CON CÓDIGO (" + codigo + ") NO EXISTE" + RESET);
 			}
-			
-			else System.out.println(ROJO + "ERROR, EL LIBRO YA SE ENCUENTRA EN OTRA BIBLIOTECA" + RESET);
+			else System.out.println(ROJO + "ERROR, EL LIBRO CON CÓDIGO (" + codigo + ") YA SE ENCUENTRA EN OTRA BIBLIOTECA" + RESET);
 		}
-		else System.out.println(ROJO + "ERROR, CIP (" + cip + ") NO ENCONTRADO");
+		else System.out.println(ROJO + "ERROR, CIP (" + cip + ") NO ENCONTRADO" + RESET);
 	}
 	
-	public static Libro LibroPorCodigo(String codigo, Biblioteca biblioteca) {
+	public static Libro LibroPorCodigo(String codigo) {
 		
-		for (int i = 0; i < biblioteca.getLibros().length; i++) {
+		for (int i = 0; i < libros.length; i++) {
 			
-			if (biblioteca.getLibros()[i].getCodigo().equals(codigo))
-				return biblioteca.getLibros()[i];
+			if (libros[i].getCodigo().equals(codigo)) return libros[i];
 		}
-		return new Libro();
+		return null;
+	}
+	
+	public static boolean LibroExiste(String codigo) {
+		
+		for (int i = 0; i < contLibros; i++) {
+			
+			if (libros[i].getCodigo().equals(codigo)) return true;
+		}
+		return false;
 	}
 	
 	public static boolean LibroEncontrado(String codigo) {
@@ -230,6 +248,25 @@ public class Ejer_auto_asociacion_1 {
 			}
 		}
 		return false;
+	}
+	
+	/////////////////////////////////////////////////////////////
+	
+	public static void MostrarLibrosBiblioteca() throws Exception {
+		
+		System.out.print(" - CIP de la biblioteca: ");
+		String cip = sc.nextLine();
+		
+		Biblioteca biblioteca = BibliotecaPorCip(cip);
+		
+		for (int i = 0; i < biblioteca.getContador(); i++) {
+			
+			System.out.println("================================");
+			System.out.println(" # LIBRO " + (i + 1));
+			System.out.println("   - Nombre: " + biblioteca.getLibros()[i].getNombre());
+			System.out.println("   - Autor: " + biblioteca.getLibros()[i].getAutor());
+			System.out.println("   - Código: " + biblioteca.getLibros()[i].getCodigo());
+		}
 	}
 	
 	// MENÚ LIBRO //
@@ -250,8 +287,33 @@ public class Ejer_auto_asociacion_1 {
 			sc.nextLine();
 			
 			switch (opcion) {
-				
-				
+				case 1:
+					System.out.println("AÑADIR UN LIBRO");
+					
+					System.out.print(" - Nombre: ");
+					String nombre = sc.nextLine();
+					
+					System.out.print(" - Autor: ");
+					String autor = sc.nextLine();
+					
+					System.out.print(" - Código: ");
+					String codigo = sc.nextLine();
+					
+					if (!LibroExiste(codigo)) {
+						
+						Libro libro = new Libro(nombre, autor, codigo);
+						libros[contLibros] = libro;
+						contLibros++;
+					}
+					else System.out.println(ROJO + "ERROR, EL CÓDIGO (" + codigo + ") YA ESTÁ ASOCIADO A OTRO LIBRO" + RESET);
+					break;
+				case 2:
+					System.out.println("MOSTRAR LIBROS");
+					MostrarLibros();
+					break;
+				case 0:
+					System.out.println("VOLVIENDO...");
+					break;
 			}
 		} while (opcion != 0);
 	}
@@ -259,6 +321,17 @@ public class Ejer_auto_asociacion_1 {
 	// FUNCIONES MENÚ LIBRO //
 	/////////////////////////////////////////////////////////////
 	
+	public static void MostrarLibros() {
+		
+		for (int i = 0; i < contLibros; i++) {
+			
+			System.out.println("================================");
+			System.out.println(" # LIBRO " + (i + 1));
+			System.out.println("   - Nombre: " + libros[i].getNombre());
+			System.out.println("   - Autor: " + libros[i].getAutor());
+			System.out.println("   - Código: " + libros[i].getCodigo());
+		}
+	}
 	
 	/////////////////////////////////////////////////////////////
 	
