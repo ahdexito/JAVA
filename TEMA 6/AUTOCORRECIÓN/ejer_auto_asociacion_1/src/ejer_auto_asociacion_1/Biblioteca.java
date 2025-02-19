@@ -9,7 +9,7 @@ public class Biblioteca {
 	private String cip;
 	private String ciudad;
 	private Libro[] libros = new Libro[20];
-	private int contador = 0;
+	private int contador;
 	
 	// FUNCIONES //
 	/////////////////////////////////////////////////////////////
@@ -72,11 +72,11 @@ public class Biblioteca {
 	public Biblioteca() {
 	}
 
-	public Biblioteca(String nombre, String cip, String ciudad, int contador) {
+	public Biblioteca(String nombre, String cip, String ciudad) {
 		this.nombre = nombre;
 		this.cip = cip;
 		this.ciudad = ciudad;
-		this.contador = contador;
+		this.contador = 0;
 	}
 
 	public String getNombre() {

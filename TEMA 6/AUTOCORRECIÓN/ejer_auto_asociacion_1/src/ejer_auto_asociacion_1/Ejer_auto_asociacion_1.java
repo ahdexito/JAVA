@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Ejer_auto_asociacion_1 {
 	
 	// ATRIBUTOS //
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	static Scanner sc = new Scanner(System.in);
 	
@@ -16,7 +16,7 @@ public class Ejer_auto_asociacion_1 {
 	static int contLibros = 0;
 	
 	// MAIN (MENÚ PRINCIPAL) //
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -24,7 +24,7 @@ public class Ejer_auto_asociacion_1 {
 		
 		do {
 			System.out.print(""
-				   + "GESTIÓN DE BIBLIOTECAS DE ALICANTE\n"
+				   + AMARILLO + "GESTIÓN DE BIBLIOTECAS DE ALICANTE\n" + RESET
 				   + "   1. Gestionar biblioteca\n"
 				   + "   2. Gestionar libros\n"
 				   + "   0. Salir\n\n"
@@ -32,7 +32,7 @@ public class Ejer_auto_asociacion_1 {
 			opcion = sc.nextInt();
 			sc.nextLine();
 			
-			System.out.println("\n");
+			System.out.println("\n--------------------------------\n");
 			
 			switch (opcion) {
 				case 1:
@@ -44,12 +44,13 @@ public class Ejer_auto_asociacion_1 {
 				case 3:
 					System.out.println("SALIENDO...\n");
 					break;
-			}	
+			}
+			System.out.println("\n--------------------------------\n");
 		} while (opcion != 0);	
 	}
 	
 	// MENÚ BIBLIOTECA //
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void MenuBiblioteca() throws Exception {
 		
@@ -58,7 +59,7 @@ public class Ejer_auto_asociacion_1 {
 		do {			
 			System.out.print(""
 			   + ""
-			   + "GESTIONAR BIBLIOTECA\n"
+			   + AMARILLO + "GESTIONAR BIBLIOTECA\n" + RESET
 			   + "   1. Crear biblioteca\n"
 			   + "   2. Borrar biblioteca\n"
 			   + "   3. Mostrar bibliotecas\n"
@@ -69,7 +70,7 @@ public class Ejer_auto_asociacion_1 {
 			opcion = sc.nextInt();
 			sc.nextLine();
 			
-			System.out.println("\n");
+			System.out.println("\n--------------------------------\n");
 			
 			switch (opcion) {
 				case 1:
@@ -96,11 +97,12 @@ public class Ejer_auto_asociacion_1 {
 					System.out.println("VOLVIENDO...");
 					break;
 			}
+			System.out.println("\n--------------------------------\n");
 		} while (opcion != 0);
 	}
 	
 	// FUNCIONES MENÚ BIBLIOTECA //
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void CrearBiblioteca() {
 		
@@ -116,14 +118,18 @@ public class Ejer_auto_asociacion_1 {
 		if (CipEncontrado(cip)) System.out.println(ROJO + "ERROR, EL CIP (" + cip + ") YA EXISTE" + RESET);
 		
 		else { 
-			bibliotecas[contBiblio] = new Biblioteca(nombre, cip, ciudad, contLibros);
-			contBiblio++;
+			if (contBiblio < bibliotecas.length) {
+				
+				bibliotecas[contBiblio] = new Biblioteca(nombre, cip, ciudad);
+				contBiblio++;
+			}
+			else System.out.println(ROJO + "ERROR, NO QUEDA MÁS ESPACIO PARA OTRA BIBLIOTECA" + RESET);
 		}
 	}
 	
 	public static boolean CipEncontrado(String cip) {
 			
-		for (int i = 0; i < bibliotecas.length; i++) {
+		for (int i = 0; i < contBiblio; i++) {
 
 			if (bibliotecas[i].getCip().equals(cip)) return true;
 		}
@@ -131,11 +137,9 @@ public class Ejer_auto_asociacion_1 {
 		return false;
 	}
 	
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void BorrarBiblioteca() throws Exception {
-		
-		System.out.println("BORRAR BIBLIOTECA");
 		
 		System.out.print(" - CIP (biblioteca a borrar): ");
 		String cipBorrar = sc.nextLine();
@@ -178,7 +182,7 @@ public class Ejer_auto_asociacion_1 {
 		throw new Exception("ERROR, CIP (" + cip + ") NO ENCONTRADO");
 	}
 	
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void MostrarBibliotecas() {
 		
@@ -192,7 +196,7 @@ public class Ejer_auto_asociacion_1 {
 		}
 	}
 	
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void AnyadirLibroABiblioteca() throws Exception {
 		
@@ -250,7 +254,7 @@ public class Ejer_auto_asociacion_1 {
 		return false;
 	}
 	
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void MostrarLibrosBiblioteca() throws Exception {
 		
@@ -270,7 +274,7 @@ public class Ejer_auto_asociacion_1 {
 	}
 	
 	// MENÚ LIBRO //
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void MenuLibro() {
 		
@@ -278,13 +282,15 @@ public class Ejer_auto_asociacion_1 {
 		
 		do {			
 			System.out.print(""
-			   + "GESTIONAR LIBROS\n"
+			   + AMARILLO + "GESTIONAR LIBROS\n" + RESET
 			   + "   1. Añadir libro\n"
 			   + "   2. Mostrar libros\n"
 			   + "   0. Salir\n\n"
 			   + "Selecciona una opción: ");
 			opcion = sc.nextInt();
 			sc.nextLine();
+			
+			System.out.println("\n--------------------------------\n");
 			
 			switch (opcion) {
 				case 1:
@@ -315,11 +321,12 @@ public class Ejer_auto_asociacion_1 {
 					System.out.println("VOLVIENDO...");
 					break;
 			}
+			System.out.println("\n--------------------------------\n");
 		} while (opcion != 0);
 	}
 	
 	// FUNCIONES MENÚ LIBRO //
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void MostrarLibros() {
 		
@@ -333,7 +340,7 @@ public class Ejer_auto_asociacion_1 {
 		}
 	}
 	
-	/////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m", AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 }
