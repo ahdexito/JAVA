@@ -147,16 +147,16 @@ public class Ejer_auto_asociacion_1 {
 		System.out.print(" - CIP (biblioteca nueva): ");
 		String cipNueva = sc.nextLine();
 		
-		// SI SE ENCUENTRA EL CIP DE LA BIBLIO A BORRAR
+		// SI SE ENCUENTRA EL CIP DE LA BIBLIO A BORRAR //
 		if (CipEncontrado(cipBorrar)) {
 			
-			// SI SE ENCUENTRA EL CIP DE LA BIBLIO NUEVA
+			// SI SE ENCUENTRA EL CIP DE LA BIBLIO NUEVA //
 			if (CipEncontrado(cipNueva)) {
 				
-				// EJECUTAR FUNCIÓN DE RECOGIDA TEMPORAL DE LIBROS DE UNA BIBLIO A OTRA
+				// EJECUTAR FUNCIÓN DE RECOGIDA TEMPORAL DE LIBROS DE UNA BIBLIO A OTRA //
 				BibliotecaPorCip(cipNueva).RecogidaTemporal(BibliotecaPorCip(cipBorrar).getLibros());
 				
-				// BORRAR LA BIBLIOTECA A BORRAR, Y CON ELLA LOS LIBROS QUE HAN SOBRADO
+				// BORRAR LA BIBLIOTECA A BORRAR, Y CON ELLA LOS LIBROS QUE HAN SOBRADO //
 				for (int i = 0; i < bibliotecas.length; i++) {
 					
 					if (bibliotecas[i].getCip().equals(cipBorrar)) {
