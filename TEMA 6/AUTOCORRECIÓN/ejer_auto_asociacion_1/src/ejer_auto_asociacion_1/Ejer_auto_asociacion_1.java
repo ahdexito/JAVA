@@ -47,8 +47,6 @@ public class Ejer_auto_asociacion_1 {
 			}
 			System.out.println("\n--------------------------------\n");
 		} while (opcion != 0);
-		
-		Biblioteca biblio = new Biblioteca(MORADO, CIAN, CIAN);
 	}
 	
 	// MENÚ BIBLIOTECA //
@@ -138,7 +136,7 @@ public class Ejer_auto_asociacion_1 {
 			
 		return false;
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void BorrarBiblioteca() throws Exception {
