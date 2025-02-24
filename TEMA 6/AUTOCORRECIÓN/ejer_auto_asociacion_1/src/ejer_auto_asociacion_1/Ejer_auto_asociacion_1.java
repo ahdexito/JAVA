@@ -46,14 +46,16 @@ public class Ejer_auto_asociacion_1 {
 					break;
 			}
 			System.out.println("\n--------------------------------\n");
-		} while (opcion != 0);	
+		} while (opcion != 0);
+		
+		Biblioteca biblio = new Biblioteca(MORADO, CIAN, CIAN);
 	}
 	
 	// MENÚ BIBLIOTECA //
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void MenuBiblioteca() throws Exception {
-		
+	
 		int opcion;
 		
 		do {			
