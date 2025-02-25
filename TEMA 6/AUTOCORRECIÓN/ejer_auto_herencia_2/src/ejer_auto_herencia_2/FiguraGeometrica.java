@@ -5,7 +5,22 @@ public class FiguraGeometrica {
     protected float lado1;
 	protected float lado2;
 	protected float lado3;
-
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public float Area() {
+		return (this.lado2 * this.lado3) / 2;
+	}
+	
+	public void MostrarSalida() {
+		System.out.println("FIGURA GEOMÉTRICA"
+				+ "\nLado 1: " + this.lado1
+				+ "\nLado 2: " + this.lado2
+				+ "\nLado 3: " + this.lado3);
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	public FiguraGeometrica() {
 	}
 
@@ -38,6 +53,4 @@ public class FiguraGeometrica {
 	public void setLado3(float lado3) {
 		this.lado3 = lado3;
 	}
-	
-	
 }
