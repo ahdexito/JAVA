@@ -10,9 +10,12 @@ public class Interino extends Profesor {
 	
 	@Override
 	public void MostrarInformacion() {
+		
+		System.out.println(AMARILLO + "### INTERINO ###" + RESET);
+		
 		super.MostrarInformacion();
 		
-		System.out.println("Tiempo de contrato: " + this.tiempoContrato + " meses");
+		System.out.println("Tiempo de contrato: " + this.tiempoContrato + " meses\n");
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -98,4 +101,11 @@ public class Interino extends Profesor {
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m",
+			AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 }

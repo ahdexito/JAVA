@@ -16,6 +16,7 @@ public class Profesor extends Persona {
 	
 	@Override
 	public void MostrarInformacion() {
+		
 		super.MostrarInformacion();
 		
 		System.out.println("Materia: " + this.materia);
