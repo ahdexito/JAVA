@@ -12,7 +12,7 @@ public class Interino extends Profesor {
 	public void MostrarInformacion() {
 		super.MostrarInformacion();
 		
-		System.out.println("Tiempo de contrato: " + this.tiempoContrato);
+		System.out.println("Tiempo de contrato: " + this.tiempoContrato + " meses");
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
