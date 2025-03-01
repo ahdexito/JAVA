@@ -9,6 +9,8 @@ public class Persona {
 	protected String apellido2;
 	protected LocalDate fechaNacimiento;
 	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	public void MostrarInformacion() {
 		System.out.println("Apellido 1: " + this.apellido1);
 		System.out.println("Apellido 2: " + this.apellido2);

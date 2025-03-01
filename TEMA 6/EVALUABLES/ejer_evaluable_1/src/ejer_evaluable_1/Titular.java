@@ -7,7 +7,8 @@ public class Titular extends Profesor {
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public float SueldoNeto(double retencion) {
+	@Override
+	public float SueldoNeto() {
 
 		// OBTENER DIFERENCIA DE AÑOS DESDE INCORPORACIÓN HASTA HOY
 		LocalDate hoy = LocalDate.now();
@@ -18,13 +19,12 @@ public class Titular extends Profesor {
 		float sueldoBrutoPlus = this.sueldoBruto + (100 * (int) (anyosDiferencia / 3));
 
 		// A SUELDO BRUTO CON PLUS RESTARLE PORCENTAJE DE RETENCIÓN
-		return sueldoBrutoPlus - (sueldoBrutoPlus * (float) retencion);
+		return sueldoBrutoPlus - (sueldoBrutoPlus * (float)this.retencion);
 	}
 	
-	public void MostrarInformacion(double retencion) {
-		MostrarInformacion();
-		System.out.println("Materia: " + this.materia);
-		System.out.println("Sueldo neto: " + this.SueldoNeto(retencion));
+	@Override
+	public void MostrarInformacion() {
+		super.MostrarInformacion();
 		
 		var hoy = LocalDate.now();
 		Period tiempoContrato = Period.between(this.fechaIncorporacion, hoy);
@@ -39,8 +39,8 @@ public class Titular extends Profesor {
 	public Titular() {
 	}
 
-	public Titular(LocalDate fechaIncorporacion, float sueldoBruto, Materia materia, String dni, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento) {
-		super(sueldoBruto, materia, dni, nombre, apellido1, apellido2, fechaNacimiento);
+	public Titular(LocalDate fechaIncorporacion, float sueldoBruto, Materia materia, double retencion, String dni, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento) {
+		super(sueldoBruto, materia, retencion, dni, nombre, apellido1, apellido2, fechaNacimiento);
 		this.fechaIncorporacion = fechaIncorporacion;
 	}
 	
@@ -70,6 +70,14 @@ public class Titular extends Profesor {
 		this.materia = materia;
 	}
 
+	public double getRetencion() {
+		return retencion;
+	}
+
+	public void setRetencion(double retencion) {
+		this.retencion = retencion;
+	}
+	
 	public String getDni() {
 		return dni;
 	}
