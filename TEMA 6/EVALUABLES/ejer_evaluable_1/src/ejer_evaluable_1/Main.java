@@ -167,20 +167,38 @@ public class Main {
 				// OPCIÓN 2 - BORRAR PROFESOR //
 				case 2:
 					System.out.println(AMARILLO + "### BORRAR PROFESOR ###\n" + RESET);
-					System.out.print("Introduce DNI del profesor a borrar: ");
-					String dniBorrar = sc.nextLine();
 					
-					if (instituto.EliminarProfesor(dniBorrar))
-						System.out.println("\n" + CIAN + "Profesor con DNI (" + dniBorrar + ") eliminado correctamente\n" + RESET);
+					System.out.print(AMARILLO + "Introduce DNI del profesor a borrar: " + RESET);
+					String dniBorra = sc.nextLine();
 					
-					else System.out.println("\n" + ROJO + "No se ha podido eliminar el profesor con DNI (" + dniBorrar + ")\n" + RESET);
+					if (instituto.EliminarProfesor(dniBorra))
+						System.out.println("\n" + CIAN + "Profesor con DNI (" + dniBorra + ") eliminado correctamente\n" + RESET);
 					
+					else System.out.println("\n" + ROJO + "No se ha podido eliminar el profesor con DNI (" + dniBorra + ")\n" + RESET);
 					break;
 					
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				
+				// OPCIÓN 3 - AMPLIAR CONTRATO DE PROFESOR INTERINO //
+				case 3:
+					System.out.println(AMARILLO + "### AMPLIAR CONTRATO DE INTERINO ###\n" + RESET);
+					
+					System.out.print(AMARILLO + "Introduce DNI del profesor a borrar: " + RESET);
+					String dniModifica = sc.nextLine();
+					System.out.print("\n" + AMARILLO + "Introduce cantidad de meses a ampliar: " + RESET);
+					int mesesAmplia = sc.nextInt();
+					
+					if (instituto.AmpliarContrato(dniModifica, mesesAmplia))
+						System.out.println("\n" + CIAN + "Contrato del profesor con DNI (" + dniModifica + ") ampliado (" + mesesAmplia + ") meses correctamente\n" + RESET);
+					
+					else System.out.println("\n" + ROJO + "No se ha podido ampliar el contrato del profesor con DNI (" + dniModifica + ")\n" + RESET);
+					break;
+					
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					
 				// OPCIÓN 4 - MOSTRAR PROFESORES //
 				case 4:
+					System.out.println(AMARILLO + "### MOSTRAR PROFESORES ###\n" + RESET);
 					instituto.MostrarInformacion();
 					break;
 			}

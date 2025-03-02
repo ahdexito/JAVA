@@ -11,7 +11,7 @@ public class Interino extends Profesor {
 	@Override
 	public void MostrarInformacion() {
 		
-		System.out.println(AMARILLO + "### INTERINO ###" + RESET);
+		System.out.println(CIAN + "### INTERINO ###" + RESET);
 		
 		super.MostrarInformacion();
 		

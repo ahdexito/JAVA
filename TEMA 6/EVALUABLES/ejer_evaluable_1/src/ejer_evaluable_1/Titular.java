@@ -25,7 +25,7 @@ public class Titular extends Profesor {
 	@Override
 	public void MostrarInformacion() {
 		
-		System.out.println(AMARILLO + "### TITULAR ###" + RESET);
+		System.out.println(CIAN + "### TITULAR ###" + RESET);
 		
 		super.MostrarInformacion();
 		

@@ -64,11 +64,12 @@ public class Instituto {
 		
 		for (int i = 0; i < tamanyo; i++) {
 			
-			if (this.interinos[i].getDni().equals(dni)) {
-				
-				meses += this.interinos[i].getTiempoContrato();
-				this.interinos[i].setTiempoContrato(meses);
-				return true;
+			if (this.interinos[i] != null) {
+				if (this.interinos[i].getDni().equals(dni)) {
+					meses += this.interinos[i].getTiempoContrato();
+					this.interinos[i].setTiempoContrato(meses);
+					return true;
+				}	
 			}
 		}
 		return false;
