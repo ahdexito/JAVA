@@ -3,10 +3,6 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-enum Materia {
-	Programacion, SistemasInformaticos, LenguajesMarcas, EntornosDesarrollo, BasesDatos, Empresas
-}
-
 public class Main {
     
     public static void main(String[] args) {
@@ -22,13 +18,13 @@ public class Main {
 		else System.out.println(ROJO + "No se ha podido añadir el profesor interino" + RESET);
 		
 		if (instituto.AnyadirProfesor(
-			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.15, "87654321B", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7))))
+			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321B", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7))))
 				System.out.println("\n" + CIAN + "Profesor titular añadido correctamente\n" + RESET);
 		else System.out.println("\n" + ROJO + "No se ha podido añadir el profesor titular\n" + RESET);
 		
 		
 		
-		System.out.println(AMARILLO + "### CREACIÓN DE INSTITUTO ###" + RESET);
+		System.out.println(MORADO + "### CREACIÓN DE INSTITUTO ###" + RESET);
 		
 		System.out.print("\nIntroduce el nombre del instituto: ");
 		instituto.setNombre(sc.nextLine());
@@ -42,7 +38,7 @@ public class Main {
 		// MENÚ - PRINCIPAL //
 		do {
 			System.out.print(""
-					+ AMARILLO + "### MENÚ ###\n" + RESET
+					+ MORADO + "### MENÚ ###\n" + RESET
 					+ "  1. Añadir profesor\n"
 					+ "  2. Borrar profesor\n"
 					+ "  3. Ampliar contrato\n"
@@ -72,7 +68,7 @@ public class Main {
 				// OPCIÓN 1 - MENÚ AÑADIR PROFESOR //
 				case 1:
 					System.out.print(""
-							+ AMARILLO + "### AÑADIR PROFESOR ###\n" + RESET
+							+ MORADO + "### AÑADIR PROFESOR ###\n" + RESET
 							+ "  1. Profesor interino\n"
 							+ "  2. Profesor titular\n\n"
 							+ AMARILLO + "Selecciona una opción: " + RESET);
@@ -104,7 +100,7 @@ public class Main {
 							System.out.print("  - Duración del contrato (meses): ");
 							tiempoContrato = sc.nextInt();
 							System.out.print(""
-									+ AMARILLO + "  - MATERIAS:\n" + RESET
+									+ MORADO + "  - MATERIAS:\n" + RESET
 									+ "      1. Programación\n"
 									+ "      2. Sistemas Informáticos\n"
 									+ "      3. Lenguajes de Marcas\n"
@@ -115,8 +111,8 @@ public class Main {
 							materia = Materia.values()[sc.nextInt() - 1];
 							
 							if (instituto.AnyadirProfesor(
-									new Interino(tiempoContrato, sueldoBruto, materia, retencion, dni, nombre, apellido1, apellido2, fechaNacimiento)))
-								System.out.println("\n" + CIAN + "Profesor interino añadido correctamente\n" + RESET);
+								new Interino(tiempoContrato, sueldoBruto, materia, retencion, dni, nombre, apellido1, apellido2, fechaNacimiento)))
+									System.out.println("\n" + CIAN + "Profesor interino añadido correctamente\n" + RESET);
 							
 							else System.out.println("\n" + ROJO + "No se ha podido añadir el profesor interino\n" + RESET);
 							break;
@@ -143,7 +139,7 @@ public class Main {
 							System.out.print("  - Fecha de incorporación: ");
 							fechaIncorporacion = LocalDate.parse(sc.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 							System.out.print(""
-									+ AMARILLO + "  - MATERIAS:\n" + RESET
+									+ MORADO + "  - MATERIAS:\n" + RESET
 									+ "      1. Programación\n"
 									+ "      2. Sistemas Informáticos\n"
 									+ "      3. Lenguajes de Marcas\n"
@@ -155,7 +151,7 @@ public class Main {
 							
 							if (instituto.AnyadirProfesor(
 								new Titular(fechaIncorporacion, sueldoBruto, materia, retencion, dni, nombre, apellido1, apellido2, fechaNacimiento)))
-								System.out.println("\n" + CIAN + "Profesor titular añadido correctamente\n" + RESET);
+									System.out.println("\n" + CIAN + "Profesor titular añadido correctamente\n" + RESET);
 							
 							else System.out.println("\n" + ROJO + "No se ha podido añadir el profesor titular\n" + RESET);
 							break;
@@ -166,7 +162,7 @@ public class Main {
 				
 				// OPCIÓN 2 - BORRAR PROFESOR //
 				case 2:
-					System.out.println(AMARILLO + "### BORRAR PROFESOR ###\n" + RESET);
+					System.out.println(MORADO + "### BORRAR PROFESOR ###\n" + RESET);
 					
 					System.out.print(AMARILLO + "Introduce DNI del profesor a borrar: " + RESET);
 					String dniBorra = sc.nextLine();
@@ -181,7 +177,7 @@ public class Main {
 				
 				// OPCIÓN 3 - AMPLIAR CONTRATO DE PROFESOR INTERINO //
 				case 3:
-					System.out.println(AMARILLO + "### AMPLIAR CONTRATO DE INTERINO ###\n" + RESET);
+					System.out.println(MORADO + "### AMPLIAR CONTRATO DE INTERINO ###\n" + RESET);
 					
 					System.out.print(AMARILLO + "Introduce DNI del profesor a borrar: " + RESET);
 					String dniModifica = sc.nextLine();
@@ -198,7 +194,7 @@ public class Main {
 					
 				// OPCIÓN 4 - MOSTRAR PROFESORES //
 				case 4:
-					System.out.println(AMARILLO + "### MOSTRAR PROFESORES ###\n" + RESET);
+					System.out.println(MORADO + "### MOSTRAR PROFESORES ###\n" + RESET);
 					instituto.MostrarInformacion();
 					break;
 			}

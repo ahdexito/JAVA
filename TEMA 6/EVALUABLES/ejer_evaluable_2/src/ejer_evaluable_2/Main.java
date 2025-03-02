@@ -3,10 +3,6 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-enum Materia {
-	Programacion, SistemasInformaticos, LenguajesMarcas, EntornosDesarrollo, BasesDatos, Empresas
-}
-
 public class Main {
     
     public static void main(String[] args) {

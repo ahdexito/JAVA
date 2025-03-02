@@ -31,10 +31,10 @@ public class Titular extends Profesor {
 		
 		var hoy = LocalDate.now();
 		Period tiempoContrato = Period.between(this.fechaIncorporacion, hoy);
-		System.out.println("Tiempo de contrato: " +
+		System.out.println("Tiempo de contrato: " + CIAN +
 			tiempoContrato.getYears() + " años, " +
 			tiempoContrato.getMonths() + " meses y " +
-			tiempoContrato.getDays() + " días\n");
+			tiempoContrato.getDays() + " días\n" + RESET);
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

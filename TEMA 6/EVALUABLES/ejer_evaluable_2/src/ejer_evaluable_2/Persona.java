@@ -13,11 +13,11 @@ public class Persona {
 	
 	public void MostrarInformacion() {
 		
-		System.out.println("Apellido 1: " + this.apellido1);
-		System.out.println("Apellido 2: " + this.apellido2);
-		System.out.println("Nombre: " + this.nombre);
-		System.out.println("DNI: " + this.dni);
-		System.out.println("Fecha de nacimiento: " + this.fechaNacimiento);
+		System.out.println("Apellido 1: " + CIAN + this.apellido1 + RESET);
+		System.out.println("Apellido 2: " + CIAN + this.apellido2 + RESET);
+		System.out.println("Nombre: " + CIAN + this.nombre + RESET);
+		System.out.println("DNI: " + CIAN + this.dni + RESET);
+		System.out.println("Fecha de nacimiento: " + CIAN + this.fechaNacimiento + RESET);
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,4 +74,9 @@ public class Persona {
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m",
+			AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 }

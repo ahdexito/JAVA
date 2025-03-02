@@ -2,6 +2,10 @@ package ejer_evaluable_2;
 
 import java.time.LocalDate;
 
+enum Materia {
+	Programacion, SistemasInformaticos, LenguajesMarcas, EntornosDesarrollo, BasesDatos, Empresas
+}
+
 public class Profesor extends Persona {
     
     protected float sueldoBruto;
@@ -19,8 +23,8 @@ public class Profesor extends Persona {
 		
 		super.MostrarInformacion();
 		
-		System.out.println("Materia: " + this.materia);
-		System.out.println("Sueldo neto: " + SueldoNeto());
+		System.out.println("Materia: " + CIAN + this.materia + RESET);
+		System.out.println("Sueldo neto: " + CIAN + SueldoNeto() + RESET);
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
