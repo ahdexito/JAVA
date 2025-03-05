@@ -27,7 +27,10 @@ final class Email {
 				QuitarBloqueo();
 				SendEmail(destinatario, asunto, cuerpo);
 			}
-			else return false;
+			else {
+				System.out.println(CIAN + "### MENSAJE ELIMINADO ###" + RESET);
+				return false;
+			}
 		}
 		return false;
 	}
