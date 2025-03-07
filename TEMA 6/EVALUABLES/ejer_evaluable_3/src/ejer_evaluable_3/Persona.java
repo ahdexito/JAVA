@@ -11,7 +11,7 @@ public abstract class Persona {
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public /*abstract*/ void MostrarInformacion() {
+	public abstract void MostrarInformacion () {
 		
 		System.out.println("DNI: " + this.dni);
 		System.out.println("Nombre: " + this.nombre);
