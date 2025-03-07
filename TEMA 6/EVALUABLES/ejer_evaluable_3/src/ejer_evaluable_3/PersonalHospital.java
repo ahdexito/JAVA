@@ -2,12 +2,12 @@ package ejer_evaluable_3;
 
 import java.time.*;
 
-public abstract class PersonaHospital extends Persona {
+public abstract class PersonalHospital extends Persona {
     
     protected double sueldo;
 	protected LocalDate fechaIncorporacion;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public void EnviarTratamiento(String tipo) {
 		
@@ -32,12 +32,12 @@ public abstract class PersonaHospital extends Persona {
 		}
 	}
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public PersonaHospital() {
+	public PersonalHospital() {
 	}
 
-	public PersonaHospital(double sueldo, LocalDate fechaIncorporacion, String dni, String nombre, LocalDate fechaNacimiento) {
+	public PersonalHospital(double sueldo, LocalDate fechaIncorporacion, String dni, String nombre, LocalDate fechaNacimiento) {
 		super(dni, nombre, fechaNacimiento);
 		this.sueldo = sueldo;
 		this.fechaIncorporacion = fechaIncorporacion;
