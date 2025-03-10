@@ -2,7 +2,7 @@ package ejer_evaluable_3;
 
 public class Hospital {
     
-	// FALTAR ESPECIFICAR TAMAÑO MÁXIMO DE ARRAY
+	// FALTAR ESPECIFICAR TAMAÑO MÁXIMO DE ARRAY //
     private Persona[] personas;
 
 	public Hospital() {
