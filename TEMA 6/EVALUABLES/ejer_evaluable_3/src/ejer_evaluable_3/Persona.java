@@ -11,15 +11,7 @@ public abstract class Persona {
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	/* SI PIDE DATOS DE CUALQUIER PERSONA, PARA EVITAR REPETIR CÓDIGO 
-	ESTE MÉTODO NO PUEDE SER ABSTRACTO, PUESTO QUE IMPLICA QUE ESTE ESTÉ VACÍO */
-	public /*abstract*/ void MostrarInformacion () {
-		
-		System.out.println("DNI: " + this.dni);
-		System.out.println("Nombre: " + this.nombre);
-		System.out.println("Fecha nacimiento: " + this.fechaNacimiento.
-				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-	}
+	public abstract void MostrarInformacion ();
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
