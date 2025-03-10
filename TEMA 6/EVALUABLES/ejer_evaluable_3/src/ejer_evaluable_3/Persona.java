@@ -11,7 +11,9 @@ public abstract class Persona {
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public abstract void MostrarInformacion () {
+	/* SI PIDE DATOS DE CUALQUIER PERSONA, PARA EVITAR REPETIR CÓDIGO 
+	ESTE MÉTODO NO PUEDE SER ABSTRACTO, PUESTO QUE IMPLICA QUE ESTE ESTÉ VACÍO */
+	public /*abstract*/ void MostrarInformacion () {
 		
 		System.out.println("DNI: " + this.dni);
 		System.out.println("Nombre: " + this.nombre);

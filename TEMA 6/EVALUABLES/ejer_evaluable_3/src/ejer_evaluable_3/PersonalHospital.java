@@ -11,23 +11,22 @@ public abstract class PersonalHospital extends Persona {
 	
 	public void EnviarTratamiento(String tipo) {
 		
+		// LOS MÉTODOS DEVUELVEN SIEMPRE 'TRUE' PERO NO SE HACE NADA CON ESE VALOR //
 		switch (tipo) {
 			case "Email":
-				if (EnviarDatos.EnviarEmail()) System.out.println("");
-				else System.out.println("");
+				EnviarDatos.EnviarEmail();
 				break;
 				
-			case "Wasap":
-				if (EnviarDatos.EnviarWasap()) System.out.println("");
-				else System.out.println("");
+			case "WhatsApp":
+				EnviarDatos.EnviarWhatsApp();
 				break;
 				
-			case "Llamadas":
-				if (EnviarDatos.EnviarLlamadas()) System.out.println("");
-				else System.out.println("");
+			case "Llamada":
+				EnviarDatos.EnviarLlamada();
 				break;
+				
 			default:
-				System.out.println("");
+				System.out.println(ROJO + "EL TRATAMIENTO NO PUEDE SER ENVIADO VÍA (" + tipo + ")" + RESET);
 				break;
 		}
 	}
@@ -82,4 +81,9 @@ public abstract class PersonalHospital extends Persona {
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m",
+			AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 }

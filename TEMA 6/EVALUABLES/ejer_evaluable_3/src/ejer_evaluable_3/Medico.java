@@ -15,7 +15,7 @@ public class Medico extends PersonalHospital {
 	
 	public boolean HacerCirugia(Paciente paciente) {
 		
-		
+		return false;
 	}
 	
 	public void HacerGuardia(int guardias) {

@@ -11,12 +11,11 @@ public class Paciente extends Persona {
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public boolean NuevaConsulta() {
+	 
+	public boolean NuevaConsulta(String motivo, PersonalHospital personalHospital, int tipoConsulta) {
 		
-		for (int i = 0; i < consultas.length; i++) {
-			
-			
-		}
+		Consulta consulta = new Consulta(motivo, personalHospital, TipoConsulta.values()[tipoConsulta]);
+		return false;
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
