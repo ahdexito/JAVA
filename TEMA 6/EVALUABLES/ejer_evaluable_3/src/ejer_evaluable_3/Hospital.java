@@ -26,11 +26,31 @@ public class Hospital {
 		
 		for (int i = 0; i < personas.length; i++) {
 			
-			if (personas[i] != null) {
+			// TERMINAR SI SE ENCUENTRA UN NULL //
+			if (personas[i] == null) return false;
+			
+			// BUSCAR COINCIDENCIA DE DNI ENTRE TODAS LAS PERSONAS //
+			if (personas[i].getDni().equals(dni)) {
+				
+				// COMPROBAR QUE ESA PERSONA SEA ENFERMERO //
 				if (personas[i] instanceof Enfermero) {
-					if (personas[i].getDni().equals(dni)) {
+					
+					// SI EL ENFERMERO ERA EL ÚLTIMO DEL ARRAY, SE BORRA DIRECTAMENTE //
+					if (i == personas.length - 1) {
 						personas[i] = null;
 						return true;
+					}
+					
+					// SI NO ES EL ÚLTIMO, BUSCAR POSICIÓN DEL ÚLTIMO //
+					for (int j = 0; j < personas.length; j++) {
+						
+						// SE REEMPLAZA EL ENFERMERO A BORRAR POR LA ÚLTIMA PERSONA AÑADIDA, Y SE BORRA EL ÚLTIMO //
+						if (personas[j] == null) {
+							
+							personas[i] = personas[j - 1];
+							personas[j - 1] = null;
+							return true;
+						}
 					}
 				}
 			}

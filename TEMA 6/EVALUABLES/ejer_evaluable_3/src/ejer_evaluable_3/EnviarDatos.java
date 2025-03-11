@@ -6,22 +6,19 @@ public class EnviarDatos {
 	}
     
 	// SI LOS MÉTODOS SOLO DEVUELVEN TRUE NO NECESITAN SER BOOLEAN, SIMPLEMENTE VOID //
-    public static boolean EnviarEmail() {
+    public static void EnviarEmail() {
 		
 		System.out.println(CIAN + "TRATAMIENTO ENVIADOS VÍA EMAIL" + RESET);
-		return true;
 	}
 	
-	public static boolean EnviarWhatsApp() {
+	public static void EnviarWhatsApp() {
 		
 		System.out.println(CIAN + "TRATAMIENTO ENVIADOS VÍA WHATSAPP" + RESET);
-		return true;
 	}
 	
-	public static boolean EnviarLlamada() {
+	public static void EnviarLlamada() {
 		
 		System.out.println(CIAN + "TRATAMIENTO ENVIADOS VÍA LLAMADA" + RESET);
-		return true;
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

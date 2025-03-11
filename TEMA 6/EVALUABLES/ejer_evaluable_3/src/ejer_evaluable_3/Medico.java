@@ -10,41 +10,49 @@ public class Medico extends PersonalHospital {
     
     private Especialidad especialidad;
 	private int diasPermiso = 0;
+
+	public Medico() {
+	}
 	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	public Medico(Especialidad especialidad, int diasPermiso, double sueldo, LocalDate fechaIncorporacion, int numGuardias, String dni, String nombre, LocalDate fechaNacimiento) {
+		super(sueldo, fechaIncorporacion, numGuardias, dni, nombre, fechaNacimiento);
+		this.especialidad = especialidad;
+		this.diasPermiso = diasPermiso;
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+
 	public boolean HacerCirugia(Paciente paciente) {
 		
 		return false;
 	}
 	
-	public void HacerGuardia(int guardias) {
+	@Override
+	public void MostrarInformacion() {
 		
-		this.diasPermiso += guardias;
-		this.sueldo += (guardias * 100);
+		
 	}
 	
+	@Override
+	public void HacerGuardia(int numGuardias) {
+		
+		
+	}
+	
+	@Override
 	public void HacerVisita(Paciente paciente) {
 		
 		
 	}
 	
-	public void PuedeJubilarse() {
+	@Override
+	public boolean PuedeJubilarse() {
 		
-		
+		return false;
 	}
 	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
-	public Medico() {
-	}
-
-	public Medico(Especialidad especialidad, int diasPermiso, double sueldo, LocalDate fechaIncorporacion, String dni, String nombre, LocalDate fechaNacimiento) {
-		super(sueldo, fechaIncorporacion, dni, nombre, fechaNacimiento);
-		this.especialidad = especialidad;
-		this.diasPermiso = diasPermiso;
-	}
-
 	public Especialidad getEspecialidad() {
 		return especialidad;
 	}
@@ -75,6 +83,14 @@ public class Medico extends PersonalHospital {
 
 	public void setFechaIncorporacion(LocalDate fechaIncorporacion) {
 		this.fechaIncorporacion = fechaIncorporacion;
+	}
+
+	public int getNumGuardias() {
+		return numGuardias;
+	}
+
+	public void setNumGuardias(int numGuardias) {
+		this.numGuardias = numGuardias;
 	}
 
 	public String getDni() {

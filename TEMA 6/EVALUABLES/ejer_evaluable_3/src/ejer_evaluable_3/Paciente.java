@@ -10,6 +10,17 @@ public class Paciente extends Persona {
 	private String habitacion;
 	private Consulta[] consultas;
 	
+	public Paciente() {
+	}
+
+	public Paciente(boolean ingresado, LocalDate fechaAlta, String habitacion, Consulta[] consultas, String dni, String nombre, LocalDate fechaNacimiento) {
+		super(dni, nombre, fechaNacimiento);
+		this.ingresado = ingresado;
+		this.fechaAlta = fechaAlta;
+		this.habitacion = habitacion;
+		this.consultas = consultas;
+	}
+	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public void MostrarInformacion() {
@@ -47,16 +58,6 @@ public class Paciente extends Persona {
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	public Paciente() {
-	}
-
-	public Paciente(boolean ingresado, LocalDate fechaAlta, String habitacion, Consulta[] consultas, String dni, String nombre, LocalDate fechaNacimiento) {
-		super(dni, nombre, fechaNacimiento);
-		this.ingresado = ingresado;
-		this.fechaAlta = fechaAlta;
-		this.habitacion = habitacion;
-		this.consultas = consultas;
-	}
 
 	public boolean isIngresado() {
 		return ingresado;

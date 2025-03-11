@@ -6,12 +6,28 @@ public abstract class PersonalHospital extends Persona {
     
     protected double sueldo;
 	protected LocalDate fechaIncorporacion;
+	protected int numGuardias;
+	
+	public PersonalHospital() {
+	}
+
+	public PersonalHospital(double sueldo, LocalDate fechaIncorporacion, int numGuardias, String dni, String nombre, LocalDate fechaNacimiento) {
+		super(dni, nombre, fechaNacimiento);
+		this.sueldo = sueldo;
+		this.fechaIncorporacion = fechaIncorporacion;
+		this.numGuardias = numGuardias;
+	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public abstract void HacerGuardia(int numGuardias);
+	
+	public abstract void HacerVisita(Paciente paciente);
+	
+	public abstract boolean PuedeJubilarse();
 	
 	public void EnviarTratamiento(String tipo) {
 		
-		// LOS MÉTODOS DEVUELVEN SIEMPRE 'TRUE' PERO NO SE HACE NADA CON ESE VALOR //
 		switch (tipo) {
 			case "Email":
 				EnviarDatos.EnviarEmail();
@@ -32,15 +48,6 @@ public abstract class PersonalHospital extends Persona {
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	public PersonalHospital() {
-	}
-
-	public PersonalHospital(double sueldo, LocalDate fechaIncorporacion, String dni, String nombre, LocalDate fechaNacimiento) {
-		super(dni, nombre, fechaNacimiento);
-		this.sueldo = sueldo;
-		this.fechaIncorporacion = fechaIncorporacion;
-	}
 
 	public double getSueldo() {
 		return sueldo;
@@ -80,6 +87,14 @@ public abstract class PersonalHospital extends Persona {
 
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public int getNumGuardias() {
+		return numGuardias;
+	}
+
+	public void setNumGuardias(int numGuardias) {
+		this.numGuardias = numGuardias;
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
