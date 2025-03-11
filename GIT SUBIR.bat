@@ -1,4 +1,4 @@
-cd C:\Users\Angel\Documents\PROGRAMACIÓN
+cd "C:\Users\Angel\Documents\PROGRAMACIÓN"
 
 git pull
 
