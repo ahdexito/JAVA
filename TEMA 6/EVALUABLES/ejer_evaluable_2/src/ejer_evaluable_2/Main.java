@@ -9,19 +9,13 @@ public class Main {
         Scanner sc = new Scanner (System.in);
         
 		Instituto instituto = new Instituto();
-
 		
+		// PROFESORES DE PRUEBA //
+		instituto.AnyadirProfesor(
+				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678A", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
 		
-		if (instituto.AnyadirProfesor(
-			new Interino(3, 1580, Materia.Programacion, 0.1, "12345678A", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23))))
-				System.out.println(CIAN + "Profesor interino añadido correctamente" + RESET);					
-		else System.out.println(ROJO + "No se ha podido añadir el profesor interino" + RESET);
-		
-		if (instituto.AnyadirProfesor(
-			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321B", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7))))
-				System.out.println("\n" + CIAN + "Profesor titular añadido correctamente\n" + RESET);
-		else System.out.println("\n" + ROJO + "No se ha podido añadir el profesor titular\n" + RESET);
-		
+		instituto.AnyadirProfesor(
+			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321B", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
 		
 		
 		System.out.println(MORADO + "### CREACIÓN DE INSTITUTO ###" + RESET);
@@ -83,6 +77,7 @@ public class Main {
 						
 						// OPCIÓN 1 - AÑADIR PROFESOR INTERINO //
 						case 1:
+							// SOLICITAR DATOS //
 							System.out.print("  - Nombre: ");
 							nombre = sc.nextLine();
 							System.out.print("  - Primer apellido: ");
@@ -110,6 +105,7 @@ public class Main {
 									+ AMARILLO + "  - Selecciona una opción: " + RESET);
 							materia = Materia.values()[sc.nextInt() - 1];
 							
+							// CREAR Y AÑADIR PROFESOR //
 							if (instituto.AnyadirProfesor(
 								new Interino(tiempoContrato, sueldoBruto, materia, retencion, dni, nombre, apellido1, apellido2, fechaNacimiento)))
 									System.out.println("\n" + CIAN + "Profesor interino añadido correctamente\n" + RESET);
@@ -121,6 +117,7 @@ public class Main {
 						
 						// OPCIÓN 2 - AÑADIR PROFESOR TITULAR //
 						case 2:
+							// SOLICITAR DATOS //
 							System.out.print("  - Nombre: ");
 							nombre = sc.nextLine();
 							System.out.print("  - Primer apellido: ");
@@ -149,6 +146,7 @@ public class Main {
 									+ AMARILLO + "  - Selecciona una opción: " + RESET);
 							materia = Materia.values()[sc.nextInt() - 1];
 							
+							// CREAR Y AÑADIR PROFESOR //
 							if (instituto.AnyadirProfesor(
 								new Titular(fechaIncorporacion, sueldoBruto, materia, retencion, dni, nombre, apellido1, apellido2, fechaNacimiento)))
 									System.out.println("\n" + CIAN + "Profesor titular añadido correctamente\n" + RESET);
@@ -179,7 +177,7 @@ public class Main {
 				case 3:
 					System.out.println(MORADO + "### AMPLIAR CONTRATO DE INTERINO ###\n" + RESET);
 					
-					System.out.print(AMARILLO + "Introduce DNI del profesor a borrar: " + RESET);
+					System.out.print(AMARILLO + "Introduce DNI del profesor a ampliar su contrato: " + RESET);
 					String dniModifica = sc.nextLine();
 					System.out.print("\n" + AMARILLO + "Introduce cantidad de meses a ampliar: " + RESET);
 					int mesesAmplia = sc.nextInt();

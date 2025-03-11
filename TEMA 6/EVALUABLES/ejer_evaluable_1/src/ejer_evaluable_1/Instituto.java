@@ -41,19 +41,56 @@ public class Instituto {
 		
 		for (int i = 0; i < tamanyo; i++) {
 			
+			// DEJAR DE BUSCAR CUANDO ENCUENTRE EL PRIMER NULL EN AMBOS ARRAYS //
+			if (this.interinos[i] == null && this.titulares[i] == null) return false;
+			
 			// BUSCAR COINCIDENCIA DEL DNI DENTRO DEL ARRAY INTERINOS //
-			if (this.interinos[i] != null) {
-				if (this.interinos[i].getDni().equals(dni)) {
+			if (this.interinos[i].getDni().equals(dni)) {
+				
+				// BORRAR DIRECTAMENTE SI ES EL ÚLTIMO DEL ARRAY //
+				if (i == tamanyo - 1) {
 					this.interinos[i] = null;
 					return true;
 				}
+				
+				// BUSCAR EL PRIMER NULL DEL ARRAY PARA ENCONTRAR AL ÚLTIMO PROFESOR AÑADIDO //
+				else {
+					for (int j = 0; j < tamanyo; j++) {
+
+						if (this.interinos[j] == null) {
+
+							// EL PROFESOR A BORRAR SE REEMPLAZA POR EL ÚLTIMO PROFESOR AÑADIDO //
+							this.interinos[i] = this.interinos[j - 1];
+							this.interinos[j - 1] = null;
+							return true;
+						}
+					}
+				}
 			}
 			
-			// BUSCAR COINCIDENCIA DEL DNI DENTRO DEL ARRAY TITULARES //
-			if (this.interinos[i] != null) {
-				if (this.titulares[i].getDni().equals(dni)) {
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			// BUSCAR COINCIDENCIA DEL DNI DENTRO DEL ARRAY PROFESORES //
+			if (this.titulares[i].getDni().equals(dni)) {
+				
+				// BORRAR DIRECTAMENTE SI ES EL ÚLTIMO DEL ARRAY //
+				if (i == tamanyo - 1) {
 					this.titulares[i] = null;
 					return true;
+				}
+				
+				// BUSCAR EL PRIMER NULL DEL ARRAY PARA ENCONTRAR AL ÚLTIMO PROFESOR AÑADIDO //
+				else {
+					for (int j = 0; j < tamanyo; j++) {
+
+						if (this.titulares[j] == null) {
+
+							// EL PROFESOR A BORRAR SE REEMPLAZA POR EL ÚLTIMO PROFESOR AÑADIDO //
+							this.titulares[i] = this.titulares[j - 1];
+							this.titulares[j - 1] = null;
+							return true;
+						}
+					}
 				}
 			}
 		}
@@ -64,13 +101,17 @@ public class Instituto {
 		
 		for (int i = 0; i < tamanyo; i++) {
 			
-			if (this.interinos[i] != null) {
-				if (this.interinos[i].getDni().equals(dni)) {
-					meses += this.interinos[i].getTiempoContrato();
-					this.interinos[i].setTiempoContrato(meses);
-					return true;
-				}	
-			}
+			// DEJAR DE BUSCAR CUANDO ENCUENTRE EL PRIMER NULL //
+			if (this.interinos[i] == null) return false;
+				
+			// BUSCAR COINCIDENCIA DEL DNI DENTRO DEL ARRAY INTERINOS //
+			if (this.interinos[i].getDni().equals(dni)) {
+
+				// SI COINCIDE, REALIZAR OPERACIÓN //
+				meses += this.interinos[i].getTiempoContrato();
+				this.interinos[i].setTiempoContrato(meses);
+				return true;
+			}	
 		}
 		return false;
 	}

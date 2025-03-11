@@ -26,12 +26,30 @@ public class Instituto {
 		
 		for (int i = 0; i < tamanyo; i++) {
 			
+			// DEJAR DE BUSCAR CUANDO ENCUENTRE EL PRIMER NULL //
+			if (this.profesores[i] == null) return false;
+			
 			// BUSCAR COINCIDENCIA DEL DNI DENTRO DEL ARRAY PROFESORES //
-			if (this.profesores[i] != null) {
-				if (this.profesores[i].getDni().equals(dni)) {
-					
+			if (this.profesores[i].getDni().equals(dni)) {
+				
+				// BORRAR DIRECTAMENTE SI ES EL ÚLTIMO DEL ARRAY //
+				if (i == tamanyo - 1) {
 					this.profesores[i] = null;
 					return true;
+				}
+				
+				// BUSCAR EL PRIMER NULL DEL ARRAY PARA ENCONTRAR AL ÚLTIMO PROFESOR AÑADIDO //
+				else {
+					for (int j = 0; j < tamanyo; j++) {
+
+						if (this.profesores[j] == null) {
+
+							// EL PROFESOR A BORRAR SE REEMPLAZA POR EL ÚLTIMO PROFESOR AÑADIDO //
+							this.profesores[i] = this.profesores[j - 1];
+							this.profesores[j - 1] = null;
+							return true;
+						}
+					}
 				}
 			}
 		}
@@ -42,15 +60,19 @@ public class Instituto {
 		
 		for (int i = 0; i < tamanyo; i++) {
 			
-			if (this.profesores[i] != null) {
+			// DEJAR DE BUSCAR CUANDO ENCUENTRE EL PRIMER NULL //
+			if (this.profesores[i] == null) return false;
+			
+			// BUSCAR COINCIDENCIA DEL DNI DENTRO DEL ARRAY PROFESORES //
+			if (this.profesores[i].getDni().equals(dni)) {
+				
+				// SI EL PROFESOR CON DNI COINCIDENTE ES INTERINO, REALIZAR LA OPERACIÓN //
 				if (this.profesores[i] instanceof Interino) {
-					if (this.profesores[i].getDni().equals(dni)) {
-						
-						Interino interino = (Interino)this.profesores[i];
-						meses += interino.getTiempoContrato();
-						interino.setTiempoContrato(meses);
-						return true;
-					}
+
+					Interino interino = (Interino)this.profesores[i];
+					meses += interino.getTiempoContrato();
+					interino.setTiempoContrato(meses);
+					return true;
 				}
 			}	
 		}
