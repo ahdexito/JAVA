@@ -1,5 +1,3 @@
-cd "C:\Users\Angel\Documents\PROGRAMACIÓN"
-
 git pull
 
 git add .
