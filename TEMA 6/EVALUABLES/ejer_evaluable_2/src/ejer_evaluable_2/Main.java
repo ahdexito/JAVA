@@ -11,11 +11,36 @@ public class Main {
 		Instituto instituto = new Instituto();
 		
 		// PROFESORES DE PRUEBA //
+		
 		instituto.AnyadirProfesor(
 				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678A", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
 		
 		instituto.AnyadirProfesor(
+			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321A", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
+		
+		instituto.AnyadirProfesor(
+				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678B", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
+		
+		instituto.AnyadirProfesor(
 			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321B", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
+		
+		instituto.AnyadirProfesor(
+				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678C", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
+		
+		instituto.AnyadirProfesor(
+			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321C", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
+		
+		instituto.AnyadirProfesor(
+				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678D", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
+		
+		instituto.AnyadirProfesor(
+			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321D", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
+		
+		instituto.AnyadirProfesor(
+				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678E", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
+		
+		instituto.AnyadirProfesor(
+			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321E", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
 		
 		
 		System.out.println(MORADO + "### CREACIÓN DE INSTITUTO ###" + RESET);

@@ -41,8 +41,8 @@ public class Instituto {
 		
 		for (int i = 0; i < tamanyo; i++) {
 			
-			// DEJAR DE BUSCAR CUANDO ENCUENTRE EL PRIMER NULL EN AMBOS ARRAYS //
-			if (this.interinos[i] == null && this.titulares[i] == null) return false;
+			// DEJAR DE BUSCAR CUANDO ENCUENTRE EL PRIMER NULL //
+			if (this.interinos[i] == null) break;
 			
 			// BUSCAR COINCIDENCIA DEL DNI DENTRO DEL ARRAY INTERINOS //
 			if (this.interinos[i].getDni().equals(dni)) {
@@ -67,10 +67,16 @@ public class Instituto {
 					}
 				}
 			}
+		}
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		for (int i = 0; i < tamanyo; i++) {
 			
-			//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// DEJAR DE BUSCAR CUANDO ENCUENTRE EL PRIMER NULL //
+			if (this.titulares[i] == null) return false;
 			
-			// BUSCAR COINCIDENCIA DEL DNI DENTRO DEL ARRAY PROFESORES //
+			// BUSCAR COINCIDENCIA DEL DNI DENTRO DEL ARRAY TITULARES //
 			if (this.titulares[i].getDni().equals(dni)) {
 				
 				// BORRAR DIRECTAMENTE SI ES EL ÚLTIMO DEL ARRAY //

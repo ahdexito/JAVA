@@ -15,7 +15,7 @@ public class Interino extends Profesor {
 		
 		super.MostrarInformacion();
 		
-		System.out.println("Tiempo de contrato: " + CIAN + this.tiempoContrato + RESET + " meses\n");
+		System.out.println("Tiempo de contrato: " + CIAN + this.tiempoContrato + " meses\n" + RESET);
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
