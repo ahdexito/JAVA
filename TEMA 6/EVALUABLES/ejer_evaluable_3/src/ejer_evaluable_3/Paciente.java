@@ -57,7 +57,7 @@ public class Paciente extends Persona {
 		
 		Consulta consulta = new Consulta(motivo, personalHospital, TipoConsulta.values()[tipoConsulta]);
 		EnviarDatos.EnviarEmail();
-		return false;
+		return true;
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	

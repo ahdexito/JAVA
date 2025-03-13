@@ -41,16 +41,16 @@ public class Medico extends PersonalHospital {
 	@Override
 	public void MostrarInformacion() {
 		
-		System.out.println("DNI: " + this.dni);
-		System.out.println("Nombre: " + this.nombre);
-		System.out.println("Fecha nacimiento: " + this.fechaNacimiento.
+		System.out.println(CIAN + "DNI: " + RESET + this.dni);
+		System.out.println(CIAN + "Nombre: " + RESET + this.nombre);
+		System.out.println(CIAN + "Fecha nacimiento: " + RESET + this.fechaNacimiento.
 				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-		System.out.println("Sueldo: " + this.sueldo);
-		System.out.println("Fecha incorporación: " + this.fechaIncorporacion.
+		System.out.println(CIAN + "Sueldo: " + RESET + this.sueldo);
+		System.out.println(CIAN + "Fecha incorporación: " + RESET + this.fechaIncorporacion.
 				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-		System.out.println("Número de guardias: " + this.numGuardias);
-		System.out.println("Especialidad: " + this.especialidad);
-		System.out.println("Días de permiso: " + this.diasPermiso);
+		System.out.println(CIAN + "Número de guardias: " + RESET + this.numGuardias);
+		System.out.println(CIAN + "Especialidad: " + RESET + this.especialidad);
+		System.out.println(CIAN + "Días de permiso: " + RESET + this.diasPermiso);
 	}
 	
 	@Override

@@ -63,10 +63,6 @@ public class Hospital {
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public Hospital(Persona[] personas) {
-		this.personas = personas;
-	}
-
 	public Persona[] getPersonas() {
 		return personas;
 	}
