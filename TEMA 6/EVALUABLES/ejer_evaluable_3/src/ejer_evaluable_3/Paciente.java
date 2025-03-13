@@ -40,8 +40,8 @@ public class Paciente extends Persona {
 		
 		System.out.println("Habitación: " + this.habitacion);
 		
+		int numeroConsulta = 1;
 		for (int i = 0; i < consultas.length; i++) {
-			int numeroConsulta = 1;
 			
 			if (this.consultas[i] != null) {
 				System.out.println("\nCONSULTA " + numeroConsulta);

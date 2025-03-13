@@ -10,7 +10,7 @@ public class Main {
         Scanner sc = new Scanner (System.in);
         
 		
-        System.out.println(AMARILLO + "/// GESTIÓN DE HOSPITAL ///\n" + RESET);
+        System.out.println(AMARILLO + "/// GESTIÓN DE HOSPITAL ///\n\n" + RESET);
 		
 		// CREACIÓN DE HOSPITAL //
 		Hospital hospital = new Hospital();
@@ -79,9 +79,35 @@ public class Main {
 		
 		
 		// MOSTRAR DATOS DE MÉDICOS //
+		System.out.println(AMARILLO + "### MOSTRAR LOS DATOS DE CADA MÉDICO ###\n" + RESET);
+		
 		for (int i = 0; i < hospital.getPersonas().length; i++) {
 			
 			if (hospital.getPersonas()[i] instanceof Medico) {
+				
+				hospital.getPersonas()[i].MostrarInformacion();
+				System.out.println("");
+			}
+		}
+		
+		// MOSTRAR DATOS DE ENFERMEROS //
+		System.out.println(AMARILLO + "### MOSTRAR LOS DATOS DE CADA ENFERMERO ###\n" + RESET);
+		
+		for (int i = 0; i < hospital.getPersonas().length; i++) {
+			
+			if (hospital.getPersonas()[i] instanceof Enfermero) {
+				
+				hospital.getPersonas()[i].MostrarInformacion();
+				System.out.println("");
+			}
+		}
+		
+		// MOSTRAR DATOS DE PACIENTES //
+		System.out.println(AMARILLO + "\n### MOSTRAR LOS DATOS DE CADA PACIENTE ###\n" + RESET);
+		
+		for (int i = 0; i < hospital.getPersonas().length; i++) {
+			
+			if (hospital.getPersonas()[i] instanceof Paciente) {
 				
 				hospital.getPersonas()[i].MostrarInformacion();
 				System.out.println("");
