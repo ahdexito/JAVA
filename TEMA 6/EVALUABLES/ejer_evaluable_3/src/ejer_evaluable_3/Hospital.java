@@ -2,10 +2,13 @@ package ejer_evaluable_3;
 
 public class Hospital {
     
-	// FALTAR ESPECIFICAR TAMAÑO MÁXIMO DE ARRAY //
-    private Persona[] personas;
+    private Persona[] personas = new Persona[50];
 
 	public Hospital() {
+	}
+	
+	public Hospital(Persona[] personas) {
+		this.personas = personas;
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,8 @@
 package ejer_evaluable_3;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 enum Especialidad {
 	Endocrino, Anestesista, Traumatólogo, MedicinaGeneral
@@ -24,31 +26,70 @@ public class Medico extends PersonalHospital {
 
 	public boolean HacerCirugia(Paciente paciente) {
 		
+		int numConsultas = paciente.getConsultas().length;
+		
+		for (int i = 0; i < numConsultas; i++) {
+			
+			if (paciente.getConsultas()[i].getTipoConsulta() == TipoConsulta.Cirugia) {
+				
+				return true;
+			}
+		}
 		return false;
 	}
 	
 	@Override
 	public void MostrarInformacion() {
 		
-		
+		System.out.println("DNI: " + this.dni);
+		System.out.println("Nombre: " + this.nombre);
+		System.out.println("Fecha nacimiento: " + this.fechaNacimiento.
+				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+		System.out.println("Sueldo: " + this.sueldo);
+		System.out.println("Fecha incorporación: " + this.fechaIncorporacion.
+				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+		System.out.println("Número de guardias: " + this.numGuardias);
+		System.out.println("Especialidad: " + this.especialidad);
+		System.out.println("Días de permiso: " + this.diasPermiso);
 	}
 	
 	@Override
 	public void HacerGuardia(int numGuardias) {
 		
-		
+		this.sueldo += numGuardias * 100;
+		this.diasPermiso += numGuardias;
 	}
 	
 	@Override
 	public void HacerVisita(Paciente paciente) {
 		
+		int numConsultas = paciente.getConsultas().length;
 		
+		for (int i = 0; i < numConsultas; i++) {
+			
+			if (paciente.getConsultas()[i].getPersonalHospital().getDni().equals(this.dni)) {
+			
+				System.out.println("La próxima visita será dentro de 5 días");
+				break;
+			}
+			
+			else {
+				System.out.println("El paciente pertence a otro médico");
+				break;
+			}
+		}
 	}
 	
 	@Override
 	public boolean PuedeJubilarse() {
 		
-		return false;
+		LocalDate hoy = LocalDate.now();
+		
+		int anyosDiferencia = (Period.between(this.fechaIncorporacion, hoy)).getYears();
+		
+		if (anyosDiferencia > 65 && this.especialidad == Especialidad.Anestesista) return true;
+		
+		else return false;
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	

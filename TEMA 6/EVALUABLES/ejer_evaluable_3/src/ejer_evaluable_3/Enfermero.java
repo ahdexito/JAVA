@@ -1,6 +1,8 @@
 package ejer_evaluable_3;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Enfermero extends PersonalHospital {
     
@@ -21,25 +23,54 @@ public class Enfermero extends PersonalHospital {
 	@Override
 	public void MostrarInformacion() {
 		
-		
+		System.out.println("DNI: " + this.dni);
+		System.out.println("Nombre: " + this.nombre);
+		System.out.println("Fecha nacimiento: " + this.fechaNacimiento.
+				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+		System.out.println("Sueldo: " + this.sueldo);
+		System.out.println("Fecha incorporación: " + this.fechaIncorporacion.
+				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+		System.out.println("Número de guardias: " + this.numGuardias);
+		System.out.println("Días de descanso: " + this.diasDescanso);
+		System.out.println("Número de planta: " + this.numeroPlanta);
 	}
 	
 	@Override
 	public void HacerGuardia(int numGuardias) {
 		
-		
+		this.diasDescanso += numGuardias * 2;
 	}
 	
 	@Override
 	public void HacerVisita(Paciente paciente) {
 		
+		int numConsultas = paciente.getConsultas().length;
 		
+		for (int i = 0; i < numConsultas; i++) {
+			
+			if (paciente.getConsultas()[i].getPersonalHospital().getDni().equals(this.dni)) {
+			
+				System.out.println("La próxima visita será dentro de 2 días");
+				break;
+			}
+			
+			else {
+				System.out.println("El paciente pertence a otro enfermero");
+				break;
+			}
+		}
 	}
 	
 	@Override
 	public boolean PuedeJubilarse() {
 		
-		return false;
+		LocalDate hoy = LocalDate.now();
+		
+		int anyosDiferencia = (Period.between(this.fechaIncorporacion, hoy)).getYears();
+		
+		if (anyosDiferencia > 67) return true;
+		
+		else return false;
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -47,6 +47,8 @@ public class Paciente extends Persona {
 				System.out.println("\nCONSULTA " + numeroConsulta);
 				System.out.println(" - Tipo de consulta: " + this.consultas[i].getTipoConsulta());
 				System.out.println(" - Motivo: " + this.consultas[i].getMotivo());
+				System.out.println(" - Personal que atendió: " + this.consultas[i].getPersonalHospital().getNombre());
+				numeroConsulta++;
 			}
 		}
 	}
@@ -54,6 +56,7 @@ public class Paciente extends Persona {
 	public boolean NuevaConsulta(String motivo, PersonalHospital personalHospital, int tipoConsulta) {
 		
 		Consulta consulta = new Consulta(motivo, personalHospital, TipoConsulta.values()[tipoConsulta]);
+		EnviarDatos.EnviarEmail();
 		return false;
 	}
 	
