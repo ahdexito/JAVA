@@ -3,6 +3,7 @@ package ejer_evaluable_3;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
     
@@ -55,7 +56,7 @@ public class Main {
 		Consulta cons13 = new Consulta("Vegetaciones", medi4, TipoConsulta.Cirugía);
 		
 		
-		// CREACIÓN DE PACIENTES CON CONSULTAS AÑADIDAS //
+		// CREACIÓN DE PACIENTES //
 		Paciente paci1 = new Paciente(
 				true, LocalDate.of(2025, 4, 1), "103", new Consulta[]{cons1, cons10, cons4}, "3456A", "Manolo", LocalDate.of(2003, 5, 23));
 		Paciente paci2 = new Paciente(
@@ -67,7 +68,11 @@ public class Main {
 		Paciente paci5 = new Paciente(
 				false, LocalDate.of(2025, 3, 13), "107", new Consulta[]{cons8, cons5, cons11}, "3456E", "Jose", LocalDate.of(2002, 1, 26));
 		Paciente paci6 = new Paciente(
-				false, LocalDate.of(2025, 3, 24), "15", new Consulta[]{cons4}, "3456F", "Paz", LocalDate.of(1986, 2, 5));
+				false, LocalDate.of(2025, 3, 24), "15", new Consulta[]{}, "3456F", "Paz", LocalDate.of(1986, 2, 5));
+		
+		
+		// AÑADIR CONSULTAS A PACIENTES //
+		Consulta[] consul = {cons4}; paci1.setConsultas(consul);
 		
 		
 		// AÑADIR PERSONAS AL HOSPITAL //
@@ -81,7 +86,7 @@ public class Main {
 				
 		// MOSTRAR DATOS DE MÉDICOS //
 		System.out.println(AMARILLO + "### MOSTRAR LOS DATOS DE CADA MÉDICO ###\n" + RESET);
-		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		//System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
 		int contador = 1;
 		for (int i = 0; i < hospital.getPersonas().length; i++) {
@@ -91,14 +96,14 @@ public class Main {
 				System.out.println(CIAN + "# # # MÉDICO " + contador + " # # #" + RESET);
 				hospital.getPersonas()[i].MostrarInformacion();
 				System.out.println("");
-				Thread.sleep(500);
+				//Thread.sleep(500);
 				contador++;
 			}
 		}
 		
 		// MOSTRAR DATOS DE ENFERMEROS //
 		System.out.println(AMARILLO + "### MOSTRAR LOS DATOS DE CADA ENFERMERO ###\n" + RESET);
-		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		//System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
 		contador = 1;
 		for (int i = 0; i < hospital.getPersonas().length; i++) {
@@ -108,14 +113,14 @@ public class Main {
 				System.out.println(CIAN + "# # # ENFERMERO " + contador + " # # #" + RESET);
 				hospital.getPersonas()[i].MostrarInformacion();
 				System.out.println("");
-				Thread.sleep(500);
+				//Thread.sleep(500);
 				contador++;
 			}
 		}
 		
 		// MOSTRAR DATOS DE PACIENTES //
 		System.out.println(AMARILLO + "### MOSTRAR LOS DATOS DE CADA PACIENTE ###\n" + RESET);
-		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		//System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
 		contador = 1;
 		for (int i = 0; i < hospital.getPersonas().length; i++) {
@@ -125,10 +130,21 @@ public class Main {
 				System.out.println(CIAN + "# # # PACIENTE " + contador + " # # #" + RESET);
 				hospital.getPersonas()[i].MostrarInformacion();
 				System.out.println("");
-				Thread.sleep(500);
+				//Thread.sleep(500);
 				contador++;
 			}
 		}
+		
+		// CREAR NUEVA CONSULTA Y AÑADIR A PACIENTE //
+		System.out.println(AMARILLO + "### CREAR NUEVA CONSULTA A UN PACIENTE ###\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+				
+		if (paci6.NuevaConsulta("Fractura en el brazo", medi2, TipoConsulta.Cirugía)) System.out.println(CIAN + "CONSULTA AÑADIDA CORRECTAMENTE\n");
+		else System.out.println(ROJO + "ERROR AL AÑADIR CONSULTA\n" + RESET);
+		
+		paci6.MostrarInformacion();
+		
+		System.out.println("consultas " + paci6.getConsultas().length);
     }
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

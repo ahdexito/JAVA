@@ -8,17 +8,17 @@ public class EnviarDatos {
 	// SI LOS MÉTODOS SOLO DEVUELVEN TRUE NO NECESITAN SER BOOLEAN, SIMPLEMENTE VOID //
     public static void EnviarEmail() {
 		
-		System.out.println(CIAN + "TRATAMIENTO ENVIADOS VÍA EMAIL" + RESET);
+		System.out.println(CIAN + "TRATAMIENTO ENVIADOS VÍA EMAIL\n" + RESET);
 	}
 	
 	public static void EnviarWhatsApp() {
 		
-		System.out.println(CIAN + "TRATAMIENTO ENVIADOS VÍA WHATSAPP" + RESET);
+		System.out.println(CIAN + "TRATAMIENTO ENVIADOS VÍA WHATSAPP\n" + RESET);
 	}
 	
 	public static void EnviarLlamada() {
 		
-		System.out.println(CIAN + "TRATAMIENTO ENVIADOS VÍA LLAMADA" + RESET);
+		System.out.println(CIAN + "TRATAMIENTO ENVIADOS VÍA LLAMADA\n" + RESET);
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

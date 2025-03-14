@@ -8,7 +8,7 @@ public class Paciente extends Persona {
     private boolean ingresado;
 	private LocalDate fechaAlta;
 	private String habitacion;
-	private Consulta[] consultas;
+	private Consulta[] consultas = new Consulta[10];
 	
 	public Paciente() {
 	}
@@ -18,7 +18,7 @@ public class Paciente extends Persona {
 		this.ingresado = ingresado;
 		this.fechaAlta = fechaAlta;
 		this.habitacion = habitacion;
-		this.consultas = consultas;
+		this.consultas = new Consulta[10];
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,11 +50,22 @@ public class Paciente extends Persona {
 		System.out.println("\n" + AMARILLO + "/ / / / / / / / / / / / / / / / / / / / / / / /" + RESET);
 	}
 	 
-	public boolean NuevaConsulta(String motivo, PersonalHospital personalHospital, int tipoConsulta) {
+	public boolean NuevaConsulta(String motivo, PersonalHospital personalHospital, TipoConsulta tipoConsulta) {
 		
-		Consulta consulta = new Consulta(motivo, personalHospital, TipoConsulta.values()[tipoConsulta]);
+		Consulta consulta = new Consulta(motivo, personalHospital, tipoConsulta);
 		EnviarDatos.EnviarEmail();
-		return true;
+		
+		for (int i = 0; i < this.consultas.length; i++) {
+			
+			if (this.consultas[i] == null) {
+				
+				this.consultas[i] = consulta;
+				System.out.println(VERDE + "consulta añadida" + RESET);
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
