@@ -30,7 +30,7 @@ public class Medico extends PersonalHospital {
 		
 		for (int i = 0; i < numConsultas; i++) {
 			
-			if (paciente.getConsultas()[i].getTipoConsulta() == TipoConsulta.Cirugia) {
+			if (paciente.getConsultas()[i].getTipoConsulta() == TipoConsulta.Cirugía) {
 				
 				return true;
 			}
@@ -51,6 +51,7 @@ public class Medico extends PersonalHospital {
 		System.out.println(CIAN + "Número de guardias: " + RESET + this.numGuardias);
 		System.out.println(CIAN + "Especialidad: " + RESET + this.especialidad);
 		System.out.println(CIAN + "Días de permiso: " + RESET + this.diasPermiso);
+		System.out.println("\n" + AMARILLO + "/ / / / / / / / / / / / / / / / / / / / / / / /" + RESET);
 	}
 	
 	@Override

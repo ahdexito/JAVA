@@ -25,32 +25,29 @@ public class Paciente extends Persona {
 	
 	public void MostrarInformacion() {
 		
-		System.out.println("DNI: " + this.dni);
-		
-		System.out.println("Nombre: " + this.nombre);
-		
-		System.out.println("Fecha nacimiento: " + this.fechaNacimiento.
+		System.out.println(CIAN + "DNI: " + RESET + this.dni);
+		System.out.println(CIAN + "Nombre: " + RESET + this.nombre);
+		System.out.println(CIAN + "Fecha nacimiento: " + RESET + this.fechaNacimiento.
 				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-		
-		if (this.ingresado) System.out.println("Ingresado: sí");
-			else System.out.println("Ingresado: no");
-		
-		System.out.println("Fecha de alta: " + this.fechaAlta.
+		if (this.ingresado) System.out.println(CIAN + "Ingresado:" + RESET + " sí");
+			else System.out.println(CIAN + "Ingresado:" + RESET + " no");
+		System.out.println(CIAN + "Fecha de alta: " + RESET + this.fechaAlta.
 				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-		
-		System.out.println("Habitación: " + this.habitacion);
+		System.out.println(CIAN + "Habitación: " + RESET + this.habitacion);
 		
 		int numeroConsulta = 1;
 		for (int i = 0; i < consultas.length; i++) {
 			
 			if (this.consultas[i] != null) {
-				System.out.println("\nCONSULTA " + numeroConsulta);
-				System.out.println(" - Tipo de consulta: " + this.consultas[i].getTipoConsulta());
-				System.out.println(" - Motivo: " + this.consultas[i].getMotivo());
-				System.out.println(" - Personal que atendió: " + this.consultas[i].getPersonalHospital().getNombre());
+				System.out.println(CIAN + "\nConsulta " + numeroConsulta + ":" + RESET);
+				System.out.println(CIAN + " - Tipo de consulta: " + RESET + this.consultas[i].getTipoConsulta());
+				System.out.println(CIAN + " - Motivo: " + RESET + this.consultas[i].getMotivo());
+				System.out.println(CIAN + " - Personal que atendió: " + RESET + this.consultas[i].getPersonalHospital().getNombre());
 				numeroConsulta++;
 			}
 		}
+		
+		System.out.println("\n" + AMARILLO + "/ / / / / / / / / / / / / / / / / / / / / / / /" + RESET);
 	}
 	 
 	public boolean NuevaConsulta(String motivo, PersonalHospital personalHospital, int tipoConsulta) {
@@ -117,4 +114,9 @@ public class Paciente extends Persona {
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m",
+			AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 }

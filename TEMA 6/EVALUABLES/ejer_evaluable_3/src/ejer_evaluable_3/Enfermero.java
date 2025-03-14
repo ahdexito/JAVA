@@ -33,6 +33,7 @@ public class Enfermero extends PersonalHospital {
 		System.out.println(CIAN + "Número de guardias: " + RESET + this.numGuardias);
 		System.out.println(CIAN + "Días de descanso: " + RESET + this.diasDescanso);
 		System.out.println(CIAN + "Número de planta: " + RESET + this.numeroPlanta);
+		System.out.println("\n" + AMARILLO + "/ / / / / / / / / / / / / / / / / / / / / / / /" + RESET);
 	}
 	
 	@Override

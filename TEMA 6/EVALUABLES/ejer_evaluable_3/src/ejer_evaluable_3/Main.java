@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 public class Main {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner sc = new Scanner (System.in);
         
-		
-        System.out.println(AMARILLO + "/// GESTIÓN DE HOSPITAL ///\n\n" + RESET);
+		System.out.println(AMARILLO + "/ / / / / / / / / / / / / / / / / / / / / / / /" + RESET);
+        System.out.println(AMARILLO + "/ / / / / / / GESTIÓN DE HOSPITAL / / / / / / /" + RESET);
+		System.out.println(AMARILLO + "/ / / / / / / / / / / / / / / / / / / / / / / /" + RESET + "\n");
 		
 		// CREACIÓN DE HOSPITAL //
 		Hospital hospital = new Hospital();
@@ -48,10 +49,10 @@ public class Main {
 		Consulta cons7 = new Consulta("Herida en la cara", enf1, TipoConsulta.Herida);
 		Consulta cons8 = new Consulta("Herida en la pierna", enf3, TipoConsulta.Herida);
 		Consulta cons9 = new Consulta("Herida en el brazo", enf4, TipoConsulta.Herida);
-		Consulta cons10 = new Consulta("Tumor cerebral", medi1, TipoConsulta.Cirugia);
-		Consulta cons11 = new Consulta("Cáncer de hígado", medi2, TipoConsulta.Cirugia);
-		Consulta cons12 = new Consulta("Disparo de bala", medi3, TipoConsulta.Cirugia);
-		Consulta cons13 = new Consulta("Vegetaciones", medi4, TipoConsulta.Cirugia);
+		Consulta cons10 = new Consulta("Tumor cerebral", medi1, TipoConsulta.Cirugía);
+		Consulta cons11 = new Consulta("Cáncer de hígado", medi2, TipoConsulta.Cirugía);
+		Consulta cons12 = new Consulta("Disparo de bala", medi3, TipoConsulta.Cirugía);
+		Consulta cons13 = new Consulta("Vegetaciones", medi4, TipoConsulta.Cirugía);
 		
 		
 		// CREACIÓN DE PACIENTES CON CONSULTAS AÑADIDAS //
@@ -75,42 +76,57 @@ public class Main {
 		hospital.CrearPersona(enf1); hospital.CrearPersona(enf2); hospital.CrearPersona(enf3); hospital.CrearPersona(enf4); 
 		
 		hospital.CrearPersona(paci1); hospital.CrearPersona(paci2); hospital.CrearPersona(paci3); 
-				hospital.CrearPersona(paci4); hospital.CrearPersona(paci5); hospital.CrearPersona(paci6); 
+				hospital.CrearPersona(paci4); hospital.CrearPersona(paci5); hospital.CrearPersona(paci6);
 		
-		
+				
 		// MOSTRAR DATOS DE MÉDICOS //
 		System.out.println(AMARILLO + "### MOSTRAR LOS DATOS DE CADA MÉDICO ###\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
+		int contador = 1;
 		for (int i = 0; i < hospital.getPersonas().length; i++) {
 			
 			if (hospital.getPersonas()[i] instanceof Medico) {
 				
+				System.out.println(CIAN + "# # # MÉDICO " + contador + " # # #" + RESET);
 				hospital.getPersonas()[i].MostrarInformacion();
 				System.out.println("");
+				Thread.sleep(500);
+				contador++;
 			}
 		}
 		
 		// MOSTRAR DATOS DE ENFERMEROS //
 		System.out.println(AMARILLO + "### MOSTRAR LOS DATOS DE CADA ENFERMERO ###\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
+		contador = 1;
 		for (int i = 0; i < hospital.getPersonas().length; i++) {
 			
 			if (hospital.getPersonas()[i] instanceof Enfermero) {
 				
+				System.out.println(CIAN + "# # # ENFERMERO " + contador + " # # #" + RESET);
 				hospital.getPersonas()[i].MostrarInformacion();
 				System.out.println("");
+				Thread.sleep(500);
+				contador++;
 			}
 		}
 		
 		// MOSTRAR DATOS DE PACIENTES //
-		System.out.println(AMARILLO + "\n### MOSTRAR LOS DATOS DE CADA PACIENTE ###\n" + RESET);
+		System.out.println(AMARILLO + "### MOSTRAR LOS DATOS DE CADA PACIENTE ###\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
+		contador = 1;
 		for (int i = 0; i < hospital.getPersonas().length; i++) {
 			
 			if (hospital.getPersonas()[i] instanceof Paciente) {
 				
+				System.out.println(CIAN + "# # # PACIENTE " + contador + " # # #" + RESET);
 				hospital.getPersonas()[i].MostrarInformacion();
 				System.out.println("");
+				Thread.sleep(500);
+				contador++;
 			}
 		}
     }

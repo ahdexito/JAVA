@@ -1,7 +1,7 @@
 package ejer_evaluable_3;
 
 enum TipoConsulta {
-	Cirugia, Molestias, Dolor, Herida
+	Cirugía, Molestias, Dolor, Herida
 }
 
 public class Consulta {
