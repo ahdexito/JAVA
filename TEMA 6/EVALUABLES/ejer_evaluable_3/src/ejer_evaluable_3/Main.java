@@ -157,7 +157,7 @@ public class Main {
 		if (medi4.HacerCirugia(paci6)) System.out.println(VERDE + "CIRUGÍA SOLICITADA CORRECTAMENTE\n" + RESET);
 		else System.out.println(ROJO + "ERROR AL SOLICITAR CIRUGÍA" + RESET);
 		
-		System.out.println(CIAN + "PACIENTE SIN CIRUGÍAS" + RESET);
+		System.out.println(CIAN + "# # # PACIENTE SIN CIRUGÍAS # # #" + RESET);
 		if (medi4.HacerCirugia(paci2)) System.out.println(VERDE + "CIRUGÍA SOLICITADA CORRECTAMENTE\n" + RESET);
 		else System.out.println(ROJO + "ERROR. EL PACIENTE PODRÍA NO TENER CIRUGÍAS" + RESET);
     }
