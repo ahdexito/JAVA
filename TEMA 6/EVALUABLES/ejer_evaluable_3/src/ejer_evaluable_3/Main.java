@@ -58,21 +58,26 @@ public class Main {
 		
 		// CREACIÓN DE PACIENTES //
 		Paciente paci1 = new Paciente(
-				true, LocalDate.of(2025, 4, 1), "103", new Consulta[]{cons1, cons10, cons4}, "3456A", "Manolo", LocalDate.of(2003, 5, 23));
+				true, LocalDate.of(2025, 4, 1), "103", new Consulta[]{}, "3456A", "Manolo", LocalDate.of(2003, 5, 23));
 		Paciente paci2 = new Paciente(
-				true, LocalDate.of(2025, 3, 20), "23", new Consulta[]{cons2, cons3, cons6, cons9}, "3456B", "Mónica", LocalDate.of(1992, 8, 3));
+				true, LocalDate.of(2025, 3, 20), "23", new Consulta[]{}, "3456B", "Mónica", LocalDate.of(1992, 8, 3));
 		Paciente paci3 = new Paciente(
-				true, LocalDate.of(2025, 2, 4), "68", new Consulta[]{cons13, cons2, cons11}, "3456C", "Andrés", LocalDate.of(1967, 3, 14));
+				true, LocalDate.of(2025, 2, 4), "68", new Consulta[]{}, "3456C", "Andrés", LocalDate.of(1967, 3, 14));
 		Paciente paci4 = new Paciente(
-				false, LocalDate.of(2025, 4, 11), "52", new Consulta[]{cons12,cons7}, "3456D", "Rosa", LocalDate.of(1996, 7, 19));
+				false, LocalDate.of(2025, 4, 11), "52", new Consulta[]{}, "3456D", "Rosa", LocalDate.of(1996, 7, 19));
 		Paciente paci5 = new Paciente(
-				false, LocalDate.of(2025, 3, 13), "107", new Consulta[]{cons8, cons5, cons11}, "3456E", "Jose", LocalDate.of(2002, 1, 26));
+				false, LocalDate.of(2025, 3, 13), "107", new Consulta[]{}, "3456E", "Jose", LocalDate.of(2002, 1, 26));
 		Paciente paci6 = new Paciente(
 				false, LocalDate.of(2025, 3, 24), "15", new Consulta[]{}, "3456F", "Paz", LocalDate.of(1986, 2, 5));
 		
 		
 		// AÑADIR CONSULTAS A PACIENTES //
-		Consulta[] consul = {cons4}; paci1.setConsultas(consul);
+		paci1.setConsultas(Arrays.copyOf(new Consulta[]{cons1, cons10, cons4}, 10));
+		paci2.setConsultas(Arrays.copyOf(new Consulta[]{cons2, cons3, cons6, cons9}, 10));
+		paci3.setConsultas(Arrays.copyOf(new Consulta[]{cons13, cons2, cons11}, 10));
+		paci4.setConsultas(Arrays.copyOf(new Consulta[]{cons12, cons7}, 10));
+		paci5.setConsultas(Arrays.copyOf(new Consulta[]{cons8, cons5, cons11}, 10));
+		paci6.setConsultas(Arrays.copyOf(new Consulta[]{cons4}, 10));
 		
 		
 		// AÑADIR PERSONAS AL HOSPITAL //
@@ -137,14 +142,24 @@ public class Main {
 		
 		// CREAR NUEVA CONSULTA Y AÑADIR A PACIENTE //
 		System.out.println(AMARILLO + "### CREAR NUEVA CONSULTA A UN PACIENTE ###\n" + RESET);
-		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		// System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 				
-		if (paci6.NuevaConsulta("Fractura en el brazo", medi2, TipoConsulta.Cirugía)) System.out.println(CIAN + "CONSULTA AÑADIDA CORRECTAMENTE\n");
+		if (paci6.NuevaConsulta("Fractura en el brazo", medi2, TipoConsulta.Cirugía)) System.out.println(VERDE + "CONSULTA AÑADIDA CORRECTAMENTE\n");
 		else System.out.println(ROJO + "ERROR AL AÑADIR CONSULTA\n" + RESET);
 		
 		paci6.MostrarInformacion();
 		
-		System.out.println("consultas " + paci6.getConsultas().length);
+		// HACER CIRUGÍA DE MÉDICO //
+		System.out.println(AMARILLO + "### SOLICITAR A UN MÉDICO REALIZAR UNA CIRUGÍA ###\n" + RESET);
+		//System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		
+		System.out.println(CIAN + "# # # PACIENTE CON CIRUGÍAS # # #" + RESET);
+		if (medi4.HacerCirugia(paci6)) System.out.println(VERDE + "CIRUGÍA SOLICITADA CORRECTAMENTE\n" + RESET);
+		else System.out.println(ROJO + "ERROR AL SOLICITAR CIRUGÍA" + RESET);
+		
+		System.out.println(CIAN + "PACIENTE SIN CIRUGÍAS" + RESET);
+		if (medi4.HacerCirugia(paci2)) System.out.println(VERDE + "CIRUGÍA SOLICITADA CORRECTAMENTE\n" + RESET);
+		else System.out.println(ROJO + "ERROR. EL PACIENTE PODRÍA NO TENER CIRUGÍAS" + RESET);
     }
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -8,7 +8,7 @@ public class Paciente extends Persona {
     private boolean ingresado;
 	private LocalDate fechaAlta;
 	private String habitacion;
-	private Consulta[] consultas = new Consulta[10];
+	private Consulta[] consultas;
 	
 	public Paciente() {
 	}
@@ -60,11 +60,9 @@ public class Paciente extends Persona {
 			if (this.consultas[i] == null) {
 				
 				this.consultas[i] = consulta;
-				System.out.println(VERDE + "consulta añadida" + RESET);
 				return true;
 			}
 		}
-		
 		return false;
 	}
 	

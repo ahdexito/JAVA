@@ -30,9 +30,11 @@ public class Medico extends PersonalHospital {
 		
 		for (int i = 0; i < numConsultas; i++) {
 			
-			if (paciente.getConsultas()[i].getTipoConsulta() == TipoConsulta.Cirugía) {
-				
-				return true;
+			if (paciente.getConsultas()[i] != null) {
+				if (paciente.getConsultas()[i].getTipoConsulta() == TipoConsulta.Cirugía) {
+
+					return true;
+				}
 			}
 		}
 		return false;
