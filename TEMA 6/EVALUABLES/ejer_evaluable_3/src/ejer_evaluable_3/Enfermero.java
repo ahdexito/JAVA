@@ -40,26 +40,28 @@ public class Enfermero extends PersonalHospital {
 	public void HacerGuardia(int numGuardias) {
 		
 		this.diasDescanso += numGuardias * 2;
+		this.numGuardias += numGuardias;
 	}
 	
 	@Override
 	public void HacerVisita(Paciente paciente) {
 		
 		int numConsultas = paciente.getConsultas().length;
+		boolean tieneConsulta = false;
 		
 		for (int i = 0; i < numConsultas; i++) {
 			
-			if (paciente.getConsultas()[i].getPersonalHospital().getDni().equals(this.dni)) {
-			
-				System.out.println("La próxima visita será dentro de 2 días");
-				break;
-			}
-			
-			else {
-				System.out.println("El paciente pertence a otro enfermero");
-				break;
+			if (paciente.getConsultas()[i] != null) {
+				
+				if (paciente.getConsultas()[i].getPersonalHospital().getDni().equals(this.dni)) {
+
+					System.out.println(VERDE + "LA PRÓXIMA VISITA SERÁ DENTRO DE 2 DÍAS" + RESET);
+					tieneConsulta = true;
+					break;
+				}
 			}
 		}
+		if (!tieneConsulta) System.out.println(ROJO + "EL PACIENTE PERTENECE A OTRO ENFERMERO" + RESET);
 	}
 	
 	@Override
@@ -68,6 +70,8 @@ public class Enfermero extends PersonalHospital {
 		LocalDate hoy = LocalDate.now();
 		
 		int anyosDiferencia = (Period.between(this.fechaIncorporacion, hoy)).getYears();
+		
+		System.out.println(CIAN + " - Años trabajados: " + RESET + anyosDiferencia);
 		
 		if (anyosDiferencia > 67) return true;
 		

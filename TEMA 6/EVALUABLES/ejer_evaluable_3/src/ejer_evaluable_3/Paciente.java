@@ -29,8 +29,8 @@ public class Paciente extends Persona {
 		System.out.println(CIAN + "Nombre: " + RESET + this.nombre);
 		System.out.println(CIAN + "Fecha nacimiento: " + RESET + this.fechaNacimiento.
 				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-		if (this.ingresado) System.out.println(CIAN + "Ingresado:" + RESET + " sí");
-			else System.out.println(CIAN + "Ingresado:" + RESET + " no");
+		if (this.ingresado) System.out.println(CIAN + "Ingresado:" + RESET + " Sí");
+			else System.out.println(CIAN + "Ingresado:" + RESET + " No");
 		System.out.println(CIAN + "Fecha de alta: " + RESET + this.fechaAlta.
 				format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 		System.out.println(CIAN + "Habitación: " + RESET + this.habitacion);

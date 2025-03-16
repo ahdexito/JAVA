@@ -61,26 +61,28 @@ public class Medico extends PersonalHospital {
 		
 		this.sueldo += numGuardias * 100;
 		this.diasPermiso += numGuardias;
+		this.numGuardias += numGuardias;
 	}
 	
 	@Override
 	public void HacerVisita(Paciente paciente) {
 		
 		int numConsultas = paciente.getConsultas().length;
+		boolean tieneConsulta = false;
 		
 		for (int i = 0; i < numConsultas; i++) {
 			
-			if (paciente.getConsultas()[i].getPersonalHospital().getDni().equals(this.dni)) {
-			
-				System.out.println("La próxima visita será dentro de 5 días");
-				break;
-			}
-			
-			else {
-				System.out.println("El paciente pertence a otro médico");
-				break;
+			if (paciente.getConsultas()[i] != null) {
+				
+				if (paciente.getConsultas()[i].getPersonalHospital().getDni().equals(this.dni)) {
+
+					System.out.println(VERDE + "LA PRÓXIMA VISITA SERÁ DENTRO DE 5 DÍAS" + RESET);
+					tieneConsulta = true;
+					break;
+				}
 			}
 		}
+		if (!tieneConsulta) System.out.println(ROJO + "EL PACIENTE PERTENECE A OTRO MÉDICO" + RESET);
 	}
 	
 	@Override
@@ -89,6 +91,8 @@ public class Medico extends PersonalHospital {
 		LocalDate hoy = LocalDate.now();
 		
 		int anyosDiferencia = (Period.between(this.fechaIncorporacion, hoy)).getYears();
+		
+		System.out.println(CIAN + " - Años trabajados: " + RESET + anyosDiferencia);
 		
 		if (anyosDiferencia > 65 && this.especialidad == Especialidad.Anestesista) return true;
 		
