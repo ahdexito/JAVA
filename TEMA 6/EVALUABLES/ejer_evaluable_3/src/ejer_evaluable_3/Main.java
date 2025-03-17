@@ -34,7 +34,7 @@ public class Main {
 		
 		// CREACIÓN DE ENFERMEROS //
 		Enfermero enf1 = new Enfermero(
-				5, 1, 1220, LocalDate.of(1957, 1, 20), 6, "2345A", "Daniel", LocalDate.of(1936, 7, 12));
+				5, 1, 1220, LocalDate.of(1957, 1, 20), 6, "2345A", "Alberto", LocalDate.of(1936, 7, 12));
 		Enfermero enf2 = new Enfermero(
 				1, 2, 1350, LocalDate.of(2020, 3, 3), 2, "2345B", "Laura", LocalDate.of(1995, 2, 10));
 		Enfermero enf3 = new Enfermero(
@@ -99,7 +99,7 @@ public class Main {
 				
 		// MOSTRAR DATOS DE MÉDICOS //
 		System.out.println(CIAN + "# # # MOSTRAR LOS DATOS DE CADA MÉDICO # # #\n" + RESET);
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
 		int contador = 1;
 		for (int i = 0; i < hospital.getPersonas().length; i++) {
@@ -109,7 +109,7 @@ public class Main {
 				System.out.println(CIAN + "~ ~ MÉDICO " + contador + " ~ ~" + RESET);
 				hospital.getPersonas()[i].MostrarInformacion();
 				System.out.println("");
-//				Thread.sleep(500);
+				Thread.sleep(500);
 				contador++;
 			}
 		}
@@ -118,7 +118,7 @@ public class Main {
 		
 		// MOSTRAR DATOS DE ENFERMEROS //
 		System.out.println(CIAN + "# # # MOSTRAR LOS DATOS DE CADA ENFERMERO # # #\n" + RESET);
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
 		contador = 1;
 		for (int i = 0; i < hospital.getPersonas().length; i++) {
@@ -128,7 +128,7 @@ public class Main {
 				System.out.println(CIAN + "~ ~ ENFERMERO " + contador + " ~ ~" + RESET);
 				hospital.getPersonas()[i].MostrarInformacion();
 				System.out.println("");
-//				Thread.sleep(500);
+				Thread.sleep(500);
 				contador++;
 			}
 		}
@@ -137,7 +137,7 @@ public class Main {
 		
 		// MOSTRAR DATOS DE PACIENTES //
 		System.out.println(CIAN + "# # # MOSTRAR LOS DATOS DE CADA PACIENTE # # #\n" + RESET);
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
 		contador = 1;
 		for (int i = 0; i < hospital.getPersonas().length; i++) {
@@ -147,7 +147,7 @@ public class Main {
 				System.out.println(CIAN + "~ ~ PACIENTE " + contador + " ~ ~" + RESET);
 				hospital.getPersonas()[i].MostrarInformacion();
 				System.out.println("");
-//				Thread.sleep(500);
+				Thread.sleep(500);
 				contador++;
 			}
 		}
@@ -156,7 +156,7 @@ public class Main {
 		
 		// CREAR NUEVA CONSULTA Y AÑADIR A PACIENTE //
 		System.out.println(CIAN + "# # # CREAR NUEVA CONSULTA A UN PACIENTE # # #\n" + RESET);
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 				
 		if (paci6.NuevaConsulta("Fractura en el brazo", medi2, TipoConsulta.Cirugía)) System.out.println(VERDE + "CONSULTA AÑADIDA CORRECTAMENTE\n");
 		else System.out.println(ROJO + "ERROR AL AÑADIR CONSULTA\n" + RESET);
@@ -167,14 +167,12 @@ public class Main {
 		
 		// HACER CIRUGÍA DE MÉDICO //
 		System.out.println("\n" + CIAN + "# # # SOLICITAR A UN MÉDICO REALIZAR UNA CIRUGÍA # # #\n" + RESET);
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
 		System.out.println(CIAN + "~ ~ PACIENTE CON CIRUGÍAS ~ ~" + RESET);
 		if (medi4.HacerCirugia(paci6)) System.out.println(VERDE + "CIRUGÍA SOLICITADA CORRECTAMENTE\n" + RESET);
 		else System.out.println(ROJO + "ERROR. EL PACIENTE PODRÍA NO TENER CIRUGÍAS\n" + RESET);
-		
-		System.out.println("");
-		
+				
 		System.out.println(CIAN + "~ ~ PACIENTE SIN CIRUGÍAS ~ ~" + RESET);
 		if (medi4.HacerCirugia(paci2)) System.out.println(VERDE + "CIRUGÍA SOLICITADA CORRECTAMENTE\n" + RESET);
 		else System.out.println(ROJO + "ERROR. EL PACIENTE PODRÍA NO TENER CIRUGÍAS\n" + RESET);
@@ -184,10 +182,9 @@ public class Main {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		// HACER GUARDIA MÉDICO //
-		System.out.println("\n" + CIAN + "# # # AÑADIR GUARDIAS A UN MÉDICO # # #");
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println("\n" + CIAN + "# # # AÑADIR GUARDIAS A UN MÉDICO # # #\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
-		System.out.println("");
 		medi2.MostrarInformacion();
 		
 		medi2.HacerGuardia(3);
@@ -198,10 +195,10 @@ public class Main {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
 		// HACER VISITA MÉDICO //
-		System.out.println("\n" + CIAN + "# # # SOLICITAR VISITA DE MÉDICO A PACIENTE # # #" + RESET);
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println("\n" + CIAN + "# # # SOLICITAR VISITA DE MÉDICO A PACIENTE # # #\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 
-		System.out.println("\n" + CIAN + "~ ~ PACIENTE QUE CORRESPONDE CON MÉDICO ~ ~" + RESET);
+		System.out.println(CIAN + "~ ~ PACIENTE QUE CORRESPONDE CON MÉDICO ~ ~" + RESET);
 		medi1.HacerVisita(paci1);
 		
 		System.out.println("\n" + CIAN + "~ ~ PACIENTE QUE NO CORRESPONDE CON MÉDICO ~ ~" + RESET);
@@ -212,10 +209,10 @@ public class Main {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 		// CONSULTAR SI MÉDICO PUEDE JUBILARSE //
-		System.out.println("\n" + CIAN + "# # # CONSULTAR SI UN MÉDICO PUEDE JUBILARSE # # #" + RESET);
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println("\n" + CIAN + "# # # CONSULTAR SI UN MÉDICO PUEDE JUBILARSE # # #\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 
-		System.out.println("\n" + CIAN + "~ ~ MÉDICO QUE SÍ PUEDE ~ ~" + RESET);
+		System.out.println(CIAN + "~ ~ MÉDICO QUE SÍ PUEDE ~ ~" + RESET);
 		if (medi1.PuedeJubilarse()) System.out.println(VERDE + "SÍ PUEDE JUBILARSE" + RESET);
 		else System.out.println(ROJO + "NO PUEDE JUBILARSE" + RESET);
 		
@@ -228,10 +225,10 @@ public class Main {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// MÉDICO ENVÍA TRATAMEINTO //
-		System.out.println("\n" + CIAN + "# # # REALIZAR ENVÍO DE TRATAMIENTO # # #" + RESET);
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println("\n" + CIAN + "# # # REALIZAR ENVÍO DE TRATAMIENTO # # #\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 
-		System.out.println("\n" + CIAN + "~ ~ ENVIAR VÍA WHATSAPP ~ ~" + RESET);
+		System.out.println(CIAN + "~ ~ ENVIAR VÍA WHATSAPP ~ ~" + RESET);
 		medi3.EnviarTratamiento("WhatsApp");
 		
 		System.out.println(CIAN + "~ ~ ENVIAR VÍA CARTA ~ ~" + RESET);
@@ -242,10 +239,9 @@ public class Main {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		// HACER GUARDIA ENFERMERO //
-		System.out.println("\n" + CIAN + "# # # AÑADIR GUARDIAS A UN ENFERMERO # # #");
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println("\n" + CIAN + "# # # AÑADIR GUARDIAS A UN ENFERMERO # # #\n");
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 		
-		System.out.println("");
 		enf1.MostrarInformacion();
 		
 		enf1.HacerGuardia(3);
@@ -256,10 +252,10 @@ public class Main {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 		// HACER VISITA ENFERMERO //
-		System.out.println("\n" + CIAN + "# # # SOLICITAR VISITA DE ENFERMERO A PACIENTE # # #" + RESET);
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println("\n" + CIAN + "# # # SOLICITAR VISITA DE ENFERMERO A PACIENTE # # #\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 
-		System.out.println("\n" + CIAN + "~ ~ PACIENTE QUE CORRESPONDE CON ENFERMERO ~ ~" + RESET);
+		System.out.println(CIAN + "~ ~ PACIENTE QUE CORRESPONDE CON ENFERMERO ~ ~" + RESET);
 		enf3.HacerVisita(paci5);
 		
 		System.out.println("\n" + CIAN + "~ ~ PACIENTE QUE NO CORRESPONDE CON ENFERMERO ~ ~" + RESET);
@@ -270,10 +266,10 @@ public class Main {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		// CONSULTAR SI ENFERMERO PUEDE JUBILARSE //
-		System.out.println("\n" + CIAN + "# # # CONSULTAR SI UN ENFERMERO PUEDE JUBILARSE # # #" + RESET);
-//		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		System.out.println("\n" + CIAN + "# # # CONSULTAR SI UN ENFERMERO PUEDE JUBILARSE # # #\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
 
-		System.out.println("\n" + CIAN + "~ ~ ENFERMERO QUE SÍ PUEDE ~ ~" + RESET);
+		System.out.println(CIAN + "~ ~ ENFERMERO QUE SÍ PUEDE ~ ~" + RESET);
 		if (enf1.PuedeJubilarse()) System.out.println(VERDE + "SÍ PUEDE JUBILARSE" + RESET);
 		else System.out.println(ROJO + "NO PUEDE JUBILARSE" + RESET);
 		
@@ -282,6 +278,39 @@ public class Main {
 		else System.out.println(ROJO + "NO PUEDE JUBILARSE" + RESET);
 		
 		System.out.println("\n" + AMARILLO + "/ / / / / / / / / / / / / / / / / / / / / / / /" + RESET);
+		
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		// DESPEDIR A ENFERMERO //
+		System.out.println("\n" + CIAN + "# # # DESPEDIR A UN ENFERMERO POR DNI # # #\n");
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+
+		System.out.println(CIAN + "~ ~ INTENTAR DESPEDIR A ENFERMERO ~ ~");
+		if (hospital.Despedir("2345D")) System.out.println(VERDE + "ENFERMERO DESPEDIDO CORRECTAMENTE" + RESET);
+		else System.out.println(ROJO + "ERROR. EL TRABAJADOR PODRÍA NO SER ENFERMERO" + RESET);
+		
+		System.out.println("\n" + CIAN + "~ ~ INTENTAR DESPEDIR A MÉDICO ~ ~");
+		if (hospital.Despedir("1234A")) System.out.println(VERDE + "ENFERMERO DESPEDIDO CORRECTAMENTE" + RESET);
+		else System.out.println(ROJO + "ERROR. EL TRABAJADOR PODRÍA NO SER ENFERMERO" + RESET);
+		
+		System.out.println("\n");
+		
+		// MOSTRAR DATOS DE ENFERMEROS //
+		System.out.println(CIAN + "# # # MOSTRAR LOS DATOS DE CADA ENFERMERO # # #\n" + RESET);
+		System.out.println(MORADO + "(ENTER para continuar)" + RESET); sc.nextLine();
+		
+		contador = 1;
+		for (int i = 0; i < hospital.getPersonas().length; i++) {
+			
+			if (hospital.getPersonas()[i] instanceof Enfermero) {
+				
+				System.out.println(CIAN + "~ ~ ENFERMERO " + contador + " ~ ~" + RESET);
+				hospital.getPersonas()[i].MostrarInformacion();
+				System.out.println("");
+				Thread.sleep(500);
+				contador++;
+			}
+		}
 	}	
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
