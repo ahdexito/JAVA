@@ -13,34 +13,35 @@ public class Main {
 		// PROFESORES DE PRUEBA //
 		
 		instituto.AnyadirProfesor(
-				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678A", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
-		
+			new Interino(5, 1620, Materia.Programacion, 0.15, "111A", "Laura", "González", "Fernández", LocalDate.of(1985, Month.APRIL, 10)));
+
 		instituto.AnyadirProfesor(
-			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321A", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
-		
+			new Titular(LocalDate.of(1987, Month.JUNE, 5), 1400, Materia.SistemasInformaticos, 0.12, "222B", "Carlos", "Martínez", "Ruiz", LocalDate.of(1970, Month.DECEMBER, 15)));
+
 		instituto.AnyadirProfesor(
-				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678B", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
-		
+			new Interino(2, 1500, Materia.LenguajesMarcas, 0.08, "333C", "Ana", "López", "Sánchez", LocalDate.of(1990, Month.MAY, 3)));
+
 		instituto.AnyadirProfesor(
-			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321B", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
-		
+			new Titular(LocalDate.of(1996, Month.MARCH, 20), 1350, Materia.EntornosDesarrollo, 0.10, "444D", "Miguel", "Pérez", "Gómez", LocalDate.of(1982, Month.AUGUST, 27)));
+
 		instituto.AnyadirProfesor(
-				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678C", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
-		
+			new Interino(4, 1700, Materia.BasesDatos, 0.12, "555E", "Sofía", "Jiménez", "Díaz", LocalDate.of(1988, Month.JULY, 14)));
+
 		instituto.AnyadirProfesor(
-			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321C", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
-		
+			new Titular(LocalDate.of(1983, Month.FEBRUARY, 11), 1550, Materia.Programacion, 0.14, "666F", "David", "Serrano", "Castro", LocalDate.of(1978, Month.SEPTEMBER, 5)));
+
 		instituto.AnyadirProfesor(
-				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678D", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
-		
+			new Interino(3, 1600, Materia.Empresas, 0.09, "777G", "Elena", "Torres", "Navarro", LocalDate.of(1992, Month.OCTOBER, 22)));
+
 		instituto.AnyadirProfesor(
-			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321D", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
-		
+			new Titular(LocalDate.of(1967, Month.APRIL, 30), 1450, Materia.SistemasInformaticos, 0.11, "888H", "Javier", "Ortega", "Moreno", LocalDate.of(1981, Month.JANUARY, 9)));
+
 		instituto.AnyadirProfesor(
-				new Interino(3, 1580, Materia.Programacion, 0.1, "12345678E", "Pedro", "Pica", "Piedra", LocalDate.of(1980, Month.MARCH, 23)));
-		
+			new Interino(6, 1750, Materia.LenguajesMarcas, 0.13, "999I", "Carmen", "Muñoz", "Ramos", LocalDate.of(1987, Month.NOVEMBER, 18)));
+
 		instituto.AnyadirProfesor(
-			new Titular(LocalDate.of(2013, Month.JANUARY, 12), 1250, Materia.BasesDatos, 0.10, "87654321E", "Juan", "Lopez", "Pérez", LocalDate.of(1975, Month.SEPTEMBER, 7)));
+			new Titular(LocalDate.of(1973, Month.DECEMBER, 8), 1650, Materia.EntornosDesarrollo, 0.16, "000J", "Fernando", "Hernández", "Vega", LocalDate.of(1974, Month.JUNE, 25)));
+
 		
 		
 		System.out.println(MORADO + "### CREACIÓN DE INSTITUTO ###" + RESET);
