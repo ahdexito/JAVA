@@ -1,0 +1,36 @@
+package clinica_veterinaria;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Insertar {
+    
+    public static void insertUsuarios() {
+		
+		try {
+			
+			Connection conex = ConexionBD.conectar("ud7_clinica_veterinaria");
+			
+			String sql = ""
+					+ "INSERT INTO cliente (id, nombre, direccion, telefono, email) "
+					+ "VALUES (null, 'Ana Gonzalez', 'Apolo 5', '655444333', 'anagonzalez@gmail.com');";
+			
+			PreparedStatement instruccion = conex.prepareStatement(sql);
+			
+			int filasAfectadas = instruccion.executeUpdate(sql);
+			
+			System.out.println(VERDE + "Filas afectadas: " + filasAfectadas + RESET);
+		}
+		
+		catch (SQLException ex) {
+			
+			System.out.println(ROJO + "ERROR: " + ex.getMessage() + RESET);
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m",
+			AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
+}
