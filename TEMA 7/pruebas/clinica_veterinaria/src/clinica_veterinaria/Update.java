@@ -4,30 +4,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Insertar {
+public class Update {
     
-    public static void insertUsuarios() {
+    public static void nombre_usuario() {
 		
 		try {
-			
 			Connection conex = ConexionBD.conectar("ud7_clinica_veterinaria");
 			
-			String query = ""
-					+ "INSERT INTO cliente (id, nombre, direccion, telefono, email) "
-					+ "VALUES (null, 'Ana Gonzalez', 'Apolo 5', '655444333', 'anagonzalez@gmail.com');";
-			PreparedStatement instruccion = conex.prepareStatement(query);
+			String query = "UPDATE cliente SET nombre = 'Ana Ramirez' WHERE id = 11";
+			PreparedStatement instruction = conex.prepareStatement(query);
 			
-			int filasAfectadas = instruccion.executeUpdate(query);
+			int filasAfectadas = instruction.executeUpdate(query);
 			
 			System.out.println(VERDE + "Filas afectadas: " + filasAfectadas + RESET);
 		}
-		
 		catch (SQLException ex) {
 			
 			System.out.println(ROJO + "ERROR: " + ex.getMessage() + RESET);
 		}
 	}
-	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m",
