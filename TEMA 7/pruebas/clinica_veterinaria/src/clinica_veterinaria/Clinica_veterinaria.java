@@ -80,7 +80,7 @@ public class Clinica_veterinaria {
 		}
 		while (opcion != 0);
 		
-		System.out.println("\n" + CIAN + "HASTA PRONTO" + "\n");
+		System.out.println("\n" + CIAN + "### HASTA PRONTO ###" + "\n");
     }
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
