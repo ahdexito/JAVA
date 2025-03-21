@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Insertar {
     
-    public static void insertUsuarios() {
+    public static void cliente() {
 		
 		try {
 			

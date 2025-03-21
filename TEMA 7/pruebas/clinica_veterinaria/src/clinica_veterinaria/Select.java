@@ -176,7 +176,7 @@ public class Select {
 			
 			ResultSet resultado = instruccion.executeQuery();
 			
-				System.out.printf(AMARILLO + "%-20s %-20s %-30s %-20s %-15s %-15s", "|  ID VETERINARIO", "|  DNI", "|  NOMBRE", "|  TELÉFONO", "|  AUTONOMO", "|  FECHA INCORPORACIÓN");
+				System.out.printf(AMARILLO + "%-20s %-20s %-30s %-20s %-15s %-15s", "|  ID VETERINARIO", "|  DNI", "|  NOMBRE", "|  TELÉFONO", "|  AUTÓNOMO", "|  FECHA INCORPORACIÓN");
 			System.out.println("");
 			
 			int par = 2;
@@ -195,11 +195,14 @@ public class Select {
 				String[] fecha = fechaEntrada.split("-");
 				String fechaParse = fecha[2] + "/" + fecha[1] + "/" + fecha[0];
 				
+				String dato = "(VACÍO)";
+				if (resultado.getString("telefono") != null) dato = resultado.getString("telefono");
+				
 				System.out.printf(pintar + "%-20s %-20s %-30s %-20s %-15s %-15s",
 					"|  " + resultado.getString("id"),
 					"|  " + resultado.getString("DNI"),
 					"|  " + resultado.getString("nombre"),
-					"|  " + resultado.getString("telefono"),
+					"|  " + dato,
 					"|  " + boolString,
 					"|  " + fechaParse);
 				System.out.println("");
