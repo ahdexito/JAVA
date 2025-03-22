@@ -1,9 +1,5 @@
 package clinica_veterinaria;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Clinica_veterinaria {
@@ -19,8 +15,8 @@ public class Clinica_veterinaria {
 			System.out.print("\n" + AMARILLO
 					+ "### GESTIÓN CLÍNICA VETERINARIA ###\n"
 					+ "  1. Consultar\n"
-					+ "  2. Modificar\n"
-					+ "  3. Actualizar\n"
+					+ "  2. Insertar\n"
+					+ "  3. Modificar\n"
 					+ "  4. Borrar\n"
 					+ "  0. Cerrar programa\n" + MORADO
 					+ "Introduce opción: " + RESET);

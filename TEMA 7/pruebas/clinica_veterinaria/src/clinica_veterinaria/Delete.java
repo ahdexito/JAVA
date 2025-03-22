@@ -10,7 +10,7 @@ public class Delete {
     public static void usuario() {
 		
 		try {
-			Connection conex = ConexionBD.conectar("ud7_clinica_veterinaria");
+			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
 			
 			String query = "DELETE FROM cliente WHERE id = 11";
 			PreparedStatement instruccion = conex.prepareStatement(query);

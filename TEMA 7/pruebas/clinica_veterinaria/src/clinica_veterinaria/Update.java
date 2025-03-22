@@ -9,7 +9,7 @@ public class Update {
     public static void nombre_usuario() {
 		
 		try {
-			Connection conex = ConexionBD.conectar("ud7_clinica_veterinaria");
+			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
 			
 			String query = "UPDATE cliente SET nombre = 'Ana Ramirez' WHERE id = 11";
 			PreparedStatement instruction = conex.prepareStatement(query);

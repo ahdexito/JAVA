@@ -4,19 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAdjusters;
-import java.util.Locale;
 
 public class Select {
 	
 	public static void atiende() {
 		
 		try {
-			Connection conex = ConexionBD.conectar("ud7_clinica_veterinaria");
+			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
 			
 			String query = "SELECT * FROM atiende";
 			PreparedStatement instruccion = conex.prepareStatement(query);
@@ -58,7 +52,7 @@ public class Select {
 	public static void cliente() {
 		
 		try {
-			Connection conex = ConexionBD.conectar("ud7_clinica_veterinaria");
+			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
 			
 			String query = "SELECT * FROM cliente";
 			PreparedStatement instruccion = conex.prepareStatement(query);
@@ -95,7 +89,7 @@ public class Select {
 	public static void mascota() {
 		
 		try {
-			Connection conex = ConexionBD.conectar("ud7_clinica_veterinaria");
+			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
 			
 			String query = "SELECT * FROM mascota";
 			PreparedStatement instruccion = conex.prepareStatement(query);
@@ -135,7 +129,7 @@ public class Select {
 	public static void sala() {
 		
 		try {
-			Connection conex = ConexionBD.conectar("ud7_clinica_veterinaria");
+			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
 			
 			String query = "SELECT * FROM sala";
 			PreparedStatement instruccion = conex.prepareStatement(query);
@@ -169,7 +163,7 @@ public class Select {
 	public static void veterinario() {
 		
 		try {
-			Connection conex = ConexionBD.conectar("ud7_clinica_veterinaria");
+			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
 			
 			String query = "SELECT * FROM veterinario";
 			PreparedStatement instruccion = conex.prepareStatement(query);
@@ -190,7 +184,7 @@ public class Select {
 				String boolString = null;
 				if (boolEntrada == 0) boolString = "NO";
 				if (boolEntrada == 1) boolString = "SÍ";
-				
+								
 				String fechaEntrada = resultado.getString("fecha_incorporacion");
 				String[] fecha = fechaEntrada.split("-");
 				String fechaParse = fecha[2] + "/" + fecha[1] + "/" + fecha[0];

@@ -4,17 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Insertar {
+public class Insert {
     
-    public static void cliente() {
+    public static void cliente(String nombre, String direccion, String telefono, String email) {
 		
 		try {
 			
-			Connection conex = ConexionBD.conectar("ud7_clinica_veterinaria");
+			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
 			
 			String query = ""
 					+ "INSERT INTO cliente (id, nombre, direccion, telefono, email) "
-					+ "VALUES (null, 'Ana Gonzalez', 'Apolo 5', '655444333', 'anagonzalez@gmail.com');";
+					+ "VALUES (null, '" + nombre + "', '" + direccion + "', '" + telefono + "', '" + email + "');";
 			PreparedStatement instruccion = conex.prepareStatement(query);
 			
 			int filasAfectadas = instruccion.executeUpdate(query);
@@ -23,7 +23,6 @@ public class Insertar {
 		}
 		
 		catch (SQLException ex) {
-			
 			System.out.println(ROJO + "ERROR: " + ex.getMessage() + RESET);
 		}
 	}
