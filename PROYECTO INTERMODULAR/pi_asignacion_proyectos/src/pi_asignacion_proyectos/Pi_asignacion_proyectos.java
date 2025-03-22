@@ -12,15 +12,15 @@ public class Pi_asignacion_proyectos {
 		do {
 			// MENÚ PRINCIPAL //
 			System.out.print("\n" + AMARILLO
-					+ "---------- ASIGNACIÓN DE PROYECTOS ----------\n"
+					+ "----------- ASIGNACIÓN DE PROYECTOS -----------\n"
 					+ "  1. Clientes\n"
 					+ "  2. Proyectos\n"
 					+ "  3. Desarrolladores\n"
 					+ "  4. Asignaciones de proyectos\n"
 					+ "  0. Salir\n" + AMARILLO
-					+ "---------------------------------------------\n"
+					+ "-----------------------------------------------\n"
 					+ "\n" + MORADO
-					+ "Introduce opción: ");
+					+ "INTRODUCE OPCIÓN: ");
 			opcion = sc.nextInt();
 			sc.nextLine();
 			
@@ -36,9 +36,11 @@ public class Pi_asignacion_proyectos {
 							+ "  0. Volver\n" + AMARILLO
 							+ "-----------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "Introduce opción: ");
+							+ "INTRODUCE OPCIÓN: ");
 					int opcion1 = sc.nextInt();
 					sc.nextLine();
+					
+					System.out.println("");
 					
 					switch (opcion1) {
 						case 1:
@@ -48,7 +50,7 @@ public class Pi_asignacion_proyectos {
 							
 						case 2:
 							// TABLA CLIENTE - CONSULTAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							Select.allFromCliente();
 							break;
 							
 						case 3:
@@ -74,7 +76,7 @@ public class Pi_asignacion_proyectos {
 							+ "  0. Volver\n" + AMARILLO
 							+ "------------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "Introduce opción: ");
+							+ "INTRODUCE OPCIÓN: ");
 					int opcion2 = sc.nextInt();
 					sc.nextLine();
 					
@@ -112,7 +114,7 @@ public class Pi_asignacion_proyectos {
 							+ "  0. Volver\n" + AMARILLO
 							+ "------------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "Introduce opción: ");
+							+ "INTRODUCE OPCIÓN: ");
 					int opcion3 = sc.nextInt();
 					sc.nextLine();
 					
@@ -150,7 +152,7 @@ public class Pi_asignacion_proyectos {
 							+ "  0. Volver\n" + AMARILLO
 							+ "------------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "Introduce opción: ");
+							+ "INTRODUCE OPCIÓN: ");
 					int opcion4 = sc.nextInt();
 					sc.nextLine();
 					
@@ -177,6 +179,9 @@ public class Pi_asignacion_proyectos {
 					}
 					break;
 			}
+			
+			System.out.print("\n" + MORADO + "CONTINUAR (ENTER):");
+			sc.nextLine();
 		}
 		while (opcion != 0);
     }
