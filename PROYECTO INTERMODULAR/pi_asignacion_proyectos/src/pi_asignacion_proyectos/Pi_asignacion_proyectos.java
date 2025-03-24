@@ -63,7 +63,7 @@ public class Pi_asignacion_proyectos {
 						case 2:
 							// TABLA CLIENTE - CONSULTAR //
 							
-							Select.allFromCliente();
+							Select.allFromClientes();
 							
 							break;
 							
