@@ -45,12 +45,26 @@ public class Pi_asignacion_proyectos {
 					switch (opcion1) {
 						case 1:
 							// TABLA CLIENTE - CREAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							
+							System.out.println(AMARILLO +
+									"---------- DATOS DEL CLIENTE A AÑADIR ---------" + RESET);
+							
+							System.out.print("  - DNI: "); String dni = sc.nextLine();
+							System.out.print("  - Nombre: "); String nombre = sc.nextLine();
+							System.out.print("  - Primer apellido: "); String apellido1 = sc.nextLine();
+							System.out.print("  - Segundo apellido: "); String apellido2 = sc.nextLine();
+							System.out.print("  - Email: "); String email = sc.nextLine();
+							System.out.print("  - Teléfono: "); String telefono = sc.nextLine();
+							
+							Insert.cliente(dni, nombre, apellido1, apellido2, email, telefono);
+							
 							break;
 							
 						case 2:
 							// TABLA CLIENTE - CONSULTAR //
+							
 							Select.allFromCliente();
+							
 							break;
 							
 						case 3:
