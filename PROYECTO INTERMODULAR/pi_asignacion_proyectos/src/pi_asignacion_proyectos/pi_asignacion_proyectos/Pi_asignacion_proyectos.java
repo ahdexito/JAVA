@@ -10,9 +10,9 @@ public class Pi_asignacion_proyectos {
         int opcion;
 		
 		do {
-			// MENÚ PRINCIPAL //
+			// MENï¿½ PRINCIPAL //
 			System.out.print("\n" + AMARILLO
-					+ "----------- ASIGNACIÓN DE PROYECTOS -----------\n"
+					+ "----------- ASIGNACIÃ“N DE PROYECTOS -----------\n"
 					+ "  1. Clientes\n"
 					+ "  2. Proyectos\n"
 					+ "  3. Desarrolladores\n"
@@ -20,13 +20,13 @@ public class Pi_asignacion_proyectos {
 					+ "  0. Salir\n" + AMARILLO
 					+ "-----------------------------------------------\n"
 					+ "\n" + MORADO
-					+ "INTRODUCE OPCIÓN: ");
+					+ "INTRODUCE OPCIÃ“N: ");
 			opcion = sc.nextInt();
 			sc.nextLine();
-			
+
 			switch (opcion) {
 				case 1:
-					// MENÚ - TABLA CLIENTE //
+					// MENï¿½ - TABLA CLIENTE //
 					System.out.print("\n" + AMARILLO
 							+ "--------- MANTENIMIENTO TABLA CLIENTE ---------\n"
 							+ "  1. Crear\n"
@@ -36,7 +36,7 @@ public class Pi_asignacion_proyectos {
 							+ "  0. Volver\n" + AMARILLO
 							+ "-----------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "INTRODUCE OPCIÓN: ");
+							+ "INTRODUCE OPCIï¿½N: ");
 					int opcion1 = sc.nextInt();
 					sc.nextLine();
 					
@@ -47,14 +47,14 @@ public class Pi_asignacion_proyectos {
 							// TABLA CLIENTE - CREAR //
 							
 							System.out.println(AMARILLO +
-									"---------- DATOS DEL CLIENTE A AÑADIR ---------" + RESET);
+									"---------- DATOS DEL CLIENTE A AÃ‘ADIR ---------" + RESET);
 							
 							System.out.print("  - DNI: "); String dni = sc.nextLine();
 							System.out.print("  - Nombre: "); String nombre = sc.nextLine();
 							System.out.print("  - Primer apellido: "); String apellido1 = sc.nextLine();
 							System.out.print("  - Segundo apellido: "); String apellido2 = sc.nextLine();
 							System.out.print("  - Email: "); String email = sc.nextLine();
-							System.out.print("  - Teléfono: "); String telefono = sc.nextLine();
+							System.out.print("  - TelÃ©fono: "); String telefono = sc.nextLine();
 							
 							Insert.cliente(dni, nombre, apellido1, apellido2, email, telefono);
 							
@@ -80,7 +80,7 @@ public class Pi_asignacion_proyectos {
 					break;
 					
 				case 2:
-					// MENÚ - TABLA PROYECTO //
+					// MENï¿½ - TABLA PROYECTO //
 					System.out.print("\n" + AMARILLO
 							+ "--------- MANTENIMIENTO TABLA PROYECTO ---------\n"
 							+ "  1. Crear\n"
@@ -90,7 +90,7 @@ public class Pi_asignacion_proyectos {
 							+ "  0. Volver\n" + AMARILLO
 							+ "------------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "INTRODUCE OPCIÓN: ");
+							+ "INTRODUCE OPCIï¿½N: ");
 					int opcion2 = sc.nextInt();
 					sc.nextLine();
 					
@@ -118,7 +118,7 @@ public class Pi_asignacion_proyectos {
 					break;
 					
 				case 3:
-					// MENÚ - TABLA DESARROLLADOR //
+					// MENï¿½ - TABLA DESARROLLADOR //
 					System.out.print("\n" + AMARILLO
 							+ "------- MANTENIMIENTO TABLA DESARROLLADOR ------\n"
 							+ "  1. Crear\n"
@@ -128,7 +128,7 @@ public class Pi_asignacion_proyectos {
 							+ "  0. Volver\n" + AMARILLO
 							+ "------------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "INTRODUCE OPCIÓN: ");
+							+ "INTRODUCE OPCIï¿½N: ");
 					int opcion3 = sc.nextInt();
 					sc.nextLine();
 					
@@ -156,9 +156,9 @@ public class Pi_asignacion_proyectos {
 					break;
 					
 				case 4:
-					// MENÚ - TABLA ASIGNACIÓN //
+					// MENï¿½ - TABLA ASIGNACIï¿½N //
 					System.out.print("\n" + AMARILLO
-							+ "-------- MANTENIMIENTO TABLA ASIGNACIÓN --------\n"
+							+ "-------- MANTENIMIENTO TABLA ASIGNACIÃ“N --------\n"
 							+ "  1. Crear\n"
 							+ "  2. Consultar\n"
 							+ "  3. Modificar\n"
@@ -166,38 +166,40 @@ public class Pi_asignacion_proyectos {
 							+ "  0. Volver\n" + AMARILLO
 							+ "------------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "INTRODUCE OPCIÓN: ");
+							+ "INTRODUCE OPCIÃ“N: ");
 					int opcion4 = sc.nextInt();
 					sc.nextLine();
 					
 					switch (opcion4) {
 						case 1:
-							// TABLA ASIGNACIÓN - CREAR //
+							// TABLA ASIGNACIï¿½N - CREAR //
 							System.out.println("\n" + ROJO + "En desarrollo...");
 							break;
 							
 						case 2:
-							// TABLA ASIGNACIÓN - CONSULTAR //
+							// TABLA ASIGNACIï¿½N - CONSULTAR //
 							System.out.println("\n" + ROJO + "En desarrollo...");
 							break;
 							
 						case 3:
-							// TABLA ASIGNACIÓN - MODIFICAR //
+							// TABLA ASIGNACIï¿½N - MODIFICAR //
 							System.out.println("\n" + ROJO + "En desarrollo...");
 							break;
 							
 						case 4:
-							// TABLA ASIGNACIÓN - ELIMINAR //
+							// TABLA ASIGNACIï¿½N - ELIMINAR //
 							System.out.println("\n" + ROJO + "En desarrollo...");
 							break;
 					}
 					break;
 			}
 			
-			System.out.print("\n" + MORADO + "CONTINUAR (ENTER):");
+			System.out.print("\n" + MORADO + "CONTINUAR (ENTER): ");
 			sc.nextLine();
 		}
 		while (opcion != 0);
+		
+		sc.close();
     }
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

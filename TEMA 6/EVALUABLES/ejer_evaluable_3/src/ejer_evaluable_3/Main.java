@@ -1,9 +1,8 @@
 package ejer_evaluable_3;
 
 import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     
