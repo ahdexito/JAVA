@@ -21,7 +21,7 @@
     },
     "rules": {
         "class": { "foreground": "#FF0099", "italic": true },
-        "method": { "foreground": "#00FF99", "bold": true },
+        "method": { "foreground": "#00FF99", "bold": false },
         "variable": { "foreground": "#CC66FF" },
         "parameter": { "foreground": "#CC66FF" },
         "static": { "foreground": "#12d800", "bold": true },
@@ -109,7 +109,7 @@
           "scope": "variable.other.object",
           "settings": {
             "foreground": "#FF0099",
-            "fontStyle": "italic bold"
+            "fontStyle": ""
           }
         },
   
@@ -126,8 +126,7 @@
             "keyword.operator"
           ],
           "settings": {
-            "foreground": "#FF8700",
-            "fontStyle": ""
+            "foreground": "#FF8700"
           }
         },
   
@@ -149,8 +148,7 @@
             "entity.name.type.enum"
           ],
           "settings": {
-            "foreground": "#00FF99",
-            "fontStyle": "bold"
+            "foreground": "#00FF99"
           }
         },
   
@@ -160,8 +158,7 @@
             "variable.other.object.property"
           ],
           "settings": {
-            "foreground": "#FBFF00",
-            "fontStyle": ""
+            "foreground": "#FBFF00"
           }
         },
   
@@ -173,7 +170,7 @@
           ],
           "settings": {
             "foreground": "#FF0099",
-            "fontStyle": "italic bold"
+            "fontStyle": "italic"
           }
         },
   
@@ -215,7 +212,7 @@
           }
         },
 
-
+        /*
         {
           "scope": [
             "support.class.builtin.java", // System, String, etc.
@@ -226,7 +223,7 @@
             "fontStyle": "bold"
           }
         },
-
+        */
 
         {
           "scope": [
@@ -235,7 +232,7 @@
           ],
           "settings": {
             "foreground": "#FF0099", // Color de clases
-            "fontStyle": "italic bold"
+            "fontStyle": "italic"
           }
         },
 
@@ -246,7 +243,39 @@
             "foreground": "#FF0000",
             "fontStyle": "italic"
           }
+        },
+
+
+        {
+          "scope": [
+            "entity.name.type.class.java",
+            "entity.name.type.enum.java"
+          ],
+          "settings": {
+            "foreground": "#FF0099",  // Color de clases y enumerados
+            "fontStyle": "italic"  // Cursiva, sin negrita
+          }
+        },
+        // Otros elementos como las clases definidas por el usuario (Persona)
+        {
+          "scope": "entity.name.type.class.java",
+          "settings": {
+            "foreground": "#FF0099",  // Color de clases
+            "fontStyle": "italic"  // Cursiva, sin negrita
+          }
+        },
+        // Para el caso de los tipos primitivos, puedes dejarlo en cursiva si lo prefieres
+        {
+          "scope": [
+            "storage.type.java",
+            "storage.type.primitive.java"
+          ],
+          "settings": {
+            "foreground": "#FF0099",  // Color de tipos primitivos
+            "fontStyle": "italic"  // Cursiva
+          }
         }
+
       ]
     }
   }
