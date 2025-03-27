@@ -1,4 +1,4 @@
-# tema-custom README
+# kustom-visual README
 
 ## Working with Markdown
 
