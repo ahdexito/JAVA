@@ -1,0 +1,306 @@
+ "workbench.colorTheme": "Andromeda",
+    "editor.fontLigatures": true,
+    "editor.fontVariations": true,
+    "workbench.startupEditor": "none",
+    "workbench.preferredDarkColorTheme": "Andromeda",
+    "editor.fontFamily": "'Cartograph CF'",
+    "window.autoDetectColorScheme": true,
+    "launch": {
+        "configurations": [
+            {
+                "type": "firefox",
+                "request": "launch",
+                "reAttach": true,
+                "name": "Launch add-on",
+                "addonPath": "${workspaceFolder}"
+            },
+            {
+                "type": "firefox",
+                "request": "launch",
+                "reAttach": true,
+                "name": "Launch localhost",
+                "url": "http://localhost/index.html",
+                "webRoot": "${workspaceFolder}"
+            },
+        {
+            "type": "firefox",
+            "request": "attach",
+            "name": "Attach"
+        },
+        ]
+    },
+
+    "editor.semanticHighlighting.enabled": false,
+
+    "editor.semanticTokenColorCustomizations": {
+      "[Default Dark+]": {
+        "enabled": false
+      },
+      "rules": {
+          "class": { "foreground": "#00FF99", "italic": true },
+          "method": { "foreground": "#FF0099", "thin": true},
+          "variable": { "foreground": "#CC66FF" },
+          "parameter": { "foreground": "#CC66FF" },
+          "static": { "foreground": "#FBFF00", "bold": true },
+          "type": { "foreground": "#FBFF00", "italic": true },
+          "enum": { "foreground": "#00FF99", "italic": true }
+      }
+    },
+
+    "[java]": {
+      "editor.semanticHighlighting.enabled": true
+    },
+
+
+
+      "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          // Modificadores de clases y métodos (public, private, static, etc.)
+          {
+            "scope": [
+              "storage.modifier"
+            ],
+            "settings": {
+              "foreground": "#ff7b00",
+              "fontStyle": "italic bold"
+            }
+          },
+
+          // Cadenas de texto, valores numéricos, booleanos, nulos y escapes de caracteres
+          {
+            "scope": [
+              "string.quoted.double",
+              "string.quoted.single",
+              "constant.numeric",
+              "constant.language.boolean",
+              "constant.language.null",
+              "constant.character.escape",
+              "punctuation.quoted",
+              "constant.language.java",
+              "constant.other.enum.java"
+            ],
+            "settings": {
+              "foreground": "#66FFFF",
+              "fontStyle": "italic bold"
+            }
+          },
+
+          // Palabras clave generales (int, class, return, etc.)
+          {
+            "scope": [
+              "keyword",
+              "meta.definition.variable",
+              "meta.definition.method",
+              "meta.definition.function",
+              "entity.name.type.class"
+            ],
+            "settings": {
+              "foreground": "#FBFF00",
+              "fontStyle": "bold"
+            }
+          },
+
+          // Abrir y cerrar comillas
+          {
+            "scope": [
+              "punctuation.definition.string.begin",
+              "punctuation.definition.string.end"
+            ],
+            "settings": {
+              "foreground": "#FBFF00",
+              "fontStyle": "bold"
+            }
+          },
+
+          // Palabras clave de control de flujo y operadores lógicos
+          {
+            "scope": [
+              "variable.language", // super, this
+              "keyword.control", // for, while, if, else
+              "keyword.operator.instanceof" // instanceof
+            ],
+            "settings": {
+              "foreground": "#11A8FF",
+              "fontStyle": "italic bold"
+            }
+          },
+
+          // Variables, propiedades de objetos y parámetros de función
+          {
+            "scope": "variable.other",
+            "settings": {
+              "foreground": "#FBFF00",
+              "fontStyle": ""
+            }
+          },
+
+          {
+            "scope": "variable.other.object",
+            "settings": {
+              "foreground": "#00FF99",
+              "fontStyle": ""
+            }
+          },
+
+          // paréntesis, llaves y operadores
+          {
+            "scope": [
+              "punctuation.paren",
+              "punctuation.bracket",
+              "punctuation.brace",
+              "punctuation.definition.arguments",
+              "punctuation.definition.parameters",
+              "punctuation.definition.block",
+              "punctuation.definition.function",
+              "keyword.operator"
+            ],
+            "settings": {
+              "foreground": "#FF8700"
+            }
+          },
+
+          // Comentarios
+          {
+            "scope": "comment",
+            "settings": {
+              "foreground": "#FFFFFF",
+              "fontStyle": "italic bold"
+            }
+          },
+
+          // Nombres de funciones, clases y enumeraciones
+          {
+            "scope": [
+              "entity.name.function", // Métodos de clases y funciones
+              "entity.name.class",
+              "entity.name.type.class",
+              "entity.name.type.enum"
+            ],
+            "settings": {
+              "foreground": "#FF0099"
+            }
+          },
+
+          // Propiedades de objetos (Objeto.propiedad)
+          {
+            "scope": [
+              "variable.other.object.property"
+            ],
+            "settings": {
+              "foreground": "#FBFF00"
+            }
+          },
+
+          // Tipos de datos primitivos (int, double, float, etc.)
+          {
+            "scope": [
+              "storage.type.java",
+              "storage.type.primitive.java"
+            ],
+            "settings": {
+              "foreground": "#00FF99",
+              "fontStyle": "italic"
+            }
+          },
+
+          // Variables y parámetros en métodos
+          {
+            "scope": [
+              "variable.other.readwrite",
+              "variable.parameter"
+            ],
+            "settings": {
+              "foreground": "#CC66FF",
+              "fontStyle": ""
+            }
+          },
+
+          // Elementos estáticos (variables y métodos estáticos)
+          {
+            "scope": [
+              "storage.modifier.static.java",
+              "variable.other.static.java",
+              "entity.name.function.static.java"
+            ],
+            "settings": {
+              "foreground": "#CC66FF",
+              "fontStyle": "bold"
+            }
+          },
+
+          // Paréntesis y llaves en blanco
+          {
+            "scope": [
+              "punctuation.section.block.begin.java", // {
+              "punctuation.section.block.end.java",   // }
+              "punctuation.section.group.begin.java", // (
+              "punctuation.section.group.end.java"    // )
+            ],
+            "settings": {
+              "foreground": "#FFFFFF"
+            }
+          },
+
+          /*
+          {
+            "scope": [
+              "support.class.builtin.java", // System, String, etc.
+              "support.type.java"
+            ],
+            "settings": {
+              "foreground": "#00FF99", // Color de System
+              "fontStyle": "bold"
+            }
+          },
+          */
+
+          {
+            "scope": [
+              "entity.name.type.class.java", // Clases definidas por el usuario (Persona)
+              "storage.type.class.java"
+            ],
+            "settings": {
+              "foreground": "#00FF99", // Color de clases
+              "fontStyle": "italic"
+            }
+          },
+
+
+          {
+            "scope": [
+              "entity.name.type.class.java",
+              "entity.name.type.enum.java"
+            ],
+            "settings": {
+              "foreground": "#00FF99",  // Color de clases y enumerados
+              "fontStyle": "italic"  // Cursiva, sin negrita
+            }
+          },
+
+          // Otros elementos como las clases definidas por el usuario (Persona)
+          {
+            "scope": "entity.name.type.class.java",
+            "settings": {
+              "foreground": "#00FF99",  // Color de clases
+              "fontStyle": "italic"  // Cursiva, sin negrita
+            }
+          },
+
+          // Para el caso de los tipos primitivos, puedes dejarlo en cursiva si lo prefieres
+          {
+            "scope": [
+              "storage.type.java",
+              "storage.type.primitive.java"
+            ],
+            "settings": {
+              "foreground": "#00FF99",  // Color de tipos primitivos
+              "fontStyle": "italic"  // Cursiva
+            }
+          }
+
+        ]
+      }
+    }
+
+
+   // #FF0099 , #00FF99 , #FFFFFF , #FBFF00 , #66FFFF , #CC66FF , #FF8700 , #11A8FF
