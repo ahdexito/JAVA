@@ -281,7 +281,6 @@
             "fontStyle": "italic"  // Cursiva
           }
         }
-
       ]
     },
     "workbench.preferredLightColorTheme": "Andromeda"
