@@ -182,7 +182,7 @@
           ],
           "settings": {
             "foreground": "#CC66FF",
-            "fontStyle": "bold"
+            "fontStyle": ""
           }
         },
   
