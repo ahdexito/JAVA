@@ -1,0 +1,21 @@
+{
+  "name": "tema-custom",
+  "displayName": "tema-custom",
+  "description": "Tema custom para Visual Studio Code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "TemaCustom",
+        "uiTheme": "vs-dark",
+        "path": "./themes/TemaCustom-color-theme.json"
+      }
+    ]
+  }
+}
