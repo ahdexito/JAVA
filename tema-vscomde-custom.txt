@@ -1,14 +1,10 @@
 {
   "explorer.confirmDelete": false,
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
-  },
   "workbench.colorTheme": "Default Dark+",
   "editor.fontLigatures": true,
   "editor.fontVariations": true,
   "workbench.preferredDarkColorTheme": "Default Dark+",
-  "editor.fontFamily": "'Cartograph CF'",
-  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "'Cartograph CF Thin'",
   "window.autoDetectColorScheme": true,
   "mssql.enableRichExperiencesDoNotShowPrompt": true,
   "jdk.jdkhome": "c:\\Users\\Ángel\\Documentos\\OpenJDK-23",
@@ -20,13 +16,13 @@
       "enabled": false
     },
     "rules": {
-        "class": { "foreground": "#FF0099", "italic": true },
-        "method": { "foreground": "#00FF99", "bold": false },
+        "class": { "foreground": "#00FF99", "italic": true },
+        "method": { "foreground": "#FF0099", "bold": false },
         "variable": { "foreground": "#CC66FF" },
         "parameter": { "foreground": "#CC66FF" },
-        "static": { "foreground": "#12d800", "bold": true },
-        "type": { "foreground": "#12d800", "italic": true },
-        "enum": { "foreground": "#FF0099", "italic": true }
+        "static": { "foreground": "#FBFF00", "bold": true },
+        "type": { "foreground": "#FBFF00", "italic": true },
+        "enum": { "foreground": "#00FF99", "italic": true }
     }
   },
   
@@ -49,6 +45,7 @@
           }
         },
   
+        
         // Cadenas de texto, valores numéricos, booleanos, nulos y escapes de caracteres
         {
           "scope": [
@@ -68,6 +65,7 @@
           }
         },
   
+
         // Palabras clave generales (int, class, return, etc.)
         {
           "scope": [
@@ -83,6 +81,7 @@
           }
         },
   
+
         // Palabras clave de control de flujo y operadores lógicos
         {
           "scope": [
@@ -96,6 +95,7 @@
           }
         },
   
+
         // Variables, propiedades de objetos y parámetros de función
         {
           "scope": "variable.other",
@@ -105,14 +105,29 @@
           }
         },
 
+
+        // Aperturas y cierres de comillas
+        {
+          "scope": [
+            "punctuation.definition.string.begin",
+            "punctuation.definition.string.end"
+          ],
+          "settings": {
+            "foreground": "#FBFF00",
+            "fontStyle": ""
+          }
+        },
+        
+
         {
           "scope": "variable.other.object",
           "settings": {
-            "foreground": "#FF0099",
+            "foreground": "#00FF99",
             "fontStyle": ""
           }
         },
   
+
         // paréntesis, llaves y operadores
         {
           "scope": [
@@ -123,13 +138,15 @@
             "punctuation.definition.parameters",
             "punctuation.definition.block",
             "punctuation.definition.function",
-            "keyword.operator"
+            "keyword.operator",
+            "constant.character.escape"
           ],
           "settings": {
             "foreground": "#FF8700"
           }
         },
   
+
         // Comentarios
         {
           "scope": "comment",
@@ -139,6 +156,7 @@
           }
         },
   
+
         // Nombres de funciones, clases y enumeraciones
         {
           "scope": [
@@ -148,10 +166,11 @@
             "entity.name.type.enum"
           ],
           "settings": {
-            "foreground": "#00FF99"
+            "foreground": "#FF0099"
           }
         },
   
+
         // Propiedades de objetos (Objeto.propiedad)
         {
           "scope": [
@@ -162,6 +181,7 @@
           }
         },
   
+
         // Tipos de datos primitivos (int, double, float, etc.)
         {
           "scope": [
@@ -169,11 +189,12 @@
             "storage.type.primitive.java"
           ],
           "settings": {
-            "foreground": "#FF0099",
+            "foreground": "#00FF99",
             "fontStyle": "italic"
           }
         },
   
+
         // Variables y parámetros en métodos
         {
           "scope": [
@@ -186,6 +207,7 @@
           }
         },
   
+
         // Elementos estáticos (variables y métodos estáticos)
         {
           "scope": [
@@ -199,6 +221,7 @@
           }
         },
   
+
         // Paréntesis y llaves en blanco
         {
           "scope": [
@@ -212,18 +235,6 @@
           }
         },
 
-        /*
-        {
-          "scope": [
-            "support.class.builtin.java", // System, String, etc.
-            "support.type.java"
-          ],
-          "settings": {
-            "foreground": "#00FF99", // Color de System
-            "fontStyle": "bold"
-          }
-        },
-        */
 
         {
           "scope": [
@@ -231,16 +242,7 @@
             "storage.type.class.java"
           ],
           "settings": {
-            "foreground": "#FF0099", // Color de clases
-            "fontStyle": "italic"
-          }
-        },
-
-
-        {
-          "scope": "meta.annotation",
-          "settings": {
-            "foreground": "#FF0000",
+            "foreground": "#00FF99", // Color de clases
             "fontStyle": "italic"
           }
         },
@@ -252,18 +254,22 @@
             "entity.name.type.enum.java"
           ],
           "settings": {
-            "foreground": "#FF0099",  // Color de clases y enumerados
+            "foreground": "#00FF99",  // Color de clases y enumerados
             "fontStyle": "italic"  // Cursiva, sin negrita
           }
         },
+
+
         // Otros elementos como las clases definidas por el usuario (Persona)
         {
           "scope": "entity.name.type.class.java",
           "settings": {
-            "foreground": "#FF0099",  // Color de clases
+            "foreground": "#00FF99",  // Color de clases
             "fontStyle": "italic"  // Cursiva, sin negrita
           }
         },
+
+
         // Para el caso de los tipos primitivos, puedes dejarlo en cursiva si lo prefieres
         {
           "scope": [
@@ -271,13 +277,14 @@
             "storage.type.primitive.java"
           ],
           "settings": {
-            "foreground": "#FF0099",  // Color de tipos primitivos
+            "foreground": "#00FF99",  // Color de tipos primitivos
             "fontStyle": "italic"  // Cursiva
           }
         }
 
       ]
-    }
+    },
+    "workbench.preferredLightColorTheme": "Andromeda"
   }
 
 
