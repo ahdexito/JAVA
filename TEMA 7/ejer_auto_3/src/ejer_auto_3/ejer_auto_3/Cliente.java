@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Consultas {
+public class Cliente {
     
-    public static void clientes() {
+    public static void listarClientes() {
 		
 		try {
 			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
@@ -23,7 +23,6 @@ public class Consultas {
 			System.out.println((AMARILLO + "-" + RESET).repeat(115));
  			
 			int par = 1;
-			
 			while (resultado.next()) {
 				String pintar;
 				if (par % 2 == 0) pintar = RESET;
@@ -47,7 +46,7 @@ public class Consultas {
 		}
 	}
 	
-	public static void cliente(String nombre) {
+	public static void listarCliente(String nombre) {
 		
 		try {
 			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
