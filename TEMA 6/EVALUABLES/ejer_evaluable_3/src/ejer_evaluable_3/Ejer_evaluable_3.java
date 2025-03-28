@@ -4,9 +4,10 @@ import java.time.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class Ejer_evaluable_3 {
     
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException 
+	{
         Scanner sc = new Scanner (System.in);
         
 		System.out.println(AMARILLO + "/ / / / / / / / / / / / / / / / / / / / / / / /" + RESET);
