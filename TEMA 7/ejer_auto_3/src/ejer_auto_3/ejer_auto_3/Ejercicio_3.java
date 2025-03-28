@@ -2,7 +2,7 @@ package ejer_auto_3;
 
 import java.util.Scanner;
 
-public class Main {
+public class Ejercicio_3 {
     
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
