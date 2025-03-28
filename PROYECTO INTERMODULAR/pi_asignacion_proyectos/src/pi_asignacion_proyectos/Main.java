@@ -2,7 +2,7 @@ package pi_asignacion_proyectos;
 
 import java.util.Scanner;
 
-public class Pi_asignacion_proyectos {
+public class Main {
     
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
@@ -12,15 +12,15 @@ public class Pi_asignacion_proyectos {
 		do {
 			// MEN� PRINCIPAL //
 			System.out.print("\n" + AMARILLO
-					+ "----------- ASIGNACIÓN DE PROYECTOS -----------\n"
-					+ "  1. Clientes\n"
-					+ "  2. Proyectos\n"
-					+ "  3. Desarrolladores\n"
-					+ "  4. Asignaciones de proyectos\n"
+					+ "----------- ASIGNACIÓN DE PROYECTOS -----------\n" + RESET
+					+ "  1. Clientes\n" + RESET
+					+ "  2. Proyectos\n" + RESET
+					+ "  3. Desarrolladores\n" + RESET
+					+ "  4. Asignaciones de proyectos\n" + RESET
 					+ "  0. Salir\n" + AMARILLO
 					+ "-----------------------------------------------\n"
 					+ "\n" + MORADO
-					+ "INTRODUCE OPCIÓN: ");
+					+ "INTRODUCE OPCIÓN: " + RESET);
 			opcion = sc.nextInt();
 			sc.nextLine();
 
@@ -28,15 +28,15 @@ public class Pi_asignacion_proyectos {
 				case 1:
 					// MEN� - TABLA CLIENTE //
 					System.out.print("\n" + AMARILLO
-							+ "--------- MANTENIMIENTO TABLA CLIENTE ---------\n"
-							+ "  1. Crear\n"
-							+ "  2. Consultar\n"
-							+ "  3. Modificar\n"
-							+ "  4. Eliminar\n"
+							+ "--------- MANTENIMIENTO TABLA CLIENTE ---------\n" + RESET
+							+ "  1. Crear\n" + RESET
+							+ "  2. Consultar\n" + RESET
+							+ "  3. Modificar\n" + RESET
+							+ "  4. Eliminar\n" + RESET
 							+ "  0. Volver\n" + AMARILLO
 							+ "-----------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "INTRODUCE OPCI�N: ");
+							+ "INTRODUCE OPCIÓN: " + RESET);
 					int opcion1 = sc.nextInt();
 					sc.nextLine();
 					
@@ -49,12 +49,12 @@ public class Pi_asignacion_proyectos {
 							System.out.println(AMARILLO +
 									"---------- DATOS DEL CLIENTE A AÑADIR ---------" + RESET);
 							
-							System.out.print("  - DNI: "); String dni = sc.nextLine();
-							System.out.print("  - Nombre: "); String nombre = sc.nextLine();
-							System.out.print("  - Primer apellido: "); String apellido1 = sc.nextLine();
-							System.out.print("  - Segundo apellido: "); String apellido2 = sc.nextLine();
-							System.out.print("  - Email: "); String email = sc.nextLine();
-							System.out.print("  - Teléfono: "); String telefono = sc.nextLine();
+							System.out.print("  - DNI: " + RESET); String dni = sc.nextLine();
+							System.out.print("  - Nombre: " + RESET); String nombre = sc.nextLine();
+							System.out.print("  - Primer apellido: " + RESET); String apellido1 = sc.nextLine();
+							System.out.print("  - Segundo apellido: " + RESET); String apellido2 = sc.nextLine();
+							System.out.print("  - Email: " + RESET); String email = sc.nextLine();
+							System.out.print("  - Teléfono: " + RESET); String telefono = sc.nextLine();
 							
 							Insert.cliente(dni, nombre, apellido1, apellido2, email, telefono);
 							
@@ -69,12 +69,12 @@ public class Pi_asignacion_proyectos {
 							
 						case 3:
 							// TABLA CLIENTE - MODIFICAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 							
 						case 4:
 							// TABLA CLIENTE - ELIMINAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 					}
 					break;
@@ -82,37 +82,37 @@ public class Pi_asignacion_proyectos {
 				case 2:
 					// MEN� - TABLA PROYECTO //
 					System.out.print("\n" + AMARILLO
-							+ "--------- MANTENIMIENTO TABLA PROYECTO ---------\n"
-							+ "  1. Crear\n"
-							+ "  2. Consultar\n"
-							+ "  3. Modificar\n"
-							+ "  4. Eliminar\n"
+							+ "--------- MANTENIMIENTO TABLA PROYECTO ---------\n" + RESET
+							+ "  1. Crear\n" + RESET
+							+ "  2. Consultar\n" + RESET
+							+ "  3. Modificar\n" + RESET
+							+ "  4. Eliminar\n" + RESET
 							+ "  0. Volver\n" + AMARILLO
 							+ "------------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "INTRODUCE OPCI�N: ");
+							+ "INTRODUCE OPCIÓN: " + RESET);
 					int opcion2 = sc.nextInt();
 					sc.nextLine();
 					
 					switch (opcion2) {
 						case 1:
 							// TABLA PROYECTO - CREAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 							
 						case 2:
 							// TABLA PROYECTO - CONSULTAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 							
 						case 3:
 							// TABLA PROYECTO - MODIFICAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 							
 						case 4:
 							// TABLA PROYECTO - ELIMINAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 					}
 					break;
@@ -120,37 +120,37 @@ public class Pi_asignacion_proyectos {
 				case 3:
 					// MEN� - TABLA DESARROLLADOR //
 					System.out.print("\n" + AMARILLO
-							+ "------- MANTENIMIENTO TABLA DESARROLLADOR ------\n"
-							+ "  1. Crear\n"
-							+ "  2. Consultar\n"
-							+ "  3. Modificar\n"
-							+ "  4. Eliminar\n"
+							+ "------- MANTENIMIENTO TABLA DESARROLLADOR ------\n" + RESET
+							+ "  1. Crear\n" + RESET
+							+ "  2. Consultar\n" + RESET
+							+ "  3. Modificar\n" + RESET
+							+ "  4. Eliminar\n" + RESET
 							+ "  0. Volver\n" + AMARILLO
 							+ "------------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "INTRODUCE OPCI�N: ");
+							+ "INTRODUCE OPCIÓN: " + RESET);
 					int opcion3 = sc.nextInt();
 					sc.nextLine();
 					
 					switch (opcion3) {
 						case 1:
 							// TABLA DESARROLLADOR - CREAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 							
 						case 2:
 							// TABLA DESARROLLADOR - CONSULTAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 							
 						case 3:
 							// TABLA DESARROLLADOR - MODIFICAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 							
 						case 4:
 							// TABLA DESARROLLADOR - ELIMINAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 					}
 					break;
@@ -158,43 +158,43 @@ public class Pi_asignacion_proyectos {
 				case 4:
 					// MEN� - TABLA ASIGNACI�N //
 					System.out.print("\n" + AMARILLO
-							+ "-------- MANTENIMIENTO TABLA ASIGNACIÓN --------\n"
-							+ "  1. Crear\n"
-							+ "  2. Consultar\n"
-							+ "  3. Modificar\n"
-							+ "  4. Eliminar\n"
+							+ "-------- MANTENIMIENTO TABLA ASIGNACIÓN --------\n" + RESET
+							+ "  1. Crear\n" + RESET
+							+ "  2. Consultar\n" + RESET
+							+ "  3. Modificar\n" + RESET
+							+ "  4. Eliminar\n" + RESET
 							+ "  0. Volver\n" + AMARILLO
 							+ "------------------------------------------------\n"
 							+ "\n" + MORADO
-							+ "INTRODUCE OPCIÓN: ");
+							+ "INTRODUCE OPCIÓN: " + RESET);
 					int opcion4 = sc.nextInt();
 					sc.nextLine();
 					
 					switch (opcion4) {
 						case 1:
 							// TABLA ASIGNACI�N - CREAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 							
 						case 2:
 							// TABLA ASIGNACI�N - CONSULTAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 							
 						case 3:
 							// TABLA ASIGNACI�N - MODIFICAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 							
 						case 4:
 							// TABLA ASIGNACI�N - ELIMINAR //
-							System.out.println("\n" + ROJO + "En desarrollo...");
+							System.out.println("\n" + ROJO + "En desarrollo..." + RESET);
 							break;
 					}
 					break;
 			}
 			
-			System.out.print("\n" + MORADO + "CONTINUAR (ENTER): ");
+			System.out.print("\n" + MORADO + "CONTINUAR (ENTER): " + RESET);
 			sc.nextLine();
 		}
 		while (opcion != 0);

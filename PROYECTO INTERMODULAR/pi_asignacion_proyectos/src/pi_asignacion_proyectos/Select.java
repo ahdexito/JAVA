@@ -18,7 +18,7 @@ public class Select {
 			ResultSet resultado = instruccion.executeQuery();
 			
 			System.out.println((AMARILLO + "-" + RESET).repeat(125));
-			System.out.printf(AMARILLO + "%-10s %-20s %-20s %-25s %-30s %-20s\n", "|  ID", "|  DNI", "|  NOMBRE", "|  APELLIDOS", "|  EMAIL", "|  TEL�FONO");
+			System.out.printf(AMARILLO + "%-10s %-20s %-20s %-25s %-30s %-20s\n", "|  ID", "|  DNI", "|  NOMBRE", "|  APELLIDOS", "|  EMAIL", "|  TELÉFONO");
 			System.out.println((AMARILLO + "-" + RESET).repeat(125));
  			
 			int par = 2;
@@ -59,7 +59,7 @@ public class Select {
 			ResultSet resultado = instruccion.executeQuery();
 			
 			System.out.println((AMARILLO + "-" + RESET).repeat(125));
-			System.out.printf(AMARILLO + "%-10s %-20s %-20s %-25s %-30s %-20s\n", "|  ID", "|  DNI", "|  NOMBRE", "|  APELLIDOS", "|  EMAIL", "|  TEL�FONO");
+			System.out.printf(AMARILLO + "%-10s %-20s %-20s %-25s %-30s %-20s\n", "|  ID", "|  DNI", "|  NOMBRE", "|  APELLIDOS", "|  EMAIL", "|  TELÉFONO");
 			System.out.println((AMARILLO + "-" + RESET).repeat(125));
  			
 			int par = 2;

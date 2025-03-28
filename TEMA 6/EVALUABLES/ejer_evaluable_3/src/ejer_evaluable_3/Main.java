@@ -4,7 +4,7 @@ import java.time.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Ejer_evaluable_3 {
+public class Main {
     
     public static void main(String[] args) throws InterruptedException 
 	{

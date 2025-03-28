@@ -55,7 +55,8 @@
 				"storage.modifier"
 			],
 			"settings": {
-				"foreground": "#FF0099"
+				"foreground": "#FF0099",
+				"fontStyle": "italic bold"
 			}
 		},
 		{
@@ -742,13 +743,21 @@
 			  "punctuation.definition.block",
 			  "punctuation.definition.function",
 			  "keyword.operator",
-			  "constant.character.escape"
+			  
 			],
 			"settings": {
 			  "foreground": "#FF0099"
 			}
 		  },
-	
+		  
+
+		  {
+			"scope": "constant.character.escape",
+			"settings": {
+				"foreground": "#FF8700",
+				"fontStyle": "bold"
+			}
+		  },
   
 		  // Comentarios
 		  {

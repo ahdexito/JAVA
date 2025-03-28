@@ -1,5 +1,3 @@
 {
-    "editor.fontFamily": "'Cartograph CF Thin'",
-    "editor.fontLigatures": true,
-    "editor.fontVariations": true
+    "java.debug.settings.onBuildFailureProceed": true
 }
