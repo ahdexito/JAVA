@@ -1,8 +1,8 @@
 package ejer_auto_2;
 
-import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Consultas {
@@ -19,7 +19,7 @@ public class Consultas {
 			ResultSet resultado = instruccion.executeQuery();
 			
 			System.out.println((AMARILLO + "-" + RESET).repeat(115));
-			System.out.printf(AMARILLO + "%-10s %-25s %-25s %-20s %-20s\n", "|  ID", "|  NOMBRE", "|  DIRECCIÓN", "|  TELÉFONO", "|  EMAIL");
+			System.out.printf(AMARILLO + "%-10s %-25s %-25s %-20s %-20s\n", "|  ID", "|  NOMBRE", "|  DIRECCION", "|  TELÃ‰FONO", "|  EMAIL");
 			System.out.println((AMARILLO + "-" + RESET).repeat(115));
  			
 			int par = 1;
@@ -61,7 +61,7 @@ public class Consultas {
 			if (resultado.next()) {
 				
 				System.out.println((AMARILLO + "-" + RESET).repeat(115));
-				System.out.printf(AMARILLO + "%-10s %-25s %-25s %-20s %-20s\n", "|  ID", "|  NOMBRE", "|  DIRECCIÓN", "|  TELÉFONO", "|  EMAIL");
+				System.out.printf(AMARILLO + "%-10s %-25s %-25s %-20s %-20s\n", "|  ID", "|  NOMBRE", "|  DIRECCIÃ“N", "|  TELÃ‰FONO", "|  EMAIL");
 				System.out.println((AMARILLO + "-" + RESET).repeat(115));
 
 				int par = 1;
@@ -106,7 +106,7 @@ public class Consultas {
 			ResultSet resultado = instruccion.executeQuery();
 			
 			System.out.println((AMARILLO + "-" + RESET).repeat(75));
-			System.out.printf(AMARILLO + "%-15s %-15s %-20s %-20s\n", "|  ID CLIENTE", "|  NÚMERO", "|  NOMBRE", "|  FECHA NACIMIENTO");
+			System.out.printf(AMARILLO + "%-15s %-15s %-20s %-20s\n", "|  ID CLIENTE", "|  NÃšMERO", "|  NOMBRE", "|  FECHA NACIMIENTO");
 			System.out.println((AMARILLO + "-" + RESET).repeat(75));
  			
 			int par = 1;

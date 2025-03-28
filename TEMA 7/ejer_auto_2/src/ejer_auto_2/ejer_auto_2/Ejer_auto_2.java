@@ -11,14 +11,14 @@ public class Ejer_auto_2 {
 		
 		do {
 			System.out.print("\n" + AMARILLO
-					+ "--------- GESTI”N CLÕNICA VETERINARIA ---------\n"
-					+ "  1. Listar todos los clientes\n"
-					+ "  2. Buscar clientes por nombre\n"
-					+ "  3. Listar todas las mascotas\n"
+					+ "--------- GESTI√ìN CL√çNICA VETERINARIA ---------\n" + RESET
+					+ "  1. Listar todos los clientes\n" + RESET
+					+ "  2. Buscar clientes por nombre\n" + RESET
+					+ "  3. Listar todas las mascotas\n" + RESET
 					+ "  0. Salir\n" + AMARILLO
 					+ "-----------------------------------------------\n"
 					+ "\n" + MORADO
-					+ "INTRODUCE OPCI”N: ");
+					+ "INTRODUCE OPCI√ìN: " + RESET);
 			opcion = sc.nextInt();
 			sc.nextLine();
 			
@@ -41,7 +41,7 @@ public class Ejer_auto_2 {
 					break;
 					
 				case 0:
-					System.out.println(CIAN + "### HASTA PRONTO ###" + "\n");
+					System.out.println(CIAN + "### HASTA PRONTO ###" + "\n" + RESET);
 					break;
 			}
 		}
