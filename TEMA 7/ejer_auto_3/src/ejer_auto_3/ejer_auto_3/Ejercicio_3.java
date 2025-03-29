@@ -29,24 +29,35 @@ public class Ejercicio_3 {
 			
 			switch (opcion) {
 				case 1:
+					System.out.println(AMARILLO + "---------- LISTAR TODOS LOS CLIENTES ----------\n" + RESET);
 					Cliente.listarClientes();
 					break;
 					
 				case 2:
-					System.out.print(MORADO + "INTRODUCE NOMBRE DE CLIENTE: " + RESET);
-					String nombre = sc.nextLine();
-					System.out.println("");
-					Cliente.listarCliente(nombre);
+					System.out.println(AMARILLO + "---------- LISTAR CLIENTE POR NOMBRE ----------\n" + RESET);
+					Cliente.listarCliente();
 					break;
 					
 				case 3:
+					System.out.println(AMARILLO + "---------- LISTAR TODAS LAS MASCOTAS ----------\n" + RESET);
 					Mascota.listarMascotas();
 					break;
 					
 				case 4:
-					
+					System.out.println(AMARILLO + "------------ INSERTAR NUEVO CLIENTE -----------\n" + RESET);
+					Cliente.insertarCliente();
 					break;
 				
+				case 5:
+					System.out.println(AMARILLO + "---------- MODIFICAR DATOS DE CLIENTE ---------" + RESET);
+					Cliente.modificarCliente();
+					break;
+
+				case 6:
+					System.out.println(AMARILLO + "--------------- ELIMINAR CLIENTE --------------" + RESET);
+					Cliente.eliminarCliente();
+					break;
+
 				case 0:
 					System.out.println(CIAN + "### HASTA PRONTO ###" + "\n");
 					break;
