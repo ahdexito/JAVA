@@ -21,7 +21,7 @@ public class Consultas {
 			System.out.println((AMARILLO + "-" + RESET).repeat(115));
 			System.out.printf(AMARILLO + "%-10s %-25s %-25s %-20s %-20s\n", "|  ID", "|  NOMBRE", "|  DIRECCION", "|  TELÉFONO", "|  EMAIL");
 			System.out.println((AMARILLO + "-" + RESET).repeat(115));
- 			
+			
 			int par = 1;
 			
 			while (resultado.next()) {
@@ -63,14 +63,14 @@ public class Consultas {
 				System.out.println((AMARILLO + "-" + RESET).repeat(115));
 				System.out.printf(AMARILLO + "%-10s %-25s %-25s %-20s %-20s\n", "|  ID", "|  NOMBRE", "|  DIRECCIÓN", "|  TELÉFONO", "|  EMAIL");
 				System.out.println((AMARILLO + "-" + RESET).repeat(115));
-
+				
 				int par = 1;
-
+				
 				do {
 					String pintar;
 					if (par % 2 == 0) pintar = RESET;
 					else pintar = CIAN;
-
+					
 					System.out.printf(pintar + "%-10s %-25s %-25s %-20s %-20s",
 						"|  " + resultado.getInt("id"),
 						"|  " + resultado.getString("nombre"),
@@ -79,7 +79,7 @@ public class Consultas {
 						"|  " + resultado.getString("email"));
 					System.out.println("");
 					System.out.println((pintar + "-" + RESET).repeat(115));
-
+					
 					par++;
 				} while (resultado.next());
 			}
@@ -108,7 +108,7 @@ public class Consultas {
 			System.out.println((AMARILLO + "-" + RESET).repeat(75));
 			System.out.printf(AMARILLO + "%-15s %-15s %-20s %-20s\n", "|  ID CLIENTE", "|  NÚMERO", "|  NOMBRE", "|  FECHA NACIMIENTO");
 			System.out.println((AMARILLO + "-" + RESET).repeat(75));
- 			
+			
 			int par = 1;
 			
 			while (resultado.next()) {
