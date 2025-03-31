@@ -630,222 +630,204 @@
 		},
 
 
-
 		{
 			"scope": [
-			  "storage.modifier"
+				"storage.modifier"
 			],
 			"settings": {
-			  "foreground": "#00FFAA",
-			  "fontStyle": "italic bold"
+				"foreground": "#00FFAA",
+				"fontStyle": "italic bold"
 			}
-		  },
-	
-		  
-		  // Cadenas de texto, valores numéricos, booleanos, nulos y escapes de caracteres
-		  {
-			"scope": [
-			  "string.quoted.double",
-			  "string.quoted.single",
-			  "constant.numeric",
-			  "constant.language.boolean",
-			  "constant.language.null",
-			  "constant.character.escape",
-			  "punctuation.quoted",
-			  "constant.language.java",
-			  "constant.other.enum.java"
-			],
-			"settings": {
-			  "foreground": "#66FFFF",
-			  "fontStyle": "italic bold"
-			}
-		  },
-	
-		  /*
-		  // Palabras clave generales (int, class, return, etc.)
-		  {
-			"scope": [
-			  "keyword",
-			  "meta.definition.variable",
-			  "meta.definition.method",
-			  "meta.definition.function",
-			  "entity.name.type.class"
-			],
-			"settings": {
-			  "foreground": "#FF0000",
-			  "fontStyle": "bold"
-			}
-		  },
-		  */
-  
-		  // Palabras clave de control de flujo y operadores lógicos
-		  {
-			"scope": [
-			  "variable.language", // super, this
-			  "keyword.operator.instanceof" // instanceof
-			],
-			"settings": {
-			  "foreground": "#FF0099",
-			  "fontStyle": "italic"
-			}
-		  },
+		},
 
 
-		  {
+		// Cadenas de texto, valores numéricos, booleanos, nulos y escapes de caracteres
+		{
+			"scope": [
+				"string.quoted.double",
+				"string.quoted.single",
+				"constant.numeric",
+				"constant.language.boolean",
+				"constant.language.null",
+				"constant.character.escape",
+				"punctuation.quoted",
+				"constant.language.java",
+				"constant.other.enum.java"
+			],
+			"settings": {
+				"foreground": "#66FFFF",
+				"fontStyle": "bold"
+			}
+		},
+
+
+		// Palabras clave de control de flujo y operadores lógicos
+		{
+			"scope": [
+				"variable.language", // super, this
+				"keyword.operator.instanceof" // instanceof
+			],
+			"settings": {
+				"foreground": "#FF0099",
+				"fontStyle": "italic"
+			}
+		},
+
+
+		{
 			"scope": "keyword.control",
 			"settings": {
 				"foreground": "#11A8FF", // for, while, if, else, return, new
 				"fontStyle": "italic bold"
 			}
-		  },
+		},
 
-  
-		  // Variables, propiedades de objetos y parámetros de función
-		  {
+
+		// Variables, propiedades de objetos y parámetros de función
+		{
 			"scope": "variable.other",
 			"settings": {
-			  "foreground": "#FBFF00",
-			  "fontStyle": ""
+				"foreground": "#FBFF00",
+				"fontStyle": ""
 			}
-		  },
-  
-  
-		  // Aperturas y cierres de comillas
-		  {
+		},
+
+
+		// Aperturas y cierres de comillas
+		{
 			"scope": [
-			  "punctuation.definition.string.begin",
-			  "punctuation.definition.string.end"
+				"punctuation.definition.string.begin",
+				"punctuation.definition.string.end"
 			],
 			"settings": {
-			  "foreground": "#FBFF00",
-			  "fontStyle": ""
+				"foreground": "#FBFF00",
+				"fontStyle": ""
 			}
-		  },
-		  
-  
-		  {
+		},
+
+
+		{
 			"scope": "variable.other.object",
 			"settings": {
-			  "foreground": "#CC66FF",
-			  "fontStyle": ""
+				"foreground": "#CC66FF",
+				"fontStyle": ""
 			}
-		  },
-	
-  
-		  // paréntesis, llaves y operadores
-		  {
+		},
+
+
+		// paréntesis, llaves y operadores
+		{
 			"scope": [
-			  "punctuation.paren",
-			  "punctuation.bracket",
-			  "punctuation.brace",
-			  "punctuation.definition.arguments",
-			  "punctuation.definition.parameters",
-			  "punctuation.definition.block",
-			  "punctuation.definition.function",
-			  "keyword.operator",
-			  
+				"punctuation.paren",
+				"punctuation.bracket",
+				"punctuation.brace",
+				"punctuation.definition.arguments",
+				"punctuation.definition.parameters",
+				"punctuation.definition.block",
+				"punctuation.definition.function",
+				"keyword.operator",
 			],
 			"settings": {
-			  "foreground": "#FF0099"
+				"foreground": "#FF8700"
 			}
-		  },
-		  
+		},
 
-		  {
+
+		{
 			"scope": "constant.character.escape",
 			"settings": {
 				"foreground": "#FF8700",
 				"fontStyle": "bold"
 			}
-		  },
-  
-		  // Comentarios
-		  {
+		},
+
+
+		// Comentarios
+		{
 			"scope": "comment",
 			"settings": {
-			  "foreground": "#FFFFFF",
-			  "fontStyle": "italic bold"
+				"foreground": "#FFFFFF",
+				"fontStyle": "italic bold"
 			}
-		  },
-	
-  
-		  // Nombres de funciones, clases y enumeraciones
-		  {
+		},
+
+
+		// Nombres de funciones, clases y enumeraciones
+		{
 			"scope": [
-			  "entity.name.function", // Métodos de clases y funciones
-			  "entity.name.class",
-			  "entity.name.type.class",
-			  "entity.name.type.enum"
+				"entity.name.function", // Métodos de clases y funciones
+				"entity.name.class",
+				"entity.name.type.class",
+				"entity.name.type.enum"
 			],
 			"settings": {
-			  "foreground": "#00FFAA"
+				"foreground": "#00FFAA"
 			}
-		  },
-	
-  
-		  // Propiedades de objetos (Objeto.propiedad)
-		  {
+		},
+
+
+		// Propiedades de objetos (Objeto.propiedad)
+		{
 			"scope": [
-			  "variable.other.object.property"
+				"variable.other.object.property"
 			],
 			"settings": {
-			  "foreground": "#FBFF00"
+				"foreground": "#FBFF00"
 			}
-		  },
-	
-  
-		  // Variables y parámetros en métodos
-		  {
+		},
+
+
+		// Variables y parámetros en métodos
+		{
 			"scope": [
-			  "variable.other.readwrite",
-			  "variable.parameter"
+				"variable.other.readwrite",
+				"variable.parameter"
 			],
 			"settings": {
-			  "foreground": "#FBFF00",
-			  "fontStyle": ""
+				"foreground": "#FBFF00",
+				"fontStyle": ""
 			}
-		  },
-	
-  
-		  // Elementos estáticos (variables y métodos estáticos)
-		  {
+		},
+
+
+		// Elementos estáticos (variables y métodos estáticos)
+		{
 			"scope": [
-			  "storage.modifier.static.java",
-			  "variable.other.static.java",
-			  "entity.name.function.static.java"
+				"storage.modifier.static.java",
+				"variable.other.static.java",
+				"entity.name.function.static.java"
 			],
 			"settings": {
-			  "foreground": "#FBFF00",
-			  "fontStyle": "bold"
+				"foreground": "#FBFF00",
+				"fontStyle": "bold"
 			}
-		  },
-  
-  
-		  {
+		},
+
+
+		{
 			"scope": [
-			  "entity.name.type.class.java", // Clases definidas por el usuario (Persona)
-			  "storage.type.class.java",
-			  "entity.name.type.enum.java" // Enumerados
+				"entity.name.type.class.java", // Clases definidas por el usuario (Persona)
+				"storage.type.class.java",
+				"entity.name.type.enum.java" // Enumerados
 			],
 			"settings": {
-			  "foreground": "#CC66FF",
-			  "fontStyle": "bold"
+				"foreground": "#CC66FF",
+				"fontStyle": "bold"
 			}
-		  },
-  
-  
-		  // Para el caso de los tipos primitivos, puedes dejarlo en cursiva si lo prefieres
-		  {
+		},
+
+
+		// Para el caso de los tipos primitivos, puedes dejarlo en cursiva si lo prefieres
+		{
 			"scope": [
-			  "storage.type.java",
-			  "storage.type.primitive.java"
+				"storage.type.java",
+				"storage.type.primitive.java"
 			],
 			"settings": {
-			  "foreground": "#FF0099",  // Color de tipos primitivos
-			  "fontStyle": "italic bold"  // Cursiva
+				"foreground": "#FF0099",  // Color de tipos primitivos
+				"fontStyle": "italic bold"  // Cursiva
 			}
-		  }
-  
+		}
 	]
 }
 // #FF0099 , #00FFAA , #FFFFFF , #FBFF00 , #66FFFF 
