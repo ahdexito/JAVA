@@ -1,0 +1,84 @@
+{
+	// Place your snippets for java here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"Importar Strings colores": {
+		"prefix": "snip-colores",
+		"body": [
+			"public static final String RESET = \"\u001B[0m\", MORADO = \"\u001B[35m\", ROJO = \"\u001B[31m\",",
+			"\tAZUL = \"\u001B[34m\", CIAN = \"\u001B[36m\", VERDE = \"\u001B[32m\", AMARILLO = \"\u001B[33m\";"
+		]
+	},
+
+	"Imprimir tablas SQL": {
+		"prefix": "snip-imprimirTabla",
+		"body": [
+			"System.out.println((AMARILLO + \"-\" + RESET).repeat(115));",
+			"System.out.printf(AMARILLO + \"%-10s\\n\", \"|  ID\");",
+			"System.out.println((AMARILLO + \"-\" + RESET).repeat(115));\n",
+
+			"int par = 1;",
+			"while (resultado.next()) {",
+				"\tString pintar;",
+				"\tif (par % 2 == 0) pintar = RESET;",
+				"\telse pintar = CIAN;\n",
+
+				"\tSystem.out.printf(pintar + \"%-10s\",",
+					"\t\t\"|  \" + resultado.getInt(\"id\"));\n",
+
+				"\tSystem.out.println(\"\");",
+				"\tSystem.out.println((pintar + \"-\" + RESET).repeat(115));\n",
+
+
+				"\tpar++;",
+			"}"
+		]
+	},
+
+	"Barras separadoras": {
+		"prefix": "snip-barras",
+		"body": "\n//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n"
+	},
+
+	"Importar Conectar": {
+		"prefix": "snip-importarConectar",
+		"body": [
+			"import java.sql.Connection ;",
+			"import java.sql.DriverManager ;",
+			"import java.sql.SQLException ;\n",
+
+			"public class Conectar {\n",
+
+				"\tprivate static final String usuario = \"root\";",
+				"\tprivate static final String clave = \"\";",
+				"\tprivate static final String url = \"jdbc:mysql://localhost:3306/\";\n",
+
+				"\tpublic static Connection conectar(String nombreBD) throws SQLException {\n",
+
+					"\t\treturn DriverManager.getConnection(url + nombreBD, usuario, clave);",
+				"\t}",
+			"}"
+		]
+	},
+
+	"Importar paquetes": {
+		"prefix": "snip-importarPaquetes",
+		"body": [
+			"import java.sql.Connection;",
+			"import java.sql.PreparedStatement;",
+			"import java.sql.ResultSet;",
+			"import java.sql.SQLException;"
+		]
+	}
+}
