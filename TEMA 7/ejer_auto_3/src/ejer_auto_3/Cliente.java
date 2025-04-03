@@ -12,8 +12,7 @@ public class Cliente {
     
     public static void listarClientes() {
 		
-		try {
-			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
+		try (Connection conex = Conectar.conectar("ud7_clinica_veterinaria")) {
 			
 			String query = "SELECT * FROM cliente;";
 			
@@ -53,8 +52,7 @@ public class Cliente {
 	
 	public static void listarCliente() {
 		
-		try {
-			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
+		try (Connection conex = Conectar.conectar("ud7_clinica_veterinaria")) {
 			
 			System.out.print(MORADO + "INTRODUCE NOMBRE DE CLIENTE: " + RESET);
 			String query = "SELECT * FROM cliente WHERE nombre LIKE '%" + sc.nextLine() + "%';";
@@ -103,8 +101,7 @@ public class Cliente {
 
 	public static void insertarCliente() {
 
-		try {
-			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
+		try (Connection conex = Conectar.conectar("ud7_clinica_veterinaria")) {
 
 			String query = "INSERT INTO cliente (nombre, direccion, telefono, email) VALUES (?, ?, ?, ?)";
 
@@ -138,15 +135,14 @@ public class Cliente {
 	
 	public static void modificarCliente() {
 
-		try {
-			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
+		try (Connection conex = Conectar.conectar("ud7_clinica_veterinaria")) {
 
-			System.out.print("" +
-				"  1. Nombre\n" +
-				"  2. Dirección\n" +
-				"  3. Teléfono\n" +
-				"  4. Email\n" + 
-				"-----------------------------------------------\n\n" + MORADO +
+			System.out.print(MORADO + "" +
+                                "  1. Nombre\n" +
+                                "  2. Dirección\n" +
+                                "  3. Teléfono\n" +
+                                "  4. Email\n" +
+                                "-----------------------------------------------\n\n" +
 				"INTRODUCE OPCIÓN: " + RESET);
 			int opcion = sc.nextInt();
 			
@@ -157,13 +153,13 @@ public class Cliente {
 			String query = "";
 
 			switch (opcion) {
-				case 1:
-					query = "UPDATE cliente SET nombre = ? WHERE id = ?;";
-					System.out.print("\n" + MORADO + "INTRODUCE NOMBRE: " + RESET);
-					break;
+				case 1 -> {
+                    query = "UPDATE cliente SET nombre = ? WHERE id = ?;";
+                    System.out.print("\n" + MORADO + "INTRODUCE NOMBRE: " + RESET);
+                    }
 			
-				default:
-					break;
+				default -> {
+                        }
 			}
 
 			PreparedStatement ps = conex.prepareStatement(query);
@@ -187,8 +183,7 @@ public class Cliente {
 	
 	public static void eliminarCliente() {
 
-		try {
-			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
+		try (Connection conex = Conectar.conectar("ud7_clinica_veterinaria")) {
 
 			String query = "DELETE FROM cliente WHERE id = ?";
 
