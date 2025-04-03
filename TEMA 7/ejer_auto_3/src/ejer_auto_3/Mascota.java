@@ -9,8 +9,7 @@ public class Mascota {
 
     public static void listarMascotas() {
         
-        try {
-			Connection conex = Conectar.conectar("ud7_clinica_veterinaria");
+        try (Connection conex = Conectar.conectar("ud7_clinica_veterinaria")) {
 			
 			String query = "SELECT * FROM mascota;";
 			
@@ -39,7 +38,6 @@ public class Mascota {
 				
 				par++;
 			}
-			conex.close();
 		}
 		catch (SQLException ex) {
 			System.out.println(ROJO + "ERROR: " + ex.getMessage() + RESET);
