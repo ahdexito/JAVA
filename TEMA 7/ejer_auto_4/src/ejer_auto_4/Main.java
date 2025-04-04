@@ -1,3 +1,5 @@
+package ejer_auto_4;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
