@@ -8,18 +8,17 @@ public class Ejer_auto_1 {
     
     public static void main(String[] args) {
 		
-		try {
+		try (Connection conex = Conectar.conectar("")) {
 			// CONECTARSE AL LOCALHOST //
-			Connection conex = Conectar.conectar("bibliotecabd");
 			
-			String query = "CREATE DATABASE IF NOT EXISTS BibliotecaBD;";
+			String query = "CREATE DATABASE IF NOT EXISTS pg_biblioteca;";
 			PreparedStatement crea = conex.prepareStatement(query);
 			
 			// EJECUTAR SENTENCIA //
 			crea.executeUpdate(query);
 			
 			// USAR BASE DE DATOS //
-			query = "USE BibliotecaBD;";
+			query = "USE pg_biblioteca;";
 			PreparedStatement usa = conex.prepareStatement(query);
 			
 			// EJECUTAR SENTENCIA //
@@ -54,7 +53,7 @@ public class Ejer_auto_1 {
 			PreparedStatement tablaPrestamo = conex.prepareStatement(query);
 			tablaPrestamo.executeUpdate(query);
 			
-			/*
+			
 			// CREAR CLAVE FORANEA LIBRO - AUTOR //
 			query = "ALTER TABLE libro ADD CONSTRAINT "
 					+ "fk_id_autor_libro_autor FOREIGN KEY (id) REFERENCES autor (id);";
@@ -66,9 +65,6 @@ public class Ejer_auto_1 {
 					+ "fk_id_libro_prestamo_libro FOREIGN KEY (id_libro) REFERENCES libro (id);";
 			PreparedStatement fkPrestamo = conex.prepareStatement(query);
 			fkPrestamo.executeUpdate(query);
-			*/
-
-			conex.close();
 		}
 		
 		catch (SQLException ex) {
