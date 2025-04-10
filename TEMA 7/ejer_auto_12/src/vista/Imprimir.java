@@ -6,15 +6,15 @@ public class Imprimir {
 	
 	public static void menuPrincipal() {
 		
-		System.out.print("" + AMARILLO
+		System.out.print("\n" + AMARILLO
 				+ "---------- MENÚ PRINCIPAL ----------\n" + RESET
-				+ "\n"
-				+ "  1. CONSULTAR AUTORES\n"
-				+ "  2. CONSULTAR LIBROS\n"
-				+ "  3. CONSULTAR PRÉSTAMOS\n"
-				+ "  4. CONSULTAR LIBROS POR AUTOR\n"
-				+ "  5. CONSULTAR PRÉSTAMOS POR LIBRO\n"
-				+ "  0. SALIR\n" + AMARILLO
+				+ "\n" + CIAN
+				+ "  1. " + RESET + "CONSULTAR AUTORES\n" + CIAN
+				+ "  2. " + RESET + "CONSULTAR LIBROS\n" + CIAN
+				+ "  3. " + RESET + "CONSULTAR PRÉSTAMOS\n" + CIAN
+				+ "  4. " + RESET + "CONSULTAR LIBROS POR AUTOR\n" + CIAN
+				+ "  5. " + RESET + "CONSULTAR PRÉSTAMOS POR LIBRO\n" + CIAN
+				+ "  0. " + RESET + "SALIR\n" + AMARILLO
 				+ "------------------------------------\n"
 				+ "\n" + MORADO
 				+ "INTRODUCE OPCIÓN: " + RESET);
@@ -46,6 +46,41 @@ public class Imprimir {
 				System.out.println("");
 				System.out.println((pintar + "-" + RESET).repeat(60));
 
+				par++;
+			}
+		}
+		
+		catch (SQLException ex) {
+			System.out.println("ERROR: " + ex.getMessage());
+		}
+	}
+	
+	public static void tablaLibro(ResultSet rs) throws SQLException {
+		try {
+			System.out.println((AMARILLO + "-" + RESET).repeat(105));
+			System.out.printf(AMARILLO + "%-10s %-45s %-25s %-10s\n", "|  ID", "|  TÍTULO", "|  AÑO PUBLICACIÓN", "|  ID AUTOR");
+			System.out.println((AMARILLO + "-" + RESET).repeat(105));
+			
+			int par = 1;
+			while (rs.next()) {
+				String pintar;
+				if (par % 2 == 0) {
+					pintar = RESET;
+				}
+				else {
+					pintar = CIAN;
+				}
+				
+				System.out.printf(pintar + "%-10s %-45s %-25s %-10s",
+						"|  " + rs.getInt("id"),
+						"|  " + rs.getString("titulo"),
+						"|  " + rs.getInt("anio_publicacion"),
+						"|  " + rs.getInt("id_autor")
+				);
+				
+				System.out.println("");
+				System.out.println((pintar + "-" + RESET).repeat(105));
+				
 				par++;
 			}
 		}

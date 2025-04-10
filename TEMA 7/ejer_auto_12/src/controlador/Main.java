@@ -21,13 +21,16 @@ public class Main {
 				Imprimir.menuPrincipal();
 				opcion = sc.nextInt();
 				sc.nextLine();
-
+				
+				System.out.println("");
+				
 				switch (opcion) {
 					case 1:
 						Imprimir.tablaAutor(Autor.getAutores(conex));
 						break;
 						
 					case 2:
+						Imprimir.tablaLibro(Libro.getLibros(conex));
 						break;
 						
 					case 3:
