@@ -14,7 +14,8 @@ public class Imprimir {
 				+ "  3. " + RESET + "CONSULTAR PRÉSTAMOS\n" + CIAN
 				+ "  4. " + RESET + "CONSULTAR LIBROS POR AUTOR\n" + CIAN
 				+ "  5. " + RESET + "CONSULTAR PRÉSTAMOS POR LIBRO\n" + CIAN
-				+ "  0. " + RESET + "SALIR\n" + AMARILLO
+				+ "  0. " + RESET + "SALIR\n"
+				+ "\n" + AMARILLO
 				+ "------------------------------------\n"
 				+ "\n" + MORADO
 				+ "INTRODUCE OPCIÓN: " + RESET);
