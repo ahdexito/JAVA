@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
 			
-		int opcion;
+		int opcion = -1;
 
 		do {
 			try {
@@ -24,16 +24,22 @@ public class Main {
 				
 				System.out.println("");
 				
+				ResultSet rs = null;
+				
 				switch (opcion) {
 					case 1:
-						Imprimir.tablaAutor(Autor.getAutores(conex));
+						rs = Autor.getAutores(conex);
+						Imprimir.tablaAutor(rs);
 						break;
 						
 					case 2:
-						Imprimir.tablaLibro(Libro.getLibros(conex));
+						rs = Libro.getLibros(conex);
+						Imprimir.tablaLibro(rs);
 						break;
 						
 					case 3:
+						rs = Prestamo.getPrestamos(conex);
+						Imprimir.tablaPrestamo(rs);
 						break;
 						
 					case 4:
@@ -48,12 +54,17 @@ public class Main {
 					default:
 						break;
 				}
+				
+				if (rs != null) {
+					rs.getStatement().close();
+					rs.close();
+				}
 			}
 
 			catch (SQLException ex) {
 				System.out.println("ERROR: " + ex.getMessage());
 			}
 		}
-		while (true);
+		while (opcion != 0);
     }
 }

@@ -8,6 +8,6 @@ public class Autor {
 		String query = "SELECT * FROM autor;";
 		PreparedStatement ps = conex.prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
-		return rs;
+		return ps.executeQuery();
 	}
 }

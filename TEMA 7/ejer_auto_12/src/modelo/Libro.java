@@ -5,9 +5,8 @@ import java.sql.*;
 public class Libro {
     
     public static ResultSet getLibros(Connection conex) throws SQLException {
-		String query = "SELECT * FROM libro;";
+		String query = "SELECT * FROM libro l JOIN autor a ON l.id_autor = a.id;";
 		PreparedStatement ps = conex.prepareStatement(query);
-		ResultSet rs = ps.executeQuery();
-		return rs;
+		return ps.executeQuery();
 	}
 }

@@ -24,9 +24,9 @@ public class Imprimir {
 	public static void tablaAutor(ResultSet rs) throws SQLException {
 		
 		try {
-			System.out.println((AMARILLO + "-" + RESET).repeat(60));
-			System.out.printf(AMARILLO + "%-10s %-30s %-15s\n", "|  ID", "|  NOMBRE", "|  PAÍS");
-			System.out.println((AMARILLO + "-" + RESET).repeat(60));
+			System.out.println((AMARILLO + "-" + RESET).repeat(80));
+			System.out.printf(AMARILLO + "%-10s %-40s %-15s\n", "|  ID", "|  NOMBRE", "|  PAÍS");
+			System.out.println((AMARILLO + "-" + RESET).repeat(80));
 
 			int par = 1;
 			while (rs.next()) {
@@ -38,29 +38,30 @@ public class Imprimir {
 					pintar = CIAN;
 				}
 
-				System.out.printf(pintar + "%-10s %-30s %-15s",
+				System.out.printf(pintar + "%-10s %-40s %-15s",
 						"|  " + rs.getInt("id"),
 						"|  " + rs.getString("nombre"),
 						"|  " + rs.getString("pais")
 				);
 
 				System.out.println("");
-				System.out.println((pintar + "-" + RESET).repeat(60));
+				System.out.println((pintar + "-" + RESET).repeat(80));
 
 				par++;
 			}
 		}
 		
-		catch (SQLException ex) {
-			System.out.println("ERROR: " + ex.getMessage());
+		catch (SQLException e) {
+			System.out.println("ERROR: " + e.getMessage());
 		}
 	}
 	
 	public static void tablaLibro(ResultSet rs) throws SQLException {
+		
 		try {
-			System.out.println((AMARILLO + "-" + RESET).repeat(105));
-			System.out.printf(AMARILLO + "%-10s %-45s %-25s %-10s\n", "|  ID", "|  TÍTULO", "|  AÑO PUBLICACIÓN", "|  ID AUTOR");
-			System.out.println((AMARILLO + "-" + RESET).repeat(105));
+			System.out.println((AMARILLO + "-" + RESET).repeat(115));
+			System.out.printf(AMARILLO + "%-10s %-45s %-25s %-25s\n", "|  ID", "|  TÍTULO", "|  AÑO PUBLICACIÓN", "|  NOMBRE AUTOR");
+			System.out.println((AMARILLO + "-" + RESET).repeat(115));
 			
 			int par = 1;
 			while (rs.next()) {
@@ -72,22 +73,58 @@ public class Imprimir {
 					pintar = CIAN;
 				}
 				
-				System.out.printf(pintar + "%-10s %-45s %-25s %-10s",
+				System.out.printf(pintar + "%-10s %-45s %-25s %-25s",
 						"|  " + rs.getInt("id"),
 						"|  " + rs.getString("titulo"),
 						"|  " + rs.getInt("anio_publicacion"),
-						"|  " + rs.getInt("id_autor")
+						"|  " + rs.getString("nombre")
 				);
 				
 				System.out.println("");
-				System.out.println((pintar + "-" + RESET).repeat(105));
+				System.out.println((pintar + "-" + RESET).repeat(115));
 				
 				par++;
 			}
 		}
 		
-		catch (SQLException ex) {
-			System.out.println("ERROR: " + ex.getMessage());
+		catch (SQLException e) {
+			System.out.println("ERROR: " + e.getMessage());
+		}
+	}
+	
+	public static void tablaPrestamo(ResultSet rs) {
+		
+		try {
+			System.out.println((AMARILLO + "-" + RESET).repeat(100));
+			System.out.printf(AMARILLO + "%-10s %-15s %-25s %-25s\n", "|  ID", "|  ID LIBRO", "|  FECHA PRÉSTAMO", "|  FECHA DEVOLUCIÓN");
+			System.out.println((AMARILLO + "-" + RESET).repeat(100));
+			
+			int par = 1;
+			while (rs.next()) {
+				
+				String pintar;
+				if (par % 2 == 0) {
+					pintar = RESET;
+				}
+				else {
+					pintar = CIAN;
+				}
+				
+				System.out.printf(pintar + "%-10s %-15s %-25s %-25s",
+						"|  " + rs.getInt("id"),
+						"|  " + rs.getInt("id_libro"),
+						"|  " + rs.getDate("fecha_prestamo"),
+						"|  " + rs.getDate("fecha_devolucion"));
+				
+				System.out.println("");
+				System.out.println((pintar + "-" + RESET).repeat(100));
+				
+				par++;
+			}
+		}
+		
+		catch (Exception e) {
+			System.out.println("ERROR: " + e.getMessage());
 		}
 	}
 	
