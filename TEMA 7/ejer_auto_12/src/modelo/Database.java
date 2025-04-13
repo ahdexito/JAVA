@@ -22,7 +22,7 @@ public class Database {
 		}
 	}
 
-	public static Database getConex(String nombreBD) throws SQLException {
+	public static Database getConexUnica(String nombreBD) throws SQLException {
 		if (conexUnica == null) {
 			conexUnica = new Database(nombreBD);
 		}

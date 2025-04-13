@@ -9,16 +9,16 @@ public class Main {
     
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
+
+		try {
+			Database db = Database.getConexUnica("pg_biblioteca");
+			Connection conex = db.getConex();
 			
-		int opcion = -1;
-
-		do {
-			try {
-				Database db = Database.getConex("pg_biblioteca");
-				
-				Connection conex = db.getConex();
-
+			int opcion;
+			
+			do {
 				Imprimir.menuPrincipal();
+				
 				opcion = sc.nextInt();
 				sc.nextLine();
 				
@@ -60,11 +60,12 @@ public class Main {
 					rs.close();
 				}
 			}
-
-			catch (SQLException ex) {
-				System.out.println("ERROR: " + ex.getMessage());
-			}
+			while (opcion != 0);
 		}
-		while (opcion != 0);
+
+		catch (SQLException ex) {
+			System.out.println("ERROR: " + ex.getMessage());
+		}
+
     }
 }
