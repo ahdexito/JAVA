@@ -1,0 +1,70 @@
+-- Crear la base de datos si no existe
+CREATE DATABASE IF NOT EXISTS UniversidadDB;
+USE UniversidadDB;
+
+-- Crear la tabla Estudiantes
+CREATE TABLE IF NOT EXISTS Estudiantes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+) ENGINE=InnoDB;
+
+-- Insertar registros en la tabla Estudiantes
+INSERT INTO Estudiantes (nombre, email) VALUES 
+('Juan Pérez', 'juan.perez@example.com'),
+('Ana García', 'ana.garcia@example.com'),
+('Luis Ramírez', 'luis.ramirez@example.com'),
+('Marta Fernández', 'marta.fernandez@example.com'),
+('Carlos Díaz', 'carlos.diaz@example.com');
+
+-- Crear la tabla Cursos
+CREATE TABLE IF NOT EXISTS Cursos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    creditos INT NOT NULL
+) ENGINE=InnoDB;
+
+-- Insertar registros en la tabla Cursos
+INSERT INTO Cursos (nombre, creditos) VALUES 
+('Matemáticas', 4),
+('Programación', 6),
+('Historia', 3),
+('Física', 5),
+('Química', 4);
+
+-- Crear la tabla Matriculas con claves foráneas a Estudiantes y Cursos
+CREATE TABLE IF NOT EXISTS Matriculas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    estudiante_id INT NOT NULL,
+    curso_id INT NOT NULL,
+    fecha_matricula DATE NOT NULL,
+    CONSTRAINT fk_estudiante
+      FOREIGN KEY (estudiante_id) REFERENCES Estudiantes(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+    CONSTRAINT fk_curso
+      FOREIGN KEY (curso_id) REFERENCES Cursos(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- Insertar registros en la tabla Matriculas
+INSERT INTO Matriculas (estudiante_id, curso_id, fecha_matricula) VALUES 
+(1, 2, '2023-01-15'),
+(2, 1, '2023-02-10'),
+(3, 5, '2023-01-20'),
+(4, 3, '2023-03-05'),
+(5, 4, '2023-03-10');
+
+-- Crear el procedimiento almacenado sp_updateMatricula
+DELIMITER //
+CREATE PROCEDURE sp_updateMatricula(
+    IN p_idMatricula INT,
+    IN p_fechaMatricula DATE
+)
+BEGIN
+    UPDATE Matriculas
+    SET fecha_matricula = p_fechaMatricula
+    WHERE id = p_idMatricula;
+END //
+DELIMITER ;
