@@ -66,6 +66,5 @@ public class Main {
 		catch (SQLException ex) {
 			System.out.println("ERROR: " + ex.getMessage());
 		}
-
     }
 }

@@ -30,23 +30,18 @@ public class Imprimir {
 
 			int par = 1;
 			while (rs.next()) {
+				
 				String pintar;
-				if (par % 2 == 0) {
-					pintar = RESET;
-				}
-				else {
-					pintar = CIAN;
-				}
-
+				if (par % 2 == 0) pintar = RESET;
+				else pintar = CIAN;
+			
 				System.out.printf(pintar + "%-10s %-40s %-15s",
 						"|  " + rs.getInt("id"),
 						"|  " + rs.getString("nombre"),
 						"|  " + rs.getString("pais")
 				);
 
-				System.out.println("");
-				System.out.println((pintar + "-" + RESET).repeat(80));
-
+				System.out.println("\n" + (pintar + "-" + RESET).repeat(80));
 				par++;
 			}
 		}
@@ -65,13 +60,10 @@ public class Imprimir {
 			
 			int par = 1;
 			while (rs.next()) {
+				
 				String pintar;
-				if (par % 2 == 0) {
-					pintar = RESET;
-				}
-				else {
-					pintar = CIAN;
-				}
+				if (par % 2 == 0) pintar = RESET;
+				else pintar = CIAN;
 				
 				System.out.printf(pintar + "%-10s %-45s %-25s %-25s",
 						"|  " + rs.getInt("id"),
@@ -80,9 +72,7 @@ public class Imprimir {
 						"|  " + rs.getString("nombre")
 				);
 				
-				System.out.println("");
-				System.out.println((pintar + "-" + RESET).repeat(115));
-				
+				System.out.println("\n" + (pintar + "-" + RESET).repeat(115));
 				par++;
 			}
 		}
@@ -103,12 +93,8 @@ public class Imprimir {
 			while (rs.next()) {
 				
 				String pintar;
-				if (par % 2 == 0) {
-					pintar = RESET;
-				}
-				else {
-					pintar = CIAN;
-				}
+				if (par % 2 == 0) pintar = RESET;
+				else pintar = CIAN;
 				
 				System.out.printf(pintar + "%-10s %-15s %-25s %-25s",
 						"|  " + rs.getInt("id"),
@@ -116,9 +102,7 @@ public class Imprimir {
 						"|  " + rs.getDate("fecha_prestamo"),
 						"|  " + rs.getDate("fecha_devolucion"));
 				
-				System.out.println("");
-				System.out.println((pintar + "-" + RESET).repeat(100));
-				
+				System.out.println("\n" + (pintar + "-" + RESET).repeat(100));
 				par++;
 			}
 		}
