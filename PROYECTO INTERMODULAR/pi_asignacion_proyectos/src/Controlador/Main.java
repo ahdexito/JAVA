@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class Main {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         
 		Scanner sc = new Scanner(System.in);
 	
@@ -63,6 +63,10 @@ public class Main {
 									String telefono = sc.nextLine();
 
 									Cliente.crear(conex, dni, nombre, apellido1, apellido2, email, telefono);
+									
+												
+									System.out.print("\n" + CIAN + "--> CONTINUAR [ENTER] <--" + RESET);
+									sc.nextLine();
 									break;
 
 								//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -72,13 +76,17 @@ public class Main {
 										+ "-------------- " + AMARILLO + "[ CONSULTAR CLIENTE ]" + MORADO + " --------------" + RESET);
 
 									System.out.print(CIAN + "  - ID: " + RESET);
-									int id = sc.nextInt();
+									int idConsulta = sc.nextInt();
 									sc.nextLine();
 
 									System.out.println("");
 
-									rs = Cliente.consultar(conex, id);
+									rs = Cliente.consultar(conex, idConsulta);
 									Imprimir.consultaCliente(rs);
+									
+												
+									System.out.print("\n" + CIAN + "--> CONTINUAR [ENTER] <--" + RESET);
+									sc.nextLine();
 									break;
 
 								//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,16 +101,27 @@ public class Main {
 								case 4:
 									System.out.println(MORADO 
 										+ "--------------- " + AMARILLO + "[ ELIMINAR CLIENTE ]" + MORADO + " ---------------" + RESET);
+									
+									System.out.print(CIAN + "  - ID: " + RESET);
+									int idElimina = sc.nextInt();
+									sc.nextLine();
+
+									Cliente.eliminar(conex, idElimina);
+									
+									System.out.print("\n" + CIAN + "--> CONTINUAR [ENTER] <--" + RESET);
+									sc.nextLine();
 									break;
 
 								//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 								case 0:
 									System.out.println(VERDE + "REGRESANDO..." + RESET);
+									Thread.sleep(700);
 									break;
 
 								default:
 									System.out.println(ROJO + "OPCIÓN NO VÁLIDA" + RESET);
+									Thread.sleep(700);
 									break;
 							}
 						}
@@ -114,7 +133,7 @@ public class Main {
 
 					case 2:
 						do {		
-							Imprimir.menuAsignacion();
+							Imprimir.menuProyecto();
 
 							subOpcion = sc.nextInt();
 							sc.nextLine();
@@ -124,14 +143,17 @@ public class Main {
 							switch (subOpcion) {
 								case 1: case 2: case 3: case 4:
 									System.out.println(VERDE + "OPCIÓN EN DESARROLLO..." + RESET);
+									Thread.sleep(700);
 									break;
 
 								case 0:
 									System.out.println(VERDE + "REGRESANDO..." + RESET);
+									Thread.sleep(700);
 									break;
 
 								default:
 									System.out.println(ROJO + "OPCIÓN NO VÁLIDA" + RESET);
+									Thread.sleep(700);
 									break;
 							}
 						}
@@ -143,7 +165,7 @@ public class Main {
 
 					case 3:
 						do {		
-							Imprimir.menuAsignacion();
+							Imprimir.menuDesarrollador();
 
 							subOpcion = sc.nextInt();
 							sc.nextLine();
@@ -153,14 +175,17 @@ public class Main {
 							switch (subOpcion) {
 								case 1: case 2: case 3: case 4:
 									System.out.println(VERDE + "OPCIÓN EN DESARROLLO..." + RESET);
+									Thread.sleep(700);
 									break;
 
 								case 0:
 									System.out.println(VERDE + "REGRESANDO..." + RESET);
+									Thread.sleep(700);
 									break;
 
 								default:
 									System.out.println(ROJO + "OPCIÓN NO VÁLIDA" + RESET);
+									Thread.sleep(700);
 									break;
 							}
 						}
@@ -182,14 +207,17 @@ public class Main {
 							switch (subOpcion) {
 								case 1: case 2: case 3: case 4:
 									System.out.println(VERDE + "OPCIÓN EN DESARROLLO..." + RESET);
+									Thread.sleep(700);
 									break;
 
 								case 0:
 									System.out.println(VERDE + "REGRESANDO..." + RESET);
+									Thread.sleep(700);
 									break;
 
 								default:
 									System.out.println(ROJO + "OPCIÓN NO VÁLIDA" + RESET);
+									Thread.sleep(700);
 									break;
 							}
 						}
@@ -201,10 +229,12 @@ public class Main {
 
 					case 0:
 						System.out.println("\n" + VERDE + "SALIENDO... ¡HASTA PRONTO!" + RESET);
+						Thread.sleep(700);
 						break;
 
 					default:
 						System.out.println("\n" + ROJO + "OPCIÓN NO VÁLIDA" + RESET);
+						Thread.sleep(700);
 						break;
 				}
 
@@ -216,6 +246,7 @@ public class Main {
 
 			catch (SQLException e) {
 				System.out.println(ROJO + "ERROR: " + e.getMessage() + RESET);
+				Thread.sleep(700);
 			}
 		} while (opcion != 0);
     }

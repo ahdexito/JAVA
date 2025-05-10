@@ -6,7 +6,7 @@ public class Cliente {
     
     public static void crear(Connection conex, 
 			String dni, String nombre, String apellido1, String apellido2, String email, String telefono) 
-				throws SQLException {
+				throws SQLException, InterruptedException {
 		
 		CallableStatement cs = conex.prepareCall("{call sp_insertCliente(?, ?, ?, ?, ?, ?)}");
 		
@@ -18,6 +18,7 @@ public class Cliente {
 		cs.setString(6, telefono);
 		
 		int filas = cs.executeUpdate();
+		
 		System.out.println("\n" + VERDE + "OPERACIÓN REALIZADA CON " + filas + " FILAS AFECTADAS.");
 	}
 	
@@ -27,6 +28,20 @@ public class Cliente {
 		cs.setInt(1, id);
 		ResultSet rs = cs.executeQuery();
 		return rs;
+	}
+	
+	public static void modificar(Connection conex) {
+		
+	}
+	
+	public static void eliminar(Connection conex, int id) throws SQLException {
+		
+		CallableStatement cs = conex.prepareCall("{call sp_deleteCliente(?)}");
+		cs.setInt(1, id);
+		
+		int filas = cs.executeUpdate();
+		
+		System.out.println("\n" + VERDE + "OPERACIÓN REALIZADA CON " + filas + " FILAS AFECTADAS.");
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

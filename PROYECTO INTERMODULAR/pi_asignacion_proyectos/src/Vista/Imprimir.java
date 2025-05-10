@@ -36,7 +36,7 @@ public class Imprimir {
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	
-	public static void consultaCliente(ResultSet rs) throws SQLException {
+	public static void consultaCliente(ResultSet rs) throws SQLException, InterruptedException {
 					
 		if (rs.next()) {
 			System.out.println((MORADO + "-").repeat(130));
@@ -112,5 +112,3 @@ public class Imprimir {
 	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m",
 			AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 }
-
-
