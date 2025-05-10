@@ -1,5 +1,7 @@
 package Vista;
 
+import java.sql.*;
+
 public class Imprimir {
     
     public static void menuPrincipal() {
@@ -32,6 +34,31 @@ public class Imprimir {
 			+ "-----------------------------------------------\n"
 			+ "\n" + MORADO
 			+ "INTRODUCE OPCIÓN: " + RESET);
+	}
+	
+	public static void consultaCliente(ResultSet rs) throws SQLException {
+					
+		if (rs.next()) {
+			System.out.println((CIAN + "-" + RESET).repeat(130));
+			System.out.printf(CIAN + "%-10s %-20s %-40s %-30s %-20s\n", 
+				CIAN + "|  " + RESET + "ID", 
+				CIAN + "|  " + RESET + "DNI", 
+				CIAN + "|  " + RESET + "NOMBRE", 
+				CIAN + "|  " + RESET + "EMAIL", 
+				CIAN + "|  " + RESET + "TELÉFONO");
+			System.out.println((CIAN + "-" + RESET).repeat(130));
+			
+			System.out.printf(CIAN + "%-10s %-20s %-40s %-30s %-20s",
+				CIAN + "|  " + RESET + rs.getInt("id"),
+				CIAN + "|  " + RESET + rs.getString("DNI"),
+				CIAN + "|  " + RESET + rs.getString("apellido1") + " " + rs.getString("apellido2") + ", " + rs.getString("nombre"),
+				CIAN + "|  " + RESET + rs.getString("email"),
+				CIAN + "|  " + RESET + rs.getString("telefono"));
+			
+			System.out.println(("\n" + CIAN + "-" + RESET).repeat(130));
+		}
+		
+		else System.out.println(CIAN + "NO SE HAN ENCONTRADO REGISTROS PARA ESE ID" + RESET);
 	}
 	
 	public static void menuProyecto() {
@@ -85,4 +112,5 @@ public class Imprimir {
 	public static final String RESET = "\u001B[0m", MORADO = "\u001B[35m", ROJO = "\u001B[31m",
 			AZUL = "\u001B[34m", CIAN = "\u001B[36m", VERDE = "\u001B[32m", AMARILLO = "\u001B[33m";
 }
+
 

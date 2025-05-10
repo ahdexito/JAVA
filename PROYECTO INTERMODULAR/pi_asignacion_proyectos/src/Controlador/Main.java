@@ -62,7 +62,7 @@ public class Main {
 									System.out.print(MORADO + "  - Teléfono: " + RESET); 
 									String telefono = sc.nextLine();
 									
-									Cliente.insertar(dni, nombre, apellido1, apellido2, email, telefono);
+									Cliente.crear(conex, dni, nombre, apellido1, apellido2, email, telefono);
 									break;
 								
 								//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,7 +71,14 @@ public class Main {
 									System.out.println(AMARILLO 
 										+ "-------------- CONSULTAR CLIENTE --------------" + RESET);
 									
-									System.out.print(MORADO + "  - ID:" + RESET);
+									System.out.print(MORADO + "  - ID: " + RESET);
+									int id = sc.nextInt();
+									sc.nextLine();
+									
+									System.out.println("");
+									
+									rs = Cliente.consultar(conex, id);
+									Imprimir.consultaCliente(rs);
 									break;
 									
 								//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
