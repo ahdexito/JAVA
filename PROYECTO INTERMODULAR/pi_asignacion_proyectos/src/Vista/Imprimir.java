@@ -8,15 +8,15 @@ public class Imprimir {
 	
 		// MENÚ PRINCIPAL //
 		
-		System.out.print("\n" + AMARILLO
-			+ "----------- ASIGNACIÓN DE PROYECTOS -----------\n" + RESET
-			+ "  1. Clientes\n" + RESET
-			+ "  2. Proyectos\n" + RESET
-			+ "  3. Desarrolladores\n" + RESET
-			+ "  4. Asignaciones de proyectos\n" + RESET
-			+ "  0. Salir\n" + AMARILLO
-			+ "-----------------------------------------------\n"
-			+ "\n" + MORADO
+		System.out.print("\n" + MORADO
+			+ "---------------- " + AMARILLO + "[ MENÚ PRINCIPAL ]" + MORADO + " ----------------\n" + AMARILLO
+			+ "  1. " + RESET + "CLIENTES\n" + AMARILLO
+			+ "  2. " + RESET + "PROYECTOS\n" + AMARILLO
+			+ "  3. " + RESET + "DESARROLLADORES\n" + AMARILLO
+			+ "  4. " + RESET + "ASIGNACIONES DE PROYECTOS\n\n" + AMARILLO
+			+ "  0. " + ROJO + "SALIR\n" + MORADO
+			+ "----------------------------------------------------\n"
+			+ "\n" + CIAN
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	
@@ -24,70 +24,70 @@ public class Imprimir {
 		
 		// MENÚ - TABLA CLIENTE //
 		
-		System.out.print("\n" + AMARILLO
-			+ "--------- MANTENIMIENTO TABLA CLIENTE ---------\n" + RESET
-			+ "  1. Crear\n" + RESET
-			+ "  2. Consultar\n" + RESET
-			+ "  3. Modificar\n" + RESET
-			+ "  4. Eliminar\n" + RESET
-			+ "  0. Volver\n" + AMARILLO
-			+ "-----------------------------------------------\n"
-			+ "\n" + MORADO
+		System.out.print("\n" + MORADO
+			+ "--------- " + AMARILLO + "[ MANTENIMIENTO TABLA CLIENTE ]" + MORADO + " ---------\n" + AMARILLO
+			+ "  1. " + RESET + "CREAR\n" + AMARILLO
+			+ "  2. " + RESET + "CONSULTAR\n" + AMARILLO
+			+ "  3. " + RESET + "MODIFICAR\n" + AMARILLO
+			+ "  4. " + RESET + "ELIMINAR\n\n" + AMARILLO
+			+ "  0. " + ROJO + "VOLVER\n" + MORADO
+			+ "---------------------------------------------------\n"
+			+ "\n" + CIAN
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	
 	public static void consultaCliente(ResultSet rs) throws SQLException {
 					
 		if (rs.next()) {
-			System.out.println((CIAN + "-" + RESET).repeat(130));
-			System.out.printf(CIAN + "%-10s %-20s %-40s %-30s %-20s\n", 
-				CIAN + "|  " + RESET + "ID", 
-				CIAN + "|  " + RESET + "DNI", 
-				CIAN + "|  " + RESET + "NOMBRE", 
-				CIAN + "|  " + RESET + "EMAIL", 
-				CIAN + "|  " + RESET + "TELÉFONO");
-			System.out.println((CIAN + "-" + RESET).repeat(130));
+			System.out.println((MORADO + "-").repeat(130));
+			System.out.printf("%-20s %-25s %-50s %-40s %-25s\n", 
+				MORADO + "|  " + AMARILLO + "ID", 
+				MORADO + "|  " + AMARILLO + "DNI", 
+				MORADO + "|  " + AMARILLO + "NOMBRE", 
+				MORADO + "|  " + AMARILLO + "EMAIL", 
+				MORADO + "|  " + AMARILLO + "TELÉFONO");
+			System.out.println((MORADO + "-").repeat(130));
 			
-			System.out.printf(CIAN + "%-10s %-20s %-40s %-30s %-20s",
-				CIAN + "|  " + RESET + rs.getInt("id"),
-				CIAN + "|  " + RESET + rs.getString("DNI"),
-				CIAN + "|  " + RESET + rs.getString("apellido1") + " " + rs.getString("apellido2") + ", " + rs.getString("nombre"),
-				CIAN + "|  " + RESET + rs.getString("email"),
-				CIAN + "|  " + RESET + rs.getString("telefono"));
+			System.out.printf("%-20s %-25s %-50s %-40s %-25s",
+				MORADO + "|  " + VERDE + rs.getInt("id"),
+				MORADO + "|  " + VERDE + rs.getString("DNI"),
+				MORADO + "|  " + VERDE + rs.getString("apellido1") + " " + rs.getString("apellido2") + ", " + rs.getString("nombre"),
+				MORADO + "|  " + VERDE + rs.getString("email"),
+				MORADO + "|  " + VERDE + rs.getString("telefono"));
 			
-			System.out.println(("\n" + CIAN + "-" + RESET).repeat(130));
+			System.out.println("\n" + (MORADO + "-" + RESET).repeat(130));
 		}
 		
-		else System.out.println(CIAN + "NO SE HAN ENCONTRADO REGISTROS PARA ESE ID" + RESET);
+		else System.out.println(VERDE + "NO SE HAN ENCONTRADO REGISTROS PARA ESE ID" + RESET);
 	}
 	
 	public static void menuProyecto() {
 		
 		// MENÚ - TABLA PROYECTO //
-		System.out.print("\n" + AMARILLO
-			+ "--------- MANTENIMIENTO TABLA PROYECTO ---------\n" + RESET
-			+ "  1. Crear\n" + RESET
-			+ "  2. Consultar\n" + RESET
-			+ "  3. Modificar\n" + RESET
-			+ "  4. Eliminar\n" + RESET
-			+ "  0. Volver\n" + AMARILLO
-			+ "------------------------------------------------\n"
-			+ "\n" + MORADO
+		System.out.print("\n" + MORADO
+			+ "--------- " + AMARILLO + "[ MANTENIMIENTO TABLA PROYECTO ]" + MORADO + " ---------\n" + AMARILLO
+			+ "  1. " + RESET + "CREAR\n" + AMARILLO
+			+ "  2. " + RESET + "CONSULTAR\n" + AMARILLO
+			+ "  3. " + RESET + "MODIFICAR\n" + AMARILLO
+			+ "  4. " + RESET + "ELIMINAR\n\n" + AMARILLO
+			+ "  0. " + ROJO + "VOLVER\n" + MORADO
+			+ "----------------------------------------------------\n"
+			+ "\n" + CIAN
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	
 	public static void menuDesarrollador() {
 		
 		// MENÚ - TABLA DESARROLLADOR //
-		System.out.print("\n" + AMARILLO
-			+ "------- MANTENIMIENTO TABLA DESARROLLADOR ------\n" + RESET
-			+ "  1. Crear\n" + RESET
-			+ "  2. Consultar\n" + RESET
-			+ "  3. Modificar\n" + RESET
-			+ "  4. Eliminar\n" + RESET
-			+ "  0. Volver\n" + AMARILLO
-			+ "------------------------------------------------\n"
-			+ "\n" + MORADO
+		System.out.print("\n" + MORADO
+			+ "------- " + AMARILLO + "[ MANTENIMIENTO TABLA DESARROLLADOR ]" + MORADO + " ------\n" + AMARILLO
+			+ "  1. " + RESET + "CREAR\n" + AMARILLO
+			+ "  2. " + RESET + "CONSULTAR\n" + AMARILLO
+			+ "  3. " + RESET + "MODIFICAR\n" + AMARILLO
+			+ "  4. " + RESET + "ELIMINAR\n\n" + AMARILLO
+			+ "  0. " + ROJO + "VOLVER\n" + MORADO
+			+ "----------------------------------------------------\n"
+			+ "\n" + CIAN
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	
@@ -95,15 +95,15 @@ public class Imprimir {
 		
 		// MENÚ - TABLA ASIGNACIÓN //
 		
-		System.out.print("\n" + AMARILLO
-			+ "-------- MANTENIMIENTO TABLA ASIGNACIÓN --------\n" + RESET
-			+ "  1. Crear\n" + RESET
-			+ "  2. Consultar\n" + RESET
-			+ "  3. Modificar\n" + RESET
-			+ "  4. Eliminar\n" + RESET
-			+ "  0. Volver\n" + AMARILLO
-			+ "------------------------------------------------\n"
-			+ "\n" + MORADO
+		System.out.print("\n" + MORADO
+			+ "-------- " + AMARILLO + "[ MANTENIMIENTO TABLA ASIGNACIÓN ]" + MORADO + " --------\n" + AMARILLO
+			+ "  1. " + RESET + "CREAR\n" + AMARILLO
+			+ "  2. " + RESET + "CONSULTAR\n" + AMARILLO
+			+ "  3. " + RESET + "MODIFICAR\n" + AMARILLO
+			+ "  4. " + RESET + "ELIMINAR\n\n" + AMARILLO
+			+ "  0. " + ROJO + "VOLVER\n" + MORADO
+			+ "----------------------------------------------------\n"
+			+ "\n" + CIAN
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	

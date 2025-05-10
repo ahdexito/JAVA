@@ -18,7 +18,7 @@ public class Cliente {
 		cs.setString(6, telefono);
 		
 		int filas = cs.executeUpdate();
-		System.out.println("\n" + CIAN + "OPERACIÓN REALIZADA CON " + filas + " FILAS AFECTADAS.");
+		System.out.println("\n" + VERDE + "OPERACIÓN REALIZADA CON " + filas + " FILAS AFECTADAS.");
 	}
 	
 	public static ResultSet consultar(Connection conex, int id) throws SQLException {
