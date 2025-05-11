@@ -13,7 +13,7 @@ public class Database {
 			this.conex = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + nombreBD, "root", "");
 			
 			if (this.conex.isClosed()) {
-				throw new SQLException("ERROR: La conexión está cerrada");
+				throw new SQLException("ERROR: LA CONEXIÓN ESTÁ CERRADA");
 			}
 		}
 		

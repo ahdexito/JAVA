@@ -47,19 +47,19 @@ public class Main {
 									System.out.print(CIAN + "  - DNI: " + RESET); 
 									String dni = sc.nextLine();
 
-									System.out.print(CIAN + "  - Nombre: " + RESET); 
+									System.out.print(CIAN + "  - NOMBRE: " + RESET); 
 									String nombre = sc.nextLine();
 
-									System.out.print(CIAN + "  - Primer apellido: " + RESET); 
+									System.out.print(CIAN + "  - PRIMER APELLIDO: " + RESET); 
 									String apellido1 = sc.nextLine();
 
-									System.out.print(CIAN + "  - Segundo apellido: " + RESET); 
+									System.out.print(CIAN + "  - SEGUNDO APELLIDO: " + RESET); 
 									String apellido2 = sc.nextLine();
 
-									System.out.print(CIAN + "  - Email: " + RESET); 
+									System.out.print(CIAN + "  - EMAIL: " + RESET); 
 									String email = sc.nextLine();
 
-									System.out.print(CIAN + "  - Teléfono: " + RESET); 
+									System.out.print(CIAN + "  - TELÉFONO: " + RESET); 
 									String telefono = sc.nextLine();
 
 									Cliente.crear(conex, dni, nombre, apellido1, apellido2, email, telefono);

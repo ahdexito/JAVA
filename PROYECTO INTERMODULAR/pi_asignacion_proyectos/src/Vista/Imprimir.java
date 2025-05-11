@@ -6,7 +6,7 @@ public class Imprimir {
     
     public static void menuPrincipal() {
 	
-		// MENÚ PRINCIPAL //
+		// MENï¿½ PRINCIPAL //
 		
 		System.out.print("\n" + MORADO
 			+ "---------------- " + AMARILLO + "[ MENÚ PRINCIPAL ]" + MORADO + " ----------------\n" + AMARILLO
@@ -22,7 +22,7 @@ public class Imprimir {
 	
 	public static void menuCliente() {
 		
-		// MENÚ - TABLA CLIENTE //
+		// MENï¿½ - TABLA CLIENTE //
 		
 		System.out.print("\n" + MORADO
 			+ "--------- " + AMARILLO + "[ MANTENIMIENTO TABLA CLIENTE ]" + MORADO + " ---------\n" + AMARILLO
@@ -63,7 +63,7 @@ public class Imprimir {
 	
 	public static void menuProyecto() {
 		
-		// MENÚ - TABLA PROYECTO //
+		// MENï¿½ - TABLA PROYECTO //
 		System.out.print("\n" + MORADO
 			+ "--------- " + AMARILLO + "[ MANTENIMIENTO TABLA PROYECTO ]" + MORADO + " ---------\n" + AMARILLO
 			+ "  1. " + RESET + "CREAR\n" + AMARILLO
@@ -78,7 +78,7 @@ public class Imprimir {
 	
 	public static void menuDesarrollador() {
 		
-		// MENÚ - TABLA DESARROLLADOR //
+		// MENï¿½ - TABLA DESARROLLADOR //
 		System.out.print("\n" + MORADO
 			+ "------- " + AMARILLO + "[ MANTENIMIENTO TABLA DESARROLLADOR ]" + MORADO + " ------\n" + AMARILLO
 			+ "  1. " + RESET + "CREAR\n" + AMARILLO
@@ -93,7 +93,7 @@ public class Imprimir {
 	
 	public static void menuAsignacion() {
 		
-		// MENÚ - TABLA ASIGNACIÓN //
+		// MENï¿½ - TABLA ASIGNACIï¿½N //
 		
 		System.out.print("\n" + MORADO
 			+ "-------- " + AMARILLO + "[ MANTENIMIENTO TABLA ASIGNACIÓN ]" + MORADO + " --------\n" + AMARILLO
