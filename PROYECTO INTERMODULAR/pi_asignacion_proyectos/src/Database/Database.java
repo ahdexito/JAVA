@@ -2,6 +2,7 @@ package Database;
 
 import java.sql.*;
 
+// PATRÓN SINGLETON //
 public class Database {
     
     private static Database conexUnica = null;
