@@ -51,9 +51,9 @@ public class Imprimir {
 				MORADO + "|  " + AMARILLO + "TELÉFONO");
 			System.out.println((MORADO + "-").repeat(130));
 			
+			// SI LOS CAMPOS SON NULOS, SE IMPRIMEN COMO CADENAS VACÍAS Y NO COMO 'NULL' //
 			String apellido2 = rs.getString("apellido2");
 			apellido2 = apellido2 != null ? " " + apellido2 : "";
-			
 			String telefono = rs.getString("telefono");
 			telefono = telefono != null ? telefono : "";
 			
