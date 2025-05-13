@@ -9,6 +9,15 @@ public class Cliente {
 			(Connection conex, String dni, String nombre, String apellido1, String apellido2, String email, String telefono) 
 				throws SQLException {
 		
+		/* ASEGURAR QUE LA VARIABLE QUE SE ENVÍA SEA NULL SI NO SE INSERTÓ NINGÚN VALOR 
+		PARA QUE SE RECOJA EL ERROR EN CAMPOS CON RESTRICCIÓN NOTNULL */
+		dni = dni.isEmpty() ? null : dni;
+		nombre = nombre.isEmpty() ? null : nombre;
+		apellido1 = apellido1.isEmpty() ? null : apellido1;
+		apellido2 = apellido2.isEmpty() ? null : apellido2;
+		email = email.isEmpty() ? null : email;
+		telefono = telefono.isEmpty() ? null : telefono;
+		
 		CallableStatement cs = conex.prepareCall("{call sp_insertCliente(?, ?, ?, ?, ?, ?)}");
 		
 		cs.setString(1, dni);
@@ -20,7 +29,7 @@ public class Cliente {
 		
 		int filas = cs.executeUpdate();
 		
-		System.out.println("\n" + VERDE + "OPERACIÓN REALIZADA CON " + filas + " FILAS AFECTADAS.");
+		System.out.println("\n" + CIAN + "  ** OPERACIÓN REALIZADA CON " + filas + " FILAS AFECTADAS **");
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,7 +62,7 @@ public class Cliente {
 		
 		int filas = cs.executeUpdate();
 		
-		System.out.println("\n" + VERDE + "OPERACIÓN REALIZADA CON " + filas + " FILAS AFECTADAS.");
+		System.out.println("\n" + CIAN + "  ** OPERACIÓN REALIZADA CON " + filas + " FILAS AFECTADAS **");
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -66,7 +75,7 @@ public class Cliente {
 		
 		int filas = cs.executeUpdate();
 		
-		System.out.println("\n" + VERDE + "OPERACIÓN REALIZADA CON " + filas + " FILAS AFECTADAS.");
+		System.out.println("\n" + CIAN + "  ** OPERACIÓN REALIZADA CON " + filas + " FILAS AFECTADAS **");
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

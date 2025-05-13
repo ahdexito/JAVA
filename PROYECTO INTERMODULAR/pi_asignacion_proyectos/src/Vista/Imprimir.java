@@ -9,13 +9,13 @@ public class Imprimir {
 		
 		System.out.print("\n" + MORADO
 			+ "---------------- " + AMARILLO + "[ MENÚ PRINCIPAL ]" + MORADO + " ----------------\n" + AMARILLO
-			+ "  1. " + RESET + "CLIENTES\n" + AMARILLO
-			+ "  2. " + RESET + "PROYECTOS\n" + AMARILLO
-			+ "  3. " + RESET + "DESARROLLADORES\n" + AMARILLO
-			+ "  4. " + RESET + "ASIGNACIONES DE PROYECTOS\n\n" + AMARILLO
+			+ "  1. " + CIAN + "CLIENTES\n" + AMARILLO
+			+ "  2. " + CIAN + "PROYECTOS\n" + AMARILLO
+			+ "  3. " + CIAN + "DESARROLLADORES\n" + AMARILLO
+			+ "  4. " + CIAN + "ASIGNACIONES DE PROYECTOS\n\n" + AMARILLO
 			+ "  0. " + ROJO + "SALIR\n" + MORADO
 			+ "----------------------------------------------------\n"
-			+ "\n" + CIAN
+			+ "\n" + AMARILLO
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	
@@ -26,13 +26,13 @@ public class Imprimir {
 		
 		System.out.print("\n" + MORADO
 			+ "---------- " + AMARILLO + "[ MANTENIMIENTO TABLA CLIENTE ]" + MORADO + " ---------\n" + AMARILLO
-			+ "  1. " + RESET + "CREAR\n" + AMARILLO
-			+ "  2. " + RESET + "CONSULTAR\n" + AMARILLO
-			+ "  3. " + RESET + "MODIFICAR\n" + AMARILLO
-			+ "  4. " + RESET + "ELIMINAR\n\n" + AMARILLO
+			+ "  1. " + CIAN + "CREAR\n" + AMARILLO
+			+ "  2. " + CIAN + "CONSULTAR\n" + AMARILLO
+			+ "  3. " + CIAN + "MODIFICAR\n" + AMARILLO
+			+ "  4. " + CIAN + "ELIMINAR\n\n" + AMARILLO
 			+ "  0. " + ROJO + "VOLVER\n" + MORADO
 			+ "----------------------------------------------------\n"
-			+ "\n" + CIAN
+			+ "\n" + AMARILLO
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	
@@ -51,17 +51,23 @@ public class Imprimir {
 				MORADO + "|  " + AMARILLO + "TELÉFONO");
 			System.out.println((MORADO + "-").repeat(130));
 			
+			String apellido2 = rs.getString("apellido2");
+			apellido2 = apellido2 != null ? " " + apellido2 : "";
+			
+			String telefono = rs.getString("telefono");
+			telefono = telefono != null ? telefono : "";
+			
 			System.out.printf("%-20s %-25s %-50s %-40s %-25s",
-				MORADO + "|  " + VERDE + rs.getInt("id"),
-				MORADO + "|  " + VERDE + rs.getString("DNI"),
-				MORADO + "|  " + VERDE + rs.getString("apellido1") + " " + rs.getString("apellido2") + ", " + rs.getString("nombre"),
-				MORADO + "|  " + VERDE + rs.getString("email"),
-				MORADO + "|  " + VERDE + rs.getString("telefono"));
+				MORADO + "|  " + CIAN + rs.getInt("id"),
+				MORADO + "|  " + CIAN + rs.getString("DNI"),
+				MORADO + "|  " + CIAN + rs.getString("apellido1") + apellido2 + ", " + rs.getString("nombre"),
+				MORADO + "|  " + CIAN + rs.getString("email"),
+				MORADO + "|  " + CIAN + telefono);
 			
 			System.out.println("\n" + (MORADO + "-" + RESET).repeat(130));
 		}
 		
-		else System.out.println(VERDE + "NO SE HAN ENCONTRADO REGISTROS PARA ESE ID" + RESET);
+		else System.out.println(CIAN + "  ** NO SE HAN ENCONTRADO REGISTROS PARA ESE ID **" + RESET);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,13 +77,13 @@ public class Imprimir {
 		
 		System.out.print("\n" + MORADO
 			+ "--------- " + AMARILLO + "[ MANTENIMIENTO TABLA PROYECTO ]" + MORADO + " ---------\n" + AMARILLO
-			+ "  1. " + RESET + "CREAR\n" + AMARILLO
-			+ "  2. " + RESET + "CONSULTAR\n" + AMARILLO
-			+ "  3. " + RESET + "MODIFICAR\n" + AMARILLO
-			+ "  4. " + RESET + "ELIMINAR\n\n" + AMARILLO
+			+ "  1. " + CIAN + "CREAR\n" + AMARILLO
+			+ "  2. " + CIAN + "CONSULTAR\n" + AMARILLO
+			+ "  3. " + CIAN + "MODIFICAR\n" + AMARILLO
+			+ "  4. " + CIAN + "ELIMINAR\n\n" + AMARILLO
 			+ "  0. " + ROJO + "VOLVER\n" + MORADO
 			+ "----------------------------------------------------\n"
-			+ "\n" + CIAN
+			+ "\n" + AMARILLO
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	
@@ -88,13 +94,13 @@ public class Imprimir {
 		
 		System.out.print("\n" + MORADO
 			+ "------- " + AMARILLO + "[ MANTENIMIENTO TABLA DESARROLLADOR ]" + MORADO + " ------\n" + AMARILLO
-			+ "  1. " + RESET + "CREAR\n" + AMARILLO
-			+ "  2. " + RESET + "CONSULTAR\n" + AMARILLO
-			+ "  3. " + RESET + "MODIFICAR\n" + AMARILLO
-			+ "  4. " + RESET + "ELIMINAR\n\n" + AMARILLO
+			+ "  1. " + CIAN + "CREAR\n" + AMARILLO
+			+ "  2. " + CIAN + "CONSULTAR\n" + AMARILLO
+			+ "  3. " + CIAN + "MODIFICAR\n" + AMARILLO
+			+ "  4. " + CIAN + "ELIMINAR\n\n" + AMARILLO
 			+ "  0. " + ROJO + "VOLVER\n" + MORADO
 			+ "----------------------------------------------------\n"
-			+ "\n" + CIAN
+			+ "\n" + AMARILLO
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	
@@ -105,13 +111,13 @@ public class Imprimir {
 		
 		System.out.print("\n" + MORADO
 			+ "-------- " + AMARILLO + "[ MANTENIMIENTO TABLA ASIGNACIÓN ]" + MORADO + " --------\n" + AMARILLO
-			+ "  1. " + RESET + "CREAR\n" + AMARILLO
-			+ "  2. " + RESET + "CONSULTAR\n" + AMARILLO
-			+ "  3. " + RESET + "MODIFICAR\n" + AMARILLO
-			+ "  4. " + RESET + "ELIMINAR\n\n" + AMARILLO
+			+ "  1. " + CIAN + "CREAR\n" + AMARILLO
+			+ "  2. " + CIAN + "CONSULTAR\n" + AMARILLO
+			+ "  3. " + CIAN + "MODIFICAR\n" + AMARILLO
+			+ "  4. " + CIAN + "ELIMINAR\n\n" + AMARILLO
 			+ "  0. " + ROJO + "VOLVER\n" + MORADO
 			+ "----------------------------------------------------\n"
-			+ "\n" + CIAN
+			+ "\n" + AMARILLO
 			+ "INTRODUCE OPCIÓN: " + RESET);
 	}
 	
