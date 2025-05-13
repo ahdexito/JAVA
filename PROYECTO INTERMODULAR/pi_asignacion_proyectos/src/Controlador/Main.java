@@ -131,27 +131,33 @@ public class Main {
 									if (sc.hasNextInt()) id = sc.nextInt();
 									sc.nextLine();
 									
-									// SOLICITAR EL RESTO DE DATOS SI SE DESEAN APORTAR //
-									System.out.print(AMARILLO + "  - DNI: " + RESET); 
-									dni = sc.nextLine();
+									// COMPROBAR SI EL ID INTRODUCIDO EXISTE //
+									if (Cliente.consultar(conex, id).next()) {
+										
+										// SOLICITAR EL RESTO DE DATOS SI SE DESEAN APORTAR //
+										System.out.print(AMARILLO + "  - DNI: " + RESET); 
+										dni = sc.nextLine();
 
-									System.out.print(AMARILLO + "  - NOMBRE: " + RESET); 
-									nombre = sc.nextLine();
+										System.out.print(AMARILLO + "  - NOMBRE: " + RESET); 
+										nombre = sc.nextLine();
 
-									System.out.print(AMARILLO + "  - PRIMER APELLIDO: " + RESET); 
-									apellido1 = sc.nextLine();
+										System.out.print(AMARILLO + "  - PRIMER APELLIDO: " + RESET); 
+										apellido1 = sc.nextLine();
 
-									System.out.print(AMARILLO + "  - SEGUNDO APELLIDO: " + RESET); 
-									apellido2 = sc.nextLine();
+										System.out.print(AMARILLO + "  - SEGUNDO APELLIDO: " + RESET); 
+										apellido2 = sc.nextLine();
 
-									System.out.print(AMARILLO + "  - EMAIL: " + RESET); 
-									email = sc.nextLine();
+										System.out.print(AMARILLO + "  - EMAIL: " + RESET); 
+										email = sc.nextLine();
 
-									System.out.print(AMARILLO + "  - TELÉFONO: " + RESET); 
-									telefono = sc.nextLine();
+										System.out.print(AMARILLO + "  - TELÉFONO: " + RESET); 
+										telefono = sc.nextLine();
 									
-									// LLAMADA AL MÉTODO DE MODIFICAR CLIENTE ENVIANDO LAS VARIABLES //
-									Cliente.modificar(conex, id, dni, nombre, apellido1, apellido2, email, telefono);
+										// LLAMADA AL MÉTODO DE MODIFICAR CLIENTE ENVIANDO LAS VARIABLES //
+										Cliente.modificar(conex, id, dni, nombre, apellido1, apellido2, email, telefono);
+									}
+									// SI NO EXISTE SE CANCELA LA OPERACIÓN //
+									else System.out.println("\n" + CIAN + "  ** NO SE HAN ENCONTRADO REGISTROS PARA ESE ID **" + RESET);
 						
 									// DETENCIÓN DEL PROGRAMA PARA QUE EL USUARIO CONFIRME //
 									System.out.print("\n" + AMARILLO + "--> CONTINUAR [ENTER] <--" + RESET);

@@ -43,7 +43,7 @@ public class Imprimir {
 		
 		if (rs.next()) {
 			System.out.println((MORADO + "-").repeat(130));
-			System.out.printf("%-20s %-25s %-50s %-40s %-25s\n", 
+			System.out.printf("%-20s %-25s %-50s %-45s %-25s\n", 
 				MORADO + "|  " + AMARILLO + "ID", 
 				MORADO + "|  " + AMARILLO + "DNI", 
 				MORADO + "|  " + AMARILLO + "NOMBRE", 
@@ -57,7 +57,7 @@ public class Imprimir {
 			String telefono = rs.getString("telefono");
 			telefono = telefono != null ? telefono : "";
 			
-			System.out.printf("%-20s %-25s %-50s %-40s %-25s",
+			System.out.printf("%-20s %-25s %-50s %-45s %-25s",
 				MORADO + "|  " + CIAN + rs.getInt("id"),
 				MORADO + "|  " + CIAN + rs.getString("DNI"),
 				MORADO + "|  " + CIAN + rs.getString("apellido1") + apellido2 + ", " + rs.getString("nombre"),
